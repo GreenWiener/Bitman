@@ -1,0 +1,163 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyjx6j8a10maq"]
+
+[ext_resource type="Script" path="res://menu/ram_menu.gd" id="1_fm8fe"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="2_8qwkf"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="3_w6lip"]
+[ext_resource type="PackedScene" uid="uid://mjko4ouq87ou" path="res://task_block.tscn" id="4_xgq2r"]
+[ext_resource type="Texture2D" uid="uid://b2kv5ukf66xtu" path="res://world/chrome_exe.png" id="5_8bjgt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymh58"]
+line_spacing = 13.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uddo3"]
+bg_color = Color(0, 0, 0, 0.270588)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c8qsd"]
+line_spacing = 1.775
+font_size = 2
+
+[node name="RAM_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fm8fe")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 334.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 0.34902)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = ExtResource("2_8qwkf")
+label_settings = ExtResource("3_w6lip")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 312.0
+offset_bottom = 26.0
+text = "RAM infopaneel"
+label_settings = SubResource("LabelSettings_ymh58")
+horizontal_alignment = 1
+
+[node name="Fail_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="failid_label" type="Label" parent="Fail_Panel"]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Failid"
+horizontal_alignment = 1
+
+[node name="new_task_btn" type="Button" parent="Fail_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 2.0
+offset_right = 114.0
+offset_bottom = 49.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Fail_Panel"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 437.0
+offset_bottom = 628.0
+scale = Vector2(0.17, 0.17)
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Fail_Panel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="palceholder" type="Label" parent="Fail_Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "                                                       "
+
+[node name="task_block" parent="Fail_Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_xgq2r")]
+visible = false
+layout_mode = 2
+
+[node name="Select_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 34.0
+offset_right = 228.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="selected_label" type="Label" parent="Select_Panel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "*valitud fail*"
+horizontal_alignment = 1
+
+[node name="Info_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 34.0
+offset_right = 300.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info_Panel"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 67.0
+offset_bottom = 118.0
+
+[node name="Label" type="Label" parent="Info_Panel"]
+layout_mode = 0
+offset_right = 134.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Info"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 108.0
+offset_top = 91.0
+offset_right = 226.0
+offset_bottom = 200.0
+text = "l"
+label_settings = SubResource("LabelSettings_c8qsd")
+autowrap_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(165, 68)
+texture = ExtResource("5_8bjgt")
+
+[connection signal="pressed" from="Fail_Panel/new_task_btn" to="." method="_on_new_task_btn_pressed"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo3r7g5ooa7lu"]
+
+[ext_resource type="Script" path="res://task_menu.gd" id="1_ca8m6"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="1_t5y4b"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="2_affva"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="3_bfb2j"]
+[ext_resource type="PackedScene" uid="uid://mjko4ouq87ou" path="res://task_block.tscn" id="5_kfgx1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2txo"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.156863, 0.196078, 0.266667, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djwf5"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6oow2"]
+font = ExtResource("1_t5y4b")
+font_color = Color(0.2, 0.858824, 0.886275, 1)
+
+[node name="task_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ca8m6")
+
+[node name="tasks" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.823529)
+layout_direction = 2
+layout_mode = 0
+offset_left = 248.0
+offset_top = 23.0
+offset_right = 320.0
+offset_bottom = 130.0
+theme_override_fonts/font = ExtResource("1_t5y4b")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = ExtResource("2_affva")
+text = "   Ülesanded:  sssss sss sssssssssss"
+label_settings = ExtResource("3_bfb2j")
+autowrap_mode = 2
+
+[node name="task_list" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 255.0
+offset_top = 62.0
+offset_right = 318.0
+offset_bottom = 130.0
+label_settings = ExtResource("3_bfb2j")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 223.0
+offset_top = 19.0
+offset_right = 318.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_l2txo")
+
+[node name="Task_Panel" type="Panel" parent="PanelContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_djwf5")
+
+[node name="Label" type="Label" parent="PanelContainer/Task_Panel"]
+layout_mode = 0
+offset_right = 186.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Ülesanded"
+label_settings = SubResource("LabelSettings_6oow2")
+horizontal_alignment = 1
+
+[node name="new_task_btn" type="Button" parent="PanelContainer/Task_Panel"]
+layout_mode = 0
+offset_left = 68.6619
+offset_top = -0.31498
+offset_right = 115.662
+offset_bottom = 46.685
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/Task_Panel"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 17.0
+offset_right = 520.0
+offset_bottom = 676.0
+scale = Vector2(0.17, 0.17)
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Task_Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="palceholder" type="Label" parent="PanelContainer/Task_Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "                                                       "
+
+[node name="task_block" parent="PanelContainer/Task_Panel/ScrollContainer/VBoxContainer" instance=ExtResource("5_kfgx1")]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/Task_Panel/new_task_btn" to="." method="_on_new_task_btn_pressed"]

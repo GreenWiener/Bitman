@@ -1,0 +1,173 @@
+[gd_scene load_steps=6 format=3 uid="uid://kco8ko3qnr8d"]
+
+[ext_resource type="Script" path="res://menu/task_binary.gd" id="1_04x3f"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_qw2h7"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_uof5r"]
+[ext_resource type="PackedScene" uid="uid://dl8stlucmakk6" path="res://task_binary_row.tscn" id="4_d6jk4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm4t1"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+
+[node name="task_binary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04x3f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 180.0
+theme_override_styles/panel = ExtResource("1_qw2h7")
+
+[node name="Rows" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 696.0
+offset_bottom = 391.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.315, 0.315)
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="Rows"]
+visible = false
+layout_mode = 2
+text = "x ÷ 2 = y   ⇒   2 • y = z   ⇒   x - z = jääk"
+label_settings = ExtResource("2_uof5r")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Rows"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 23
+
+[node name="task_binary_row" parent="Rows" instance=ExtResource("4_d6jk4")]
+layout_mode = 2
+
+[node name="add_row_btn" type="Button" parent="Rows"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_lm4t1")
+text = "+"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 320.0
+offset_bottom = 12.0
+color = Color(0.156863, 0.196078, 0.266667, 1)
+
+[node name="Valem" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 13.0
+text = "x÷2=y        ⇒        2•y=z        ⇒        x-z=jääk"
+label_settings = ExtResource("2_uof5r")
+horizontal_alignment = 1
+
+[node name="row1mmm" type="Node2D" parent="."]
+visible = false
+
+[node name="row1_1" type="LineEdit" parent="row1mmm"]
+offset_left = 61.648
+offset_top = 17.1225
+offset_right = 128.711
+offset_bottom = 48.1225
+scale = Vector2(0.3, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="row1_2" type="LineEdit" parent="row1mmm"]
+offset_left = 156.0
+offset_top = 17.1225
+offset_right = 223.063
+offset_bottom = 48.1225
+scale = Vector2(0.3, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="row1_3" type="LineEdit" parent="row1mmm"]
+offset_left = 214.0
+offset_top = 17.0
+offset_right = 310.0
+offset_bottom = 48.0
+scale = Vector2(0.3, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label1" type="Label" parent="row1mmm"]
+offset_left = 84.0
+offset_top = 15.0
+offset_right = 105.0
+offset_bottom = 27.0
+text = "÷ 2 ="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="row1mmm"]
+offset_left = 140.0
+offset_top = 15.0
+offset_right = 156.0
+offset_bottom = 27.0
+text = "2 • "
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="row1mmm"]
+offset_left = 180.0
+offset_top = 15.0
+offset_right = 196.0
+offset_bottom = 27.0
+text = "="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="row1mmm"]
+offset_left = 246.634
+offset_top = 15.0
+offset_right = 262.634
+offset_bottom = 27.0
+text = "= "
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="row1_1" type="LineEdit" parent="VBoxContainer2/HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="row1_2" type="LineEdit" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label1" type="Label" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "÷ 2 ="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "÷ 2 ="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Rows/add_row_btn" to="." method="_on_add_row_btn_pressed"]

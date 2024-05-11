@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://mjko4ouq87ou"]
+
+[ext_resource type="StyleBox" uid="uid://0ae26v77p7d2" path="res://menu/cpu_taskmenu_task.tres" id="2_jpg06"]
+[ext_resource type="Script" path="res://task_block.gd" id="3_2gnt7"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="4_q66pa"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="4_x8f1d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v4da"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc2fy"]
+bg_color = Color(0.109804, 0.141176, 0.188235, 0.968627)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o6x8i"]
+line_spacing = -2.0
+font = ExtResource("4_x8f1d")
+font_size = 41
+
+[node name="Text_task" type="RichTextLabel"]
+custom_minimum_size = Vector2(0, 86)
+offset_right = 430.0
+offset_bottom = 86.0
+theme_override_font_sizes/normal_font_size = 26
+theme_override_styles/focus = SubResource("StyleBoxFlat_7v4da")
+theme_override_styles/normal = ExtResource("2_jpg06")
+text = "!ülesande text!"
+fit_content = true
+script = ExtResource("3_2gnt7")
+
+[node name="Button_task" type="Button" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -36.0
+offset_top = -28.0
+offset_right = 1115.0
+offset_bottom = 754.0
+theme_override_styles/normal = ExtResource("4_q66pa")
+
+[node name="yes_or_no" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.028
+anchor_right = -0.028
+offset_left = 8.904
+offset_right = 1601.9
+offset_bottom = 1422.0
+scale = Vector2(0.6, 0.6)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hc2fy")
+label_settings = SubResource("LabelSettings_o6x8i")
+
+[node name="yes_btn" type="Button" parent="yes_or_no"]
+layout_mode = 0
+offset_left = 131.667
+offset_top = 60.0
+offset_right = 385.667
+offset_bottom = 217.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 70
+text = "Jah"
+
+[node name="no_btn" type="Button" parent="yes_or_no"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 60.0
+offset_right = 688.0
+offset_bottom = 217.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 70
+text = "Ei"
+
+[node name="ok" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.028
+anchor_right = -0.028
+offset_left = -12.5159
+offset_right = 1580.48
+offset_bottom = 1422.0
+scale = Vector2(0.6, 0.6)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hc2fy")
+label_settings = SubResource("LabelSettings_o6x8i")
+
+[node name="ok_btn" type="Button" parent="ok"]
+layout_mode = 0
+offset_left = 301.667
+offset_top = 60.0
+offset_right = 555.667
+offset_bottom = 217.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 70
+text = "OK"
+
+[connection signal="pressed" from="Button_task" to="." method="_on_button_task_pressed"]
+[connection signal="pressed" from="yes_or_no/yes_btn" to="." method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="yes_or_no/no_btn" to="." method="_on_no_btn_pressed"]
+[connection signal="pressed" from="ok/ok_btn" to="." method="_on_ok_btn_pressed"]

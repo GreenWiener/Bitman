@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbtdnfvga17dw"]
+
+[ext_resource type="Script" path="res://world/itemshit.gd" id="1_3eal6"]
+[ext_resource type="Texture2D" uid="uid://cwo87vfx3jlvl" path="res://icon.png" id="2_jpmpq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7u862"]
+size = Vector2(10.775, 10.6979)
+
+[node name="Itemshit" type="Area2D"]
+script = ExtResource("1_3eal6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7u862")
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.360784, 0, 0.219608, 1)
+scale = Vector2(0.161719, 0.164646)
+texture = ExtResource("2_jpmpq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp1o46gwbqr2c"]
+
+[ext_resource type="Script" path="res://world/item.gd" id="1_3eal6"]
+[ext_resource type="Texture2D" uid="uid://b6xd6kxj4esfa" path="res://world/item.png" id="2_o462n"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="3_c5ib2"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(4.72656, 4.72656)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy1ya"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d88id"]
+
+[node name="item" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_3eal6")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 2.34375)
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("2_o462n")
+offset = Vector2(4.17233e-07, -17.3611)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.00390637, 0.00390625)
+shape = SubResource("2")
+
+[node name="name_label" type="Label" parent="."]
+z_index = 1
+offset_left = -44.3341
+offset_top = -10.8352
+offset_right = 991.666
+offset_bottom = 52.1648
+scale = Vector2(0.085, 0.085)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_c5ib2")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="pickup_label" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -6.11589
+offset_top = -5.55681
+offset_right = 95.8841
+offset_bottom = 17.4432
+scale = Vector2(0.12, 0.12)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_uy1ya")
+text = "[F] võta kätte"
+label_settings = SubResource("LabelSettings_d88id")
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

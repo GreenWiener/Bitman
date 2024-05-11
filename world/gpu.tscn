@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctufny5al0lxn"]
+
+[ext_resource type="Texture2D" uid="uid://clsyb8mwehyl5" path="res://world/GPU.png" id="1_dd004"]
+[ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="2_mgypv"]
+
+[node name="gpu" type="Node2D"]
+
+[node name="Gpu" type="Sprite2D" parent="."]
+position = Vector2(496, 204)
+texture = ExtResource("1_dd004")
+
+[node name="ysort" type="Node2D" parent="."]
+
+[node name="player" parent="ysort" instance=ExtResource("2_mgypv")]
+
+[node name="items" type="Node2D" parent="ysort"]

@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6mc2ukaioi80"]
+
+[ext_resource type="Script" path="res://world/train.gd" id="1_fq7kd"]
+[ext_resource type="Texture2D" uid="uid://cp4b6unuf1tpt" path="res://world/train_door1.png" id="2_clle2"]
+[ext_resource type="Texture2D" uid="uid://cnnmra11i5iam" path="res://world/train_background.png" id="2_djnbd"]
+[ext_resource type="Texture2D" uid="uid://4rg7i2q1h4t8" path="res://world/train1.png" id="2_subwh"]
+[ext_resource type="Texture2D" uid="uid://dquhtje4qxhls" path="res://world/train_door2.png" id="3_0pci6"]
+[ext_resource type="PackedScene" uid="uid://bnr6t3scqbl5j" path="res://interact_area.tscn" id="5_f1clu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qwrdk"]
+size = Vector2(40, 9.99998)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t6wuw"]
+size = Vector2(37.225, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tycv7"]
+size = Vector2(77.778, 9.1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxyqg"]
+size = Vector2(115, 20)
+
+[node name="Train" type="Node2D"]
+script = ExtResource("1_fq7kd")
+
+[node name="body" type="Node2D" parent="."]
+position = Vector2(0, -3.5)
+scale = Vector2(0.45, 0.45)
+
+[node name="TrainBackground1" type="Sprite2D" parent="body"]
+z_index = -1
+position = Vector2(1.19209e-07, -1.19209e-07)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_djnbd")
+flip_h = true
+
+[node name="TrainDoor1" type="StaticBody2D" parent="body"]
+position = Vector2(-2.4, 1.5)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="body/TrainDoor1"]
+texture = ExtResource("2_clle2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/TrainDoor1"]
+position = Vector2(-3, 37.5)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_qwrdk")
+
+[node name="TrainDoor2" type="StaticBody2D" parent="body"]
+position = Vector2(3.39, 1.5)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="body/TrainDoor2"]
+texture = ExtResource("3_0pci6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/TrainDoor2"]
+position = Vector2(4.4375, 37.5)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_t6wuw")
+
+[node name="TrainDoorsCollision" type="CharacterBody2D" parent="body"]
+scale = Vector2(0.2, 0.2)
+
+[node name="train_doors_collision" type="CollisionShape2D" parent="body/TrainDoorsCollision"]
+position = Vector2(5.55561, 44.4446)
+shape = SubResource("RectangleShape2D_tycv7")
+disabled = true
+
+[node name="train_sprite" type="Sprite2D" parent="body"]
+y_sort_enabled = true
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_subwh")
+flip_h = true
+
+[node name="Train_collision" type="CharacterBody2D" parent="body"]
+position = Vector2(1.11111, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="body/Train_collision"]
+polygon = PackedVector2Array(-47.5, -7, -47.5, 10, -7.5, 10, -7.5, 8, -40, 8, -40, 5.5, 38.5, 5.5, 38.5, 8, 7.5, 8, 7.5, 10, 46.5, 10, 46.5, 1, 35.5, -7)
+
+[node name="stop_collision" type="Area2D" parent="body"]
+position = Vector2(0, -9.33334)
+scale = Vector2(2.22222, 2.22222)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body/stop_collision"]
+position = Vector2(0.5, 4)
+scale = Vector2(0.45, 0.45)
+shape = SubResource("RectangleShape2D_lxyqg")
+
+[node name="interact-area" parent="body" instance=ExtResource("5_f1clu")]
+position = Vector2(0.488892, 5.55555)
+scale = Vector2(2.22222, 2.22222)
+text = "ava uksed"
+text_2 = "sulge uksed"
+type = "train_doors"
+text_pos = Vector2(3.855, -1.757)
+
+[node name="interact-area2" parent="body" instance=ExtResource("5_f1clu")]
+position = Vector2(35.5556, 3.33333)
+scale = Vector2(2.22222, 2.22222)
+text = "start"
+type = "train_start"
+collision_scale = Vector2(0.5, 0.5)
+
+[connection signal="area_entered" from="body/stop_collision" to="." method="_on_stop_collision_area_entered"]

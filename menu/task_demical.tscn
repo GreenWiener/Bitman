@@ -1,0 +1,515 @@
+[gd_scene load_steps=20 format=3 uid="uid://c15ars2mbpuct"]
+
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_0tyqx"]
+[ext_resource type="Script" path="res://menu/task_demical.gd" id="1_2ug1q"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_8vjdf"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="3_vrmj0"]
+[ext_resource type="FontFile" uid="uid://or3rf71jm2l3" path="res://menu/fonts/century_gothic.ttf" id="5_w5lpt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2oyrt"]
+line_spacing = -2.0
+font = ExtResource("3_vrmj0")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0q6l"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlv3i"]
+line_spacing = -2.0
+font = ExtResource("3_vrmj0")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksoa4"]
+bg_color = Color(0.141176, 0.176471, 0.243137, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iic8"]
+bg_color = Color(0.0705882, 0.0980392, 0.141176, 0.905882)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_l6wj8"]
+default_font = ExtResource("5_w5lpt")
+default_font_size = 7
+
+[sub_resource type="FontFile" id="FontFile_cu32i"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/1/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/1/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/2/0/ascent = 0.0
+cache/0/2/0/descent = 0.0
+cache/0/2/0/underline_position = 0.0
+cache/0/2/0/underline_thickness = 0.0
+cache/0/2/0/scale = 1.0
+cache/0/2/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/2/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/3/0/ascent = 0.0
+cache/0/3/0/descent = 0.0
+cache/0/3/0/underline_position = 0.0
+cache/0/3/0/underline_thickness = 0.0
+cache/0/3/0/scale = 1.0
+cache/0/3/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/3/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
+cache/0/4/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/4/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/5/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/5/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/6/0/ascent = 0.0
+cache/0/6/0/descent = 0.0
+cache/0/6/0/underline_position = 0.0
+cache/0/6/0/underline_thickness = 0.0
+cache/0/6/0/scale = 1.0
+cache/0/6/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/6/0/kerning_overrides/7/0 = Vector2(0, 0)
+cache/0/7/0/ascent = 0.0
+cache/0/7/0/descent = 0.0
+cache/0/7/0/underline_position = 0.0
+cache/0/7/0/underline_thickness = 0.0
+cache/0/7/0/scale = 1.0
+cache/0/7/0/glyphs/0/advance = Vector2(0, 0)
+cache/0/7/0/glyphs/0/offset = Vector2(0, 0)
+cache/0/7/0/glyphs/0/size = Vector2(0, 0)
+cache/0/7/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/7/0/glyphs/0/texture_idx = -1
+cache/0/7/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/1/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/2/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/3/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/4/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/5/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/6/0 = Vector2(0, 0)
+cache/0/7/0/kerning_overrides/7/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdj2x"]
+bg_color = Color(0, 0, 0, 0.333333)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_dckkd"]
+font_size = 4
+font_color = Color(1, 1, 0.329412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ny16x"]
+font_size = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_ueu7l"]
+font_size = 7
+font_color = Color(0, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eslcf"]
+font_size = 7
+font_color = Color(0, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ioy1s"]
+font_size = 7
+font_color = Color(0, 100, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5kege"]
+font_size = 7
+font_color = Color(1, 1, 0.329412, 1)
+
+[node name="task_demical" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ug1q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 334.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 0.34902)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = ExtResource("1_0tyqx")
+label_settings = ExtResource("2_8vjdf")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 19.0
+offset_top = 13.0
+offset_right = 953.0
+offset_bottom = 489.0
+scale = Vector2(0.3, 0.3)
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 48
+columns = 5
+
+[node name="num_placeholder" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "                      "
+label_settings = ExtResource("2_8vjdf")
+
+[node name="Label=" type="Label" parent="ScrollContainer/GridContainer/num_placeholder"]
+layout_mode = 2
+offset_left = 140.0
+offset_top = -1.0
+offset_right = 154.0
+offset_bottom = 30.0
+text = "="
+label_settings = SubResource("LabelSettings_2oyrt")
+
+[node name="binary_num" type="LineEdit" parent="ScrollContainer/GridContainer/num_placeholder"]
+layout_mode = 2
+offset_left = 4.0
+offset_right = 131.0
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+editable = false
+context_menu_enabled = false
+
+[node name="Add_row" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "              "
+label_settings = ExtResource("2_8vjdf")
+
+[node name="add_row_btn" type="Button" parent="ScrollContainer/GridContainer/Add_row"]
+layout_mode = 2
+offset_left = 43.0
+offset_top = -1.0
+offset_right = 90.0
+offset_bottom = 49.0
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0.682353, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0q6l")
+text = "+"
+
+[node name="remove_row_btn" type="Button" parent="ScrollContainer/GridContainer/Add_row"]
+layout_mode = 2
+offset_left = 76.3333
+offset_top = -1.0
+offset_right = 123.333
+offset_bottom = 49.0
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0.682353, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0q6l")
+text = "–"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 120.0
+offset_right = 7.0
+offset_bottom = 120.0
+scale = Vector2(0.3, 0.3)
+
+[node name="Label=" type="Label" parent="Control"]
+layout_mode = 2
+offset_left = 38.6847
+offset_top = 135.424
+offset_right = 52.6847
+offset_bottom = 166.424
+text = "="
+label_settings = SubResource("LabelSettings_xlv3i")
+
+[node name="demical_num" type="LineEdit" parent="Control"]
+layout_mode = 2
+offset_left = 58.6847
+offset_top = 136.389
+offset_right = 125.747
+offset_bottom = 167.389
+size_flags_stretch_ratio = 0.0
+placeholder_text = "vastus"
+editable = false
+context_menu_enabled = false
+
+[node name="kontroll" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 140.709
+offset_top = 130.706
+offset_right = 293.708
+offset_bottom = 171.706
+text = "KONTROLLI"
+
+[node name="example_btn" type="Button" parent="."]
+layout_mode = 0
+offset_left = 294.0
+offset_top = 156.0
+offset_right = 323.0
+offset_bottom = 185.0
+scale = Vector2(0.57, 0.57)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ksoa4")
+text = "?"
+
+[node name="Example" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 62.8878
+offset_top = 30.9885
+offset_right = 265.888
+offset_bottom = 150.989
+theme_override_styles/panel = SubResource("StyleBoxFlat_3iic8")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Example"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 199.0
+offset_bottom = 115.0
+theme = SubResource("Theme_l6wj8")
+theme_override_fonts/normal_font = SubResource("FontFile_cu32i")
+bbcode_enabled = true
+text = "Näide: Kahendarvu 110 teisendamine kümnendarvuks.
+       =   •2  +   •2  +   •2  = 4 + 2 + 0 =  
+Vastus:   
+ 
+Selgitus:  Kahendarvu teisendamiseks kümnendarvuks võtame kahendarvu iga numbri (ehk    või   ) ja korrutame selle kahe astmega. Astme väärtuseks on kahendarvu numbri                     arvus tagantpoolt lugema hakates: viimane number korrutatakse 2 , tagant eelviimane 2 , järgmine 2   jne. Nende korrutiste summa on vastus kümnendarvuna."
+
+[node name="close_example_btn" type="Button" parent="Example"]
+layout_mode = 0
+offset_left = 192.559
+offset_top = 0.55455
+offset_right = 217.559
+offset_bottom = 25.5546
+scale = Vector2(0.395, 0.395)
+theme_override_styles/normal = SubResource("StyleBoxFlat_xdj2x")
+text = "×"
+
+[node name="Label" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 35.1074
+offset_top = 14.1308
+offset_right = 38.1074
+offset_bottom = 22.1308
+text = "2"
+label_settings = SubResource("LabelSettings_dckkd")
+
+[node name="Label2" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 56.1074
+offset_top = 14.1308
+offset_right = 59.1074
+offset_bottom = 22.1308
+text = "1"
+label_settings = SubResource("LabelSettings_dckkd")
+
+[node name="Label3" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 77.1074
+offset_top = 14.1308
+offset_right = 80.1074
+offset_bottom = 22.1308
+text = "0"
+label_settings = SubResource("LabelSettings_dckkd")
+
+[node name="Label12" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 99.5681
+offset_top = 83.6994
+offset_right = 102.568
+offset_bottom = 91.6994
+text = "0"
+label_settings = SubResource("LabelSettings_ny16x")
+
+[node name="Label13" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 165.62
+offset_top = 83.8076
+offset_right = 168.62
+offset_bottom = 91.8076
+text = "1"
+label_settings = SubResource("LabelSettings_ny16x")
+
+[node name="Label14" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 36.8642
+offset_top = 94.4022
+offset_right = 39.8642
+offset_bottom = 102.402
+text = "2"
+label_settings = SubResource("LabelSettings_ny16x")
+
+[node name="Label4" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 4.07514
+offset_top = 14.2487
+offset_right = 16.0751
+offset_bottom = 25.2487
+text = "110"
+label_settings = SubResource("LabelSettings_ueu7l")
+
+[node name="Label6" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 28.0
+offset_bottom = 25.0
+text = "1"
+label_settings = SubResource("LabelSettings_eslcf")
+
+[node name="Label10" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 92.6965
+offset_top = 53.9244
+offset_right = 96.6965
+offset_bottom = 64.9244
+text = "1"
+label_settings = SubResource("LabelSettings_eslcf")
+
+[node name="Label11" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 109.178
+offset_top = 53.9244
+offset_right = 113.178
+offset_bottom = 64.9244
+text = "0"
+label_settings = SubResource("LabelSettings_eslcf")
+
+[node name="Label7" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 44.9763
+offset_top = 14.0
+offset_right = 48.9763
+offset_bottom = 25.0
+text = "1"
+label_settings = SubResource("LabelSettings_eslcf")
+
+[node name="Label8" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 64.7653
+offset_top = 13.7191
+offset_right = 68.7653
+offset_bottom = 24.7191
+text = "0"
+label_settings = SubResource("LabelSettings_eslcf")
+
+[node name="Label5" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 124.087
+offset_top = 14.4847
+offset_right = 136.087
+offset_bottom = 25.4847
+text = "6"
+label_settings = SubResource("LabelSettings_ioy1s")
+
+[node name="Label9" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 26.7577
+offset_top = 24.0916
+offset_right = 38.7577
+offset_bottom = 35.0916
+text = "6"
+label_settings = SubResource("LabelSettings_ioy1s")
+
+[node name="Label15" type="Label" parent="Example"]
+layout_mode = 0
+offset_left = 28.8655
+offset_top = 73.7006
+offset_right = 64.8655
+offset_bottom = 84.7006
+text = "positsioon"
+label_settings = SubResource("LabelSettings_5kege")
+
+[connection signal="text_changed" from="ScrollContainer/GridContainer/num_placeholder/binary_num" to="." method="_on_binary_num_text_changed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Add_row/add_row_btn" to="." method="_on_add_row_btn_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Add_row/remove_row_btn" to="." method="_on_remove_row_btn_pressed"]
+[connection signal="pressed" from="Control/kontroll" to="." method="_on_kontroll_pressed"]
+[connection signal="pressed" from="example_btn" to="." method="_on_example_btn_pressed"]
+[connection signal="pressed" from="Example/close_example_btn" to="." method="_on_close_example_btn_pressed"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnnrvi1rlgp44"]
+
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="1_b0eu3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1ys3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4dkkk"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w008s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8fvcn"]
+albedo_texture = ExtResource("1_b0eu3")
+roughness = 0.55
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_besyd"]
+material = SubResource("StandardMaterial3D_8fvcn")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CPU" type="MeshInstance3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, -3.04, 0, 0, 0, 30, 52.5425, 1.525, 83.1435)
+material_overlay = SubResource("StandardMaterial3D_h1ys3")
+mesh = SubResource("BoxMesh_4dkkk")
+
+[node name="Player" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1166, 0)
+mesh = SubResource("CapsuleMesh_w008s")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 130, 0, 0, 0)
+mesh = SubResource("PlaneMesh_besyd")

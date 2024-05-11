@@ -1,0 +1,246 @@
+[gd_scene load_steps=20 format=3 uid="uid://s2ouwr4gfhqu"]
+
+[ext_resource type="Texture2D" uid="uid://d0d1per3pbefo" path="res://world/cpu.png" id="1"]
+[ext_resource type="Script" path="res://world/World.gd" id="1_ph3vs"]
+[ext_resource type="Texture2D" uid="uid://8tmhyyi0efdk" path="res://world/circuit_tile.png" id="1_wmuxu"]
+[ext_resource type="Texture2D" uid="uid://bu44mtrlbg3tc" path="res://world/lines.png" id="2"]
+[ext_resource type="Shader" path="res://world/shine.gdshader" id="2_fs76r"]
+[ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://cf3t774ihi1vn" path="res://world/RAM.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://byvj1cfh1su7t" path="res://world/Portal.tscn" id="5_0fomt"]
+[ext_resource type="Texture2D" uid="uid://clsyb8mwehyl5" path="res://world/GPU.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://cu5ra072ucdnh" path="res://menu/Interaction-area.tscn" id="8_g0il1"]
+[ext_resource type="Texture2D" uid="uid://cwo87vfx3jlvl" path="res://icon.png" id="9_2u4a8"]
+[ext_resource type="PackedScene" uid="uid://c6mc2ukaioi80" path="res://world/train.tscn" id="13_va68u"]
+[ext_resource type="PackedScene" uid="uid://dp1o46gwbqr2c" path="res://world/item.tscn" id="14_t7p8i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yogvy"]
+shader = ExtResource("2_fs76r")
+shader_parameter/shine_color = Color(0.913725, 0.933333, 0.619608, 1)
+shader_parameter/shine_speed = 2.0
+shader_parameter/shine_size = 0.01
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v34dx"]
+texture = ExtResource("2")
+texture_region_size = Vector2i(15, 15)
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/top_right_corner = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+5:1/0 = 0
+6:1/0 = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/right_side = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0/terrains_peering_bit/top_side = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/terrains_peering_bit/right_side = 0
+6:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/top_side = 0
+7:1/0 = 0
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/terrain = 0
+7:0/0/terrains_peering_bit/right_side = 0
+7:0/0/terrains_peering_bit/bottom_side = 0
+
+[sub_resource type="TileSet" id="1"]
+tile_size = Vector2i(15, 15)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "circuits"
+terrain_set_0/terrain_0/color = Color(0.670588, 0, 0.505882, 1)
+sources/0 = SubResource("TileSetAtlasSource_v34dx")
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(105.516, 8.8696)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(204.252, 7.94478)
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_ph3vs")
+
+[node name="Control" type="Node2D" parent="."]
+scale = Vector2(0.26, 0.26)
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+offset_left = -1638.0
+offset_top = -1923.0
+offset_right = 1254.0
+offset_bottom = 792.0
+texture = ExtResource("1_wmuxu")
+stretch_mode = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+process_mode = 4
+visible = false
+position = Vector2(100.054, -102.237)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5")
+
+[node name="TileMap" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_yogvy")
+scale = Vector2(0.2, 0.2)
+tile_set = SubResource("1")
+format = 2
+layer_0/tile_data = PackedInt32Array(2162742, 393216, 0, 2162741, 393216, 0, 2162740, 393216, 0, 2162739, 393216, 0, 2162738, 393216, 0, 2162737, 393216, 0, 2162736, 393216, 0, 2162735, 393216, 0, 2162734, 393216, 0, 2162733, 393216, 0, 2162732, 393216, 0, 2162731, 393216, 0, 2162730, 393216, 0, 2162743, 393216, 0, 2162729, 393216, 0, 2162728, 393216, 0, 2162727, 393216, 0, 2162726, 393216, 0, 2162725, 393216, 0, 2162724, 393216, 0, 2162723, 393216, 0, 2162722, 393216, 0, 2162721, 393216, 0, 2162720, 393216, 0, 2162719, 393216, 0, 2162718, 393216, 0, 2162717, 393216, 0, 2162716, 393216, 0, 2162715, 393216, 0, 2162714, 393216, 0, 2162713, 393216, 0, 2162712, 393216, 0, 2162711, 393216, 0, 2162710, 393216, 0, 2162709, 393216, 0, 2162708, 393216, 0, 2162707, 393216, 0, 2162706, 393216, 0, 2162705, 393216, 0, 2162704, 393216, 0, 2162703, 393216, 0, 2162702, 393216, 0, 2162701, 393216, 0, 2162700, 393216, 0, 2162699, 393216, 0, 2162698, 393216, 0, 2162697, 393216, 0, 2162695, 393216, 0, 2162694, 393216, 0, 2162693, 393216, 0, 2162692, 393216, 0, 2162691, 393216, 0, 2162690, 393216, 0, 2162696, 393216, 0, 2162689, 393216, 0, 2162688, 393216, 0, 2228223, 393216, 0, 2228222, 393216, 0, 2228221, 393216, 0, 2228220, 393216, 0, 2228219, 393216, 0, 2228218, 393216, 0, 2228217, 393216, 0, 2228216, 393216, 0, 2228215, 393216, 0, 2228214, 393216, 0, 2228213, 393216, 0, 2228212, 393216, 0, 2228211, 393216, 0, 2228210, 393216, 0, 2228209, 393216, 0, 2228208, 393216, 0, 2228207, 393216, 0, 2228206, 393216, 0, 2228205, 393216, 0, 2228204, 393216, 0, 2228203, 393216, 0, 2228202, 393216, 0, 2228201, 393216, 0, 2228200, 393216, 0, 2228199, 393216, 0, 2228198, 393216, 0, 2228197, 393216, 0, 2228196, 393216, 0, 2228195, 393216, 0, 2228194, 393216, 0, 2228193, 393216, 0, 2228192, 393216, 0, 2228191, 393216, 0, 2228190, 393216, 0, 2228189, 393216, 0, 2228188, 393216, 0, 2228187, 393216, 0, 2228186, 393216, 0, 2228185, 393216, 0, 2228184, 393216, 0, 2031671, 65536, 0, 2031670, 393216, 0, 2031669, 393216, 0, 2031668, 393216, 0, 2031667, 393216, 0, 2031666, 393216, 0, 2031665, 393216, 0, 2031664, 393216, 0, 2031663, 393216, 0, 2031662, 393216, 0, 2031661, 393216, 0, 2031660, 393216, 0, 2031659, 393216, 0, 2031643, 393216, 0, 2031658, 393216, 0, 2031652, 393216, 0, 2031651, 393216, 0, 2031650, 393216, 0, 2031647, 393216, 0, 2031646, 393216, 0, 2031645, 393216, 0, 2031657, 393216, 0, 2031656, 393216, 0, 2031655, 393216, 0, 2031654, 393216, 0, 2031653, 393216, 0, 2031649, 393216, 0, 2031648, 393216, 0, 2031644, 393216, 0, 2031642, 393216, 0, 2031641, 393216, 0, 2031640, 393216, 0, 2031639, 393216, 0, 2031638, 393216, 0, 2031637, 393216, 0, 2031636, 393216, 0, 2031635, 393216, 0, 2031634, 393216, 0, 2031633, 393216, 0, 2031632, 393216, 0, 2031631, 393216, 0, 2031630, 393216, 0, 2031629, 393216, 0, 2031628, 393216, 0, 2031627, 393216, 0, 2031626, 393216, 0, 2031625, 393216, 0, 2031624, 393216, 0, 2031623, 393216, 0, 2031622, 393216, 0, 2031621, 393216, 0, 2031620, 393216, 0, 2031619, 393216, 0, 2031618, 393216, 0, 2031617, 393216, 0, 2031616, 393216, 0, 2097151, 393216, 0, 2097150, 393216, 0, 2097149, 393216, 0, 2097148, 393216, 0, 2097147, 393216, 0, 2097146, 393216, 0, 2097145, 393216, 0, 2097144, 393216, 0, 2097143, 393216, 0, 2097142, 393216, 0, 2097141, 393216, 0, 2097140, 393216, 0, 2097139, 393216, 0, 2097138, 393216, 0, 2097137, 393216, 0, 2097136, 393216, 0, 2097135, 393216, 0, 2097134, 393216, 0, 2097133, 393216, 0, 2097132, 393216, 0, 2097131, 393216, 0, 2097130, 393216, 0, 2097129, 393216, 0, 2097128, 393216, 0, 2097127, 393216, 0, 2097126, 393216, 0, 2097125, 393216, 0, 2097124, 393216, 0, 2097123, 393216, 0, 2097122, 393216, 0, 2097121, 393216, 0, 2097120, 393216, 0, 2097119, 393216, 0, 2097118, 393216, 0, 2097117, 393216, 0, 2097116, 393216, 0, 2097115, 393216, 0, 2097114, 393216, 0, 2097113, 393216, 0, 2097112, 196608, 0, 2162744, 65536, 0, 2228183, 393216, 0)
+
+[node name="ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="player" parent="ysort" instance=ExtResource("3")]
+position = Vector2(259, 163)
+
+[node name="CPU" type="StaticBody2D" parent="ysort"]
+position = Vector2(159, 43)
+
+[node name="cpu_sprite" type="Sprite2D" parent="ysort/CPU"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ysort/CPU"]
+position = Vector2(-41.9399, -9.48866)
+polygon = PackedVector2Array(48.251, 96.1565, 74.9369, 96.3607, 74.9369, 79.3607, 99.9369, 79.3607, 99.9369, 96.3607, 127.446, 96.4214, 127.181, 11.9292, 48.251, 12.1941)
+
+[node name="Portal" parent="ysort/CPU" instance=ExtResource("5_0fomt")]
+position = Vector2(33.997, 74.707)
+scale = Vector2(0.675, 0.675)
+next_scene_path = "res://world/cpu.tscn"
+player_spawn_location = Vector2(75, 142)
+
+[node name="GPU" type="StaticBody2D" parent="ysort"]
+position = Vector2(100, -314)
+
+[node name="GPU" type="Sprite2D" parent="ysort/GPU"]
+position = Vector2(-2.23361, -67.8538)
+rotation = 3.14159
+scale = Vector2(0.35, -0.35)
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ysort/GPU"]
+position = Vector2(53.2859, 4.35097)
+shape = SubResource("3")
+
+[node name="RAM1" type="StaticBody2D" parent="ysort"]
+position = Vector2(-322, 92)
+
+[node name="ColorRect" type="ColorRect" parent="ysort/RAM1"]
+offset_left = -2.0
+offset_right = 207.0
+offset_bottom = 11.0
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="RAM1" type="Sprite2D" parent="ysort/RAM1"]
+position = Vector2(102.886, -24.0534)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ysort/RAM1"]
+position = Vector2(102.859, 3.96275)
+shape = SubResource("4")
+
+[node name="ColorRect2" type="ColorRect" parent="ysort/RAM1"]
+offset_left = -2.0
+offset_top = 6.0
+offset_right = 207.0
+offset_bottom = 11.0
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="RAM_info" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(-122, 96)
+text = "RAM (random access memory) ehk arvuti muutmälu on kiip, mis töötab arvuti lühiajalise mäluna. Sellel kiibil on programmid ja andmed, kuni sa arvuti välja lülitad."
+interaction_type = "info"
+
+[node name="CPU_info" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(199, 123)
+text = "CPU (central processing unit) ehk arvuti protsessor on kiip, mis töötab arvuti ajuna. Protsessor täidab käske, mida käivitatud programmid talle annavad."
+interaction_type = "info"
+
+[node name="TextInfo-detect" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(93, -311)
+text = "GPU (graphics processing unit) ehk videokaart on arvuti laiendusplaat, mis ühendatakse emaplaadiga ning võimaldab arvutil kuvada ekraanile teksti ja pilte. Võimsad videokaardid kiirendavad Windowsi programmide ja 3D-graafika kuva."
+interaction_type = "info"
+
+[node name="TextInfo-detect2" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(170, -40)
+
+[node name="TextInfo-detect3" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(-27, -106)
+
+[node name="Icon2" type="Sprite2D" parent="ysort"]
+position = Vector2(-21, -100)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_2u4a8")
+
+[node name="Icon" type="Sprite2D" parent="ysort"]
+position = Vector2(177, -36)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_2u4a8")
+
+[node name="Train" parent="ysort" instance=ExtResource("13_va68u")]
+position = Vector2(-84, 96)
+scale = Vector2(0.445, 0.445)
+
+[node name="items" type="Node2D" parent="ysort"]
+
+[node name="item" parent="ysort/items" instance=ExtResource("14_t7p8i")]
+position = Vector2(216, 175)
+item_name = "box1"
+
+[node name="item2" parent="ysort/items" instance=ExtResource("14_t7p8i")]
+position = Vector2(202, 175)
+item_name = "box1"
+
+[node name="item3" parent="ysort/items" instance=ExtResource("14_t7p8i")]
+position = Vector2(188, 175)
+item_name = "box1"
+
+[node name="item4" parent="ysort/items" instance=ExtResource("14_t7p8i")]
+position = Vector2(175, 175)
+item_name = "box1"
+
+[node name="Portal" parent="." instance=ExtResource("5_0fomt")]
+position = Vector2(-151, 99)
+next_scene_path = "res://world/ram.tscn"
+player_spawn_location = Vector2(450, 171)

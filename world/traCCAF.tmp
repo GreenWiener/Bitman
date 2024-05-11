@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6mc2ukaioi80"]
+
+[ext_resource type="Script" path="res://world/train.gd" id="1_fq7kd"]
+[ext_resource type="Texture2D" uid="uid://cp4b6unuf1tpt" path="res://world/train_door1.png" id="2_clle2"]
+[ext_resource type="Texture2D" uid="uid://4rg7i2q1h4t8" path="res://world/train1.png" id="2_subwh"]
+[ext_resource type="Texture2D" uid="uid://dquhtje4qxhls" path="res://world/train_door2.png" id="3_0pci6"]
+[ext_resource type="PackedScene" uid="uid://bnr6t3scqbl5j" path="res://interact_area.tscn" id="5_f1clu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxyqg"]
+size = Vector2(115, 20)
+
+[node name="Train" type="CharacterBody2D"]
+script = ExtResource("1_fq7kd")
+
+[node name="body" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="body"]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 7.0
+offset_bottom = 9.0
+color = Color(0.156863, 0.180392, 0.227451, 1)
+
+[node name="TrainDoor1" type="Sprite2D" parent="body"]
+position = Vector2(-2.4, 1.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_clle2")
+
+[node name="TrainDoor2" type="Sprite2D" parent="body"]
+position = Vector2(3.39, 1.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_0pci6")
+
+[node name="train_sprite" type="Sprite2D" parent="body"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_subwh")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2(0.5, 0)
+polygon = PackedVector2Array(-47.5, -10, -47.5, 10, -4.5, 10, -4.5, 6, 4.5, 6, 4.5, 10, 46.5, 10, 46.5, 1, 35.5, -10)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_lxyqg")
+
+[node name="interact-area" parent="." instance=ExtResource("5_f1clu")]
+position = Vector2(0.365, 6.67)
+scale = Vector2(2, 2)
+text = "ava uksed"
+type = "train_doors"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://s2ouwr4gfhqu"]
+
+[ext_resource type="Texture2D" uid="uid://d0d1per3pbefo" path="res://world/cpu.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bu44mtrlbg3tc" path="res://world/lines.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://cf3t774ihi1vn" path="res://world/RAM.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://clsyb8mwehyl5" path="res://world/GPU.png" id="6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v34dx"]
+texture = ExtResource("2")
+
+[sub_resource type="TileSet" id="1"]
+sources/0 = SubResource("TileSetAtlasSource_v34dx")
+
+[sub_resource type="GDScript" id="GDScript_flyh7"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+"
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(24.75, 2.25)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(105.516, 8.8696)
+
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(204.252, 7.94478)
+
+[node name="world" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+process_mode = 4
+position = Vector2(100.054, -102.237)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5")
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(0.2, 0.2)
+tile_set = SubResource("1")
+format = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="player" parent="Node2D" instance=ExtResource("3")]
+position = Vector2(201, 133)
+
+[node name="CPU" type="StaticBody2D" parent="Node2D"]
+position = Vector2(159.003, 16.128)
+
+[node name="cpu_sprite" type="Sprite2D" parent="Node2D/CPU"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CPU"]
+position = Vector2(-41.9399, -9.48866)
+polygon = PackedVector2Array(48.251, 96.1565, 74.9369, 96.3607, 74.9369, 79.3607, 99.9369, 79.3607, 99.9369, 96.3607, 127.446, 96.4214, 127.181, 11.9292, 48.251, 12.1941)
+
+[node name="CpuEntrance_Area" type="Area2D" parent="Node2D/CPU"]
+script = SubResource("GDScript_flyh7")
+
+[node name="CpuEntrance" type="CollisionShape2D" parent="Node2D/CPU/CpuEntrance_Area"]
+position = Vector2(45.622, 70.747)
+shape = SubResource("2")
+
+[node name="GPU" type="StaticBody2D" parent="Node2D"]
+position = Vector2(153.691, -146.467)
+
+[node name="GPU" type="Sprite2D" parent="Node2D/GPU"]
+position = Vector2(-2.23361, -67.8538)
+rotation = 3.14159
+scale = Vector2(0.35, -0.35)
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/GPU"]
+position = Vector2(53.2859, 4.35097)
+shape = SubResource("3")
+
+[node name="RAM1" type="StaticBody2D" parent="Node2D"]
+position = Vector2(-91.1582, 130.97)
+
+[node name="RAM1" type="Sprite2D" parent="Node2D/RAM1"]
+position = Vector2(102.886, -24.0534)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/RAM1"]
+position = Vector2(102.859, 3.96275)
+shape = SubResource("4")
+
+[connection signal="body_entered" from="Node2D/CPU/CpuEntrance_Area" to="Node2D/player" method="_on_cpu_entrance_area_body_entered"]

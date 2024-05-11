@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://5so4qxhngygt"]
+
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="1_1fm2g"]
+[ext_resource type="Script" path="res://menu/task_demical_row.gd" id="1_l2hko"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="2_kgwxa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gr2t0"]
+line_spacing = -2.0
+font = ExtResource("2_kgwxa")
+font_size = 24
+
+[node name="row" type="HBoxContainer"]
+offset_right = 175.0
+offset_bottom = 31.0
+script = ExtResource("1_l2hko")
+
+[node name="Label+" type="Label" parent="."]
+layout_mode = 2
+text = "+"
+label_settings = SubResource("LabelSettings_gr2t0")
+
+[node name="binary_num_digit" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Labelx2" type="Label" parent="."]
+layout_mode = 2
+text = " • 2      "
+label_settings = ExtResource("1_1fm2g")
+
+[node name="binary_num_aste" type="LineEdit" parent="Labelx2"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = -1.0
+offset_right = 164.0
+offset_bottom = 49.0
+scale = Vector2(0.295, 0.295)
+size_flags_stretch_ratio = 0.0
+theme_override_constants/minimum_character_width = 1
+theme_override_font_sizes/font_size = 30
+
+[connection signal="text_changed" from="binary_num_digit" to="." method="_on_binary_num_digit_text_changed"]
+[connection signal="text_changed" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_text_changed"]

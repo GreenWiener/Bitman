@@ -1,0 +1,329 @@
+[gd_scene load_steps=14 format=3 uid="uid://cjcyt1op5xvkb"]
+
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_10kxn"]
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_sonsl"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="4_jwg6f"]
+[ext_resource type="Texture2D" uid="uid://dmmuqdmr2op7j" path="res://world/cpu-instruction-cycle.png" id="4_t4hmy"]
+[ext_resource type="FontFile" uid="uid://or3rf71jm2l3" path="res://menu/fonts/century_gothic.ttf" id="5_y72lt"]
+[ext_resource type="StyleBox" uid="uid://0ae26v77p7d2" path="res://menu/cpu_taskmenu_task.tres" id="6_jqu2a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uddo3"]
+bg_color = Color(0, 0, 0, 0.270588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v4da"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6tdj"]
+bg_color = Color(0.121569, 0.152941, 0.203922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.74902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8u6v"]
+bg_color = Color(0, 0, 0, 0.117647)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.129412, 0.152941, 0.239216, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwhum"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw001"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c44ho"]
+draw_center = false
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sonsl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 319.0
+offset_bottom = 179.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = ExtResource("1_10kxn")
+text = "!menu text!"
+label_settings = ExtResource("4_jwg6f")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0375
+anchor_top = 0.0892223
+anchor_right = 0.9625
+anchor_bottom = 0.261222
+offset_left = 168.0
+offset_top = -0.0600052
+offset_right = -84.9375
+offset_bottom = -0.0199661
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Cpu-instruction-cycle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(613, 355)
+texture = ExtResource("4_t4hmy")
+
+[node name="CPU menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CPU menu"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 9.0
+offset_right = 200.0
+offset_bottom = 24.0
+text = "CPU infopaneel"
+label_settings = ExtResource("4_jwg6f")
+
+[node name="Task_Panel" type="Panel" parent="CPU menu"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CPU menu/Task_Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 75.0
+offset_bottom = 115.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CPU menu/Task_Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_y72lt")
+theme_override_font_sizes/normal_font_size = 6
+theme_override_styles/focus = SubResource("StyleBoxFlat_7v4da")
+theme_override_styles/normal = ExtResource("6_jqu2a")
+text = "ülesanne nr 1 ... text  text text text text text text text text"
+fit_content = true
+
+[node name="Button" type="Button" parent="CPU menu/Task_Panel/VBoxContainer/RichTextLabel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -3.0
+offset_top = -12.0
+offset_right = 75.0
+offset_bottom = 106.0
+
+[node name="Label" type="Label" parent="CPU menu/Task_Panel"]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Ülesanded"
+horizontal_alignment = 1
+
+[node name="Info_Panel" type="Panel" parent="CPU menu"]
+offset_left = 233.0
+offset_top = 34.0
+offset_right = 300.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CPU menu/Info_Panel"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 67.0
+offset_bottom = 118.0
+
+[node name="Label" type="Label" parent="CPU menu/Info_Panel"]
+layout_mode = 0
+offset_right = 134.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Info"
+horizontal_alignment = 1
+
+[node name="Cycle_Panel" type="Panel" parent="CPU menu"]
+offset_left = 103.0
+offset_top = 34.0
+offset_right = 228.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CPU menu/Cycle_Panel"]
+visible = false
+layout_mode = 0
+offset_top = 13.0
+offset_right = 67.0
+offset_bottom = 118.0
+
+[node name="Label" type="Label" parent="CPU menu/Cycle_Panel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Tsükkel"
+horizontal_alignment = 1
+
+[node name="Selection_Panel" type="Panel" parent="CPU menu/Cycle_Panel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 18.0
+offset_right = 88.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6tdj")
+
+[node name="ColorRect" type="ColorRect" parent="CPU menu/Cycle_Panel/Selection_Panel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -38.0
+offset_right = 47.0
+offset_bottom = 22.0
+color = Color(0.0627451, 0.0862745, 0.121569, 0.384314)
+
+[node name="Label" type="Label" parent="CPU menu/Cycle_Panel/Selection_Panel"]
+layout_mode = 0
+offset_left = -35.5
+offset_top = 8.0
+offset_right = 114.5
+offset_bottom = 31.0
+scale = Vector2(0.23, 0.23)
+text = "käimasolev etapp >"
+
+[node name="Block_hankimine" type="RichTextLabel" parent="CPU menu/Cycle_Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 19.0
+offset_right = 192.0
+offset_bottom = 86.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
+
+[node name="Button_fetching" type="Button" parent="CPU menu/Cycle_Panel/Block_hankimine"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwhum")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="CPU menu/Cycle_Panel/Block_hankimine"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Hankimine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="more_info" type="Label" parent="CPU menu/Cycle_Panel/Block_hankimine"]
+visible = false
+offset_top = 23.0
+offset_right = 250.0
+offset_bottom = 96.0
+scale = Vector2(0.6, 0.6)
+text = "Vajaliku informatsiooni transport SSD > RAM > CPU"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Block_dekodeerimine" type="RichTextLabel" parent="CPU menu/Cycle_Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 53.0
+offset_right = 192.0
+offset_bottom = 120.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
+
+[node name="Button_decoding" type="Button" parent="CPU menu/Cycle_Panel/Block_dekodeerimine"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_aw001")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="CPU menu/Cycle_Panel/Block_dekodeerimine"]
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Dekodeerimine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="more_info" type="Label" parent="CPU menu/Cycle_Panel/Block_dekodeerimine"]
+visible = false
+layout_mode = 0
+offset_top = 23.0
+offset_right = 250.0
+offset_bottom = 96.0
+scale = Vector2(0.6, 0.6)
+text = "RAM-st hangitud informatsiooni dekodeerimine"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Block_sooritamine" type="RichTextLabel" parent="CPU menu/Cycle_Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 87.0
+offset_right = 192.0
+offset_bottom = 154.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
+
+[node name="Button_executing" type="Button" parent="CPU menu/Cycle_Panel/Block_sooritamine"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_c44ho")
+toggle_mode = true
+
+[node name="Label" type="Label" parent="CPU menu/Cycle_Panel/Block_sooritamine"]
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Sooritamine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="more_info" type="Label" parent="CPU menu/Cycle_Panel/Block_sooritamine"]
+visible = false
+offset_top = 23.0
+offset_right = 250.0
+offset_bottom = 96.0
+scale = Vector2(0.6, 0.6)
+text = "Dekodeeritud informatsiooni kasutamine ettenähtud eesmärgiks"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="toggled" from="CPU menu/Cycle_Panel/Block_hankimine/Button_fetching" to="." method="_on_button_fetching_toggled"]
+[connection signal="toggled" from="CPU menu/Cycle_Panel/Block_dekodeerimine/Button_decoding" to="." method="_on_button_decoding_toggled"]
+[connection signal="toggled" from="CPU menu/Cycle_Panel/Block_sooritamine/Button_executing" to="." method="_on_button_executing_toggled"]

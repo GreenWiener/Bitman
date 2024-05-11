@@ -1,0 +1,297 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjcyt1op5xvkb"]
+
+[ext_resource type="Script" path="res://menu/cpu_menu.gd" id="1_h7ocj"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="2_t0r5m"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="3_m85md"]
+[ext_resource type="PackedScene" uid="uid://mjko4ouq87ou" path="res://task_block.tscn" id="5_xnxkb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uddo3"]
+bg_color = Color(0, 0, 0, 0.270588)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6tdj"]
+bg_color = Color(0.121569, 0.152941, 0.203922, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.74902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8u6v"]
+bg_color = Color(0, 0, 0, 0.117647)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.129412, 0.152941, 0.239216, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwhum"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw001"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c44ho"]
+draw_center = false
+
+[node name="CPU_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7ocj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 334.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 0.34902)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = ExtResource("2_t0r5m")
+label_settings = ExtResource("3_m85md")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 9.0
+offset_right = 200.0
+offset_bottom = 24.0
+text = "CPU infopaneel"
+label_settings = ExtResource("3_m85md")
+
+[node name="Task_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Task_Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 12.0
+offset_right = 75.0
+offset_bottom = 115.0
+
+[node name="task_block" parent="Task_Panel/VBoxContainer" instance=ExtResource("5_xnxkb")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Task_Panel"]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Ülesanded"
+horizontal_alignment = 1
+
+[node name="Cycle_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 34.0
+offset_right = 228.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cycle_Panel"]
+visible = false
+layout_mode = 0
+offset_top = 13.0
+offset_right = 67.0
+offset_bottom = 118.0
+
+[node name="Label" type="Label" parent="Cycle_Panel"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Tsükkel"
+horizontal_alignment = 1
+
+[node name="Selection_Panel" type="Panel" parent="Cycle_Panel"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 18.0
+offset_right = 88.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6tdj")
+
+[node name="ColorRect" type="ColorRect" parent="Cycle_Panel/Selection_Panel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -38.0
+offset_right = 47.0
+offset_bottom = 22.0
+color = Color(0.0627451, 0.0862745, 0.121569, 0.384314)
+
+[node name="Label" type="Label" parent="Cycle_Panel/Selection_Panel"]
+layout_mode = 0
+offset_left = -35.5
+offset_top = 8.0
+offset_right = 114.5
+offset_bottom = 31.0
+scale = Vector2(0.23, 0.23)
+text = "käimasolev etapp >"
+
+[node name="Block_hankimine" type="RichTextLabel" parent="Cycle_Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 19.0
+offset_right = 192.0
+offset_bottom = 86.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
+
+[node name="Button_fetching" type="Button" parent="Cycle_Panel/Block_hankimine"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwhum")
+keep_pressed_outside = true
+
+[node name="Label" type="Label" parent="Cycle_Panel/Block_hankimine"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Hankimine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="more_info" type="Label" parent="Cycle_Panel/Block_hankimine"]
+visible = false
+layout_mode = 0
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 98.0
+scale = Vector2(0.6, 0.6)
+text = "Vajaliku informatsiooni transport SSD > RAM > CPU"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Block_dekodeerimine" type="RichTextLabel" parent="Cycle_Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 53.0
+offset_right = 192.0
+offset_bottom = 120.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
+
+[node name="Button_decoding" type="Button" parent="Cycle_Panel/Block_dekodeerimine"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_aw001")
+keep_pressed_outside = true
+
+[node name="Label" type="Label" parent="Cycle_Panel/Block_dekodeerimine"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Dekodeerimine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="more_info" type="Label" parent="Cycle_Panel/Block_dekodeerimine"]
+visible = false
+layout_mode = 0
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 98.0
+scale = Vector2(0.6, 0.6)
+text = "RAM-st hangitud informatsiooni dekodeerimine"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Block_sooritamine" type="RichTextLabel" parent="Cycle_Panel"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 87.0
+offset_right = 192.0
+offset_bottom = 154.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
+
+[node name="Button_executing" type="Button" parent="Cycle_Panel/Block_sooritamine"]
+modulate = Color(1, 1, 1, 0.470588)
+show_behind_parent = true
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+theme_override_styles/focus = SubResource("StyleBoxFlat_c44ho")
+keep_pressed_outside = true
+
+[node name="Label" type="Label" parent="Cycle_Panel/Block_sooritamine"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 67.0
+text = "Sooritamine"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="more_info" type="Label" parent="Cycle_Panel/Block_sooritamine"]
+visible = false
+layout_mode = 0
+offset_top = 20.0
+offset_right = 250.0
+offset_bottom = 100.0
+scale = Vector2(0.6, 0.6)
+text = "Dekodeeritud informatsiooni kasutamine ettenähtud eesmärgiks"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Info_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 34.0
+offset_right = 300.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+metadata/_edit_group_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info_Panel"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 67.0
+offset_bottom = 118.0
+
+[node name="Label" type="Label" parent="Info_Panel"]
+layout_mode = 0
+offset_right = 134.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Info"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="Cycle_Panel/Block_hankimine/Button_fetching" to="." method="_on_button_fetching_button_down"]
+[connection signal="button_up" from="Cycle_Panel/Block_hankimine/Button_fetching" to="." method="_on_button_fetching_button_up"]
+[connection signal="button_down" from="Cycle_Panel/Block_dekodeerimine/Button_decoding" to="." method="_on_button_decoding_button_down"]
+[connection signal="button_up" from="Cycle_Panel/Block_dekodeerimine/Button_decoding" to="." method="_on_button_decoding_button_up"]
+[connection signal="button_down" from="Cycle_Panel/Block_sooritamine/Button_executing" to="." method="_on_button_executing_button_down"]
+[connection signal="button_up" from="Cycle_Panel/Block_sooritamine/Button_executing" to="." method="_on_button_executing_button_up"]

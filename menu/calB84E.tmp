@@ -1,0 +1,130 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvangg20pxd2i"]
+
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_tirdd"]
+[ext_resource type="Script" path="res://menu/calculator.gd" id="1_yc2gy"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_jgy6a"]
+
+[node name="calculator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yc2gy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -57.5
+offset_top = -87.0
+offset_right = 57.5
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("1_tirdd")
+text = "Kalkulaator"
+label_settings = ExtResource("2_jgy6a")
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 108.381
+offset_top = 17.8264
+offset_right = 331.381
+offset_bottom = 48.8264
+scale = Vector2(0.465, 0.465)
+theme_override_font_sizes/font_size = 20
+alignment = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 117.165
+offset_top = 39.765
+offset_right = 201.165
+offset_bottom = 175.765
+columns = 4
+
+[node name="7" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "7"
+
+[node name="8" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "8"
+
+[node name="9" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "9"
+
+[node name="JAGAMINE" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "÷"
+
+[node name="4" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="5" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "5"
+
+[node name="6" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "6"
+
+[node name="KORRUTAMINE" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "×"
+
+[node name="1" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="2" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="3" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="LAHUTAMINE" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "-"
+
+[node name="KOMA" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = ","
+
+[node name="0" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "0"
+
+[node name="VASTUS" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "="
+
+[node name="LIITMINE" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "+"
+
+[connection signal="pressed" from="GridContainer/7" to="." method="_on_num_7_pressed"]
+[connection signal="pressed" from="GridContainer/8" to="." method="_on_num_8_pressed"]
+[connection signal="pressed" from="GridContainer/9" to="." method="_on_num_9_pressed"]
+[connection signal="pressed" from="GridContainer/JAGAMINE" to="." method="_on_jagamine_pressed"]
+[connection signal="pressed" from="GridContainer/4" to="." method="_on_num_4_pressed"]
+[connection signal="pressed" from="GridContainer/5" to="." method="_on_num_5_pressed"]
+[connection signal="pressed" from="GridContainer/6" to="." method="_on_num_6_pressed"]
+[connection signal="pressed" from="GridContainer/KORRUTAMINE" to="." method="_on_korrutamine_pressed"]
+[connection signal="pressed" from="GridContainer/1" to="." method="_on_num_1_pressed"]
+[connection signal="pressed" from="GridContainer/2" to="." method="_on_num_2_pressed"]
+[connection signal="pressed" from="GridContainer/3" to="." method="_on_num_3_pressed"]
+[connection signal="pressed" from="GridContainer/LAHUTAMINE" to="." method="_on_lahutamine_pressed"]
+[connection signal="pressed" from="GridContainer/KOMA" to="." method="_on_koma_pressed"]
+[connection signal="pressed" from="GridContainer/0" to="." method="_on_num_0_pressed"]
+[connection signal="pressed" from="GridContainer/VASTUS" to="." method="_on_vastus_pressed"]
+[connection signal="pressed" from="GridContainer/LIITMINE" to="." method="_on_liitmine_pressed"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnr6t3scqbl5j"]
+
+[ext_resource type="Script" path="res://interact_area.gd" id="1_qyw8i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5nn7"]
+size = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8omrk"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k07by"]
+
+[node name="interact-area" type="Area2D"]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_qyw8i")
+collision_scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_o5nn7")
+
+[node name="interaction_label" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -6.707
+offset_top = -8.433
+offset_right = 102.293
+offset_bottom = 14.567
+scale = Vector2(0.12, 0.12)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_8omrk")
+label_settings = SubResource("LabelSettings_k07by")
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

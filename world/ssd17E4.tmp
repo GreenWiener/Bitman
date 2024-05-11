@@ -1,0 +1,344 @@
+[gd_scene load_steps=20 format=3 uid="uid://vsf010xjbios"]
+
+[ext_resource type="Script" path="res://world/ssd.gd" id="1_3xm7p"]
+[ext_resource type="Texture2D" uid="uid://crolxgkvw4x22" path="res://world/gray-tile.png" id="2_nl20n"]
+[ext_resource type="Texture2D" uid="uid://cf3t774ihi1vn" path="res://world/RAM.png" id="3_fd5n0"]
+[ext_resource type="PackedScene" uid="uid://dahrp8tqkeqno" path="res://world/lockers.tscn" id="4_wu7sp"]
+[ext_resource type="Texture2D" uid="uid://j2scgogxugl0" path="res://world/scaffoldingtiles.png" id="4_y5ctt"]
+[ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="5_7xt8f"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="5_xq4wk"]
+[ext_resource type="PackedScene" uid="uid://byvj1cfh1su7t" path="res://world/Portal.tscn" id="6_38gue"]
+[ext_resource type="PackedScene" uid="uid://dp1o46gwbqr2c" path="res://world/item.tscn" id="7_oh6ck"]
+[ext_resource type="PackedScene" uid="uid://cu5ra072ucdnh" path="res://menu/Interaction-area.tscn" id="8_u0o21"]
+[ext_resource type="Texture2D" uid="uid://dpjwmphm21qy4" path="res://world/cpu_controlpanel.png" id="9_pinqb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upit1"]
+texture = ExtResource("2_nl20n")
+texture_region_size = Vector2i(4, 4)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vysvf"]
+tile_size = Vector2i(4, 4)
+sources/0 = SubResource("TileSetAtlasSource_upit1")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dftwp"]
+bg_color = Color(0.109804, 0.141176, 0.188235, 0.968627)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4p3rm"]
+line_spacing = -2.0
+font = ExtResource("5_xq4wk")
+font_size = 41
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xqf0m"]
+texture = ExtResource("4_y5ctt")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_eotoh"]
+tile_size = Vector2i(100, 100)
+sources/1 = SubResource("TileSetAtlasSource_xqf0m")
+
+[sub_resource type="GDScript" id="GDScript_j43jc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21adg"]
+size = Vector2(7.5, 17.5)
+
+[node name="ssd" type="Node2D"]
+script = ExtResource("1_3xm7p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 457.0
+offset_bottom = 180.0
+color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 457.0
+offset_bottom = 150.0
+color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="walls" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_vysvf")
+format = 2
+
+[node name="Ram" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(159, 43)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_fd5n0")
+
+[node name="ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="lockers" parent="ysort" instance=ExtResource("4_wu7sp")]
+
+[node name="Start_Task" type="Label" parent="ysort/lockers"]
+visible = false
+anchors_preset = -1
+anchor_left = -0.028
+anchor_right = -0.028
+offset_left = 8.904
+offset_right = 1601.9
+offset_bottom = 1422.0
+scale = Vector2(0.6, 0.6)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dftwp")
+label_settings = SubResource("LabelSettings_4p3rm")
+
+[node name="yes_btn" type="Button" parent="ysort/lockers/Start_Task"]
+layout_mode = 0
+offset_left = 131.667
+offset_top = 60.0
+offset_right = 385.667
+offset_bottom = 217.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 70
+text = "Jah"
+
+[node name="no_btn" type="Button" parent="ysort/lockers/Start_Task"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 60.0
+offset_right = 688.0
+offset_bottom = 217.0
+scale = Vector2(0.5, 0.5)
+theme_override_font_sizes/font_size = 70
+text = "Ei"
+
+[node name="scaffolding" type="TileMap" parent="ysort"]
+visible = false
+scale = Vector2(0.15, 0.15)
+tile_set = SubResource("TileSet_eotoh")
+format = 2
+layer_0/tile_data = PackedInt32Array(655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 1, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 1, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 1, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 1, 589850, 196609, 1, 524314, 65537, 0, 393241, 65537, 1, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 524313, 196609, 1, 458777, 196609, 1, 589849, 1, 0, 589848, 1, 0, 589847, 196609, 1, 589851, 131073, 0, 458778, 131073, 0, 327705, 131073, 0, 327704, 131073, 0, 589844, 1, 1, 524308, 131073, 0, 589843, 1, 0, 524307, 196609, 1, 458771, 65537, 1, 393234, 1, 0, 458770, 1, 0, 524306, 65537, 0, 589842, 196609, 1, 393233, 65537, 1, 458769, 1, 0, 524305, 1, 0, 589841, 65537, 0, 458768, 1, 0, 524304, 1, 0, 589840, 65537, 0, 393235, 65537, 1, 327698, 131073, 0, 327697, 131073, 0, 589837, 131073, 1, 524301, 131073, 1, 458765, 1, 1, 393229, 1, 1, 327693, 131073, 0, 589836, 65537, 0, 524300, 65537, 0, 458764, 1, 0, 393228, 131073, 1, 393227, 131073, 0, 458763, 65537, 0, 524299, 196609, 1, 393226, 131073, 0, 458762, 196609, 1, 524298, 1, 0, 589834, 1, 0, 589835, 196609, 1, 458761, 65537, 0, 524297, 131073, 1, 589833, 131073, 1, 589830, 131073, 1, 524294, 1, 1, 458758, 1, 1, 458757, 65537, 0, 524293, 1, 0, 589829, 65537, 0, 458756, 196609, 1, 524292, 196609, 1, 589828, 196609, 1, 524291, 65537, 0, 589827, 1, 0, 589826, 1, 0, 393222, 131073, 0, 393221, 131073, 1, 393220, 65537, 0, 458755, 65537, 0, 524290, 65537, 0, 393239, 65537, 1, 458775, 65537, 1, 589846, 131073, 0, 655382, 65537, 1, 327703, 131073, 0, 524311, 65537, 1, 327699, 131073, 0, 458767, 65537, 1, 524303, 65537, 1, 589839, 196609, 1, 655375, 65537, 1, 393232, 131073, 0, 393231, 131073, 0, 327692, 131073, 0, 458760, 1, 0, 524296, 65537, 0, 589832, 196609, 1, 655368, 65537, 1, 393225, 131073, 0, 393224, 131073, 0, 589825, 65537, 1, 655361, 65537, 1, 524289, 65537, 0, 458754, 196609, 1, 458753, 1, 0, 393219, 196609, 1, 393218, 131073, 0, 327683, 131073, 0, 327684, 131073, 0, 327685, 131073, 0, 393217, 131073, 0)
+
+[node name="player" parent="ysort" instance=ExtResource("5_7xt8f")]
+position = Vector2(450, 171)
+
+[node name="Portal" parent="ysort" instance=ExtResource("6_38gue")]
+position = Vector2(440, 175)
+next_scene_path = "res://world/world.tscn"
+player_spawn_location = Vector2(-548, 55)
+
+[node name="items" type="Node2D" parent="ysort"]
+y_sort_enabled = true
+
+[node name="item" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(397, 153.36)
+item_name = "box1"
+box_item = "chrome_exe"
+
+[node name="item3" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(409, 153.195)
+item_name = "box1"
+box_item = "vlc_exe"
+
+[node name="item2" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(390, 154)
+item_name = "box1"
+box_item = "vid_file"
+
+[node name="item4" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(382, 154)
+item_name = "box1"
+box_item = "pic_file"
+
+[node name="item5" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(423, 154)
+item_name = "box1"
+box_item = "music_file"
+
+[node name="item6" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(438, 154)
+item_name = "box1"
+box_item = "txt_file"
+
+[node name="item7" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(431, 154)
+item_name = "box1"
+box_item = "txt_file"
+
+[node name="wall_collision" type="StaticBody2D" parent="."]
+script = SubResource("GDScript_j43jc")
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="wall_collision"]
+polygon = PackedVector2Array(0, 150, 23, 150, 23, 132, 45.1845, 132, 45, 150, 60, 150, 60, 132, 83, 132, 83, 150, 97, 150, 97, 132, 120, 132, 120, 150, 135, 150, 135, 132, 158, 132, 158, 150, 172, 150, 172, 132, 195, 132, 195, 150, 210, 150, 209.906, 132, 233, 132, 233, 150, 247, 150, 247, 132, 270, 132, 270, 150, 457, 150, 457, 127, 270, 127, 0, 127)
+
+[node name="locker_row_collision1" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(26.25, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="locker_row_collision2" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(33.775, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="locker_row_collision3" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(41.305, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(63.795, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(71.33, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(78.845, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(138.795, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(146.33, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(153.845, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(101.25, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(108.775, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(116.305, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(176.25, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(183.775, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(191.305, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(213.795, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(221.33, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(228.845, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(251.25, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(258.775, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="wall_collision"]
+position = Vector2(266.305, 141.25)
+shape = SubResource("RectangleShape2D_21adg")
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(8, -191)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(45, -3)
+polygon = PackedVector2Array(285, 168, 285, 152, 300, 152, 300, 92, 345, 92, 345, 93, 334, 93, 334, 122, 360, 122, 360, 123, 334, 123, 334, 137, 360, 137, 360, 138, 349, 138, 349, 152, 375, 152, 375, 168, 412, 168, 412, 78, -51, 78, -50, 188, 420, 188, 412, 168, 412, 183, -45, 182, -45, 168, -30, 168, -30, 137, 15, 137, 15, 123, -15, 123, -15, 108, -30, 108, -30, 107, 0, 107, 0, 92, 45, 92, 45, 107, 60, 107, 60, 168, 75, 168, 75, 137, 101, 137, 101, 123, 90, 123, 90, 122, 105, 122, 105, 108, 75, 108, 75, 107, 146, 107, 146, 93, 135, 93, 135, 92, 165, 92, 165, 168, 180, 168, 180, 107, 210, 107, 210, 92, 244, 92, 255, 92, 255, 93, 244, 93, 244, 137, 270, 137, 270, 168)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(335, 165, 335, 150, 349, 150, 360, 150, 360, 149, 349, 149, 349, 90, 375, 90, 375, 135, 390, 135, 390, 150, 415, 150, 415, 165)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(45, -3)
+polygon = PackedVector2Array(229, 138, 229, 152, 240, 152, 240, 153, 229, 153, 185, 153, 185, 168, 265, 168, 265, 138)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(45, -3)
+polygon = PackedVector2Array(185, 152, 225, 152, 225, 137, 240, 137, 240, 93, 214, 93, 214, 108, 185, 108)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(45, -3)
+polygon = PackedVector2Array(160, 168, 80, 168, 80, 153, 105, 153, 105, 123, 120, 123, 120, 153, 160, 153)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(45, -3)
+polygon = PackedVector2Array(80, 152, 101, 152, 101, 138, 80, 138)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(90, -3)
+polygon = PackedVector2Array(79, 152, 115, 152, 115, 138, 79, 138)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-37, 9)
+polygon = PackedVector2Array(57, 156, 137, 156, 137, 141, 97, 141, 97, 126, 57, 126)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(8, -7)
+polygon = PackedVector2Array(56, 156, 92, 156, 92, 112, 56, 112, 56, 126, 82, 126, 82, 127, 56, 127, 56, 141, 67, 141, 67, 142, 56, 142)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-22, -36)
+polygon = PackedVector2Array(71, 140, 108, 140, 108, 126, 71, 126)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-22, -36)
+polygon = PackedVector2Array(56, 155, 82, 155, 82, 141, 56, 141)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(90, -18)
+polygon = PackedVector2Array(79, 152, 115, 152, 115, 108, 105, 108, 105, 123, 64, 123, 64, 137, 90, 137, 90.0705, 138, 79, 138)
+
+[node name="Interaction-area" parent="." instance=ExtResource("8_u0o21")]
+position = Vector2(427, 171)
+scale = Vector2(0.65, 0.65)
+text = "press [E] to interact"
+interaction_type = "interact_e"
+menu = "decimal_task_menu"
+metadata/_edit_group_ = true
+
+[node name="CpuControlpanel" type="Sprite2D" parent="Interaction-area"]
+y_sort_enabled = true
+position = Vector2(6, 6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_pinqb")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Interaction-area"]
+position = Vector2(-10.33, -133.36)
+polygon = PackedVector2Array(8.06999, 133.078, 8.1547, 147.589, 18.8455, 147.756, 19.08, 133.016)
+
+[node name="item" parent="." instance=ExtResource("7_oh6ck")]
+position = Vector2(11, 150)
+item_name = "redel"

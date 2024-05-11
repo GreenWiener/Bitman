@@ -1,0 +1,259 @@
+[gd_scene load_steps=13 format=3 uid="uid://kco8ko3qnr8d"]
+
+[ext_resource type="Script" path="res://menu/task_binary.gd" id="1_04x3f"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_qw2h7"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_uof5r"]
+[ext_resource type="PackedScene" uid="uid://dl8stlucmakk6" path="res://menu/task_binary_row.tscn" id="4_d6jk4"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="5_8q8a3"]
+[ext_resource type="Texture2D" uid="uid://kodussroou04" path="res://menu/arrowdown.png" id="5_dfsbb"]
+[ext_resource type="FontFile" uid="uid://or3rf71jm2l3" path="res://menu/fonts/century_gothic.ttf" id="5_s814f"]
+[ext_resource type="StyleBox" uid="uid://brrnw3ofkfsxc" path="res://menu/task_row_answerbox.tres" id="7_wuxi8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm42e"]
+content_margin_bottom = 59.0
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lm4t1"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mapiw"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0hb5g"]
+line_spacing = -2.935
+font = ExtResource("5_s814f")
+font_size = 14
+font_color = Color(0.752941, 0.752941, 0.752941, 1)
+
+[node name="task_binary" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_04x3f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 180.0
+theme_override_styles/panel = ExtResource("1_qw2h7")
+
+[node name="Valem" type="Label" parent="."]
+layout_mode = 2
+offset_right = 1024.94
+offset_bottom = 33.0
+scale = Vector2(0.31, 0.31)
+size_flags_horizontal = 3
+text = " x÷2=y             ⇒     2•täisosa(y)=z      ⇒            x-z=jääk   "
+label_settings = ExtResource("2_uof5r")
+horizontal_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 11.0
+offset_right = 320.0
+offset_bottom = 12.0
+color = Color(0.156863, 0.196078, 0.266667, 1)
+
+[node name="row1mmm" type="Node2D" parent="."]
+visible = false
+
+[node name="row1_1" type="LineEdit" parent="row1mmm"]
+offset_left = 61.648
+offset_top = 17.1225
+offset_right = 128.711
+offset_bottom = 48.1225
+scale = Vector2(0.3, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="row1_2" type="LineEdit" parent="row1mmm"]
+offset_left = 156.0
+offset_top = 17.1225
+offset_right = 223.063
+offset_bottom = 48.1225
+scale = Vector2(0.3, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="row1_3" type="LineEdit" parent="row1mmm"]
+offset_left = 214.0
+offset_top = 17.0
+offset_right = 310.0
+offset_bottom = 48.0
+scale = Vector2(0.3, 0.3)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label1" type="Label" parent="row1mmm"]
+offset_left = 84.0
+offset_top = 15.0
+offset_right = 105.0
+offset_bottom = 27.0
+text = "÷ 2 ="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="row1mmm"]
+offset_left = 140.0
+offset_top = 15.0
+offset_right = 156.0
+offset_bottom = 27.0
+text = "2 • "
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="row1mmm"]
+offset_left = 180.0
+offset_top = 15.0
+offset_right = 196.0
+offset_bottom = 27.0
+text = "="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="row1mmm"]
+offset_left = 246.634
+offset_top = 15.0
+offset_right = 262.634
+offset_bottom = 27.0
+text = "= "
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+
+[node name="row1_1" type="LineEdit" parent="VBoxContainer2/HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="row1_2" type="LineEdit" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label1" type="Label" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "÷ 2 ="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "÷ 2 ="
+label_settings = ExtResource("2_uof5r")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollRows" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_top = 14.0
+offset_right = 1078.0
+offset_bottom = 471.0
+scale = Vector2(0.295, 0.295)
+
+[node name="Rows" type="VBoxContainer" parent="ScrollRows"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="ScrollRows/Rows"]
+visible = false
+layout_mode = 2
+text = "x ÷ 2 = y   ⇒   2 • y = z   ⇒   x - z = jääk"
+label_settings = ExtResource("2_uof5r")
+horizontal_alignment = 1
+
+[node name="task_binary_row" parent="ScrollRows/Rows" instance=ExtResource("4_d6jk4")]
+layout_mode = 2
+
+[node name="add_row_btn" type="PanelContainer" parent="ScrollRows/Rows"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nm42e")
+
+[node name="add_row_button" type="Button" parent="ScrollRows/Rows/add_row_btn"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 0.682353, 1)
+theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.254902, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_lm4t1")
+text = "+"
+
+[node name="remove_row_button" type="Button" parent="ScrollRows/Rows/add_row_btn/add_row_button"]
+layout_mode = 2
+offset_left = 474.138
+offset_top = -62.3904
+offset_right = 511.138
+offset_bottom = -32.3904
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 0.682353, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0.254902, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
+theme_override_fonts/font = ExtResource("5_8q8a3")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_mapiw")
+text = "–"
+
+[node name="Arrowdown" type="Sprite2D" parent="ScrollRows/Rows/add_row_btn/add_row_button"]
+modulate = Color(1, 1, 1, 0.345098)
+position = Vector2(385.767, 55.5993)
+rotation = -3.14159
+scale = Vector2(0.130117, 0.0706564)
+texture = ExtResource("5_dfsbb")
+
+[node name="Label" type="Label" parent="ScrollRows/Rows/add_row_btn/add_row_button"]
+modulate = Color(1, 1, 1, 0.752941)
+layout_mode = 0
+offset_left = 364.811
+offset_top = 39.1362
+offset_right = 406.811
+offset_bottom = 109.136
+text = "vastus
+loe
+alt
+üles"
+label_settings = SubResource("LabelSettings_0hb5g")
+horizontal_alignment = 1
+
+[node name="vastus" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 233.069
+offset_top = 161.235
+offset_right = 321.069
+offset_bottom = 192.235
+scale = Vector2(0.475, 0.475)
+theme_override_styles/normal = ExtResource("7_wuxi8")
+placeholder_text = "vastus"
+alignment = 1
+
+[node name="kontroll" type="Button" parent="."]
+layout_mode = 0
+offset_left = 276.21
+offset_top = 161.439
+offset_right = 396.21
+offset_bottom = 202.439
+scale = Vector2(0.345, 0.345)
+text = "KONTROLLI"
+
+[connection signal="pressed" from="ScrollRows/Rows/add_row_btn/add_row_button" to="." method="_on_add_row_btn_pressed"]
+[connection signal="pressed" from="ScrollRows/Rows/add_row_btn/add_row_button/remove_row_button" to="." method="_on_remove_row_button_pressed"]
+[connection signal="text_changed" from="vastus" to="." method="_on_vastus_text_changed"]
+[connection signal="pressed" from="kontroll" to="." method="_on_kontroll_pressed"]

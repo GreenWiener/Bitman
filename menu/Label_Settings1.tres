@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cg7ecyiuomsvk"]
+
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="1_xo2lt"]
+
+[resource]
+line_spacing = -2.0
+font = ExtResource("1_xo2lt")
+font_size = 24

@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://ghu2y8c7b6pc"]
+
+[ext_resource type="Script" path="res://playerTEST.gd" id="1_dit8r"]
+[ext_resource type="Texture2D" uid="uid://bpy5dtepd4bv" path="res://player/player-leg.png" id="2_8bq15"]
+[ext_resource type="Texture2D" uid="uid://dpfdphjcoenhk" path="res://player/player-body.png" id="3_ablc8"]
+[ext_resource type="Texture2D" uid="uid://bihfp5xakcprk" path="res://player/player-head.png" id="4_ilscl"]
+[ext_resource type="Texture2D" uid="uid://by2jcixmb50vq" path="res://player/player-arm.png" id="5_pabnr"]
+[ext_resource type="Texture2D" uid="uid://crolxgkvw4x22" path="res://world/gray-tile.png" id="6_k7kkr"]
+[ext_resource type="Texture2D" uid="uid://70yi3w6ahvk" path="res://player/player.png" id="7_ucqpy"]
+[ext_resource type="Script" path="res://player/CameraPlayer.gd" id="8_efr80"]
+[ext_resource type="PackedScene" uid="uid://dcclhvn7j7jts" path="res://menu/text_dialog.tscn" id="9_fepy4"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 0.754717
+height = 7.40566
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(0.00984287, 0.0590589)
+scale = Vector2(0.5, 0.5)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_dit8r")
+
+[node name="skeleton" type="Node2D" parent="."]
+modulate = Color(1, 0.972549, 0, 1)
+position = Vector2(0, -4)
+metadata/_edit_group_ = true
+
+[node name="player-leg2" type="Sprite2D" parent="skeleton"]
+position = Vector2(2.785, 6.295)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("2_8bq15")
+
+[node name="player-leg1" type="Sprite2D" parent="skeleton"]
+position = Vector2(-1.605, 6.3)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("2_8bq15")
+
+[node name="player-body" type="Sprite2D" parent="skeleton"]
+position = Vector2(0, 2.645)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("3_ablc8")
+
+[node name="player-head" type="Sprite2D" parent="skeleton"]
+position = Vector2(1.13687e-13, -3)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("4_ilscl")
+
+[node name="player-arm1" type="Sprite2D" parent="skeleton"]
+position = Vector2(-4.26, 2.89)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("5_pabnr")
+
+[node name="player-arm2" type="Sprite2D" parent="skeleton"]
+position = Vector2(4.255, 2.885)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("5_pabnr")
+
+[node name="Gray-tile" type="Sprite2D" parent="skeleton/player-arm2"]
+visible = false
+position = Vector2(7.58696, 4.84783)
+scale = Vector2(1.21739, 1.21739)
+texture = ExtResource("6_k7kkr")
+
+[node name="Player-sprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("7_ucqpy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -4)
+zoom = Vector2(6.9, 6.9)
+script = ExtResource("8_efr80")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.575, 2.53)
+rotation = 1.5708
+scale = Vector2(1.06, 1.06)
+shape = SubResource("1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextInfo" parent="CanvasLayer" instance=ExtResource("9_fepy4")]
+visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Console" type="TextEdit" parent="CanvasLayer"]
+visible = false
+anchors_preset = -1
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -1.52588e-05
+offset_right = -261.0
+offset_bottom = -1.0
+
+[connection signal="focus_entered" from="CanvasLayer/Console" to="." method="_on_console_focus_entered"]
+[connection signal="text_set" from="CanvasLayer/Console" to="." method="_on_console_text_set"]

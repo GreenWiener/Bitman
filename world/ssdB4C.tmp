@@ -1,0 +1,169 @@
+[gd_scene load_steps=16 format=3 uid="uid://vsf010xjbios"]
+
+[ext_resource type="Script" path="res://world/ssd.gd" id="1_3xm7p"]
+[ext_resource type="Texture2D" uid="uid://crolxgkvw4x22" path="res://world/gray-tile.png" id="2_nl20n"]
+[ext_resource type="Texture2D" uid="uid://cf3t774ihi1vn" path="res://world/RAM.png" id="3_fd5n0"]
+[ext_resource type="PackedScene" uid="uid://dahrp8tqkeqno" path="res://world/ssd-lockers.tscn" id="4_wu7sp"]
+[ext_resource type="Texture2D" uid="uid://j2scgogxugl0" path="res://world/scaffoldingtiles.png" id="4_y5ctt"]
+[ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="5_7xt8f"]
+[ext_resource type="PackedScene" uid="uid://byvj1cfh1su7t" path="res://world/Portal.tscn" id="6_38gue"]
+[ext_resource type="PackedScene" uid="uid://dp1o46gwbqr2c" path="res://world/item.tscn" id="7_oh6ck"]
+[ext_resource type="PackedScene" uid="uid://cu5ra072ucdnh" path="res://menu/Interaction-area.tscn" id="8_u0o21"]
+[ext_resource type="Texture2D" uid="uid://dpjwmphm21qy4" path="res://world/cpu_controlpanel.png" id="9_pinqb"]
+[ext_resource type="PackedScene" uid="uid://87m80d5eiivu" path="res://world/controlpanel.tscn" id="11_vk7fe"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_upit1"]
+texture = ExtResource("2_nl20n")
+texture_region_size = Vector2i(4, 4)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vysvf"]
+tile_size = Vector2i(4, 4)
+sources/0 = SubResource("TileSetAtlasSource_upit1")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xqf0m"]
+texture = ExtResource("4_y5ctt")
+texture_region_size = Vector2i(100, 100)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_eotoh"]
+tile_size = Vector2i(100, 100)
+sources/1 = SubResource("TileSetAtlasSource_xqf0m")
+
+[node name="ssd" type="Node2D"]
+script = ExtResource("1_3xm7p")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 457.0
+offset_bottom = 180.0
+color = Color(0.172549, 0.172549, 0.172549, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_right = 457.0
+offset_bottom = 150.0
+color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="walls" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_vysvf")
+format = 2
+
+[node name="Ram" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(159, 43)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_fd5n0")
+
+[node name="ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="ssd-lockers" parent="ysort" instance=ExtResource("4_wu7sp")]
+
+[node name="scaffolding" type="TileMap" parent="ysort"]
+visible = false
+scale = Vector2(0.15, 0.15)
+tile_set = SubResource("TileSet_eotoh")
+format = 2
+layer_0/tile_data = PackedInt32Array(655362, 1, 0, 655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 1, 655369, 1, 0, 655370, 1, 0, 655371, 1, 0, 655372, 1, 0, 655373, 1, 1, 655376, 1, 0, 655377, 1, 0, 655378, 1, 0, 655379, 1, 0, 655380, 1, 1, 655383, 1, 0, 655384, 1, 0, 655385, 1, 0, 655386, 1, 0, 655387, 1, 1, 589850, 196609, 1, 524314, 65537, 0, 393241, 65537, 1, 393240, 1, 0, 458776, 1, 0, 524312, 1, 0, 524313, 196609, 1, 458777, 196609, 1, 589849, 1, 0, 589848, 1, 0, 589847, 196609, 1, 589851, 131073, 0, 458778, 131073, 0, 327705, 131073, 0, 327704, 131073, 0, 589844, 1, 1, 524308, 131073, 0, 589843, 1, 0, 524307, 196609, 1, 458771, 65537, 1, 393234, 1, 0, 458770, 1, 0, 524306, 65537, 0, 589842, 196609, 1, 393233, 65537, 1, 458769, 1, 0, 524305, 1, 0, 589841, 65537, 0, 458768, 1, 0, 524304, 1, 0, 589840, 65537, 0, 393235, 65537, 1, 327698, 131073, 0, 327697, 131073, 0, 589837, 131073, 1, 524301, 131073, 1, 458765, 1, 1, 393229, 1, 1, 327693, 131073, 0, 589836, 65537, 0, 524300, 65537, 0, 458764, 1, 0, 393228, 131073, 1, 393227, 131073, 0, 458763, 65537, 0, 524299, 196609, 1, 393226, 131073, 0, 458762, 196609, 1, 524298, 1, 0, 589834, 1, 0, 589835, 196609, 1, 458761, 65537, 0, 524297, 131073, 1, 589833, 131073, 1, 589830, 131073, 1, 524294, 1, 1, 458758, 1, 1, 458757, 65537, 0, 524293, 1, 0, 589829, 65537, 0, 458756, 196609, 1, 524292, 196609, 1, 589828, 196609, 1, 524291, 65537, 0, 589827, 1, 0, 589826, 1, 0, 393222, 131073, 0, 393221, 131073, 1, 393220, 65537, 0, 458755, 65537, 0, 524290, 65537, 0, 393239, 65537, 1, 458775, 65537, 1, 589846, 131073, 0, 655382, 65537, 1, 327703, 131073, 0, 524311, 65537, 1, 327699, 131073, 0, 458767, 65537, 1, 524303, 65537, 1, 589839, 196609, 1, 655375, 65537, 1, 393232, 131073, 0, 393231, 131073, 0, 327692, 131073, 0, 458760, 1, 0, 524296, 65537, 0, 589832, 196609, 1, 655368, 65537, 1, 393225, 131073, 0, 393224, 131073, 0, 589825, 65537, 1, 655361, 65537, 1, 524289, 65537, 0, 458754, 196609, 1, 458753, 1, 0, 393219, 196609, 1, 393218, 131073, 0, 327683, 131073, 0, 327684, 131073, 0, 327685, 131073, 0, 393217, 131073, 0)
+
+[node name="player" parent="ysort" instance=ExtResource("5_7xt8f")]
+position = Vector2(450, 171)
+
+[node name="Portal" parent="ysort" instance=ExtResource("6_38gue")]
+position = Vector2(440, 175)
+next_scene_path = "res://world/world.tscn"
+player_spawn_location = Vector2(-548, 55)
+
+[node name="items" type="Node2D" parent="ysort"]
+y_sort_enabled = true
+
+[node name="item" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(397, 153.36)
+item_name = "box1"
+box_item = "music_file"
+
+[node name="item3" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(409, 153.195)
+item_name = "box1"
+box_item = "pic_file"
+
+[node name="item2" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(390, 154)
+item_name = "box1"
+box_item = "vlc_exe"
+
+[node name="item4" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(382, 154)
+item_name = "box1"
+box_item = "chrome_exe"
+
+[node name="item5" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(423, 154)
+item_name = "box1"
+box_item = "vid_file"
+
+[node name="item6" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(438, 154)
+item_name = "box1"
+
+[node name="item7" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+position = Vector2(431, 154)
+item_name = "box1"
+box_item = "txt_file"
+
+[node name="item8" parent="ysort/items" instance=ExtResource("7_oh6ck")]
+visible = false
+position = Vector2(11, 150)
+item_name = "redel"
+
+[node name="Interaction-area" parent="." instance=ExtResource("8_u0o21")]
+visible = false
+position = Vector2(427, 171)
+scale = Vector2(0.65, 0.65)
+text = "press [E] to interact"
+interaction_type = "interact_e"
+menu = "decimal_task_menu"
+metadata/_edit_group_ = true
+
+[node name="CpuControlpanel" type="Sprite2D" parent="Interaction-area"]
+y_sort_enabled = true
+position = Vector2(6, 6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_pinqb")
+
+[node name="Controlpanel" parent="." instance=ExtResource("11_vk7fe")]
+position = Vector2(400, 167)
+scale = Vector2(0.7, 0.7)
+panel_scene = "res://menu/task_demical.tscn"
+
+[node name="LockerLadder_collision" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LockerLadder_collision"]
+
+[node name="locker_collision" type="CollisionPolygon2D" parent="LockerLadder_collision/StaticBody2D"]
+polygon = PackedVector2Array(0, 149.7, 457, 149.7, 457, 121, 0, 121)
+
+[node name="locker_collision_clipped" type="CollisionPolygon2D" parent="LockerLadder_collision/StaticBody2D"]
+polygon = PackedVector2Array(8, 106, 3, 118, 16, 117)

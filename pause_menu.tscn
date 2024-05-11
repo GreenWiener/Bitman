@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsy746refa5xe"]
+
+[ext_resource type="Script" path="res://pause_menu.gd" id="1_ggkmy"]
+[ext_resource type="Texture2D" uid="uid://c4vyol5a5vre0" path="res://world/white.png" id="2_6cts3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j04hb"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 0.647059)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.156863, 0.196078, 0.266667, 0.764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi8wd"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.0980392, 0.12549, 0.180392, 0.831373)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0588235, 0.0784314, 0.117647, 0.764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp61b"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 0.647059)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.156863, 0.196078, 0.266667, 0.764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyjs1"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.0980392, 0.12549, 0.180392, 0.764706)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0588235, 0.0784314, 0.117647, 0.764706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="PauseMenu" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(52, 39)
+script = ExtResource("1_ggkmy")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(160.776, 87.8474)
+scale = Vector2(0.246121, 0.266844)
+color = Color(0, 0, 1.83529, 1)
+texture = ExtResource("2_6cts3")
+texture_scale = 0.72
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0.0313726, 0.0431373, 0.101961, 0.803922)
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 135.0
+offset_top = 66.0
+offset_right = 238.0
+offset_bottom = 97.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j04hb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yi8wd")
+text = "Jätka"
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 90.0
+offset_right = 281.0
+offset_bottom = 121.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_dp61b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fyjs1")
+text = "Salvesta ja lahku"
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 139.805
+offset_top = 172.931
+offset_right = 275.805
+offset_bottom = 188.931
+scale = Vector2(0.27, 0.27)
+min_value = -30.0
+max_value = 10.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 152.162
+offset_top = 163.872
+offset_right = 219.162
+offset_bottom = 186.872
+scale = Vector2(0.205, 0.205)
+text = "muusika"
+
+[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

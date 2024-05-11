@@ -1,0 +1,108 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl8stlucmakk6"]
+
+[ext_resource type="Script" path="res://task_binary_row.gd" id="1_dmlkn"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_iige5"]
+[ext_resource type="StyleBox" uid="uid://bopyj7kn7hs18" path="res://menu/task_row_smallanswer.tres" id="3_3cep3"]
+[ext_resource type="StyleBox" uid="uid://brrnw3ofkfsxc" path="res://menu/task_row_answerbox.tres" id="3_gjf1j"]
+[ext_resource type="Texture2D" uid="uid://c5lat10f1ohnb" path="res://menu/task_arrow.png" id="4_gkwkg"]
+
+[node name="row" type="HBoxContainer"]
+alignment = 1
+script = ExtResource("1_dmlkn")
+
+[node name="input1" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+placeholder_text = "x"
+expand_to_text_length = true
+context_menu_enabled = false
+
+[node name="Label1" type="Label" parent="."]
+layout_mode = 2
+text = "÷ 2 ="
+label_settings = ExtResource("2_iige5")
+
+[node name="answer1" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/read_only = ExtResource("3_3cep3")
+placeholder_text = "y"
+editable = false
+context_menu_enabled = false
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "   ⇒   "
+label_settings = ExtResource("2_iige5")
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+text = "2 •"
+label_settings = ExtResource("2_iige5")
+
+[node name="input2" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+placeholder_text = "täisosa(y)"
+expand_to_text_length = true
+context_menu_enabled = false
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 2
+text = "="
+label_settings = ExtResource("2_iige5")
+
+[node name="answer2" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/read_only = ExtResource("3_3cep3")
+placeholder_text = "z"
+editable = false
+context_menu_enabled = false
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 2
+text = "   ⇒   "
+label_settings = ExtResource("2_iige5")
+
+[node name="input3" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+placeholder_text = "x"
+context_menu_enabled = false
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 2
+text = "-"
+label_settings = ExtResource("2_iige5")
+
+[node name="input4" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+placeholder_text = "z"
+context_menu_enabled = false
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 2
+text = "="
+label_settings = ExtResource("2_iige5")
+
+[node name="answer3" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_styles/read_only = ExtResource("3_gjf1j")
+placeholder_text = "jääk"
+editable = false
+context_menu_enabled = false
+
+[node name="TaskArrow" type="Sprite2D" parent="."]
+position = Vector2(295.128, -15.2688)
+scale = Vector2(1.91, 1.91)
+texture = ExtResource("4_gkwkg")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[connection signal="text_changed" from="input1" to="." method="_on_input_1_text_changed"]
+[connection signal="text_changed" from="input2" to="." method="_on_input_2_text_changed"]
+[connection signal="text_changed" from="input3" to="." method="_on_input_3_text_changed"]
+[connection signal="text_changed" from="input4" to="." method="_on_input_4_text_changed"]

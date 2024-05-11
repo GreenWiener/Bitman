@@ -1,0 +1,112 @@
+[gd_scene load_steps=6 format=3 uid="uid://c15ars2mbpuct"]
+
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_0tyqx"]
+[ext_resource type="Script" path="res://menu/task_demical.gd" id="1_2ug1q"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_8vjdf"]
+[ext_resource type="PackedScene" uid="uid://5so4qxhngygt" path="res://menu/task_demical_row.tscn" id="4_nfq2d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0q6l"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.705882)
+
+[node name="task_demical" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ug1q")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+theme_override_styles/panel = ExtResource("1_0tyqx")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+clip_contents = false
+layout_mode = 2
+offset_left = 7.0
+offset_top = 10.0
+offset_right = 1050.0
+offset_bottom = 577.0
+scale = Vector2(0.3, 0.3)
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 200
+
+[node name="Vastus" type="Control" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Label=" type="Label" parent="ScrollContainer/GridContainer/Vastus"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 81.91
+offset_right = 18.0
+offset_bottom = 112.91
+text = "="
+label_settings = ExtResource("2_8vjdf")
+
+[node name="demical_num" type="LineEdit" parent="ScrollContainer/GridContainer/Vastus"]
+layout_mode = 2
+offset_left = 24.0
+offset_top = 82.875
+offset_right = 91.0625
+offset_bottom = 113.875
+size_flags_stretch_ratio = 0.0
+
+[node name="binary_num" type="LineEdit" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Label=" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "="
+label_settings = ExtResource("2_8vjdf")
+
+[node name="binary_num_digit" type="LineEdit" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+
+[node name="Labelx2" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+text = " • 2     "
+label_settings = ExtResource("2_8vjdf")
+
+[node name="binary_num_aste" type="LineEdit" parent="ScrollContainer/GridContainer/Labelx2"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = -0.935
+offset_right = 164.0
+offset_bottom = 49.065
+scale = Vector2(0.295, 0.295)
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 30
+
+[node name="row" parent="ScrollContainer/GridContainer" instance=ExtResource("4_nfq2d")]
+visible = false
+layout_mode = 2
+
+[node name="Add_row" type="Label" parent="ScrollContainer/GridContainer"]
+layout_mode = 2
+text = "              "
+label_settings = ExtResource("2_8vjdf")
+
+[node name="add_row_btn" type="Button" parent="ScrollContainer/GridContainer/Add_row"]
+layout_mode = 2
+offset_left = 43.0
+offset_top = -10.0
+offset_right = 90.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = SubResource("StyleBoxFlat_f0q6l")
+text = "+"
+
+[connection signal="text_changed" from="ScrollContainer/GridContainer/binary_num" to="." method="_on_binary_num_text_changed"]
+[connection signal="text_changed" from="ScrollContainer/GridContainer/binary_num_digit" to="." method="_on_binary_num_digit_text_changed"]
+[connection signal="text_changed" from="ScrollContainer/GridContainer/Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_text_changed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/Add_row/add_row_btn" to="." method="_on_add_row_btn_pressed"]

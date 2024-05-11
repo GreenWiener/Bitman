@@ -1,0 +1,307 @@
+[gd_scene load_steps=23 format=3 uid="uid://s2ouwr4gfhqu"]
+
+[ext_resource type="Texture2D" uid="uid://d0d1per3pbefo" path="res://world/cpu.png" id="1"]
+[ext_resource type="Script" path="res://world/World.gd" id="1_ph3vs"]
+[ext_resource type="Texture2D" uid="uid://8tmhyyi0efdk" path="res://world/circuit_tile.png" id="1_wmuxu"]
+[ext_resource type="Texture2D" uid="uid://bu44mtrlbg3tc" path="res://world/lines.png" id="2"]
+[ext_resource type="Shader" path="res://world/shine.gdshader" id="2_fs76r"]
+[ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://cf3t774ihi1vn" path="res://world/RAM.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://byvj1cfh1su7t" path="res://world/Portal.tscn" id="5_0fomt"]
+[ext_resource type="Texture2D" uid="uid://clsyb8mwehyl5" path="res://world/GPU.png" id="6"]
+[ext_resource type="PackedScene" uid="uid://br4lrmgvvps1n" path="res://menu/InfoPanel.tscn" id="8_g0il1"]
+[ext_resource type="Texture2D" uid="uid://cwo87vfx3jlvl" path="res://icon.png" id="9_2u4a8"]
+[ext_resource type="Texture2D" uid="uid://dsjhgd176bv6b" path="res://world/circuit_door.png" id="10_jdw6k"]
+[ext_resource type="Texture2D" uid="uid://d63fyu2mpmfj" path="res://world/SSD_door.png" id="10_jf4r1"]
+[ext_resource type="Texture2D" uid="uid://c0oa46brvhk2r" path="res://world/SSD.png" id="10_shgur"]
+[ext_resource type="PackedScene" uid="uid://c6mc2ukaioi80" path="res://world/train.tscn" id="13_va68u"]
+[ext_resource type="PackedScene" uid="uid://ghu2y8c7b6pc" path="res://player/playerTEST.tscn" id="15_db48h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yogvy"]
+shader = ExtResource("2_fs76r")
+shader_parameter/shine_color = Color(1, 1, 0.745098, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_size = 0.01
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v34dx"]
+texture = ExtResource("2")
+texture_region_size = Vector2i(15, 15)
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/right_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/left_side = 0
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_side = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/bottom_left_corner = 0
+3:1/0/terrains_peering_bit/top_right_corner = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+5:1/0 = 0
+6:1/0 = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/right_side = 0
+4:0/0 = 0
+4:0/0/terrain_set = 0
+4:0/0/terrain = 0
+4:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0 = 0
+5:0/0/terrain_set = 0
+5:0/0/terrain = 0
+5:0/0/terrains_peering_bit/bottom_side = 0
+5:0/0/terrains_peering_bit/top_side = 0
+6:0/0 = 0
+6:0/0/terrain_set = 0
+6:0/0/terrain = 0
+6:0/0/terrains_peering_bit/right_side = 0
+6:0/0/terrains_peering_bit/left_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/top_side = 0
+7:1/0 = 0
+7:0/0 = 0
+7:0/0/terrain_set = 0
+7:0/0/terrain = 0
+7:0/0/terrains_peering_bit/right_side = 0
+7:0/0/terrains_peering_bit/bottom_side = 0
+
+[sub_resource type="TileSet" id="1"]
+tile_size = Vector2i(15, 15)
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "circuits"
+terrain_set_0/terrain_0/color = Color(0.670588, 0, 0.505882, 1)
+sources/0 = SubResource("TileSetAtlasSource_v34dx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crb0l"]
+size = Vector2(2, 3)
+
+[sub_resource type="RectangleShape2D" id="3"]
+size = Vector2(105.516, 8.8696)
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_ph3vs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+offset_left = -872.0
+offset_top = -442.0
+offset_right = 4274.0
+offset_bottom = 2377.0
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("1_wmuxu")
+stretch_mode = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+process_mode = 4
+visible = false
+position = Vector2(100.054, -102.237)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("5")
+
+[node name="TileMap" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_yogvy")
+scale = Vector2(0.2, 0.2)
+tile_set = SubResource("1")
+format = 2
+layer_0/tile_data = PackedInt32Array(1114167, 393216, 0, 1114166, 393216, 0, 1114165, 393216, 0, 1114164, 393216, 0, 1114163, 393216, 0, 1114162, 393216, 0, 1114161, 393216, 0, 1114160, 393216, 0, 1114159, 393216, 0, 1114158, 393216, 0, 1114150, 393216, 0, 1114149, 393216, 0, 1114148, 393216, 0, 1114147, 393216, 0, 1114146, 393216, 0, 1114145, 393216, 0, 1114144, 393216, 0, 1114143, 393216, 0, 1114142, 393216, 0, 1114141, 393216, 0, 1114140, 393216, 0, 1114139, 393216, 0, 1114138, 393216, 0, 1114137, 393216, 0, 1114136, 393216, 0, 1114135, 393216, 0, 1114134, 393216, 0, 1114133, 393216, 0, 1114132, 393216, 0, 1114131, 393216, 0, 1114130, 393216, 0, 1114129, 393216, 0, 1114128, 393216, 0, 1114127, 393216, 0, 1114126, 393216, 0, 1114125, 393216, 0, 1114124, 393216, 0, 1114123, 393216, 0, 1114122, 393216, 0, 1114121, 393216, 0, 1114120, 393216, 0, 1114119, 393216, 0, 1114118, 393216, 0, 1114117, 393216, 0, 1114116, 393216, 0, 1114115, 393216, 0, 1114114, 393216, 0, 1114113, 393216, 0, 1114112, 393216, 0, 1179647, 393216, 0, 1179646, 393216, 0, 1179645, 393216, 0, 1179644, 393216, 0, 1179643, 393216, 0, 1179642, 393216, 0, 1179641, 393216, 0, 1179640, 393216, 0, 1179639, 393216, 0, 1179638, 393216, 0, 1179637, 393216, 0, 1179636, 393216, 0, 1179635, 393216, 0, 1179634, 393216, 0, 1179633, 393216, 0, 1179632, 393216, 0, 1179631, 393216, 0, 1179630, 393216, 0, 1179629, 393216, 0, 1179628, 393216, 0, 1179627, 393216, 0, 1179626, 393216, 0, 1179625, 393216, 0, 1179624, 393216, 0, 1179623, 393216, 0, 1179622, 393216, 0, 1179621, 393216, 0, 1179620, 393216, 0, 1179619, 393216, 0, 1179618, 393216, 0, 1179617, 393216, 0, 1179616, 393216, 0, 1179615, 393216, 0, 1179614, 393216, 0, 1179613, 393216, 0, 1179612, 393216, 0, 1179611, 393216, 0, 1179610, 393216, 0, 1179609, 393216, 0, 1179608, 393216, 0, 1179607, 393216, 0, 1179606, 393216, 0, 1179605, 393216, 0, 1179604, 0, 0, 1114157, 393216, 0, 1114156, 393216, 0, 1114155, 393216, 0, 1114154, 393216, 0, 1114153, 393216, 0, 1114152, 393216, 0, 1114151, 393216, 0, 1114168, 393216, 0, 1114169, 393216, 0, 1114170, 393216, 0, 1114171, 393216, 0, 1114172, 393216, 0, 1114173, 393216, 0, 1114174, 393216, 0, 1114175, 393216, 0, 1114176, 393216, 0, 1114177, 393216, 0, 1114178, 393216, 0, 1114179, 393216, 0, 1114180, 393216, 0, 1114181, 393216, 0, 1114182, 393216, 0, 1114183, 393216, 0, 1114184, 393216, 0, 1114185, 393216, 0, 1114186, 393216, 0, 1114187, 393216, 0, 1114188, 393216, 0, 1114189, 393216, 0, 1114190, 393216, 0, 1114191, 65536, 0)
+
+[node name="train_stop_area" type="Area2D" parent="."]
+position = Vector2(238.57, 52.485)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="train_stop_area"]
+shape = SubResource("RectangleShape2D_crb0l")
+
+[node name="train_stop_area2" type="Area2D" parent="."]
+position = Vector2(238.57, 52.485)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="train_stop_area2"]
+position = Vector2(-369.57, -0.485001)
+shape = SubResource("RectangleShape2D_crb0l")
+
+[node name="ysort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CPU" type="StaticBody2D" parent="ysort"]
+position = Vector2(159, 36)
+
+[node name="ColorRect" type="ColorRect" parent="ysort/CPU"]
+z_index = -1
+offset_left = 36.0
+offset_top = -11.0
+offset_right = 58.0
+offset_bottom = 2.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="cpu_sprite" type="Sprite2D" parent="ysort/CPU"]
+position = Vector2(0, -85)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ysort/CPU"]
+position = Vector2(-41.9399, -94.4887)
+polygon = PackedVector2Array(48.251, 96.1565, 80.9399, 96.4887, 80.9399, 86.4887, 97.9399, 86.4887, 97.9399, 96.4887, 127.446, 96.4214, 127.181, 11.9292, 73.2025, 12.3103, 72.9399, 18.4887, 51.9399, 18.4887, 51.4962, 12.4636, 47.9399, 12.4887)
+
+[node name="Portal" parent="ysort/CPU" instance=ExtResource("5_0fomt")]
+position = Vector2(8.99999, -80)
+scale = Vector2(0.675, 0.675)
+next_scene_path = "res://world/cpu.tscn"
+player_spawn_location = Vector2(26, 5)
+
+[node name="GPU" type="StaticBody2D" parent="ysort"]
+position = Vector2(155, -125)
+metadata/_edit_group_ = true
+
+[node name="GPU" type="Sprite2D" parent="ysort/GPU"]
+position = Vector2(-2.23361, -67.8538)
+rotation = 3.14159
+scale = Vector2(0.35, -0.35)
+texture = ExtResource("6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ysort/GPU"]
+position = Vector2(53.2859, 4.35097)
+shape = SubResource("3")
+
+[node name="RAM1" type="StaticBody2D" parent="ysort"]
+position = Vector2(-360, 47)
+
+[node name="RAM1" type="Sprite2D" parent="ysort/RAM1"]
+position = Vector2(103.231, -24.053)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4")
+
+[node name="ColorRect2" type="ColorRect" parent="ysort/RAM1"]
+offset_top = 6.0
+offset_right = 207.0
+offset_bottom = 9.0
+color = Color(0.0901961, 0.0901961, 0.0901961, 1)
+
+[node name="CircuitDoor2" type="Sprite2D" parent="ysort/RAM1"]
+position = Vector2(198.855, -6.87)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("10_jdw6k")
+offset = Vector2(2.34, 0)
+
+[node name="CircuitDoor" type="Sprite2D" parent="ysort/RAM1"]
+position = Vector2(6.415, -6)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("10_jdw6k")
+offset = Vector2(2.34, 0)
+flip_h = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ysort/RAM1"]
+polygon = PackedVector2Array(12, 9, 195, 8, 195, 3, 200, 4, 202, 7, 205, 7, 205, 0, 0, 0, 0, 7, 4, 7, 6, 3, 12, 3)
+
+[node name="SsdDoor" type="Sprite2D" parent="ysort"]
+position = Vector2(-557.03, 51)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("10_jf4r1")
+offset = Vector2(-4.55176, -48.9655)
+
+[node name="SSD" type="StaticBody2D" parent="ysort"]
+position = Vector2(-554, 56)
+
+[node name="Sprite2D" type="Sprite2D" parent="ysort/SSD"]
+position = Vector2(-43, -15)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("10_shgur")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ysort/SSD"]
+position = Vector2(-53.31, -8)
+polygon = PackedVector2Array(-50.69, 9, 44, 9, 44, 7, 35.31, 7, 35.31, 6, 49.31, 6, 52, 9, 56, 9, 56, -2, -50.69, -2)
+
+[node name="InfoPanel_ram" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(-149, 51)
+text = "See on maja nimega RAM (random acces memory) - muutmälu.Muutmälu on arvuti lühiajaline mälu, kus on andmed ainult siis, kui arvuti on sisse lülitatud. Muutmälusse tulevad andmed SSD-kettalt ja muutmälus olevaid andmeid kasutab protsessor (CPU). Kui arvuti välja lülitada, lähevad muutmälus olevad andmed kaotsi, juhul kui kasutaja neid püsimällu (SSD) ei salvesta."
+sprite = "res://world/blue_sign.png"
+
+[node name="InfoPanel_ram2" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(-373, 52)
+text = "See on maja nimega RAM (random acces memory) - muutmälu.Muutmälu on arvuti lühiajaline mälu, kus on andmed ainult siis, kui arvuti on sisse lülitatud. Muutmälusse tulevad andmed SSD-kettalt ja muutmälus olevaid andmeid kasutab protsessor (CPU). Kui arvuti välja lülitada, lähevad muutmälus olevad andmed kaotsi, juhul kui kasutaja neid püsimällu (SSD) ei salvesta."
+sprite = "res://world/blue_sign.png"
+
+[node name="InfoPanel_ssd" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(-547, 57)
+text = "See on maja nimega SSD (solid-state drive) - pooljuhtketas. Pooljuhtketas ehk SSD-ketas on andmesalvesti ning hoiustab kõiki arvutis olevaid andmeid ja arvuti operatsioonisüsteemi (nt Windows, Linux). See on arvuti püsimälu, kus andmed säilivad ka siis, kui arvuti välja lülitatakse."
+sprite = "res://world/blue_sign.png"
+
+[node name="InfoPanel_cpu" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(193, 41)
+text = "See on maja nimega  CPU (central processing unit) - protsessor.Protsessor on arvuti aju. See loeb infot muutmälust (RAM) ja täidab masinakeeles käske, mida käivitatud programmid talle annavad. Masinakeel koosneb ainult kahendarvudest."
+sprite = "res://world/blue_sign.png"
+
+[node name="InfoPanel_gpu" parent="ysort" instance=ExtResource("8_g0il1")]
+position = Vector2(151, -112)
+text = "See on maja nimega GPU (graphics processing unit) - videokaart.Videokaart on laiendusplaat, mis võimaldab arvutil kuvada ekraanile teksti ja pilte. Arvuti suudab seda ka ainult protsessori (CPU) abil teha, aga videokaardid kiirendavad Windowsi programmide ja 3D-graafika kuva. "
+sprite = "res://world/blue_sign.png"
+
+[node name="Icon" type="Sprite2D" parent="ysort"]
+visible = false
+position = Vector2(70, 48)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_2u4a8")
+
+[node name="items" type="Node2D" parent="ysort"]
+y_sort_enabled = true
+
+[node name="Train" parent="ysort" instance=ExtResource("13_va68u")]
+position = Vector2(-103, 51)
+
+[node name="player" parent="ysort" instance=ExtResource("3")]
+position = Vector2(-127, 74)
+
+[node name="player2" parent="ysort" instance=ExtResource("15_db48h")]
+visible = false
+position = Vector2(266, 163)
+script = null
+
+[node name="Portal" parent="." instance=ExtResource("5_0fomt")]
+position = Vector2(-196, 49)
+next_scene_path = "res://world/ram.tscn"
+player_spawn_location = Vector2(312, 171)
+
+[node name="Portal5" parent="." instance=ExtResource("5_0fomt")]
+position = Vector2(-354, 49)
+next_scene_path = "res://world/ram.tscn"
+player_spawn_location = Vector2(8, 172)
+
+[node name="Portal2" parent="." instance=ExtResource("5_0fomt")]
+position = Vector2(197, 30)
+scale = Vector2(0.6, 0.6)
+next_scene_path = "res://world/cpu.tscn"
+player_spawn_location = Vector2(94, 177)
+
+[node name="Portal3" parent="." instance=ExtResource("5_0fomt")]
+position = Vector2(-598, 50)
+next_scene_path = "res://world/ssd.tscn"
+player_spawn_location = Vector2(464, 171)
+
+[node name="world_collision" type="Node2D" parent="."]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="world_collision"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world_collision/StaticBody2D"]
+polygon = PackedVector2Array(-706, -294, -713, 163, 334, 164, 335, -294, -706, -294, -726, -322, 358, -324, 358, 186, -735, 188, -727, -321)

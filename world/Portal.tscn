@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://byvj1cfh1su7t"]
+
+[ext_resource type="Script" path="res://world/Portal.gd" id="1_38ieg"]
+
+[sub_resource type="RectangleShape2D" id="2"]
+size = Vector2(34.1875, 5.125)
+
+[node name="Portal" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_38ieg")
+
+[node name="Portal_collision" type="CollisionShape2D" parent="."]
+position = Vector2(16.9063, 2.4375)
+shape = SubResource("2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

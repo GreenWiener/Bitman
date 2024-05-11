@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7t3811iosaup"]
+
+[ext_resource type="Texture2D" uid="uid://culvphqdq5tnt" path="res://world/gray_lockers.png" id="1_bdhep"]
+[ext_resource type="Script" path="res://world/ram-lockers.gd" id="3_dqedq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pdjxn"]
+texture = ExtResource("1_bdhep")
+texture_region_size = Vector2i(75, 75)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qq608"]
+tile_size = Vector2i(75, 75)
+sources/0 = SubResource("TileSetAtlasSource_pdjxn")
+
+[node name="ram-lockers" type="TileMap"]
+scale = Vector2(0.1, 0.1)
+tile_set = SubResource("TileSet_qq608")
+format = 2
+layer_0/tile_data = PackedInt32Array(1245187, 0, 0, 1245188, 0, 0, 1245189, 0, 0, 1245191, 0, 0, 1245190, 0, 0, 1245192, 0, 0, 1245193, 0, 0, 1245194, 0, 0, 1245197, 0, 0, 1245198, 0, 0, 1245199, 0, 0, 1245200, 0, 0, 1245201, 0, 0, 1245202, 0, 0, 1245203, 0, 0, 1245204, 0, 0, 1048596, 0, 0, 1048595, 0, 0, 1048594, 0, 0, 1048593, 0, 0, 1048592, 0, 0, 1048591, 0, 0, 1048590, 0, 0, 1048589, 0, 0, 1048586, 0, 0, 1048585, 0, 0, 1048584, 0, 0, 1048583, 0, 0, 1048582, 0, 0, 1048581, 0, 0, 1048580, 0, 0, 1048579, 0, 0)
+script = ExtResource("3_dqedq")
