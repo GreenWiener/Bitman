@@ -285,14 +285,17 @@ func open_box(box_item): # kasti avamine
 func store_box():
 	print("store1")
 	if Global.in_item_area != "box1" and Global.in_item_area != "box2":
-		print("store2")
-		
-		Global.despawn_item(Global.in_item_area)
-		Global.box_item = Global.in_item_area
-		Global.holding_item_name = "box1"
-		Global.item_name = "box1"
-		item_sprite.texture = load("res://world/box1.png")
-		$"skeleton/player-arm2".add_child(item_sprite)
+		if Global.in_item_area == "redel":
+			Global.PopUpText("bruh", "player")
+		else:
+			print("store2")
+			
+			Global.despawn_item(Global.in_item_area)
+			Global.box_item = Global.in_item_area
+			Global.holding_item_name = "box1"
+			Global.item_name = "box1"
+			item_sprite.texture = load("res://world/box1.png")
+			$"skeleton/player-arm2".add_child(item_sprite)
 	
 	
 
