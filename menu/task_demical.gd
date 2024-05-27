@@ -11,7 +11,7 @@ func _ready():
 	demical_row.hide_pluss()
 	
 
-func _process(delta):
+func _process(_delta):
 	# binaararvu teksti panemine
 	if Global.task_bin_num == null:
 		$ScrollContainer/GridContainer/num_placeholder/binary_num.text = ""
@@ -99,6 +99,9 @@ func _on_kontroll_pressed():
 			Global.bin_task_completed_last = calculated_answer
 			Global.bin_tasks_completed.append(calculated_answer)
 			
+			if Global.helparrow_state == "ssd_menu":
+				Global.remove_HelpArrow(self)
+			
 			# kapi koodi itemi andmine kätte
 			Global._player.hold_item("kapi_kood1 " + str(calculated_answer))
 			calculated_answer = 0
@@ -113,8 +116,10 @@ func _on_kontroll_pressed():
 
 func _on_example_btn_pressed():
 	$Example.show()
+	#hide_helparrow()
+	if Global.helparrow_state == "ssd_menu":
+		Global.remove_HelpArrow(self)
 
 func _on_close_example_btn_pressed():
 	$Example.hide()	
-
 

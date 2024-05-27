@@ -13,7 +13,7 @@ func _on_body_entered(body):
 		print("item!")
 		##player = body
 		##player_instance.in_interact_area = true
-		
+
 		##body.get_node("skeleton/player-arm2").add_child(item_texture)
 		#print(interact_instance.get_child(1).get_child(0))
 		#interact_instance.get_child(1).text = text

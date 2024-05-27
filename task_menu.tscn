@@ -85,6 +85,7 @@ label_settings = SubResource("LabelSettings_6oow2")
 horizontal_alignment = 1
 
 [node name="new_task_btn" type="Button" parent="PanelContainer/Task_Panel"]
+visible = false
 layout_mode = 0
 offset_left = 68.6619
 offset_top = -0.31498

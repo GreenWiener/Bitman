@@ -38,7 +38,12 @@ func _ready():
 	if self.scale.x == -1:
 		$interaction_label.scale.x = -0.12
 
-func _physics_process(delta): # E interaction
+func _physics_process(_delta): # E interaction
+	if Input.is_action_pressed("Interact_e"):
+		$interaction_label.modulate = "00ff47" # green
+	else:
+		$interaction_label.modulate = "ffffff" # white
+	
 	if player_in_menu == true and Input.is_action_just_released("Interact_e"):
 		print("close dialog.")
 		player_in_menu = false

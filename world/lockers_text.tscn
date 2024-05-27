@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://lvlm623k1nyn"]
+
+[ext_resource type="Script" path="res://world/lockers_text.gd" id="1_y8pn1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xceen"]
+draw_center = false
+
+[node name="Control" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 58.0
+offset_bottom = 26.0
+script = ExtResource("1_y8pn1")
+
+[node name="lockers_text" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.115
+anchor_bottom = 1.0
+offset_right = 869.33
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xceen")
+
+[node name="Label" type="Label" parent="lockers_text"]
+layout_mode = 2
+text = "chrome_exe"

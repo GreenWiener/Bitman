@@ -2,37 +2,33 @@ extends Control
 
 var in_pausemenu = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Global._pause_menu = self
 	$HSlider.value = AudioPlayer.music_volume
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_action_just_released("Pause"):
-		Global.player_in_menu = true
+func _process(_delta):
+	if Input.is_action_just_released("Pause"): # klahvi TAB vahjutamisel
+		Global.player_in_menu = true # mängijal on menüü avatud
 		in_pausemenu = true
-		self.show()
-	if Input.is_action_just_released("Close") and in_pausemenu == true:
-		Global.player_in_menu = false
+		self.show() # menüü näitamine
+	if Input.is_action_just_released("Close") and in_pausemenu == true: # klahvi ESC vahjutamisel
+		Global.player_in_menu = false # mängijal pole menüü avatud
 		in_pausemenu = false
-		self.hide()
+		self.hide() # menüü peitmine
 
 
-func show_pause_menu():
-	Global.player_in_menu = true
-	self.show()
+func show_pause_menu(): # pausi nupu vajutamisel
+	Global.player_in_menu = true # mängijal on menüü avatud
+	self.show() # menüü näitamine
 
+func _on_continue_pressed(): # "Jätka" nupu vajutamisel
+	Global.player_in_menu = false # mängijal pole menüü avatud
+	self.hide() # menüü peitmine
 
-func _on_continue_pressed():
-	Global.player_in_menu = false
-	self.hide()
+func _on_exit_pressed(): # "Salvesta ja sulge" nupu vajutamisel
+	SaveGame.save_game() # salvesta mäng
+	get_tree().quit() # sulge mäng
 
-var save_script = load("res://SaveData.gd")
-func _on_exit_pressed():
-	SaveGame.save_game()
-	get_tree().quit()
+func _on_h_slider_value_changed(value): # muusika helitugevuse slideri liigutamisel
+	AudioPlayer.set_music_volume(value) # helitugevus = liuguri väärtus
 
-
-func _on_h_slider_value_changed(value):
-	AudioPlayer.set_music_volume(value)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ccm2vdp5io3vp"]
+[gd_scene load_steps=30 format=3 uid="uid://ccm2vdp5io3vp"]
 
 [ext_resource type="Texture2D" uid="uid://70yi3w6ahvk" path="res://player/player.png" id="1"]
 [ext_resource type="Script" path="res://player/player.gd" id="2"]
@@ -20,6 +20,7 @@
 [ext_resource type="StyleBox" uid="uid://d3nqr02kffsik" path="res://menu/btn_hover.tres" id="16_6jh02"]
 [ext_resource type="Texture2D" uid="uid://dre0bh0w5b3sk" path="res://menu/tasks_icon.png" id="17_24107"]
 [ext_resource type="Shader" path="res://player/vignette.gdshader" id="18_n6w21"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="21_ih24a"]
 [ext_resource type="Texture2D" uid="uid://cgm7vmm1312tm" path="res://20240505152703.png" id="21_lxtp5"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
@@ -286,6 +287,10 @@ grow_horizontal = 1
 grow_vertical = 1
 pivot_offset = Vector2(0, 0)
 size_flags_horizontal = 4
+
+[node name="HelpArrow" parent="CanvasLayer" instance=ExtResource("21_ih24a")]
+visible = false
+position = Vector2(298.239, 26.2217)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

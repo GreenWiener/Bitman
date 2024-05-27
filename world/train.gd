@@ -22,7 +22,6 @@ func _physics_process(delta):
 	
 	if Global.train_driving == true and speed_num < 40:
 		speed_num += 0.07
-		print(speed_num)
 	
 	if Global.train_driving == true and Global.player_in_menu != true:
 		
@@ -36,7 +35,6 @@ func _physics_process(delta):
 
 func _on_stop_collision_area_entered(area):
 	if "train_stop_area" in area.name:
-		print("sTOP YHE THRAION: ", area)
 		Global.train_driving = false
 		Global.next_train_direction = true
 		##Global.train_direction = !Global.train_direction
@@ -49,7 +47,6 @@ func _on_stop_collision_area_entered(area):
 
 var doors_open = false
 func interact_doors():
-	print('opening doors')
 	var tween = self.create_tween()
 	var tween2 = self.create_tween()
 	if doors_open == false:

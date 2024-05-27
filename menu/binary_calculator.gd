@@ -1,14 +1,10 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	#print(0b10)
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func from2to10(number): # binaararvu teisendamine kümnendarvuks
@@ -40,7 +36,6 @@ func from10to2(number): # kümnendarvu teisendamine binaararvuks
 		
 	$binaararv.text = str(binaararv.reverse())
 	
-
 
 
 

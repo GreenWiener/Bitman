@@ -4,6 +4,8 @@ extends Node2D
 @export_file var panel_scene = ""
 #@onready var panel_instance = load(panel_scene).instantiate() ##
 
+var reload_queued = false
+var helparrow_added = false
 
 #var interact_scene = load("res://menu/InteractText.tscn")
 #var player_scene = load("res://player/player.tscn")
@@ -23,7 +25,7 @@ func _ready():
 	#var panel_instance = load(panel_scene).instantiate()
 	panel_instance = load(panel_scene).instantiate()
 
-func _physics_process(delta): # E interaction
+func _physics_process(_delta): # E interaction
 	#print(Global.player_in_menu)
 	#print(Global.player_in_menu)
 	if Global.player_in_menu == true:
@@ -31,6 +33,10 @@ func _physics_process(delta): # E interaction
 			print("close panel: ", panel_instance)
 			Global.player_in_menu = false
 			Global._player.get_node("CanvasLayer").remove_child(panel_instance) #player
+			if reload_queued == true:
+				reload_queued = false
+				reload_gui()
+			
 
 	elif in_interact_area == true && Input.is_action_just_released("Interact_e"):
 		print("open panel: ", panel_instance)
@@ -40,7 +46,12 @@ func _physics_process(delta): # E interaction
 		
 		if panel_scene == "res://menu/ram_menu.tscn":
 			panel_instance.reload_files()
-	
+		
+		
+		if panel_scene == "res://menu/task_demical.tscn" and Global.helparrow_state == "ssd_menu" and helparrow_added == false:
+			Global.add_HelpArrow(panel_instance, panel_instance.get_node("example_btn").position - Vector2(9,-8))
+			helparrow_added = true
+
 	if self.scale.x < 0:
 		$pickup_label.scale.x = -0.12
 	else:
@@ -70,4 +81,4 @@ func _on_area_2d_body_exited(body):
 func reload_gui(): # # # ??????
 	panel_instance.queue_free()
 	panel_instance = load(panel_scene).instantiate()
-	print("> reloading ssd task gui")
+	print("> reloading task gui")

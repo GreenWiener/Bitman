@@ -2,7 +2,6 @@ extends HBoxContainer
 
 @export var first_row : bool
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.task_binary_rows.append(self)
 	
@@ -13,11 +12,8 @@ func _ready():
 
 func remove_row_from_list():
 	Global.task_binary_rows.remove_at(len(Global.task_binary_rows)-1)
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
 
 func hide_arrow():
 	$TaskArrow.hide()

@@ -182,7 +182,7 @@ item_name = "redel"
 [node name="Ladder_wall" type="StaticBody2D" parent="."]
 
 [node name="wall_collision" type="CollisionPolygon2D" parent="Ladder_wall"]
-polygon = PackedVector2Array(0, 149.4, 468, 149.4, 468, 121, 0, 121)
+polygon = PackedVector2Array(0, 149.4, 457, 149.4, 457, 121, 0, 121)
 
 [node name="wall_collision_clipped" type="CollisionPolygon2D" parent="Ladder_wall"]
 polygon = PackedVector2Array(8, 106, 3, 118, 16, 117, 16, 109)

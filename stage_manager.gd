@@ -6,7 +6,8 @@ extends CanvasLayer
 func _ready():
 	get_node("ColorRect").hide()
 
-func changeScene(stage_path): ## stseeni muutmise funktsioon
+func changeScene(stage_path): ## stseeni vahetamise funktsioon
+	print("========== Stseen -> ", stage_path, " ==========")
 	Global.item_bodies_list = []
 	get_node("ColorRect").show()
 	get_node("AnimationPlayer").play("TransIn") # animatsiooni "TransIn" mängimine

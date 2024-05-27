@@ -16,6 +16,8 @@ bg_color = Color(0.164706, 0, 0.803922, 0.419608)
 collision_layer = 4
 collision_mask = 6
 script = ExtResource("1_3eal6")
+item_name = null
+box_item = null
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(0, 2.34375)
@@ -27,16 +29,8 @@ offset = Vector2(4.17233e-07, -17.3611)
 position = Vector2(-0.00390637, 0.00390625)
 shape = SubResource("2")
 
-[node name="Texts" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="name_label" type="Label" parent="Texts"]
-visible = false
+[node name="name_label" type="Label" parent="."]
 z_index = 1
-layout_mode = 0
 offset_left = -44.3341
 offset_top = -10.8352
 offset_right = 991.666
@@ -48,10 +42,9 @@ theme_override_fonts/font = ExtResource("3_c5ib2")
 theme_override_font_sizes/font_size = 50
 horizontal_alignment = 1
 
-[node name="pickup_label" type="Label" parent="Texts"]
+[node name="pickup_label" type="Label" parent="."]
 visible = false
 z_index = 1
-layout_mode = 0
 offset_left = -6.11589
 offset_top = -5.55681
 offset_right = 95.8841

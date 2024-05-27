@@ -29,7 +29,15 @@ func _ready():
 	else:
 		$interaction_label.position = text_pos
 	
-func _physics_process(delta):
+func _physics_process(_delta):
+	if Input.is_action_pressed("Interact_e"):
+		if type == "train_start" and Global._train.doors_open == true or type == "train_start" and Global.next_train_direction == true or type == "kast" and Global.player_holding_item == false:
+			$interaction_label.modulate = "ff0047" # red
+		else:
+			$interaction_label.modulate = "00ff47" # green
+	else:
+		$interaction_label.modulate = "ffffff" #white
+	
 	if Input.is_action_just_released("Interact_e") and in_interact_area == true:
 		
 		if type == "kast" and Global.player_holding_item == true:
@@ -50,9 +58,10 @@ func _physics_process(delta):
 					AudioPlayer.play_music_train()
 				else:
 					print("Ei saa praegu sõita!")
+					Global.PopUpText("Ei saa praegu sõita!", "player")
 			else:
 				print("Sulge rongi uksed enne sõitma hakkamist!")
-	
+				Global.PopUpText("Sulge uksed!", "player")
 	
 	if type == "train_doors" and in_interact_area == true:
 		if Global._train.doors_open == true:
@@ -85,7 +94,7 @@ func _on_area_entered(area):
 	if area is Item:
 		if type == "kast2":
 			print("item kontroll:", area)
-			if (area.box_item == Global.deliver_cpu_item and Global.deliver_cpu_item != null) or area.box_item == null:
+			if (area.box_item == Global.deliver_cpu_item and Global.deliver_cpu_item != null) or area.box_item == "yes":
 				##Global.task_cpu_finished = true
 				print("Õige faili info!")
 				Global.task_dec_num = randi_range(1, 63)

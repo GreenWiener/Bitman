@@ -1,18 +1,10 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$ScrollRows/Rows/task_binary_row.hide_arrow() # jooksuta task_binary_row.gd skriptis funktsioon hide_arrow()
 	$ScrollRows/Rows/add_row_btn/add_row_button/remove_row_button.hide() # peida nupp
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-
+	#Global.task_binary_rows = []
 
 
 func _on_add_row_btn_pressed():
@@ -30,11 +22,9 @@ func _on_remove_row_button_pressed():
 		$ScrollRows/Rows/add_row_btn/add_row_button/remove_row_button.hide()
 
 
-	
-
-
 
 func check_answer():
+	var player_answer
 	var row_answers = []
 	var correct_answer = []
 	
@@ -42,7 +32,7 @@ func check_answer():
 	for i in Global.task_binary_rows: 
 		row_answers.append(i.get_row_answer())
 	row_answers.reverse()
-	var player_answer = "".join(row_answers) # join liidab listi elemendid üheks stringiks
+	player_answer = "".join(row_answers) # join liidab listi elemendid üheks stringiks
 	
 	
 	# õige vastuse arvutamine #
@@ -110,6 +100,7 @@ func _on_kontroll_pressed():
 
 var entered_answer
 func _on_vastus_text_changed(new_text):
+	print(new_text)
 	entered_answer = new_text
 
 

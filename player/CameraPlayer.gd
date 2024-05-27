@@ -23,25 +23,29 @@ func pan_default():
 	tween.tween_property(self, "position", Vector2(0,-4), 0.3)
 
 func zoom_in():
-	var tween = self.create_tween()
+	#var tween = self.create_tween()
 	if self.zoom >= Vector2(3,3) and self.zoom < Vector2(8,8):
+		var tween = self.create_tween()
 		print("1")
 		tween.tween_property(self, "zoom", self.zoom + Vector2(1,1), 0.3)
 	elif self.zoom < Vector2(3,3):
+		var tween = self.create_tween()
 		tween.tween_property(self, "zoom", self.zoom + Vector2(2,2), 0.3)
 		print("2")
-	
+
 
 func zoom_out():
-	var tween = self.create_tween()
+	#var tween = self.create_tween()
 	if self.zoom >= Vector2(3,3) and self.zoom < Vector2(8,8):
+		var tween = self.create_tween()
 		tween.tween_property(self, "zoom", self.zoom - Vector2(2,2), 0.3)
 		print("1")
 	elif self.zoom >= Vector2(8,8):
+		var tween = self.create_tween()
 		tween.tween_property(self, "zoom", self.zoom - Vector2(4,4), 0.3)
 		print("2")
 
-func _process(delta):
+func _process(_delta):
 	Global.camera_zoom = self.zoom
 	
 	if Global.player_holding_item == true:

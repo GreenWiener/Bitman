@@ -29,6 +29,6 @@ func set_music_volume(volume):
 		music_volume = -80
 
 
-func _process(delta):
+func _process(_delta):
 	if playing == false:
 		_play_music(theme_music)

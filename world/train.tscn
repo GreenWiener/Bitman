@@ -92,7 +92,6 @@ scale = Vector2(2.22222, 2.22222)
 text = "ava uksed"
 text_2 = "sulge uksed"
 type = "train_doors"
-text_pos = Vector2(3.855, -1.757)
 
 [node name="interact-area2" parent="body" instance=ExtResource("5_f1clu")]
 position = Vector2(35.5556, 3.33333)

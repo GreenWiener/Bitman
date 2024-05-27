@@ -21,7 +21,6 @@ config/icon="res://icon.png"
 
 Global="*res://Global.gd"
 StageManager="*res://stage_manager.tscn"
-SaveData="*res://SaveData.gd"
 AudioPlayer="*res://audio/audio_player.tscn"
 
 [display]

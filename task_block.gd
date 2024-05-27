@@ -7,23 +7,23 @@ var task_started = false
 var finished_task = false
 
 
-func _process(delta):
+func _process(_delta):
 	# locate-SSD-info ülesande lõpetamine
 	if "locate-SSD-info" in task_type and Global.task_ssd_finished == true and finished_task == false:
 		set_task_finished()
-		Global.finished_task = true ###?
+		Global.finished_task = true
 		Global.task_ssd_finished = false
-		##Global.bin_task_finished = 0 ###
 		Global.task_bin_num = null ###
 		Global.bin_task_completed_last = null ###
 		Global.task_ssd_done = task_type
 		Global.deliver_ram_item = Global.box_item
 		Global.task_menu_info_dict[task_type][2] = "finished"
 		Global._task_menu.new_task("deliver-SSD-info", "started")
+		Global.add_HelpArrow(Global._player.get_node("CanvasLayer"), Global._player.get_node("CanvasLayer/task_btn").position - Vector2(10,-7))
 	
 	if "deliver-SSD-info" in task_type and Global.task_ram_finished == true and finished_task == false:
 		set_task_finished()
-		Global.finished_task = true ##?
+		Global.finished_task = true
 		Global.task_ram_finished = false
 		Global.task_ram_done = task_type
 		Global.delivered_ram_items.append(Global.deliver_ram_item)
@@ -32,7 +32,7 @@ func _process(delta):
 		Global._task_menu.new_task("deliver-RAM-info", "started")
 	
 	if "deliver-RAM-info" in task_type and Global.task_cpu_finished == true and finished_task == false:
-		Global.finished_task = true ##?
+		Global.finished_task = true
 		Global.task_cpu_finished = false
 		set_task_finished()
 		Global.deliver_ram_item = null
@@ -41,6 +41,8 @@ func _process(delta):
 		Global.task_cpu_done = task_type
 		Global.task_ongoing = false
 		Global.task_menu_info_dict[task_type][2] = "finished"
+		Global._controlpanel.reload_queued = true
+		Global.task_dec_num = ""
 		Global._task_menu.new_task("locate-SSD-info", "new")
 
 
@@ -71,6 +73,8 @@ func _on_yes_btn_pressed():
 	$yes_or_no.hide()
 	if task_started == false: # and Global.task_bin_num == null
 		start_task()
+		if Global.helparrow_state == "taskblock":
+			Global.remove_HelpArrow(Global._player.get_node("CanvasLayer/task_menu"))
 	else:
 		if task_started == false: # and Global.task_bin_num != null
 			$ok.text = "    Oled juba ühe ülesande alustanud!"
@@ -86,6 +90,8 @@ func _on_no_btn_pressed():
 
 func _on_ok_btn_pressed():
 	$ok.hide()
+	if Global.helparrow_state == "done_1st_taskblock":
+		Global.remove_HelpArrow(Global._player.get_node("CanvasLayer/task_menu"))
 	if finished_task == true:
 		print("+1 points")
 		Global.player_task_level_points += 10
@@ -127,13 +133,10 @@ func calc_decimal_num(bin_num):
 	return calculated_dec_num
 
 
-func set_task_text(set_text, set_task_type, set_task_info):
-	print("+@+@+@+@type: ", set_task_type)
-	print("+@+@+@+@info: ", set_task_info)
+func set_task_text(set_the_text, set_task_type, set_task_info):
 	task_type = set_task_type
 	task_info = set_task_info
-	self.text = set_text
-	print("setting self text")
+	self.text = set_the_text
 
 
 func set_task_started():
@@ -153,13 +156,16 @@ func giveup_task():
 
 	if "locate-SSD-info" in task_type:
 		Global.task_ssd_pooleli = ""
+		Global.task_ssd_finished = false
 		Global.task_ssd_done = ""
 		Global.task_bin_num = null #??
 	if "deliver-SSD-info" in task_type:
 		Global.task_ram_pooleli = ""
+		Global.task_ram_finished = false
 		Global.task_ram_done = ""
 	if "deliver-RAM-info" in task_type:
 		Global.task_cpu_pooleli = ""
+		Global.task_cpu_finished = false
 		Global.task_cpu_done = ""
 	queue_free()
 

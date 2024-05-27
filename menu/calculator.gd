@@ -25,16 +25,10 @@ func from2to10(number):
 	#print(kumnendarv)
 	
 	
-	
-	
-	
+
 
 func _number_buttons(btn):
 	$LineEdit.text += btn.name
-
-
-func _process(delta):
-	pass
 
 
 

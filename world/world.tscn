@@ -161,6 +161,7 @@ texture = ExtResource("1")
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ysort/CPU"]
+visible = false
 position = Vector2(-41.9399, -94.4887)
 polygon = PackedVector2Array(48.251, 96.1565, 80.9399, 96.4887, 80.9399, 86.4887, 97.9399, 86.4887, 97.9399, 96.4887, 127.446, 96.4214, 127.181, 11.9292, 73.2025, 12.3103, 72.9399, 18.4887, 51.9399, 18.4887, 51.4962, 12.4636, 47.9399, 12.4887)
 
@@ -270,7 +271,7 @@ y_sort_enabled = true
 position = Vector2(-103, 51)
 
 [node name="player" parent="ysort" instance=ExtResource("3")]
-position = Vector2(-127, 74)
+position = Vector2(-129, 74)
 
 [node name="player2" parent="ysort" instance=ExtResource("15_db48h")]
 visible = false
@@ -305,3 +306,6 @@ visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="world_collision/StaticBody2D"]
 polygon = PackedVector2Array(-706, -294, -713, 163, 334, 164, 335, -294, -706, -294, -726, -322, 358, -324, 358, 186, -735, 188, -727, -321)
+
+[node name="Portal4" parent="." instance=ExtResource("5_0fomt")]
+position = Vector2(214, 65)

@@ -10,7 +10,6 @@ var _save: SaveGame
 #var item_instance = load("res://world/item.tscn").instantiate()
 #var item_gd = load("res://world/item.gd")
 
-	
 
 func _ready() -> void:
 	Global._world = self # # Global skriptis muutuja _world määramine selleks maailmaks
@@ -89,9 +88,9 @@ func save_all_items():
 		#print($ysort.get_node("items")
 		#Global.save_items = false
 		#.save_item()
-	
-	
-	
+
+
+
 
 	#if Global.spawn_item == true:
 		#spawn_item()

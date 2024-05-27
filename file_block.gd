@@ -4,8 +4,6 @@ extends RichTextLabel
 
 var ram_file
 
-func _process(delta):
-	pass
 
 
 func _on_button_task_pressed():

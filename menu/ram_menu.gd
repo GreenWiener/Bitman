@@ -6,10 +6,8 @@ func _ready():
 	#Global.delivered_ram_items = ["chrome_exe", "vlc_exe", "edge_exe"]
 	
 	print("LOADED_ram_menu´´´ready´´´´´")
-	
 
-func _process(delta):
-	pass
+
 
 var selected_file
 var file_content
@@ -36,6 +34,7 @@ func select_file(the_file):
 
 func _on_take_info_btn_pressed():
 	if selected_file != "____________":
+		Global._player.opening_box = true
 		Global._player.hold_item(selected_file + " info")
 		print("võta ", selected_file, " info.")
 
@@ -49,8 +48,7 @@ func reload_files():
 			el.queue_free()
 	
 	# lisa kõik kapis olevad failid
-	print("!RELOAD_FILES!")
-	for el in Global.items_in_lockers:  # Global.delivered_ram_items
+	for el in Global.items_in_lockers:
 		print(el.item_name)
 		if "_exe" in el.item_name or "_file" in el.item_name:
 			var file_block = preload("res://file_block.tscn").instantiate()

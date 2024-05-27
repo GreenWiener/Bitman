@@ -1,26 +1,17 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Global._task_menu = self
 	load_tasks()
-	print("-------========-------========-------========-------========")
 	
 	if Global.task_menu_first_task == false or Global.task_menu_first_task == null:
 		new_task("locate-SSD-info", "new")
 		Global.task_menu_first_task = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#if Global.bin_task_finished ==  GREEN
-	pass
+#func _process(delta):
+#	if Global.bin_task_finished ==  GREEN
 
-#func _on_line_edit_text_submitted(new_text):
-	#if new_text == "vastus":
-		#print("Õige!")
-	#else:
-		#print("Vale!")
 
 var a_task_cooldown = false
 
@@ -43,22 +34,17 @@ func new_task(task, state):
 	# kindlad taskid
 	if random_task == "locate-SSD-info": #--------# SSD #--------------------------------#
 		var rand_index = randi_range(0, len(Global.locker_bin_num_list)-1)
-		print("BIN NUM LIST: ",len(Global.locker_bin_num_list))
 
-		if Global.locker_bin_num_list != []:
-			task_bin_num = Global.locker_bin_num_list[rand_index]
-			Global.locker_bin_num_list.remove_at(rand_index)
-			task_block.set_task_text(str("Mine võta SSD majast fail asukoha aadressiga kahendkoodis ", task_bin_num), unique_task_name, task_bin_num)
-			# ülesande salvestamine sõnastikku, stseeni uuesti laadimisel esitamiseks
-			Global.task_menu_info_dict[unique_task_name] = ["","",""]
-			Global.task_menu_info_dict[unique_task_name][0] = str("Mine võta SSD majast fail asukoha aadressiga kahendkoodis ", task_bin_num)
-			Global.task_menu_info_dict[unique_task_name][1] = task_bin_num
-			loendaja += 1
-			
-		else: ######################
-			task_block.set_task_text(str("Kõik SSD üledanded tehtud!"), random_task, "task_information")
+		task_bin_num = Global.locker_bin_num_list[rand_index]
+		Global.locker_bin_num_list.remove_at(rand_index)
+		task_block.set_task_text(str("Mine võta SSD majast fail asukoha aadressiga kahendkoodis ", task_bin_num), unique_task_name, task_bin_num)
+		# ülesande salvestamine sõnastikku, stseeni uuesti laadimisel esitamiseks
+		Global.task_menu_info_dict[unique_task_name] = ["","",""]
+		Global.task_menu_info_dict[unique_task_name][0] = str("Mine võta SSD majast fail asukoha aadressiga kahendkoodis ", task_bin_num)
+		Global.task_menu_info_dict[unique_task_name][1] = task_bin_num
+		loendaja += 1
+
 	elif random_task == "deliver-SSD-info": #--------# RAM #--------------------------------#
-		print("elif random_task == 'deliver-SSD-info'")
 		task_block.set_task_text(str("Vii ", Global.box_item, " RAM majja"), unique_task_name, loendaja)	
 		
 		Global.task_menu_info_dict[unique_task_name] = ["","",""]
@@ -66,7 +52,6 @@ func new_task(task, state):
 		Global.task_menu_info_dict[unique_task_name][1] = loendaja
 		loendaja += 1
 	elif random_task == "deliver-RAM-info": #--------# CPU #--------------------------------#
-		print("elif random_task == 'deliver-RAM-info'")
 		task_block.set_task_text(str("Vii ", Global.deliver_cpu_item, " CPU majja"), unique_task_name, loendaja)
 		
 		Global.task_menu_info_dict[unique_task_name] = ["","",""]
@@ -81,7 +66,6 @@ func new_task(task, state):
 
 
 func load_tasks():
-	print("load_tasks()")
 	for el in Global.task_menu_info_dict:
 		var task_block = preload("res://task_block.tscn").instantiate()
 		$PanelContainer/Task_Panel/ScrollContainer/VBoxContainer.add_child(task_block)
@@ -97,13 +81,14 @@ func load_tasks():
 		if Global.task_menu_info_dict[el][2] == "finished":
 			task_block.set_task_finished()
 			task_block.modulate = "6eff66" # hele-roheline
+		
 
 func random_binary_num():
 	var number_found = false
 	var randbin_nums
 	while number_found == false:
 		randbin_nums = ["1"]
-		for i in randi_range(1, 9):
+		for i in randi_range(1, 3): ##### !!! 1, 9
 			var temp = str(randi_range(0, 1))
 	 		
 			randbin_nums.append(temp)
@@ -123,7 +108,8 @@ func _on_new_task_btn_pressed():
 	new_task("random", "new")
 
 
-
+func toggle_newtask_btn():
+	$PanelContainer/Task_Panel/new_task_btn.visible = !$PanelContainer/Task_Panel/new_task_btn.visible
 
 
 

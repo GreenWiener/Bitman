@@ -18,7 +18,6 @@ func _ready():
 	
 	## GAME/SCENE STATE LOADER
 	if Global.RAM_item_name_list != []:
-		print("LOADING 'RAM' SCENE STATE")
 
 		for i in len(Global.RAM_item_name_list):
 			Global.spawn_item(Global.RAM_item_name_list[i], Vector2(Global.RAM_item_position_list[i]), Global.RAM_box_item_list[i])
@@ -38,7 +37,8 @@ func spawn_ram_items():
 
 
 func save_all_items():
-	print("CHILDREN:-:-:",$ysort/items.get_children())
+	#print("CHILDREN:-:-:",$ysort/items.get_children())
+	print("✅SAVING all RAM items✅")
 	for i in $ysort/items.get_children():
 		i.save_item()
 
@@ -57,3 +57,7 @@ func _on_drop_off_area_body_exited(body):
 		Global.in_BoxOpening_area = false
 
 
+
+
+func _on_button_pressed():
+	Global.PopUpText("SA LEIDSID SALAJASE NUPU!!!", "player")

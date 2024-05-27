@@ -4,8 +4,7 @@ var locker_file_label_dict = {}
 
 func _ready():
 	Global._lockers2 = self
-	if Global.lockers_loaded2 == false:
-		Global.lockers_loaded2 = true
+	Global.lockers_loaded2 = true
 	
 	Global.items_in_lockers = {}
 
@@ -13,8 +12,13 @@ func _ready():
 		#for i in range(0, 63):
 			#var kapp_text = "kapp"
 			#Global.locker2_info_list.append(kapp_text)
-	
-	#add_locker_labels()
+	#Global.locker_labels_dict[locker_text] = mouse_pos_int
+	#add_locker_labels() #??<<<<<!!
+	###print("==o==o==o==o==o==o==o==o==o==o==")
+	###for el in Global.locker_labels_dict:
+	###	#add_locker_labels(Global.locker_labels_dict[el])
+	###	print("%%%%%%%%LABELS: ", Global.locker_labels_dict[el])
+	reload_locker_labels()
 	
 	# kapi uksed on lahti/kinni stseeni alguses
 	for el in Global.locker_state_dict2:
@@ -26,16 +30,22 @@ func _ready():
 			#self.get_node(str(locker_file_label_dict[Vector2i(el)][0])).show()
 		if Global.locker_state_dict2[el][1] == "full":
 			set_cell(0, el, 0, Vector2i(1,0))
-		
-		#print("AFSASFASFAFS,:,: ", el)
-		
-		
-func _process(delta):
+
+
+func _process(_delta):
+	for el in Global.locker_labels_dict:
+		if el == null:
+			Global.locker_labels_dict.erase(el)
 	
+	var mouse_pos_resize = get_global_mouse_position()/7.5
+	var mouse_pos_int = (Vector2(int(mouse_pos_resize[0]), int(mouse_pos_resize[1])))
+	if self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(0,0) or self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(1,0):
+		for el in Global.locker_labels_dict:
+			if Global.locker_labels_dict[el][0] == mouse_pos_int:
+				el.scroll_anim()
+
 	if (Input.is_action_just_pressed("mb_left")) and Global.player_in_menu != true:
-		var mouse_pos_resize = get_global_mouse_position()/7.5
-		var mouse_pos_int = (Vector2(int(mouse_pos_resize[0]), int(mouse_pos_resize[1])))
-		
+
 		# ava kapi uks
 		if self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(0,0) or self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(1,0):
 			set_cell(0, mouse_pos_resize, 0, Vector2i(2,0))
@@ -45,43 +55,45 @@ func _process(delta):
 			#self.get_node(str(locker_file_label_dict[Vector2i(mouse_pos_int)][0])).hide()
 			#self.get_node(str(Global.locker_file_label_dict[Vector2i(mouse_pos_int)][0])).hide()
 			for el in Global.item_bodies_list:
-				if el != null:
-					el.update_item_visibility()
-					remove_locker_labels(mouse_pos_int)
+				el.update_item_visibility()
+				remove_locker_labels(mouse_pos_int)
 					
 			print("state: ", Global.locker_state_dict2)
-		
 		
 		# sulge kapi uks
-		elif self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(2,0):
-			Global.locker_state_dict2[mouse_pos_int][0] = "closed"
+		elif self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(2,0): #<<<<####################
 			#self.get_node(str(locker_file_label_dict[Vector2i(mouse_pos_int)][0])).show()
+			var popup_spawned = false
 			for el in Global.item_bodies_list:
-				if el != null:
+				if el.position == Vector2(mouse_pos_int.x *7.5 + 3.5, mouse_pos_int.y *7.5 + 4.8) and el.stacked_inlocker == true:
+					if popup_spawned == false:
+						popup_spawned = true
+						Global.PopUpText("Liiga palju asju!", "mouse")
+				elif el.position == Vector2(mouse_pos_int.x *7.5 + 3.5, mouse_pos_int.y *7.5 + 4.8) and el.item_name == "redel":
+						popup_spawned = true
+						Global.PopUpText("bruh", "mouse")
+			
+			if popup_spawned == false:
+				for el in Global.item_bodies_list:
+					Global.locker_state_dict2[mouse_pos_int][0] = "closed"
 					el.update_item_visibility()
-					#print("mouse_pos_resize-----:", mouse_pos_resize)
-					
-			
-			if Global.locker_state_dict2[mouse_pos_int][1] == "full":
-				set_cell(0, mouse_pos_resize, 0, Vector2i(1,0))
-				add_locker_labels(mouse_pos_int)
-			if Global.locker_state_dict2[mouse_pos_int][1] == "empty" or Global.locker_state_dict2[mouse_pos_int][1] == "":
-				set_cell(0, mouse_pos_resize, 0, Vector2i(0,0))
-			
+				if Global.locker_state_dict2[mouse_pos_int][1] == "full":
+					set_cell(0, mouse_pos_resize, 0, Vector2i(1,0))
+					add_locker_labels(mouse_pos_int)
+				if Global.locker_state_dict2[mouse_pos_int][1] == "empty" or Global.locker_state_dict2[mouse_pos_int][1] == "":
+						set_cell(0, mouse_pos_resize, 0, Vector2i(0,0))
+				
 			print("state: ", Global.locker_state_dict2)
 
 
-var locker_labels_dict = {}
 
 func remove_locker_labels(mouse_pos_int):
 	#for el in self.get_children():
 	for el in Global.items_in_lockers:
 		if el.item_pos_int == mouse_pos_int:
-			print("el.item_pos_int == mouse_pos_int")
-			for en in locker_labels_dict:
-				if locker_labels_dict[en] == mouse_pos_int:
-					print("locker_labels_dict[en] == mouse_pos_int")
-					locker_labels_dict.erase(en)
+			for en in Global.locker_labels_dict:
+				if Global.locker_labels_dict[en][0] == mouse_pos_int:
+					Global.locker_labels_dict.erase(en)
 					self.remove_child(en)
 					en.queue_free()
 
@@ -90,32 +102,36 @@ func add_locker_labels(mouse_pos_int):
 	for el in Global.items_in_lockers:
 		#print(el.item_pos_int, " ===|=== ", mouse_pos_int)
 		if el.item_pos_int == mouse_pos_int:
-			var locker_label =  Label.new()
-			locker_label.name = str(el.item_name)
-			locker_label.position = Vector2(((el.position.x * 10)-26), ((el.position.y * 10)-44))
-			locker_label.modulate = "8080f0"
-			locker_label.size.x = 70
-			locker_label.scale = Vector2(0.8,0.8)
-			locker_label.clip_text = true
-			#print("--LOCKER_LABEL.POSITION--", locker_label.position, " --name--", el.item_name)
-			self.add_child(locker_label)
-			locker_labels_dict[locker_label] = mouse_pos_int
-			print("add to locker_labels_dict: ", locker_labels_dict)
+			var locker_text = load("res://world/lockers_text.tscn").instantiate()
+			locker_text.position = Vector2(((el.position.x * 10)-26), ((el.position.y * 10)-44)) #get_global_mouse_position()
+			self.add_child(locker_text)
+			Global.locker_labels_dict[locker_text] = ["", "", ""]
+			Global.locker_labels_dict[locker_text][0] = mouse_pos_int
+			Global.locker_labels_dict[locker_text][1] = locker_text.position
+			
 			if "_exe" in el.item_name or "_file" in el.item_name:
-				locker_label.text = str(el.item_name)
+				locker_text.set_text(str(el.item_name),locker_text.color_file)
+				Global.locker_labels_dict[locker_text][2] = str(el.item_name)
+				
 			else:
-				locker_label.modulate = "f08080"
-				locker_label.text = "error!"
-		#Global.locker_state_dict2[mouse_pos_int][1] == "empty"
-		
-		
-		
-		#Global.locker_file_label_dict[el].append(loendur+1)
-		#Global.locker_file_label_dict[el].append(Global.locker_num_list[loendur])
-		#locker_num_dict[Global.locker_num_list[loendur]] = []
-		#locker_num_dict[Global.locker_num_list[loendur]].append(loendur+1)
-		#locker_num_dict[Global.locker_num_list[loendur]].append(el)
-		#Global.locker_info_dict2 = locker_num_dict
-		#loendur += 1
-	
-	
+				locker_text.set_text("error!",locker_text.color_error)
+				Global.locker_labels_dict[locker_text][2] = "error!"
+
+func reload_locker_labels():
+	#remove_locker_labels()
+	for el in Global.locker_labels_dict: # { <Freed Object>: [(30, 18), "chrome_exe"] }
+		if el == null:
+			var locker_text = load("res://world/lockers_text.tscn").instantiate()
+			locker_text.position = Global.locker_labels_dict[el][1]
+			self.add_child(locker_text)
+			Global.locker_labels_dict[locker_text] = ["", "", ""]
+			Global.locker_labels_dict[locker_text][0] = Global.locker_labels_dict[el][0]
+			Global.locker_labels_dict[locker_text][1] = Global.locker_labels_dict[el][1]
+			
+			if "_exe" in Global.locker_labels_dict[el][2] or "_file" in Global.locker_labels_dict[el][2]:
+				locker_text.set_text(str(Global.locker_labels_dict[el][2]),locker_text.color_file)
+				Global.locker_labels_dict[locker_text][2] = str(Global.locker_labels_dict[el][2])
+					
+			else:
+				locker_text.set_text("error!",locker_text.color_error)
+				Global.locker_labels_dict[locker_text][2] = "error!"
