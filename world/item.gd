@@ -21,10 +21,14 @@ var item_pos_int3
 func _ready():
 	Global.item_bodies_list.append(self)
 	if item_name != null:
-		if FileAccess.file_exists("res://world/" + item_name + ".png"):
+		#print(error_string(FileAccess.get_open_error()))
+		#if FileAccess.file_exists("res://world/" + item_name + ".png"):
+		if ResourceLoader.exists("res://world/" + item_name + ".png"):
 			$Icon.texture = load("res://world/" + item_name + ".png")
 		else:
-			$Icon.texture = load("res://world/item.png")
+			$Icon.texture = load("res://world/item2.png")
+	else:
+		$Icon.texture = load("res://world/item.png")
 
 	#else:
 	#	$Icon.texture = load("res://world/item.png") #############################################

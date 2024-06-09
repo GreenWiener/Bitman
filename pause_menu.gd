@@ -4,7 +4,7 @@ var in_pausemenu = false
 
 func _ready():
 	Global._pause_menu = self
-	$HSlider.value = AudioPlayer.music_volume
+	$MusicSlider.value = AudioPlayer.music_volume
 
 func _process(_delta):
 	if Input.is_action_just_released("Pause"): # klahvi TAB vahjutamisel

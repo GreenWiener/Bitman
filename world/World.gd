@@ -52,7 +52,8 @@ func _ready() -> void:
 
 ## SPAWN SPECIFIC ITEMS ON FIRST RUN
 func spawn_mobo_items():
-	Global.spawn_item("box1", Vector2(213,145), "empty")
+	#Global.spawn_item("box1", Vector2(213,145), "empty")
+	pass
 
 
 

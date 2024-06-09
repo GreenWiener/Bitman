@@ -16,7 +16,7 @@ func select_file(the_file):
 	selected_file = the_file
 	$Select_Panel/selected_label.text = the_file
 	$File_icon.texture = load("res://world/" + the_file + ".png")
-	if FileAccess.file_exists("res://menu/" + the_file + ".txt"):
+	if ResourceLoader.exists("res://menu/" + the_file + ".txt"):
 		file_content = FileAccess.open("res://menu/" + the_file + ".txt", FileAccess.READ)
 		$file_content.text = file_content.get_as_text()
 		$dotdotdot.show()

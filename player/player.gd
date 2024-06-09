@@ -21,8 +21,6 @@ func _ready() -> void: ## funktsioon, mis käivitub, stseen on ära laadinud
 	$CanvasLayer/vignette.show()
 	self.global_position = Global.player_inital_map_position # mängija asukoht stseeni alguses
 	
-	#$CanvasLayer/Label.text = str("pos: ",position.round(),"\nin_pickup_area: ",Global.in_pickup_area,", ",Global.item_name,"\nplayer_holding_item: ",Global.player_holding_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_item_name_list: ", Global.MOBO_item_name_list,"\nMOBO_item_position_list: ", Global.MOBO_item_position_list,"\nCPU_item_name_list: ", Global.CPU_item_name_list,"\nCPU_item_position_list: ", Global.CPU_item_position_list) # info ekraanil
-	$CanvasLayer/Label.text = str("WORLD: ",Global._world,"\nPOS: ",position.round(),"\nitem_name: ",Global.item_name,"\nbox_item: ",Global.box_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_box_item_list: ",Global.MOBO_box_item_list) # info ekraanil
 	refresh_item(Global.item_name, Global.box_item) # kontrollib mängija käes olevate asju
 
 	if Global.helparrow_state == "task":
@@ -40,11 +38,14 @@ const ACCELERATION = 300
 const FRICTION = 300
 
 
-
 func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu aeg, kui stseen on laetud
 	Global.player_position = position # mängija asukoht Global skriptis kasutamiseks
 	$CanvasLayer/Points.text = "Punktid: " + str(Global.player_task_level_points)
 	$CanvasLayer/Points2.text = "               " + str(Global.player_task_level_points)
+	
+	#$CanvasLayer/Label.text = str("pos: ",position.round(),"\nin_pickup_area: ",Global.in_pickup_area,", ",Global.item_name,"\nplayer_holding_item: ",Global.player_holding_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_item_name_list: ", Global.MOBO_item_name_list,"\nMOBO_item_position_list: ", Global.MOBO_item_position_list,"\nCPU_item_name_list: ", Global.CPU_item_name_list,"\nCPU_item_position_list: ", Global.CPU_item_position_list) # info ekraanil
+	$CanvasLayer/Label.text = str("WORLD: ",Global._world,"\nPOS: ",position.round(),"\nitem_name: ",Global.item_name,"\nbox_item: ",Global.box_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_box_item_list: ",Global.MOBO_box_item_list) # info ekraanil
+	
 	#print(get(bob2))
 	# liikumis klahvid ja loogika
 	var input_vector = Vector2.ZERO
@@ -224,7 +225,7 @@ func hold_item(item_name): ## eseme käes hoidmine
 		Global.holding_item_name = item_name
 		$"skeleton/player-arm2".add_child(item_sprite)
 		#item_sprite.set_texture(load("res://world/" + item_name + ".png"))
-		if FileAccess.file_exists("res://world/" + item_name + ".png"): # TEXTURE
+		if ResourceLoader.exists("res://world/" + item_name + ".png"): # TEXTURE
 			item_sprite.texture = load("res://world/" + item_name + ".png")
 		else:
 			item_sprite.texture = load("res://world/item.png")

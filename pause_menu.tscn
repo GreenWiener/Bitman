@@ -112,7 +112,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dp61b")
 theme_override_styles/hover = SubResource("StyleBoxFlat_fyjs1")
 text = "Salvesta ja sulge"
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="MusicSlider" type="HSlider" parent="."]
 layout_mode = 0
 offset_left = 139.805
 offset_top = 172.931
@@ -133,4 +133,4 @@ text = "muusika"
 
 [connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="MusicSlider" to="." method="_on_h_slider_value_changed"]

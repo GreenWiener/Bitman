@@ -203,6 +203,7 @@ shape = SubResource("RectangleShape2D_xrkhi")
 polygon = PackedVector2Array(0, 108, 320, 108, 320, 77, 0, 77)
 
 [node name="wall_collision_clipped" type="CollisionPolygon2D" parent="Ladder_wall"]
+visible = false
 polygon = PackedVector2Array(6, 40, 6, 50, 12, 53, 12, 45)
 
 [node name="Button" type="Button" parent="."]

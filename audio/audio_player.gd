@@ -25,8 +25,8 @@ func set_music_volume(volume):
 	music_volume = volume
 	volume_db = music_volume
 	if volume == -30:
-		volume_db = -80
-		music_volume = -80
+		volume_db = -100
+		music_volume = -100
 
 
 func _process(_delta):

@@ -14,7 +14,7 @@ func _ready():
 	if Global.spawn_ram_item == true: # items put in with code
 		Global.spawn_ram_item = false
 		spawn_ram_items()
-	
+		
 	
 	## GAME/SCENE STATE LOADER
 	if Global.RAM_item_name_list != []:

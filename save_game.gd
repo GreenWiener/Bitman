@@ -19,6 +19,7 @@ static func load_game(): # salvestatud info lugemine failist
 		return
 	
 	var load_file = FileAccess.open("user://savegame.save", FileAccess.READ)
+	print(load_file.get_path())
 	
 	while load_file.get_position() < load_file.get_length():
 		var json_string = load_file.get_line()

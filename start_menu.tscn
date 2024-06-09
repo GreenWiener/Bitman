@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dsuwa3ap8myxf"]
 
-[ext_resource type="Script" path="res://PlayButton.gd" id="1_ek4we"]
+[ext_resource type="Script" path="res://menu/StartMenu.gd" id="1_bx77b"]
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_knqfh"]
 [ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="1_kqsvj"]
 [ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="2_22tx3"]
@@ -24,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bx77b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0.815686, 0.992157, 1)
@@ -70,9 +71,8 @@ theme_override_fonts/font = ExtResource("3_4txm0")
 theme_override_styles/normal = ExtResource("4_blacn")
 theme_override_styles/hover = ExtResource("5_3eljs")
 text = "Mängi"
-script = ExtResource("1_ek4we")
 
-[node name="PlayButton2" type="Button" parent="CanvasLayer"]
+[node name="DemoButton" type="Button" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,9 +90,9 @@ theme = SubResource("Theme_08k3x")
 theme_override_fonts/font = ExtResource("3_4txm0")
 theme_override_styles/normal = ExtResource("4_blacn")
 theme_override_styles/hover = ExtResource("5_3eljs")
-text = "Seaded"
+text = "Demo"
 
-[node name="PlayButton3" type="Button" parent="CanvasLayer"]
+[node name="InfoButton" type="Button" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.784314)
 anchors_preset = 8
 anchor_left = 0.5
@@ -112,4 +112,6 @@ theme_override_styles/normal = ExtResource("4_blacn")
 theme_override_styles/hover = ExtResource("5_3eljs")
 text = "Info"
 
-[connection signal="pressed" from="CanvasLayer/PlayButton" to="CanvasLayer/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/DemoButton" to="." method="_on_demo_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InfoButton" to="." method="_on_info_button_pressed"]

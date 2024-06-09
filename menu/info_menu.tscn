@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdla1j162jydf"]
+
+[ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_xafw2"]
+[ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="2_8p6b4"]
+[ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="3_0qw88"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="4_adgk8"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="5_kc84b"]
+[ext_resource type="StyleBox" uid="uid://d3nqr02kffsik" path="res://menu/btn_hover.tres" id="6_5t2n3"]
+[ext_resource type="Script" path="res://menu/InfoBackButton.gd" id="7_j54kq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1b1yh"]
+shader = ExtResource("2_8p6b4")
+shader_parameter/vignette_intensity = 2.175
+shader_parameter/vignette_opacity = 0.167
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_cf322"]
+default_font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g33q8"]
+bg_color = Color(0, 0, 0, 0.32549)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0.6)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ar17"]
+line_spacing = -2.23
+
+[sub_resource type="LabelSettings" id="LabelSettings_5wk2n"]
+font = ExtResource("4_adgk8")
+
+[node name="Info_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0.815686, 0.992157, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 416.0
+offset_bottom = 234.0
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("1_xafw2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="vignette" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_1b1yh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0qw88")
+expand_mode = 1
+
+[node name="BackButton" type="Button" parent="vignette"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -152.0
+offset_top = -80.0
+offset_right = -122.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme = SubResource("Theme_cf322")
+theme_override_fonts/font = ExtResource("4_adgk8")
+theme_override_styles/normal = ExtResource("5_kc84b")
+theme_override_styles/hover = ExtResource("6_5t2n3")
+text = "<"
+script = ExtResource("7_j54kq")
+
+[node name="Label" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 22.0
+offset_right = 261.0
+offset_bottom = 155.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g33q8")
+
+[node name="text" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 325.0
+scale = Vector2(0.32, 0.32)
+text = "ComputerGame on õpetlik mäng, mille eesmärgiks on mängijale tutvustada arvutikomponente ja nende funktsioone. Selle käigus õpib mängija selgeks kahendkoodi teisendades arve kahendsüsteemist kümnendsüsteemi ja vastupidi.
+
+Mängu varasemaid/tulevaseid versioone saab allalaadida 
+Seal on üleval ka mängu lähtekood.
+
+Mäng on loodud mängumootoriga Godot.
+
+
+
+Selle mängu autor Magnus Pikksaar lõi selle mägnu Tartu Waldorfgümnaasiumi 11. klassi aastatööks. Autor alustas mängu programmeerimisega 2023. aasta oktroobris. Üldine osa mängust sai valmis 2024. aasta suveks. See on autori esimene täielikult lõpetatud mäng mängumootoris Godot."
+label_settings = SubResource("LabelSettings_6ar17")
+autowrap_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="Label"]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 48.0
+offset_right = 224.0
+offset_bottom = 71.0
+scale = Vector2(0.32, 0.32)
+text = "GitHub'ist"
+uri = "https://github.com/GreenWiener/ComputerGame/releases/"
+
+[node name="H1" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 75.0
+offset_bottom = 27.0
+scale = Vector2(0.525, 0.525)
+text = "Mängust"
+label_settings = SubResource("LabelSettings_5wk2n")
+
+[node name="H2" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 81.0
+offset_right = 75.0
+offset_bottom = 104.0
+scale = Vector2(0.525, 0.525)
+text = "Autorist"
+label_settings = SubResource("LabelSettings_5wk2n")
+
+[connection signal="pressed" from="vignette/BackButton" to="vignette/BackButton" method="_on_pressed"]

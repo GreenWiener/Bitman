@@ -61,17 +61,38 @@ func _ready():
 	# for-tsükkel
 	for el in nimede_list:
 		print("Tere, ", el, "!")
-	
-	
-	
+
 #func taisarvude_liitmine(argument1 : int, argument2 : int): # funktsiooni loomine
 #	var summa = argument1 + argument2
 #	return summa # funktsiooni tulemuse tagastamine
 
+#func _ready():
+	var player
+	
+	# Loome player objekti
+	player = load("res://player/player.tscn").instantiate()
+	
+	# Kutsume välja 'arvuta_summa' meetodi
+	var tulemus = player.arvuta_summa(3, 4)
+	print("Summa on: ", tulemus)  # Väljund: Summa on: 7
+	
+	# Kutsume välja 'tervita' meetodi
+	player.tervita("Maailm")  # Väljund: Tere, Maailm!
+
+
+
+# Meetod, mis liidab kaks arvu
+func arvuta_summa(a, b):
+	return a + b
+
+# Meetod, mis prindib tervituse
+func tervita(nimi):
+	print("Tere, " + nimi + "!")
 
 
 
 
+# Muutujad, mis hoiavad viiteid teisele objektile
 
 
 

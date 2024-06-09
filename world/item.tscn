@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dp1o46gwbqr2c"]
 
 [ext_resource type="Script" path="res://world/item.gd" id="1_3eal6"]
-[ext_resource type="Texture2D" uid="uid://b6xd6kxj4esfa" path="res://world/item.png" id="2_o462n"]
+[ext_resource type="Texture2D" uid="uid://dndvxna5g7hhd" path="res://world/item2.png" id="2_ms43m"]
 [ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="3_c5ib2"]
 
 [sub_resource type="RectangleShape2D" id="2"]
@@ -20,7 +20,7 @@ script = ExtResource("1_3eal6")
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(0, 2.34375)
 scale = Vector2(0.135, 0.135)
-texture = ExtResource("2_o462n")
+texture = ExtResource("2_ms43m")
 offset = Vector2(4.17233e-07, -17.3611)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

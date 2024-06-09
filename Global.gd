@@ -156,7 +156,7 @@ func _ready():
 	# salvestatud info laadimine
 	var load_saved_game = load("res://save_game.gd")
 	load_saved_game.load_game()
-	
+
 	
 	# kappide laadimine
 	#if lockers_loaded == false:
