@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cguhso80mpbww"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_41rij"]
+line_spacing = 20.0
+font_size = 357
+font_color = Color(1, 0.211765, 1, 1)
+
+[node name="Label" type="Label"]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 789.0
+offset_bottom = 503.0
+text = "ttestt"
+label_settings = SubResource("LabelSettings_41rij")
+metadata/_edit_use_anchors_ = true

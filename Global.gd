@@ -1,6 +1,6 @@
 extends Node
 
-var player_inital_map_position = Vector2(-127, 74)
+var player_inital_map_position = Vector2(-509, 73)
 var player_facing_direction = 1
 var player_spawn_location
 var most_recent_scene
@@ -9,8 +9,11 @@ var most_recent_scene
 var player_position = Vector2(0,0)
 var player_holding_item = false
 var holding_item_name
+var scene_savepos
 
 var camera_zoom = Vector2(0,0)
+
+var language = "eesti"
 
 var in_pickup_area
 var in_BoxOpening_area
@@ -26,13 +29,15 @@ var _lockers = null
 var _lockers2 = null
 var _train = null
 var _pause_menu
-var train_pos = Vector2(-103,51)
+var train_pos = Vector2(-87, 41.725)
 var next_train_direction = false
 var train_direction = true
 var train_driving = false
 var world_name
 var item_name
 var box_item
+var unique_item_id = 0
+var unique_task_id = 0
 var item_body
 var in_item_area
 var player_in_menu = false
@@ -46,22 +51,27 @@ var spawn_ram_item = true
 
 # stseenis esemete salvestamine
 var save_items
+var can_save_world_items = false
 
 #var MOBO_items_dict = {}
+var MOBO_item_id_list = []
 var MOBO_item_name_list = []
 var MOBO_item_position_list = []
 var MOBO_box_item_list = []
 #var MOBO_display_name_list = []
 
+var CPU_item_id_list = []
 var CPU_item_name_list = []
 var CPU_item_position_list = []
 var CPU_box_item_list = []
 #var CPU_display_name_list = []
 
+var SSD_item_id_list = []
 var SSD_item_name_list = []
 var SSD_item_position_list = []
 var SSD_box_item_list = []
 
+var RAM_item_id_list = []
 var RAM_item_name_list = []
 var RAM_item_position_list = []
 var RAM_box_item_list = []
@@ -99,13 +109,14 @@ var locker2_info_list = []
 var locker_info_dict2 = {}
 var task_menu_info_dict = {}
 var items_in_lockers = {}
+var items_in_lockers_wlabels = []
 var locker_labels_dict = {}
 var locker_dict_keys
 
 #var ssd_lockers_instance = preload("res://world/ssd-lockers.tscn").instantiate()
 
 var player_task_level_points = 0
-var task_menu_first_task
+var task_menu_first_task = false
 
 var task_ssd_pooleli
 var task_ram_pooleli
@@ -125,60 +136,72 @@ var delivered_cpu_items = []
 var _ram_menu
 var _controlpanel
 
-var task_dec_num
+var task_dec_num = null
 
 var player_vignette
+var music_volume = 0.0
 
 var HelpArrow
 var helparrow_state = "task" #   del  = "task"
 var helparrow_states = ["task", "taskblock", "ssd_menu", "done_1st_task", "done_1st_taskblock", "next"]
 var helparrow_state_loendur = 0
+var infopanel_arrows = []
+var controlpanel_arrows = []
 
-func add_HelpArrow(add_to_body, arrow_pos):
+func add_HelpArrow(add_to_body : Object, arrow_pos : Vector2, arrow_size : int):
 	HelpArrow = load("res://menu/help_arrow.tscn").instantiate()
 	add_to_body.add_child(HelpArrow)
 	HelpArrow.position = arrow_pos
-	print("<ADD> helparrow_state: ", helparrow_state)
+	HelpArrow.scale = Vector2(arrow_size, arrow_size)
+	print("<*> Add 'HelpArrow' ; helparrow_state: ", helparrow_state)
 	
 
 func remove_HelpArrow(remove_from_body):
 	if len(helparrow_states) > helparrow_state_loendur+1:
 		helparrow_state_loendur += 1
 	helparrow_state = helparrow_states[helparrow_state_loendur]
-	if HelpArrow != null:
+	#print("<*> remove_from_body: ", remove_from_body, ", HelpArrow: ", HelpArrow)	
+	if HelpArrow != null and remove_from_body != null:
 		remove_from_body.remove_child(HelpArrow)
 	else:
-		print("🛑 HelpArrow = null")
-	print("<REMOVE> helparrow_state next: ", helparrow_state)	
+		print("*❗ NULL INSTANCE: HelpArrow: ", HelpArrow, ", remove_from_body: ", remove_from_body)
+	print("<*> Remove 'HelpArrow' ; helparrow_state (next): ", helparrow_state)	
 
 
 func _ready():
-	# salvestatud info laadimine
-	var load_saved_game = load("res://save_game.gd")
-	load_saved_game.load_game()
-
-	
 	# kappide laadimine
-	#if lockers_loaded == false:
 	var ssd_lockers_gd = load("res://world/ssd-lockers.tscn").instantiate()
 	ssd_lockers_gd.create_locker_texts()
-	#_world.add_child(ssd_lockers_instance)
-	#ssd_lockers_instance.hide()
-	#lockers_loaded = true
-		
-	#ssd_lockers_instance.queue_free()
-
-	# music
-	var music_node = AudioStreamPlayer2D.new()
-	music_node.stream = load("res://audio/Project_game.mp3")
-	#music_node.play()
+	SaveGame.load_settings()
 	
+	
+func start_game():
+	# salvestatud info laadimine
+	#var load_saved_game = load("res://save_game.gd")
+	#load_saved_game.load_game()
+	SaveGame.load_game()
+	
+	## music
+	#var music_node = AudioStreamPlayer2D.new()
+	#music_node.stream = load("res://audio/Project_game.mp3")
+	##music_node.play()
 
 
-func console():
-	print("<CONSOLE>")
+func save_world_items():
+	print("*♻ <", world_name, "> saving all items")
+	
+	if _world != null and world_name != null:
+		get(world_name + "_item_id_list").clear()
+		get(world_name + "_item_name_list").clear()
+		get(world_name + "_item_position_list").clear()
+		get(world_name + "_box_item_list").clear()
+		
+		for i in _world.get_node("ysort/items").get_children():
+			if i.saving == true:
+				i.save_item()
+	
+		
 
- 
 
 func _process(_delta):
 	# Spawning an item at set location for First load in. in _process cuz _world not loaded #
@@ -188,8 +211,8 @@ func _process(_delta):
 		#print("=========spawning world items")
 		#_world.add_child(item_instance)
 		#item_instance.set_position(Vector2(213,145))
-	if (Input.is_action_just_pressed("mb_left")) and player_in_menu != true and _world != null:
-		PopUpCursor(".")
+	###if (Input.is_action_just_pressed("mb_left")) and player_in_menu != true and _world != null:
+	###	PopUpCursor(".")
 	
 	for el in item_bodies_list:
 		if el == null:
@@ -199,49 +222,54 @@ func _process(_delta):
 			if el == null:
 				task_binary_rows.erase(el)
 	
-	# asjade üleskorjamine
-	if player_holding_item == false and in_pickup_area == true and player_in_menu == false and train_driving != true and item_body.visible == true and Input.is_action_just_released("Interact_f"):
-		_player.hold_item(item_name)
+	#if world_name == "RAM":
+		#for el in items_in_lockers: # no locker2 labels on first launch fix
+			#if el != null:
+				#if el not in items_in_lockers_wlabels:
+					#items_in_lockers_wlabels.append(el)
+					#_lockers2.add_locker_labels(el.item_pos_int)
 	
-	elif player_holding_item == true and player_in_menu == false and train_driving != true and Input.is_action_just_released("Interact_f"):
-		_player.release_item(item_name, box_item)
 	
-	# kasti avamine
-	if in_BoxOpening_area == true and player_holding_item == true and holding_item_name == "box1" and Input.is_action_just_released("Open_g"):
-		_player.open_box(box_item)
-		item_name = box_item
-		#_player.release_item("box2")
-	# kasti panemine
-	if in_BoxOpening_area == true and player_holding_item == true and in_pickup_area == true and holding_item_name == "box2" and player_in_menu == false and Input.is_action_just_released("Open_g"):
-		_player.store_box()
+	if _player != null:
+		# asja üleskorjamine
+		if Input.is_action_just_released("Interact_f") and player_holding_item == false and in_pickup_area == true and player_in_menu == false and train_driving != true and item_body.visible == true:
+			_player.hold_item(item_name)
+		# asja mahapanemine
+		elif Input.is_action_just_released("Interact_f") and player_holding_item == true and player_in_menu == false and train_driving != true:
+			_player.release_item(item_name, box_item)
+	
+		# kasti avamine
+		if Input.is_action_just_released("Open_g") and in_BoxOpening_area == true and player_holding_item == true and holding_item_name == "box1":
+			_player.open_box(box_item)
+			##item_name = box_item
+			#_player.release_item("box2")
+		# kasti panemine
+		if Input.is_action_just_released("Open_g") and in_BoxOpening_area == true and player_holding_item == true and in_pickup_area == true and holding_item_name == "box2" and player_in_menu == false:
+			_player.store_box()
 		
-		
-		
-	# ÜLESANDED
 
-	if selected_task == "SSD-to-RAM" and task_SSD_location == "Chrome.exe" and box_item == "chrome_exe":
-		_task_menu.completeTask()
-	
-var kapi_pptext_timer = true
-func PopUpText(popup_text : String, pos):
-	if kapi_pptext_timer == true:
-		kapi_pptext_timer = false
+
+var last_tile_value
+func PopUpText(popup_text : String, pos, tile_value):
+	if tile_value != last_tile_value:
+		last_tile_value = tile_value
 		var kapi_popup_text = load("res://menu/popup_text.tscn").instantiate()
 		_world.add_child(kapi_popup_text)
 		kapi_popup_text.popup(popup_text, pos)
 		await kapi_popup_text.get_node("AnimationPlayer").animation_finished
-		kapi_pptext_timer = true
+		last_tile_value = null
+
 
 func PopUpCursor(cursor_text : String):
-	if kapi_pptext_timer == true:
-		var popup_cursor_text = load("res://menu/popup_text.tscn").instantiate()
-		_world.add_child(popup_cursor_text)
-		popup_cursor_text.popup(cursor_text, "cursor")
-		await popup_cursor_text.get_node("AnimationPlayer").animation_finished
+	#if kapi_pptext_timer == true:
+	var popup_cursor_text = load("res://menu/popup_text.tscn").instantiate()
+	_world.add_child(popup_cursor_text)
+	popup_cursor_text.popup(cursor_text, "cursor")
+	await popup_cursor_text.get_node("AnimationPlayer").animation_finished
 
 
 func spawn_item(the_item_name, the_item_pos, the_box_item): ## eseme loomine
-	print("<",world_name,">: ",the_item_name,";",the_box_item, "' eseme loomine")
+	print("➕ <",world_name,"> Spawning item: ",the_item_name,", ",the_item_pos, ", ", the_box_item)
 	if _world != null:
 		var item_instance = load("res://world/item.tscn").instantiate()
 		#var item_script = load("res://world/item.gd")
@@ -271,12 +299,12 @@ func spawn_item(the_item_name, the_item_pos, the_box_item): ## eseme loomine
 
 
 func despawn_item(the_item_name): ## eseme eemaldamine
-	print("<",world_name,">: ",the_item_name, "' eseme eemaldamine")
+	print("➖ <",world_name,"> Despawn item: ",the_item_name)
 	holding_item_name = the_item_name
 	if _world != null: #!!!!!!!!!!!!!!!!!!!! item_body is freed somewhere and results in an error !!!!!!!!!!!!!!!!!!!!!
 		_world.get_node("ysort/items").remove_child(item_body)
 	if item_body != null:
-		item_body.despawning()
+		item_body.despawning(true)
 		#_world.remove_child(_world.get_node("item"))
 	#control_panel_instance.reload_gui() ##############################################################################################################
 	# eemalda item kapi listist  ??
@@ -287,7 +315,7 @@ func despawn_item(the_item_name): ## eseme eemaldamine
 	
 	# ÜLESANDE LÕPETAMINE
 	if "task_item" in the_item_name:
-		print("ÜLESANDE LÕPETAMINE")
+		print("<*> ÜLESANDE LÕPETAMINE")
 		item_name = the_item_name.split(" ")[0]
 		_controlpanel.reload_gui()
 		task_ssd_finished = true

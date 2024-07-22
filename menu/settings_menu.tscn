@@ -1,0 +1,293 @@
+[gd_scene load_steps=22 format=3 uid="uid://c5pf103uonwfq"]
+
+[ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_hnuin"]
+[ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_r55xm"]
+[ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="2_78iib"]
+[ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="3_ef1ch"]
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="4_0t7t4"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="5_4upib"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="6_aktdm"]
+[ext_resource type="StyleBox" uid="uid://docbojvtgjlf" path="res://menu/btn_normal1.tres" id="7_1uir6"]
+[ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="8_gnpgj"]
+[ext_resource type="StyleBox" uid="uid://cjc15y7u78ado" path="res://menu/btn_pressed.tres" id="8_ty2pv"]
+[ext_resource type="Script" path="res://menu/InfoBackButton.gd" id="9_sy0vx"]
+[ext_resource type="StyleBox" uid="uid://8gkenaefslra" path="res://menu/panel_menu.tres" id="12_15rda"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bi8ly"]
+shader = ExtResource("2_78iib")
+shader_parameter/vignette_intensity = 0.385
+shader_parameter/vignette_opacity = 1.0
+shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dah3b"]
+line_spacing = -2.23
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwwv5"]
+font = ExtResource("5_4upib")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foy4p"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyhci"]
+bg_color = Color(0.054902, 0.160784, 0.466667, 0.768627)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5pkw"]
+bg_color = Color(0.054902, 0.160784, 0.466667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_7w7q4"]
+Button/styles/disabled = ExtResource("12_15rda")
+Button/styles/focus = ExtResource("12_15rda")
+Button/styles/hover = SubResource("StyleBoxFlat_yyhci")
+Button/styles/normal = ExtResource("12_15rda")
+Button/styles/pressed = SubResource("StyleBoxFlat_d5pkw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7loq"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.00784314, 0.0392157, 0.172549, 0.768627)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr8sq"]
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.00784314, 0.0392157, 0.172549, 0.768627)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="settings_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hnuin")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0.815686, 0.992157, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 416.0
+offset_bottom = 234.0
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("1_r55xm")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="vignette" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_bi8ly")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ef1ch")
+expand_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(160, 90)
+scale = Vector2(0.213333, 0.0947368)
+color = Color(0.666667, 0.0705882, 0.337255, 1)
+energy = 15.0
+blend_mode = 2
+texture = ExtResource("4_0t7t4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("6_aktdm")
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Control"]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -10.5
+offset_right = 18.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+text = "<"
+script = ExtResource("9_sy0vx")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 16.0
+offset_right = 261.0
+offset_bottom = 165.0
+
+[node name="text" type="Label" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 16.0
+offset_right = 576.0
+offset_bottom = 325.0
+scale = Vector2(0.32, 0.32)
+label_settings = SubResource("LabelSettings_dah3b")
+autowrap_mode = 2
+
+[node name="H1" type="Label" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 75.0
+offset_bottom = 27.0
+scale = Vector2(0.525, 0.525)
+text = "Heliefektid"
+label_settings = SubResource("LabelSettings_bwwv5")
+
+[node name="H2" type="Label" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 29.0
+offset_right = 75.0
+offset_bottom = 52.0
+scale = Vector2(0.525, 0.525)
+text = "Muusika"
+label_settings = SubResource("LabelSettings_bwwv5")
+
+[node name="H3" type="Label" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 53.0
+offset_right = 75.0
+offset_bottom = 76.0
+scale = Vector2(0.525, 0.525)
+text = "Keel"
+label_settings = SubResource("LabelSettings_bwwv5")
+
+[node name="DemoButton" type="Button" parent="CanvasLayer/Control/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 142.0
+offset_top = 46.0
+offset_right = 247.0
+offset_bottom = 79.0
+scale = Vector2(0.27, 0.27)
+focus_mode = 0
+theme_override_styles/normal = ExtResource("7_1uir6")
+theme_override_styles/hover = ExtResource("8_gnpgj")
+theme_override_styles/pressed = ExtResource("8_ty2pv")
+text = "Demo video"
+
+[node name="soud_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 9.00001
+offset_top = 20.0
+offset_right = 145.0
+offset_bottom = 36.0
+scale = Vector2(0.4, 0.4)
+min_value = -30.0
+max_value = 10.0
+
+[node name="music_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 9.00001
+offset_top = 44.0
+offset_right = 145.0
+offset_bottom = 60.0
+scale = Vector2(0.4, 0.4)
+min_value = -30.0
+max_value = 10.0
+
+[node name="language_btn" type="Button" parent="CanvasLayer/Control/Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 67.0
+offset_right = 116.0
+offset_bottom = 100.0
+scale = Vector2(0.3, 0.3)
+focus_mode = 0
+toggle_mode = true
+text = "eesti"
+
+[node name="LanguageMenu" type="PanelContainer" parent="CanvasLayer/Control/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 41.0
+offset_top = 67.0
+offset_right = 148.0
+offset_bottom = 120.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/panel = SubResource("StyleBoxFlat_foy4p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel/LanguageMenu"]
+layout_mode = 2
+theme = SubResource("Theme_7w7q4")
+theme_override_constants/separation = -1
+
+[node name="eesti" type="Button" parent="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_x7loq")
+text = "eesti"
+
+[node name="english" type="Button" parent="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nr8sq")
+text = "inglise"
+
+[node name="skibidi" type="Button" parent="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nr8sq")
+text = "skibidi"
+
+[connection signal="pressed" from="CanvasLayer/Control/BackButton" to="CanvasLayer/Control/BackButton" method="_on_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/Panel/music_volume" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/language_btn" to="." method="_on_language_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/eesti" to="." method="_on_eesti_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/english" to="." method="_on_english_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/skibidi" to="." method="_on_skibidi_pressed"]

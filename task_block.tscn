@@ -1,97 +1,328 @@
-[gd_scene load_steps=8 format=3 uid="uid://mjko4ouq87ou"]
+[gd_scene load_steps=25 format=3 uid="uid://mjko4ouq87ou"]
 
-[ext_resource type="StyleBox" uid="uid://0ae26v77p7d2" path="res://menu/cpu_taskmenu_task.tres" id="2_jpg06"]
 [ext_resource type="Script" path="res://task_block.gd" id="3_2gnt7"]
-[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="4_q66pa"]
+[ext_resource type="StyleBox" uid="uid://dongkua34tekb" path="res://menu/question_btn.tres" id="3_stw80"]
+[ext_resource type="StyleBox" uid="uid://djjwgrqg1xgj4" path="res://menu/question_btn_hover.tres" id="4_878kh"]
 [ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="4_x8f1d"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v4da"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpoyx"]
+content_margin_left = 10.0
+content_margin_top = 8.0
+content_margin_right = 10.0
+content_margin_bottom = 8.0
+bg_color = Color(0.133333, 0.168627, 0.235294, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hc2fy"]
-bg_color = Color(0.109804, 0.141176, 0.188235, 0.968627)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53prt"]
+bg_color = Color(0.133333, 0.168627, 0.235294, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_o6x8i"]
-line_spacing = -2.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alxqq"]
+bg_color = Color(0.160784, 0.203922, 0.278431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47rsw"]
+bg_color = Color(0.113725, 0.145098, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djng4"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 13.0
+content_margin_bottom = 10.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_qt0sk"]
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_2mhlr"]
+font_size = 40
+font_color = Color(1, 1, 1, 0.709804)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2h7g"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0b2pp"]
+draw_center = false
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0.0980392, 0.129412, 0.180392, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ayc06"]
 font = ExtResource("4_x8f1d")
-font_size = 41
+font_size = 25
 
-[node name="Text_task" type="RichTextLabel"]
-custom_minimum_size = Vector2(0, 86)
-offset_right = 430.0
-offset_bottom = 86.0
-theme_override_font_sizes/normal_font_size = 26
-theme_override_styles/focus = SubResource("StyleBoxFlat_7v4da")
-theme_override_styles/normal = ExtResource("2_jpg06")
-text = "!ülesande text!"
-fit_content = true
+[sub_resource type="LabelSettings" id="LabelSettings_6krdq"]
+font = ExtResource("4_x8f1d")
+font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psg80"]
+content_margin_top = 15.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_o0fml"]
+font_size = 28
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u30dq"]
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_q5hes"]
+font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rrlsl"]
+content_margin_left = 25.0
+content_margin_top = 5.0
+content_margin_right = 25.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0.380392, 0.8, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.294118, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2rh63"]
+bg_color = Color(0.101961, 0.129412, 0.184314, 0.964706)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_463j7"]
+font_size = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7lmy"]
+content_margin_left = 30.0
+content_margin_top = 5.0
+content_margin_right = 30.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0.380392, 0.8, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.294118, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m64wa"]
+content_margin_left = 40.0
+content_margin_top = 5.0
+content_margin_right = 40.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0.380392, 0.8, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.294118, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="TaskBlock" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 75)
+offset_right = 484.0
+offset_bottom = 300.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_qpoyx")
 script = ExtResource("3_2gnt7")
 
-[node name="Button_task" type="Button" parent="."]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -36.0
-offset_top = -28.0
-offset_right = 1115.0
-offset_bottom = 754.0
-theme_override_styles/normal = ExtResource("4_q66pa")
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
 
-[node name="yes_or_no" type="Label" parent="."]
+[node name="TitleContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Expand_btn" type="Button" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_53prt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_alxqq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_47rsw")
+
+[node name="task_title" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_djng4")
+text = "Ülesande pealkiri"
+label_settings = SubResource("LabelSettings_qt0sk")
+autowrap_mode = 3
+
+[node name="expand_indicator" type="Control" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="expand_indicator_label" type="Label" parent="VBoxContainer/TitleContainer/expand_indicator"]
+layout_mode = 2
+offset_left = 467.0
+offset_top = 1.0
+offset_right = 501.0
+offset_bottom = 56.0
+pivot_offset = Vector2(0, 35)
+text = ">"
+label_settings = SubResource("LabelSettings_2mhlr")
+
+[node name="TaskInfo_container" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y2h7g")
+
+[node name="InfoContainer" type="VBoxContainer" parent="VBoxContainer/TaskInfo_container"]
+layout_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/TaskInfo_container/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_0b2pp")
+
+[node name="StatusContainer" type="HBoxContainer" parent="VBoxContainer/TaskInfo_container/InfoContainer"]
+layout_mode = 2
+
+[node name="HelpButton" type="Control" parent="VBoxContainer/TaskInfo_container/InfoContainer/StatusContainer"]
+layout_mode = 2
+
+[node name="help_btn" type="Button" parent="VBoxContainer/TaskInfo_container/InfoContainer/StatusContainer/HelpButton"]
+layout_mode = 2
+offset_left = 411.0
+offset_right = 429.0
+offset_bottom = 18.0
+scale = Vector2(2.6, 2.6)
+focus_mode = 0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = ExtResource("3_stw80")
+theme_override_styles/hover = ExtResource("4_878kh")
+theme_override_styles/pressed = ExtResource("4_878kh")
+text = "?"
+
+[node name="status_label" type="Label" parent="VBoxContainer/TaskInfo_container/InfoContainer/StatusContainer"]
+layout_mode = 2
+text = "Staatus: "
+label_settings = SubResource("LabelSettings_ayc06")
+
+[node name="status_status" type="Label" parent="VBoxContainer/TaskInfo_container/InfoContainer/StatusContainer"]
+modulate = Color(1, 0, 0, 0.588235)
+layout_mode = 2
+text = "pole alustatud"
+label_settings = SubResource("LabelSettings_6krdq")
+
+[node name="task_info" type="Label" parent="VBoxContainer/TaskInfo_container/InfoContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_psg80")
+text = "Selle ülesande kirjeldus, mis seletab lahti, mida mängija peab selle ülesande lahendamiseks tegema."
+label_settings = SubResource("LabelSettings_o0fml")
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/TaskInfo_container/InfoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxFlat_0b2pp")
+
+[node name="empty_label" type="Label" parent="VBoxContainer/TaskInfo_container/InfoContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u30dq")
+text = " "
+label_settings = SubResource("LabelSettings_q5hes")
+
+[node name="Buttons_container" type="VBoxContainer" parent="VBoxContainer/TaskInfo_container/InfoContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TaskInfo_container/InfoContainer/Buttons_container"]
+layout_mode = 2
+alignment = 1
+
+[node name="start_btn" type="Button" parent="VBoxContainer/TaskInfo_container/InfoContainer/Buttons_container/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_x8f1d")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rrlsl")
+text = "Alusta"
+
+[node name="finish_btn" type="Button" parent="VBoxContainer/TaskInfo_container/InfoContainer/Buttons_container/HBoxContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.028
-anchor_right = -0.028
-offset_left = 8.904
-offset_right = 1601.9
-offset_bottom = 1422.0
-scale = Vector2(0.6, 0.6)
-theme_override_styles/normal = SubResource("StyleBoxFlat_hc2fy")
-label_settings = SubResource("LabelSettings_o6x8i")
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("4_x8f1d")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_rrlsl")
+text = "Lõpeta"
 
-[node name="yes_btn" type="Button" parent="yes_or_no"]
-layout_mode = 0
-offset_left = 131.667
-offset_top = 60.0
-offset_right = 385.667
-offset_bottom = 217.0
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 70
+[node name="Help_menu" type="PanelContainer" parent="VBoxContainer/TaskInfo_container"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2rh63")
+
+[node name="HelpContainer" type="VBoxContainer" parent="VBoxContainer/TaskInfo_container/Help_menu"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="help_label" type="Label" parent="VBoxContainer/TaskInfo_container/Help_menu/HelpContainer"]
+layout_mode = 2
+text = "Kui see ülesanne pole mingil põhjusel lahendatav, on sul võimalik see uue ülesande vastu vahetada. Kas soovid uut ülesannet?"
+label_settings = SubResource("LabelSettings_463j7")
+autowrap_mode = 3
+
+[node name="YesNoContainer" type="HBoxContainer" parent="VBoxContainer/TaskInfo_container/Help_menu/HelpContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="yes_btn" type="Button" parent="VBoxContainer/TaskInfo_container/Help_menu/HelpContainer/YesNoContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_p7lmy")
 text = "Jah"
 
-[node name="no_btn" type="Button" parent="yes_or_no"]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 60.0
-offset_right = 688.0
-offset_bottom = 217.0
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 70
+[node name="no_btn" type="Button" parent="VBoxContainer/TaskInfo_container/Help_menu/HelpContainer/YesNoContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_m64wa")
 text = "Ei"
 
-[node name="ok" type="Label" parent="."]
+[node name="Warning_menu" type="PanelContainer" parent="VBoxContainer/TaskInfo_container"]
 visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.028
-anchor_right = -0.028
-offset_left = -12.5159
-offset_right = 1580.48
-offset_bottom = 1422.0
-scale = Vector2(0.6, 0.6)
-theme_override_styles/normal = SubResource("StyleBoxFlat_hc2fy")
-label_settings = SubResource("LabelSettings_o6x8i")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2rh63")
 
-[node name="ok_btn" type="Button" parent="ok"]
-layout_mode = 0
-offset_left = 301.667
-offset_top = 60.0
-offset_right = 555.667
-offset_bottom = 217.0
-scale = Vector2(0.5, 0.5)
-theme_override_font_sizes/font_size = 70
-text = "OK"
+[node name="WarningContainer" type="VBoxContainer" parent="VBoxContainer/TaskInfo_container/Warning_menu"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
 
-[connection signal="pressed" from="Button_task" to="." method="_on_button_task_pressed"]
-[connection signal="pressed" from="yes_or_no/yes_btn" to="." method="_on_yes_btn_pressed"]
-[connection signal="pressed" from="yes_or_no/no_btn" to="." method="_on_no_btn_pressed"]
-[connection signal="pressed" from="ok/ok_btn" to="." method="_on_ok_btn_pressed"]
+[node name="help_label" type="Label" parent="VBoxContainer/TaskInfo_container/Warning_menu/WarningContainer"]
+layout_mode = 2
+text = "Oled ühe ülesande juba alustanud. Mitut ülesannet ei saa korraga teha!"
+label_settings = SubResource("LabelSettings_463j7")
+autowrap_mode = 3
+
+[node name="YesNoContainer" type="HBoxContainer" parent="VBoxContainer/TaskInfo_container/Warning_menu/WarningContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ok_btn" type="Button" parent="VBoxContainer/TaskInfo_container/Warning_menu/WarningContainer/YesNoContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_m64wa")
+text = "Ok"
+
+[connection signal="pressed" from="VBoxContainer/TitleContainer/Expand_btn" to="." method="_on_expand_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TaskInfo_container/InfoContainer/StatusContainer/HelpButton/help_btn" to="." method="_on_help_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TaskInfo_container/InfoContainer/Buttons_container/HBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TaskInfo_container/InfoContainer/Buttons_container/HBoxContainer/finish_btn" to="." method="_on_finish_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TaskInfo_container/Help_menu/HelpContainer/YesNoContainer/yes_btn" to="." method="_on_yes_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TaskInfo_container/Help_menu/HelpContainer/YesNoContainer/no_btn" to="." method="_on_no_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/TaskInfo_container/Warning_menu/WarningContainer/YesNoContainer/ok_btn" to="." method="_on_ok_btn_pressed"]

@@ -13,29 +13,43 @@ var can_open_traindoors = true
 
 var in_interact_area = false
 
+var interaction_label
+var the_labe_text1
+var the_labe_text2
+
 func _ready():
+	if "Android" in OS.get_name():
+		interaction_label = $interaction_label_android
+	else:
+		interaction_label = $interaction_label
+	
+	
 	$CollisionShape2D.scale = collision_scale
 	
 	#text
-	if type == "info":
-		$interaction_label.text = text
+	if "Android" in OS.get_name() and type != "info":
+		the_labe_text1 = text
+		the_labe_text2 = text_2
+		interaction_label.text = the_labe_text1
 	else:
-		$interaction_label.text = "[E] " + text
+		the_labe_text1 = "[E] " + text
+		the_labe_text2 = "[E] " + text_2
+		interaction_label.text = the_labe_text1
 	
 	#text position
 	if text_pos == Vector2(0,0):
-		$interaction_label.position = Vector2(-6.707, -8.433)
+		interaction_label.position = Vector2(-6.707, -8.433)
 	else:
-		$interaction_label.position = text_pos
+		interaction_label.position = text_pos
 	
 func _physics_process(_delta):
 	if Input.is_action_pressed("Interact_e"):
 		if type == "train_start" and Global._train.doors_open == true or type == "train_start" and Global.next_train_direction == true or type == "kast" and Global.player_holding_item == false:
-			$interaction_label.modulate = "ff0047" # red
+			interaction_label.modulate = "ff0047" # red
 		else:
-			$interaction_label.modulate = "00ff47" # green
+			interaction_label.modulate = "00ff47" # green
 	else:
-		$interaction_label.modulate = "ffffff" #white
+		interaction_label.modulate = "ffffff" #white
 	
 	if Input.is_action_just_released("Interact_e") and in_interact_area == true:
 		
@@ -52,41 +66,41 @@ func _physics_process(_delta):
 			if Global._train.doors_open == false:
 				if Global.next_train_direction == false:
 					Global.train_driving = true
-					$interaction_label.hide()
+					interaction_label.hide()
 					print("'start rong'")
 					AudioPlayer.play_music_train()
 				else:
 					print("Ei saa praegu sõita!")
-					Global.PopUpText("Ei saa praegu sõita!", "player")
+					Global.PopUpText("Ei saa praegu sõita!", "player", Vector2.ZERO)
 			else:
 				print("Sulge rongi uksed enne sõitma hakkamist!")
-				Global.PopUpText("Sulge uksed!", "player")
+				Global.PopUpText("Sulge uksed!", "player", Vector2.ZERO)
 	
 	if type == "train_doors" and in_interact_area == true:
 		if Global._train.doors_open == true:
-			$interaction_label.text = "[E] " + text_2
+			interaction_label.text = the_labe_text2
 		else:
-			$interaction_label.text = "[E] " + text
+			interaction_label.text = the_labe_text1
 		
 		if Global.train_driving == false:
 			can_open_traindoors = true
-			$interaction_label.show()
+			interaction_label.show()
 			
 func _on_body_entered(body):
 	if body is Player and text != "0":
 		player = body
 		in_interact_area = true
-		$interaction_label.show()
+		interaction_label.show()
 		
 		if Global.train_driving == true:
 			if type == "train_doors" or type == "train_start":
-				$interaction_label.hide()
+				interaction_label.hide()
 				can_open_traindoors = false
 			
 func _on_body_exited(body):
 	if body is Player and text != "0":
 		in_interact_area = false	
-		$interaction_label.hide()
+		interaction_label.hide()
 
 
 func _on_area_entered(area):
@@ -109,7 +123,7 @@ func _on_area_entered(area):
 				print("2nfo!")
 		if type == "kast3":
 			print("item lõpp:", area)
-			area.despawning()
+			area.despawning(true)
 
 
 

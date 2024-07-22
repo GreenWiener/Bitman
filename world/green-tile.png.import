@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2kv5ukf66xtu"
-path="res://.godot/imported/chrome_exe.png-f8f1b9e96ef1fd944d3b40d8be355111.ctex"
+uid="uid://bwj033vi2rnca"
+path="res://.godot/imported/green-tile.png-baa11e5869070f89b6af10ad437475b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/chrome_exe.png"
-dest_files=["res://.godot/imported/chrome_exe.png-f8f1b9e96ef1fd944d3b40d8be355111.ctex"]
+source_file="res://world/green-tile.png"
+dest_files=["res://.godot/imported/green-tile.png-baa11e5869070f89b6af10ad437475b3.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnr6t3scqbl5j"]
+[gd_scene load_steps=8 format=3 uid="uid://bnr6t3scqbl5j"]
 
 [ext_resource type="Script" path="res://interact_area.gd" id="1_qyw8i"]
 
@@ -9,6 +9,18 @@ size = Vector2(8, 8)
 bg_color = Color(0.164706, 0, 0.803922, 0.419608)
 
 [sub_resource type="LabelSettings" id="LabelSettings_k07by"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1u0i"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+expand_margin_left = 19.0
+expand_margin_top = 6.0
+expand_margin_right = 19.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ob424"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nadp6"]
+size = Vector2(141, 35)
 
 [node name="interact-area" type="Area2D"]
 collision_layer = 4
@@ -32,6 +44,25 @@ size_flags_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_8omrk")
 label_settings = SubResource("LabelSettings_k07by")
 horizontal_alignment = 1
+
+[node name="interaction_label_android" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -6.116
+offset_top = -8.9
+offset_right = 95.884
+offset_bottom = 14.1
+scale = Vector2(0.12, 0.12)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_i1u0i")
+label_settings = SubResource("LabelSettings_ob424")
+horizontal_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="interaction_label_android"]
+position = Vector2(50.9332, 11.4583)
+shape = SubResource("RectangleShape2D_nadp6")
+action = "Interact_e"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

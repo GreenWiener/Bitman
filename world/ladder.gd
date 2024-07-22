@@ -14,9 +14,10 @@ static func create_ladder_poly(ladder_item, the_wall_collision : Object, wall_co
 	wall_collision = the_wall_collision
 	ladder_poly = CollisionPolygon2D.new()
 	ladder_poly.name = "ladder_poly"
+	
 	Global._world.add_child(ladder_poly) ### self
 	#ladder_poly.polygon = ladder_item.position#ladder_item_poly
-	
+	# +20
 	ladder_poly.polygon = [ladder_item.position + Vector2(-2.2,2), ladder_item.position + Vector2(-2.2,-15), ladder_item.position + Vector2(2.2,-15), ladder_item.position + Vector2(2.2,2)]
 	
 	var clip_collision = Geometry2D.clip_polygons(wall_collision.polygon, ladder_poly.polygon)
@@ -39,3 +40,4 @@ static func bob():
 
 func bob2():
 	print("B0B2")
+

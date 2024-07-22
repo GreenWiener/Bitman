@@ -8,7 +8,7 @@ func _ready():
 
 func popup(popup_text, pos):
 	if str(pos) != "cursor":
-		print("<PopUp>: ", popup_text)
+		print("🗯 <PopUp>: '", popup_text, "'")
 	
 	if str(pos) == "mouse":
 		$Label.position = get_local_mouse_position() - Vector2($Label.size.x / 2, 10)

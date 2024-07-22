@@ -130,6 +130,7 @@ y_sort_enabled = true
 [node name="Controlpanel" parent="ysort" instance=ExtResource("8_qo7rs")]
 position = Vector2(161, 128)
 panel_scene = "res://menu/ram_menu.tscn"
+panel_name = "ram_panel"
 
 [node name="ram-lockers" parent="ysort" instance=ExtResource("6_mx5b5")]
 position = Vector2(9.53674e-07, 3.8147e-06)
@@ -139,34 +140,40 @@ layer_0/tile_data = PackedInt32Array(1179672, 0, 0, 983064, 0, 0, 1179667, 0, 0,
 position = Vector2(306, 170)
 
 [node name="items" type="Node2D" parent="ysort"]
+y_sort_enabled = true
 
 [node name="item" parent="ysort/items" instance=ExtResource("12_k652e")]
 position = Vector2(255, 108)
 item_name = "box2"
+saving = false
 
 [node name="item2" parent="ysort/items" instance=ExtResource("12_k652e")]
 position = Vector2(268, 108)
 item_name = "box2"
+saving = false
 
 [node name="item3" parent="ysort/items" instance=ExtResource("12_k652e")]
 position = Vector2(273, 102)
 item_name = "box2"
+saving = false
 
 [node name="item4" parent="ysort/items" instance=ExtResource("12_k652e")]
 position = Vector2(261, 96)
 item_name = "box2"
+saving = false
 
 [node name="riiul" type="StaticBody2D" parent="ysort"]
-position = Vector2(264, 100)
+position = Vector2(264, 88)
 scale = Vector2(0.134, 0.134)
 
 [node name="Shelve" type="Sprite2D" parent="ysort/riiul"]
-position = Vector2(0, 7.46271)
+position = Vector2(0, 97.0149)
 texture = ExtResource("12_sxi6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ysort/riiul"]
-position = Vector2(0, 63.634)
+position = Vector2(0, 153.186)
 shape = SubResource("RectangleShape2D_cnvpe")
+disabled = true
 
 [node name="InfoPanel" parent="ysort" instance=ExtResource("12_pmnro")]
 position = Vector2(35, 144)
@@ -200,7 +207,8 @@ shape = SubResource("RectangleShape2D_xrkhi")
 [node name="Ladder_wall" type="StaticBody2D" parent="."]
 
 [node name="wall_collision" type="CollisionPolygon2D" parent="Ladder_wall"]
-polygon = PackedVector2Array(0, 108, 320, 108, 320, 77, 0, 77)
+visible = false
+polygon = PackedVector2Array(0, 108, 251.016, 108, 251, 109.5, 277, 109.5, 277.016, 108, 320, 108, 320, 77, 0, 77)
 
 [node name="wall_collision_clipped" type="CollisionPolygon2D" parent="Ladder_wall"]
 visible = false

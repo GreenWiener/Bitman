@@ -1,34 +1,19 @@
-[gd_scene load_steps=13 format=3 uid="uid://cdla1j162jydf"]
+[gd_scene load_steps=12 format=3 uid="uid://cdla1j162jydf"]
 
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_xafw2"]
 [ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="2_8p6b4"]
 [ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="3_0qw88"]
 [ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="4_adgk8"]
-[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="5_kc84b"]
-[ext_resource type="StyleBox" uid="uid://d3nqr02kffsik" path="res://menu/btn_hover.tres" id="6_5t2n3"]
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="4_clolb"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="5_qjntk"]
 [ext_resource type="Script" path="res://menu/InfoBackButton.gd" id="7_j54kq"]
+[ext_resource type="PackedScene" uid="uid://bmntkw74hwsoi" path="res://menu/demo_video.tscn" id="10_1dcd8"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1b1yh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytr02"]
 shader = ExtResource("2_8p6b4")
-shader_parameter/vignette_intensity = 2.175
-shader_parameter/vignette_opacity = 0.167
+shader_parameter/vignette_intensity = 0.385
+shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
-
-[sub_resource type="Theme" id="Theme_cf322"]
-default_font_size = 15
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g33q8"]
-bg_color = Color(0, 0, 0, 0.32549)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0, 0, 0.6)
-border_blend = true
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ar17"]
 line_spacing = -2.23
@@ -58,7 +43,7 @@ expand_mode = 1
 stretch_mode = 1
 
 [node name="vignette" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_1b1yh")
+material = SubResource("ShaderMaterial_ytr02")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,7 +53,24 @@ grow_vertical = 2
 texture = ExtResource("3_0qw88")
 expand_mode = 1
 
-[node name="BackButton" type="Button" parent="vignette"]
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(160, 90)
+scale = Vector2(0.213333, 0.0947369)
+color = Color(0.666667, 0.0705882, 0.337255, 1)
+energy = 15.0
+blend_mode = 2
+texture = ExtResource("4_clolb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("5_qjntk")
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Control"]
 modulate = Color(1, 1, 1, 0.784314)
 layout_mode = 1
 anchors_preset = 8
@@ -76,29 +78,25 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.0
-offset_top = -80.0
-offset_right = -122.0
-offset_bottom = -50.0
+offset_left = -12.0
+offset_top = -10.5
+offset_right = 18.0
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme = SubResource("Theme_cf322")
-theme_override_fonts/font = ExtResource("4_adgk8")
-theme_override_styles/normal = ExtResource("5_kc84b")
-theme_override_styles/hover = ExtResource("6_5t2n3")
+focus_mode = 0
 text = "<"
 script = ExtResource("7_j54kq")
 
-[node name="Label" type="Panel" parent="."]
+[node name="Label" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 70.0
-offset_top = 22.0
+offset_top = 16.0
 offset_right = 261.0
-offset_bottom = 155.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_g33q8")
+offset_bottom = 165.0
 
-[node name="text" type="Label" parent="Label"]
+[node name="text" type="Label" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 16.0
@@ -107,7 +105,9 @@ offset_bottom = 325.0
 scale = Vector2(0.32, 0.32)
 text = "ComputerGame on õpetlik mäng, mille eesmärgiks on mängijale tutvustada arvutikomponente ja nende funktsioone. Selle käigus õpib mängija selgeks kahendkoodi teisendades arve kahendsüsteemist kümnendsüsteemi ja vastupidi.
 
-Mängu varasemaid/tulevaseid versioone saab allalaadida 
+Vaata demo videot, et saada parem ülevaade mängust.
+
+Mängu varasemaid/tulevaseid versioone saab alla laadida 
 Seal on üleval ka mängu lähtekood.
 
 Mäng on loodud mängumootoriga Godot.
@@ -118,17 +118,17 @@ Selle mängu autor Magnus Pikksaar lõi selle mägnu Tartu Waldorfgümnaasiumi 1
 label_settings = SubResource("LabelSettings_6ar17")
 autowrap_mode = 2
 
-[node name="LinkButton" type="LinkButton" parent="Label"]
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 48.0
-offset_right = 224.0
-offset_bottom = 71.0
+offset_left = 149.0
+offset_top = 60.0
+offset_right = 226.0
+offset_bottom = 83.0
 scale = Vector2(0.32, 0.32)
 text = "GitHub'ist"
 uri = "https://github.com/GreenWiener/ComputerGame/releases/"
 
-[node name="H1" type="Label" parent="Label"]
+[node name="H1" type="Label" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 4.0
@@ -138,14 +138,28 @@ scale = Vector2(0.525, 0.525)
 text = "Mängust"
 label_settings = SubResource("LabelSettings_5wk2n")
 
-[node name="H2" type="Label" parent="Label"]
+[node name="H2" type="Label" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 81.0
+offset_top = 93.0
 offset_right = 75.0
-offset_bottom = 104.0
+offset_bottom = 116.0
 scale = Vector2(0.525, 0.525)
 text = "Autorist"
 label_settings = SubResource("LabelSettings_5wk2n")
 
-[connection signal="pressed" from="vignette/BackButton" to="vignette/BackButton" method="_on_pressed"]
+[node name="DemoButton" type="Button" parent="CanvasLayer/Control/Label"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 46.0
+offset_right = 247.0
+offset_bottom = 79.0
+scale = Vector2(0.27, 0.27)
+focus_mode = 0
+text = "Demo video"
+
+[node name="Demo_video" parent="CanvasLayer" instance=ExtResource("10_1dcd8")]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/Control/BackButton" to="CanvasLayer/Control/BackButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Label/DemoButton" to="CanvasLayer/Control/BackButton" method="_on_demo_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vsf010xjbios"]
+[gd_scene load_steps=16 format=3 uid="uid://vsf010xjbios"]
 
 [ext_resource type="Script" path="res://world/ssd.gd" id="1_3xm7p"]
 [ext_resource type="Texture2D" uid="uid://f3fhr462dd83" path="res://world/circuit_tile_dark.png" id="2_c4irc"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="5_7xt8f"]
 [ext_resource type="Texture2D" uid="uid://cbgx7cdi6dvvp" path="res://world/darkgray_wall_tiles.png" id="5_b8of5"]
 [ext_resource type="PackedScene" uid="uid://byvj1cfh1su7t" path="res://world/Portal.tscn" id="6_38gue"]
-[ext_resource type="PackedScene" uid="uid://dp1o46gwbqr2c" path="res://world/item.tscn" id="7_oh6ck"]
 [ext_resource type="PackedScene" uid="uid://87m80d5eiivu" path="res://world/controlpanel.tscn" id="11_vk7fe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2yr8"]
@@ -152,6 +151,7 @@ y_sort_enabled = true
 [node name="Controlpanel" parent="ysort" instance=ExtResource("11_vk7fe")]
 position = Vector2(361, 147)
 panel_scene = "res://menu/task_demical.tscn"
+panel_name = "ssd_panel"
 
 [node name="ssd-lockers" parent="ysort" instance=ExtResource("4_wu7sp")]
 
@@ -174,10 +174,6 @@ player_spawn_location = Vector2(-560, 56)
 
 [node name="items" type="Node2D" parent="ysort"]
 y_sort_enabled = true
-
-[node name="item" parent="ysort/items" instance=ExtResource("7_oh6ck")]
-position = Vector2(11, 150)
-item_name = "redel"
 
 [node name="Ladder_wall" type="StaticBody2D" parent="."]
 

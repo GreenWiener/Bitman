@@ -12,37 +12,44 @@ var _save: SaveGame
 
 
 func _ready() -> void:
+	print("⏺ <MOBO> ---------- scene loaded ---------- ⏺")
 	Global._world = self # # Global skriptis muutuja _world määramine selleks maailmaks
-	Global.world_name = self.name
+	Global.world_name = "MOBO"
 	Global.most_recent_scene = self.get_tree().current_scene.scene_file_path
 	#remove_children(get_node("ysort/items"))
 	
-	if Global.spawn_mobo_item == false: # remove manually put in items
-		for el in get_node("ysort/items").get_children():
-			el.queue_free()
-	
-	if Global.spawn_mobo_item == true:
+	# items put in with code #####################
+	if Global.spawn_mobo_item == true: 
 		Global.spawn_mobo_item = false
 		spawn_mobo_items()
-	
-	# SHADER
-	Global.player_vignette.material.set("shader_param/softness", 1.25)
-
-	# MUSIC
-	#AudioPlayer.play_music_level()
-	
+	#else:
+		## remove manually put in items (in the scene)
+		#for el in get_node("ysort/items").get_children():
+			#print("💢 <MOBO> despawning all manually put in items")
+			#el.despawning(false)
 	
 	
 	## GAME/SCENE STATE LOADER
+	Global.can_save_world_items = false
 	if Global.MOBO_item_name_list != []:
-#
 		for i in len(Global.MOBO_item_name_list):
-			print(Global.MOBO_item_name_list, Global.MOBO_item_position_list, Global.MOBO_box_item_list)
-			Global.spawn_item(Global.MOBO_item_name_list[i], Vector2(Global.MOBO_item_position_list[i]), Global.MOBO_box_item_list[i])
+			if i < len(Global.MOBO_item_name_list):
+				#print("### ", Global.MOBO_item_name_list[i], " | ", Vector2(Global.MOBO_item_position_list[i]), " | ", Global.MOBO_box_item_list[i])
+				Global.spawn_item(Global.MOBO_item_name_list[i], Vector2(Global.MOBO_item_position_list[i]), Global.MOBO_box_item_list[i])
 	
-	Global.MOBO_item_name_list = []
-	Global.MOBO_item_position_list = []
-	Global.MOBO_box_item_list = []
+	Global.can_save_world_items = true
+	Global.save_world_items()
+	
+	
+	
+	# SHADER
+	Global.player_vignette.material.set("shader_param/softness", 1)
+
+
+	
+	##Global.MOBO_item_name_list = []
+	##Global.MOBO_item_position_list = []
+	##Global.MOBO_box_item_list = []
 	
 	## dict
 	#if Global.MOBO_items_dict != {}:
@@ -73,10 +80,10 @@ func spawn_mobo_items():
 	#_player.global_position = _save.global_position
 	
 
-func save_all_items():
-	#print($ysort/items.get_children())
-	for i in $ysort/items.get_children():
-		i.save_item()
+#func save_all_items():
+	##print($ysort/items.get_children())
+	#for i in $ysort/items.get_children():
+		#i.save_item()
 
 
 

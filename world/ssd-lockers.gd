@@ -36,22 +36,20 @@ func _ready():
 		loendur += 1
 	
 	# kapi uksed on lahti/kinni stseeni alguses
-	for el in Global.locker_state_dict:
-		print("ELOLLLLLLLLLLLL: ", Global.locker_state_dict[el][0])
-		if Global.locker_state_dict[el][0] == "open":
-			print("AFSASFASFAFS")
-			set_cell(0, el, 1, Vector2i(1,0))
-			self.get_node(str(Global.locker_num_dict_temp[Vector2i(el)][0])).hide()
-		if Global.locker_state_dict[el][0] == "closed":
-			set_cell(0, el, 1, Vector2i(0,0))
-			self.get_node(str(Global.locker_num_dict_temp[Vector2i(el)][0])).show()
+	#for el in Global.locker_state_dict:
+		#if Global.locker_state_dict[el][0] == "open":
+			#set_cell(0, el, 1, Vector2i(1,0))
+			#self.get_node(str(Global.locker_num_dict_temp[Vector2i(el)][0])).hide()
+		#if Global.locker_state_dict[el][0] == "closed":
+			#set_cell(0, el, 1, Vector2i(0,0))
+			#self.get_node(str(Global.locker_num_dict_temp[Vector2i(el)][0])).show()
 
 
 func create_locker_texts():
 	for i in range(0, 63):
 		var locker_bin_num = random_binary_num()
 		Global.locker_bin_num_list.append(locker_bin_num)
-		print(Global.locker_bin_num_list)
+		#print(Global.locker_bin_num_list)
 		Global.locker_num_list.append(binary_to_demical(locker_bin_num))
 	
 	Global.locker_num_list.sort()
@@ -61,7 +59,7 @@ func create_locker_texts():
 		Global.locker_num_dict_temp[el] = []
 	Global.locker_dict_keys = Global.locker_num_dict_temp.keys()
 	Global.locker_dict_keys.sort()
-	print("KEYS: ", Global.locker_dict_keys)
+	#print("KEYS: ", Global.locker_dict_keys)
 
 	var loendur = 0
 	var locker_num_dict = {}
@@ -76,17 +74,31 @@ func create_locker_texts():
 
 
 func spawn_item_in_locker(): # asjade lisamine kappi
+	print("1¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤1")
 	for el in Global.locker_info_dict:
+		print("2¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤2")
 		if el == Global.task_bin_num_in_dec:
-			print("ASJADE LISAMINE KAPPI:")
+			print("3¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤===¤¤¤3")
 			#print("1kapis ", el, " on fail")
 			#print("2kapis ", Global.locker_info_dict[el][1], " on fail")
 			#print("3kapis ", Global.locker_info_dict[el][1]*7.5, " on fail")
-			var rand_box_items = ["chrome_exe","vlc_exe","vid_file","pic_file","music_file","txt_file"]
-			var rand_box_item = rand_box_items[randi_range(0,len(rand_box_items)-1)]
+			#var rand_box_items = ["chrome.exe","vlc.exe","video.mp4","picture.png","music.mp3","text.txt"]
+			
+			var files_list = []
+			var files_txt = FileAccess.open("res://world/files.txt",FileAccess.READ)
+			while files_txt.get_position() < files_txt.get_length():
+				var files_txt_lines = files_txt.get_line()
+				if files_txt_lines != "":
+					files_list.append(files_txt_lines)
+			#print("files_list: ", files_list)
+			
+			var rand_box_item = files_list[randi_range(0,len(files_list)-1)]
+			files_list.erase(rand_box_item)
 
 			#Global.locker_state_dict[Vector2(Global.locker_info_dict[el][1])] = ["closed","full"]
 			Global.spawn_item("box1 task_item", Vector2((Global.locker_info_dict[el][1].x * 7.5) + 3.5,(Global.locker_info_dict[el][1].y * 7.5) + 4.7), rand_box_item) # 3.5 ????????
+			
+			print("📮 <ssd-lockers> Spawning in locker: box1 task_item, ", rand_box_item)
 	
 	
 	#print("LOCKER_INFO_DICT: ", Global.locker_info_dict)
@@ -152,7 +164,7 @@ func _process(_delta):
 				spawn_item_in_locker()
 				Global._player.release_item(null, null) # eemalda ukse kood käest
 				Global.bin_task_item_spawned = true
-			print("state: ", Global.locker_state_dict)
+			print("📮 <ssd-lockers> locker_state_dict: ", Global.locker_state_dict)
 		
 		
 		# sulge kapi uks
@@ -160,7 +172,7 @@ func _process(_delta):
 			if Global.locker_state_dict[mouse_pos_int][1] != "full":
 				set_cell(0, mouse_pos_resize, 1, Vector2i(0,0))
 				Global.locker_state_dict[mouse_pos_int][0] = "closed"
-				print("state: ", Global.locker_state_dict)
+				print("📮 <ssd-lockers> locker_state_dict: ", Global.locker_state_dict)
 				
 				self.get_node(str(Global.locker_num_dict_temp[Vector2i(mouse_pos_int)][0])).show()
 				
@@ -168,18 +180,18 @@ func _process(_delta):
 					el.update_item_visibility()
 			else:
 				if mouse_pos_int.y != 19:
-					Global.PopUpText("Ei ulatu võtta!", "mouse")
+					Global.PopUpText("Ei ulatu võtta!", "mouse", Vector2.ZERO)
 
 		# lukus kapi uks
 		elif self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(0,0):
-			print("state: ", Global.locker_state_dict)
+			print("📮 <ssd-lockers> locker_state_dict: ", Global.locker_state_dict)
 			if Global.holding_item_name != null and "kapi_kood " in Global.holding_item_name:
 				#var kapi_popup_text = load("res://menu/popup_text.tscn").instantiate()
 				#self.add_child(kapi_popup_text)
 				#kapi_popup_text.popup()
-				Global.PopUpText("Vale kapi kood!", "mouse")
+				Global.PopUpText("Vale kapi kood!", "mouse", mouse_pos_int)
 			else:
-				Global.PopUpText("Kapp on lukus!", "mouse")
+				Global.PopUpText("Kapp on lukus!", "mouse", mouse_pos_int)
 		
 				#var kapi_state_label = Label.new()
 				#self.add_child(kapi_state_label)

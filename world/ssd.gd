@@ -1,30 +1,42 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	print("SSD LOADED<-------------------------------")
+	print("⏺ <SSD> ---------- scene loaded ---------- ⏺")
 	Global._world = self
-	Global.world_name = self.name
+	Global.world_name = "SSD"
 	Global.most_recent_scene = self.get_tree().current_scene.scene_file_path
 	
-	if Global.spawn_ssd_item == false: # remove manually put in items
-		for el in get_node("ysort/items").get_children():
-			el.queue_free()
-	
-	if Global.spawn_ssd_item == true: # items put in with code
+	# items put in with code #####################
+	if Global.spawn_ssd_item == true: 
 		Global.spawn_ssd_item = false
 		spawn_ssd_items()
-	
+		
+	#else:
+		## remove manually put in items (in the scene)
+		#for el in get_node("ysort/items").get_children():
+			#print("💢 <SSD> despawning all manually put in items")
+			#el.despawning(false)
 	
 	## GAME/SCENE STATE LOADER
+	Global.can_save_world_items = false
 	if Global.SSD_item_name_list != []:
-
 		for i in len(Global.SSD_item_name_list):
-			Global.spawn_item(Global.SSD_item_name_list[i], Vector2(Global.SSD_item_position_list[i]), Global.SSD_box_item_list[i])
+			if i < len(Global.SSD_item_name_list): ##no
+				Global.spawn_item(Global.SSD_item_name_list[i], Vector2(Global.SSD_item_position_list[i]), Global.SSD_box_item_list[i])
 	
-	Global.SSD_item_name_list = []
-	Global.SSD_item_position_list = []
-	Global.SSD_box_item_list = []
+	Global.can_save_world_items = true
+	Global.save_world_items()
+			
+			#else:
+				#if i > 0:
+					#i -= 1
+					#print("SSD🎇 ", Global.SSD_item_name_list, Global.SSD_item_position_list, Global.SSD_box_item_list)
+					#Global.spawn_item(Global.SSD_item_name_list[i], Vector2(Global.SSD_item_position_list[i]), Global.SSD_box_item_list[i])
+			
+	##Global.SSD_item_name_list = []
+	##Global.SSD_item_position_list = []
+	##Global.SSD_box_item_list = []
 	
 	# SHADER
 	Global.player_vignette.material.set("shader_parameter/softness", 0.78)
@@ -33,13 +45,17 @@ func _ready():
 
 ## SPAWN SPECIFIC ITEMS ON FIRST RUN
 func spawn_ssd_items():
-	#Global.spawn_item("box1", Vector2(397, 148), "")
-	pass
-
-func save_all_items():
-	print("CHILDREN:-:-:",$ysort/items.get_children())
-	for i in $ysort/items.get_children():
-		i.save_item()
+	print("🍘spawn_ssd_items🍘")
+	Global.SSD_item_name_list.append("redel")
+	Global.SSD_item_position_list.append(Vector2(11, 148))
+	Global.SSD_box_item_list.append("")
+	#Global.spawn_item("redel", Vector2(11, 148), "")
+	#pass
+	
+#func save_all_items():
+	#print("CHILDREN:-:-:",$ysort/items.get_children())
+	#for i in $ysort/items.get_children():
+		#i.save_item()
 
 
 func _on_wall_collision_1_body_entered(body):

@@ -1,70 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsy746refa5xe"]
+[gd_scene load_steps=5 format=3 uid="uid://bsy746refa5xe"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_ggkmy"]
 [ext_resource type="Texture2D" uid="uid://c4vyol5a5vre0" path="res://world/white.png" id="2_6cts3"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="3_5nr4n"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j04hb"]
-content_margin_left = 6.0
-content_margin_top = 5.0
-content_margin_right = 6.0
-content_margin_bottom = 5.0
-bg_color = Color(0.184314, 0.227451, 0.309804, 0.647059)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.156863, 0.196078, 0.266667, 0.764706)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yi8wd"]
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.0980392, 0.12549, 0.180392, 0.831373)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0588235, 0.0784314, 0.117647, 0.764706)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dp61b"]
-content_margin_left = 6.0
-content_margin_top = 5.0
-content_margin_right = 6.0
-content_margin_bottom = 5.0
-bg_color = Color(0.184314, 0.227451, 0.309804, 0.647059)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.156863, 0.196078, 0.266667, 0.764706)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyjs1"]
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.0980392, 0.12549, 0.180392, 0.764706)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.0588235, 0.0784314, 0.117647, 0.764706)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1oot"]
+size = Vector2(36.905, 12)
 
 [node name="PauseMenu" type="Control"]
-z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,60 +20,91 @@ script = ExtResource("1_ggkmy")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(160.776, 87.8474)
 scale = Vector2(0.246121, 0.266844)
-color = Color(0, 0, 1.83529, 1)
+color = Color(0.129412, 0.364706, 1, 0.466667)
+blend_mode = 2
 texture = ExtResource("2_6cts3")
 texture_scale = 0.72
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 180.0
-color = Color(0.0313726, 0.0431373, 0.101961, 0.803922)
+color = Color(0.0313726, 0.0431373, 0.101961, 0.541176)
 
-[node name="Continue" type="Button" parent="."]
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+visible = false
+position = Vector2(19.371, 6.90925)
+shape = SubResource("RectangleShape2D_p1oot")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Buttons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_5nr4n")
+
+[node name="Continue" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 135.0
-offset_top = 66.0
-offset_right = 238.0
-offset_bottom = 97.0
+offset_left = 120.0
+offset_top = 56.0
+offset_right = 281.0
+offset_bottom = 89.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_j04hb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_yi8wd")
+focus_mode = 0
 text = "Jätka"
 
-[node name="Exit" type="Button" parent="."]
+[node name="Startmenu" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 0
 offset_left = 120.0
-offset_top = 90.0
+offset_top = 81.0
 offset_right = 281.0
-offset_bottom = 121.0
+offset_bottom = 114.0
 scale = Vector2(0.5, 0.5)
-theme_override_styles/normal = SubResource("StyleBoxFlat_dp61b")
-theme_override_styles/hover = SubResource("StyleBoxFlat_fyjs1")
+focus_mode = 0
+text = "Algusmenüü"
+
+[node name="Exit" type="Button" parent="CanvasLayer/Buttons"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 106.0
+offset_right = 281.0
+offset_bottom = 139.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
 text = "Salvesta ja sulge"
 
-[node name="MusicSlider" type="HSlider" parent="."]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Buttons"]
 layout_mode = 0
-offset_left = 139.805
-offset_top = 172.931
-offset_right = 275.805
-offset_bottom = 188.931
-scale = Vector2(0.27, 0.27)
+offset_left = 134.805
+offset_top = 159.931
+offset_right = 270.805
+offset_bottom = 175.931
+scale = Vector2(0.4, 0.4)
 min_value = -30.0
 max_value = 10.0
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CanvasLayer/Buttons"]
 layout_mode = 0
-offset_left = 152.162
-offset_top = 163.872
-offset_right = 219.162
-offset_bottom = 186.872
-scale = Vector2(0.205, 0.205)
+offset_left = 151.16
+offset_top = 151.761
+offset_right = 218.16
+offset_bottom = 174.761
+scale = Vector2(0.3, 0.3)
 text = "muusika"
 
-[connection signal="pressed" from="Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="MusicSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
+[connection signal="button_down" from="CanvasLayer/Buttons/Continue" to="." method="_on_continue_button_down"]
+[connection signal="button_up" from="CanvasLayer/Buttons/Continue" to="." method="_on_continue_button_up"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Startmenu" to="." method="_on_startmenu_pressed"]
+[connection signal="button_down" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_up" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Buttons/MusicSlider" to="." method="_on_h_slider_value_changed"]

@@ -1,9 +1,28 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyjx6j8a10maq"]
+[gd_scene load_steps=18 format=3 uid="uid://dyjx6j8a10maq"]
 
 [ext_resource type="Script" path="res://menu/ram_menu.gd" id="1_fm8fe"]
 [ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="2_8qwkf"]
 [ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="3_w6lip"]
 [ext_resource type="PackedScene" uid="uid://chfusk0x06bqh" path="res://file_block.tscn" id="4_7io3y"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="5_8qw4e"]
+[ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="6_f3gru"]
+[ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="6_v05tl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ndtr"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_ymh58"]
 line_spacing = 13.0
@@ -38,6 +57,9 @@ font_size = 2
 font_size = 30
 font_color = Color(1, 1, 1, 0.235294)
 
+[sub_resource type="Theme" id="Theme_hsk8g"]
+default_font_size = 15
+
 [node name="RAM_Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -67,7 +89,7 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme_override_styles/normal = ExtResource("2_8qwkf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ndtr")
 label_settings = ExtResource("3_w6lip")
 
 [node name="Label2" type="Label" parent="."]
@@ -220,5 +242,29 @@ label_settings = SubResource("LabelSettings_whfma")
 [node name="File_icon" type="Sprite2D" parent="."]
 position = Vector2(165, 68)
 
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = -82.0
+offset_right = 167.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_hsk8g")
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("5_8qw4e")
+theme_override_styles/normal = ExtResource("6_f3gru")
+theme_override_styles/hover = ExtResource("6_v05tl")
+theme_override_styles/pressed = ExtResource("2_8qwkf")
+text = "×"
+
 [connection signal="pressed" from="Fail_Panel/new_task_btn" to="." method="_on_new_task_btn_pressed"]
 [connection signal="pressed" from="Info_Panel/take_info_btn" to="." method="_on_take_info_btn_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

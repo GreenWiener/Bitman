@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://be4or0qrwhwix"
-path="res://.godot/imported/vid_file.png-4c004d07be77aca9f0d4f4e2ccfe2aa0.ctex"
+uid="uid://ck15fshd55slk"
+path="res://.godot/imported/arrowhead_pink.png-3b20248b6b6f4eb7a24aa8d093196b75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/vid_file.png"
-dest_files=["res://.godot/imported/vid_file.png-4c004d07be77aca9f0d4f4e2ccfe2aa0.ctex"]
+source_file="res://menu/arrowhead_pink.png"
+dest_files=["res://.godot/imported/arrowhead_pink.png-3b20248b6b6f4eb7a24aa8d093196b75.ctex"]
 
 [params]
 

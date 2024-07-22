@@ -1,10 +1,11 @@
 extends Control
 
-@onready var demical_row = preload("res://menu/task_demical_row.tscn").instantiate()
+#@onready var demical_row = preload("res://menu/task_demical_row.tscn").instantiate()
 
 
 func _ready():
 	# esimese ploki lisamine
+	var demical_row = preload("res://menu/task_demical_row.tscn").instantiate()
 	$ScrollContainer/GridContainer/Add_row/remove_row_btn.hide()
 	$ScrollContainer/GridContainer.add_child(demical_row)
 	$ScrollContainer/GridContainer.move_child($ScrollContainer/GridContainer/Add_row, $ScrollContainer/GridContainer.get_child_count()) # liiguta nupp viimaseks
@@ -24,7 +25,9 @@ func _process(_delta):
 func _on_add_row_btn_pressed():
 	$ScrollContainer/GridContainer/Add_row/remove_row_btn.show()
 	
-	$ScrollContainer/GridContainer.add_child(preload("res://menu/task_demical_row.tscn").instantiate())
+	var demical_row = preload("res://menu/task_demical_row.tscn").instantiate()
+	$ScrollContainer/GridContainer.add_child(demical_row)
+	demical_row.get_node("binary_num_digit").grab_focus()
 	$ScrollContainer/GridContainer.move_child($ScrollContainer/GridContainer/Add_row, $ScrollContainer/GridContainer.get_child_count()) # liiguta nupp viimaseks
 	
 func _on_remove_row_btn_pressed():
@@ -123,3 +126,6 @@ func _on_example_btn_pressed():
 func _on_close_example_btn_pressed():
 	$Example.hide()	
 
+
+func _on_back_button_pressed():
+	Global._controlpanel.close_panel = true

@@ -4,9 +4,8 @@ extends AudioStreamPlayer2D
 const theme_music = preload("res://audio/Project_game.wav")
 const train_music = preload("res://audio/Project_game_train.wav")
 
-var music_volume = 0.0
 
-func _play_music(music: AudioStream, volume = music_volume):
+func _play_music(music: AudioStream, volume = Global.music_volume):
 	#if stream == music:
 	#	return
 	
@@ -22,13 +21,15 @@ func play_music_train():
 	_play_music(train_music)
 
 func set_music_volume(volume):
-	music_volume = volume
-	volume_db = music_volume
+	Global.music_volume = volume
+	volume_db = Global.music_volume
 	if volume == -30:
 		volume_db = -100
-		music_volume = -100
+		Global.music_volume = -100
 
 
 func _process(_delta):
+	volume_db = Global.music_volume
+
 	if playing == false:
 		_play_music(theme_music)

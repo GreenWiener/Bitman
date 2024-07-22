@@ -102,7 +102,15 @@ texture = ExtResource("4_gkwkg")
 
 [node name="Node2D" type="Node2D" parent="."]
 
+[connection signal="focus_entered" from="input1" to="." method="_on_input_1_focus_entered"]
+[connection signal="focus_exited" from="input1" to="." method="_on_input_1_focus_exited"]
 [connection signal="text_changed" from="input1" to="." method="_on_input_1_text_changed"]
+[connection signal="focus_entered" from="input2" to="." method="_on_input_2_focus_entered"]
+[connection signal="focus_exited" from="input2" to="." method="_on_input_2_focus_exited"]
 [connection signal="text_changed" from="input2" to="." method="_on_input_2_text_changed"]
+[connection signal="focus_entered" from="input3" to="." method="_on_input_3_focus_entered"]
+[connection signal="focus_exited" from="input3" to="." method="_on_input_3_focus_exited"]
 [connection signal="text_changed" from="input3" to="." method="_on_input_3_text_changed"]
+[connection signal="focus_entered" from="input4" to="." method="_on_input_4_focus_entered"]
+[connection signal="focus_exited" from="input4" to="." method="_on_input_4_focus_exited"]
 [connection signal="text_changed" from="input4" to="." method="_on_input_4_text_changed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp1o46gwbqr2c"]
+[gd_scene load_steps=9 format=3 uid="uid://dp1o46gwbqr2c"]
 
 [ext_resource type="Script" path="res://world/item.gd" id="1_3eal6"]
 [ext_resource type="Texture2D" uid="uid://dndvxna5g7hhd" path="res://world/item2.png" id="2_ms43m"]
@@ -11,6 +11,16 @@ size = Vector2(4.72656, 4.72656)
 bg_color = Color(0.164706, 0, 0.803922, 0.419608)
 
 [sub_resource type="LabelSettings" id="LabelSettings_d88id"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijoeg"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+expand_margin_left = 19.0
+expand_margin_top = 6.0
+expand_margin_right = 19.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txxxj"]
+size = Vector2(141, 35)
 
 [node name="item" type="Area2D"]
 collision_layer = 4
@@ -37,10 +47,10 @@ offset_bottom = 40.0
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = -44.3341
-offset_top = -10.8352
+offset_left = -44.334
+offset_top = -11.0
 offset_right = 991.666
-offset_bottom = 52.1648
+offset_bottom = 52.0
 scale = Vector2(0.085, 0.085)
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -64,7 +74,39 @@ text = "[F] võta kätte"
 label_settings = SubResource("LabelSettings_d88id")
 horizontal_alignment = 1
 
+[node name="pickup_label_android" type="Label" parent="Texts"]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = -6.11589
+offset_top = -5.55681
+offset_right = 95.8841
+offset_bottom = 17.4432
+scale = Vector2(0.12, 0.12)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ijoeg")
+text = "võta kätte"
+label_settings = SubResource("LabelSettings_d88id")
+horizontal_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Texts/pickup_label_android"]
+position = Vector2(50.9332, 11.4583)
+shape = SubResource("RectangleShape2D_txxxj")
+action = "Interact_f"
+
+[node name="ladder_collision_placeholder" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ladder_collision_placeholder"]
+visible = false
+polygon = PackedVector2Array(-2.2, 2, -2.2, -15, 2.2, -15, 2.2, 2)
+disabled = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="ladder_collision_placeholder" to="." method="_on_ladder_collision_placeholder_body_entered"]
+[connection signal="body_exited" from="ladder_collision_placeholder" to="." method="_on_ladder_collision_placeholder_body_exited"]

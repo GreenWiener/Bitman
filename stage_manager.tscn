@@ -57,7 +57,7 @@ _data = {
 }
 
 [node name="StageManager" type="CanvasLayer"]
-layer = 2
+layer = 3
 script = ExtResource("1_dxee2")
 
 [node name="ColorRect" type="ColorRect" parent="."]

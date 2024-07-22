@@ -1,30 +1,36 @@
 extends Node2D
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	print("⏺ <RAM> ---------- scene loaded ---------- ⏺")
 	Global._world = self
-	Global.world_name = self.name
+	Global.world_name = "RAM"
 	Global.most_recent_scene = self.get_tree().current_scene.scene_file_path
 	
-	if Global.spawn_ram_item == false: # remove manually put in items
-		for el in get_node("ysort/items").get_children():
-			el.queue_free()
-	
-	if Global.spawn_ram_item == true: # items put in with code
+	# items put in with code
+	if Global.spawn_ram_item == true: 
 		Global.spawn_ram_item = false
 		spawn_ram_items()
-		
+	#else:
+		## remove manually put in items (in the scene)
+		#for el in get_node("ysort/items").get_children():
+			#print("💢 <RAM> despawning all manually put in items")
+			#el.despawning(false)
+
 	
 	## GAME/SCENE STATE LOADER
+	Global.can_save_world_items = false
 	if Global.RAM_item_name_list != []:
-
 		for i in len(Global.RAM_item_name_list):
-			Global.spawn_item(Global.RAM_item_name_list[i], Vector2(Global.RAM_item_position_list[i]), Global.RAM_box_item_list[i])
+			if i < len(Global.RAM_item_name_list):
+				Global.spawn_item(Global.RAM_item_name_list[i], Vector2(Global.RAM_item_position_list[i]), Global.RAM_box_item_list[i])
 	
-	Global.RAM_item_name_list = []
-	Global.RAM_item_position_list = []
-	Global.RAM_box_item_list = []
+	Global.can_save_world_items = true
+	Global.save_world_items()
+	
+	##Global.RAM_item_name_list = []
+	##Global.RAM_item_position_list = []
+	##Global.RAM_box_item_list = []
 	
 	# SHADER
 	Global.player_vignette.material.set("shader_param/softness", 0.78)
@@ -33,14 +39,15 @@ func _ready():
 ## SPAWN SPECIFIC ITEMS ON FIRST RUN
 func spawn_ram_items():
 	#Global.spawn_item("box1", Vector2(397, 148), "")
+	
 	pass
 
 
-func save_all_items():
-	#print("CHILDREN:-:-:",$ysort/items.get_children())
-	print("✅SAVING all RAM items✅")
-	for i in $ysort/items.get_children():
-		i.save_item()
+#func save_all_items():
+	##print("CHILDREN:-:-:",$ysort/items.get_children())
+	#print("✅SAVING all RAM items✅")
+	#for i in $ysort/items.get_children():
+		#i.save_item()
 
 
 
@@ -60,4 +67,4 @@ func _on_drop_off_area_body_exited(body):
 
 
 func _on_button_pressed():
-	Global.PopUpText("SA LEIDSID SALAJASE NUPU!!!", "player")
+	Global.PopUpText("SA LEIDSID SALAJASE NUPU!!!", "player", Vector2.ZERO)

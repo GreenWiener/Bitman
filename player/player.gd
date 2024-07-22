@@ -9,10 +9,21 @@ var hand2_rotation_switch = true
 @onready var leg2_pos = $"skeleton/player-leg2"
 var leg1_pos_switch = true
 var leg2_pos_switch = false
+var mapinicator_pos1 = 0
+var mapinicator_pos2 = 0
 
 var console_focus = false
 var entered_portal = false
 
+var interact_f_label
+var interact_g_label
+var interact_g_label2
+
+
+@onready var task_btn = $CanvasLayer/Buttons/SideButtons/task_btn
+@onready var task_menu = $CanvasLayer/Buttons/SideButtons/Control/task_menu
+
+@onready var item_info = $CanvasLayer/holding_item_info/item_info
 
 func _ready() -> void: ## funktsioon, mis käivitub, stseen on ära laadinud
 	Global._player = self # Global skriptis muutuja _player määramine mängijaks
@@ -20,15 +31,42 @@ func _ready() -> void: ## funktsioon, mis käivitub, stseen on ära laadinud
 	Global.player_vignette = $CanvasLayer/vignette
 	$CanvasLayer/vignette.show()
 	self.global_position = Global.player_inital_map_position # mängija asukoht stseeni alguses
-	
+	 
 	refresh_item(Global.item_name, Global.box_item) # kontrollib mängija käes olevate asju
-
+	
+	# Help Arrow
 	if Global.helparrow_state == "task":
-		Global.add_HelpArrow($CanvasLayer, $CanvasLayer/task_btn.position - Vector2(10,-7))
+		Global.add_HelpArrow(task_btn, Vector2(-12,20), 2)
 	elif Global.helparrow_state == "done_1st_task" and Global.task_ssd_done != "":
-		Global.add_HelpArrow($CanvasLayer, $CanvasLayer/task_btn.position - Vector2(10,-7))
+		Global.add_HelpArrow(task_btn, Vector2(-12,20), 1)
+	
+	if Global.scene_savepos != null:
+		self.position = Global.scene_savepos
+		Global.scene_savepos = null
+	
+	var i_label_type
+	if "Android" in OS.get_name():
+		$CanvasLayer/SideButtons.scale = Vector2(0.45, 0.45)
+		i_label_type = "InteractionLabels_android"
+		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_f_label").visible = false
+		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_g_label").visible = false
+		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2").visible = false
+		$CanvasLayer/Movement.visible = true
+		
+	else:
+		$CanvasLayer/Buttons/SideButtons.scale = Vector2(0.38, 0.38)
+		i_label_type = "InteractionLabels"
+		get_node("CanvasLayer/holding_item_info/InteractionLabels_android/interact_f_label").visible = false
+		get_node("CanvasLayer/holding_item_info/InteractionLabels_android/interact_g_label").visible = false
+		get_node("CanvasLayer/holding_item_info/InteractionLabels_android/interact_g_label2").visible = false
+	
+	interact_f_label = get_node("CanvasLayer/holding_item_info/" + i_label_type + "/interact_f_label")
+	interact_g_label = get_node("CanvasLayer/holding_item_info/" + i_label_type + "/interact_g_label")
+	interact_g_label2 = get_node("CanvasLayer/holding_item_info/" + i_label_type + "/interact_g_label2")
+	
 
-
+	
+	
 var VELOCITY = Vector2.ZERO
 
 #@export var float_number: float = 5
@@ -37,14 +75,46 @@ var VELOCITY = Vector2.ZERO
 const ACCELERATION = 300
 const FRICTION = 300
 
+var delta_value
 
 func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu aeg, kui stseen on laetud
+	delta_value = delta
 	Global.player_position = position # mängija asukoht Global skriptis kasutamiseks
-	$CanvasLayer/Points.text = "Punktid: " + str(Global.player_task_level_points)
-	$CanvasLayer/Points2.text = "               " + str(Global.player_task_level_points)
 	
-	#$CanvasLayer/Label.text = str("pos: ",position.round(),"\nin_pickup_area: ",Global.in_pickup_area,", ",Global.item_name,"\nplayer_holding_item: ",Global.player_holding_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_item_name_list: ", Global.MOBO_item_name_list,"\nMOBO_item_position_list: ", Global.MOBO_item_position_list,"\nCPU_item_name_list: ", Global.CPU_item_name_list,"\nCPU_item_position_list: ", Global.CPU_item_position_list) # info ekraanil
-	$CanvasLayer/Label.text = str("WORLD: ",Global._world,"\nPOS: ",position.round(),"\nitem_name: ",Global.item_name,"\nbox_item: ",Global.box_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_box_item_list: ",Global.MOBO_box_item_list) # info ekraanil
+	var skibidi_points = []
+	var actual_points = Global.player_task_level_points / 10
+	for i in range(0, actual_points):
+		skibidi_points.append("💩")
+	skibidi_points = "".join(skibidi_points)
+	
+	if Global.language == "english":
+		$CanvasLayer/Buttons/Points3/points_label1.text = "Points: " + str(Global.player_task_level_points)
+		$CanvasLayer/Buttons/Points3/points_label2.text = "             " + str(Global.player_task_level_points)
+	elif Global.language == "skibidi":
+		$CanvasLayer/Buttons/Points3/points_label1.text = "Points: " + skibidi_points
+		$CanvasLayer/Buttons/Points3/points_label2.text = "             " + skibidi_points
+	else:
+		$CanvasLayer/Buttons/Points3/points_label1.text = "Punktid: " + str(Global.player_task_level_points)
+		$CanvasLayer/Buttons/Points3/points_label2.text = "                " + str(Global.player_task_level_points)
+	#$CanvasLayer/debug_menu.text = str("pos: ",position.round(),"\nin_pickup_area: ",Global.in_pickup_area,", ",Global.item_name,"\nplayer_holding_item: ",Global.player_holding_item,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_item_name_list: ", Global.MOBO_item_name_list,"\nMOBO_item_position_list: ", Global.MOBO_item_position_list,"\nCPU_item_name_list: ", Global.CPU_item_name_list,"\nCPU_item_position_list: ", Global.CPU_item_position_list) # info ekraanil
+	
+
+	
+	$CanvasLayer/debug_menu.text = str("WORLD: ",Global._world,"\nPOS: ",position.round(),"\nitem_name: ",Global.item_name,"\nbox_item: ",Global.box_item,"\nunique_item_id: ",Global.unique_item_id,"\nholding_item_name: ",Global.holding_item_name,"\nMOBO_box_item_list: ",Global.MOBO_box_item_list,"\ntask_menu_info_dict: ",Global.task_menu_info_dict) # info ekraanil
+	
+	#if Global.world_name != null:
+	$CanvasLayer/debug_menu/debug_menu2.text = str("Global." + Global.world_name + "_item_id_list: ", Global.get(Global.world_name + "_item_id_list"), "\nGlobal." + Global.world_name + "_item_name_list: ", Global.get(Global.world_name + "_item_name_list"), "\nGlobal." + Global.world_name + "_item_position_list: ", Global.get(Global.world_name + "_item_position_list"), "\nGlobal." + Global.world_name + "_box_item_list: ", Global.get(Global.world_name + "_box_item_list"))
+		#var item_name_list = world_name + "_item_name_list"
+		#var item_position_list = world_name + "_item_position_list"
+		#var box_item_list = world_name + "_box_item_list"
+		#
+		#var get_item_name_list = get(item_name_list)
+		#var get_item_position_list = get(item_position_list)
+		#var get_box_item_list = get(box_item_list)
+		#get_item_name_list = []
+		#get_item_position_list = []
+		#get_box_item_list = []
+	
 	
 	#print(get(bob2))
 	# liikumis klahvid ja loogika
@@ -70,22 +140,21 @@ func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu ae
 	
 	if Input.is_action_just_released("Close") and console_focus == true:
 		close_console()
-		$CanvasLayer/task_menu.hide()
-		print("actully thisisisi")
+
 	if Global.player_in_menu == false and console_focus == false: # liikumine lubatud ainult siis, kui mängija pole menüüs või kui konsooli kast pole fookuses
 		set_velocity(VELOCITY)
 		move_and_slide()
 	
 	
 	if Input.is_action_just_released("F3"):
-		$CanvasLayer/Label.visible = !$CanvasLayer/Label.visible
+		$CanvasLayer/debug_menu.visible = !$CanvasLayer/debug_menu.visible
 	
 	if Input.is_action_just_released("mb_middle"):
 		position = get_global_mouse_position()
 	
 	
 	# Rongi ajal mängija liikumine
-	if Global.world_name == "world" and Global.train_driving == true and input_vector.x == 0:
+	if Global.world_name == "MOBO" and Global.train_driving == true and input_vector.x == 0:
 		VELOCITY = VELOCITY.move_toward(Vector2(0, 1) * MAX_SPEED, ACCELERATION * delta)
 		#print("yES: ", input_vector.x)
 	#else:
@@ -121,63 +190,82 @@ func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu ae
 				walking_HandsAnim()
 				walking_LegsAnim()
 
-
-
+	# map indocator
+	if Global.world_name == "MOBO":
+		mapinicator_pos1 = 286 + (Global.player_position.x / 2.8) 
+		mapinicator_pos2 = 198 + (Global.player_position.x / 5) 
+		if mapinicator_pos1 >= 84.9 and mapinicator_pos1 <= 158.66: # SSD --- RAM
+			$CanvasLayer/map/MapIndicator.position.x = mapinicator_pos1
+		if mapinicator_pos2 >= 165.89 and mapinicator_pos2 <= 239.64: # RAM --- CPU
+			$CanvasLayer/map/MapIndicator.position.x = mapinicator_pos2
+		#print(mapinicator_pos1)
+	
+	if Global.world_name == "SSD":
+		$CanvasLayer/map/MapIndicator.position.x = 81.365
+	if Global.world_name == "RAM":
+		$CanvasLayer/map/MapIndicator.position.x = 162.365
+	if Global.world_name == "CPU":
+		$CanvasLayer/map/MapIndicator.position.x = 243.365
+	
+	
+	
 	# käeshoitava asja informatsion ekraanil
 	if Global.player_holding_item == true:
-		if Global.world_name == "world" and Global.train_driving == true and Global._train.doors_open == false:
+		if Global.world_name == "MOBO" and Global.train_driving == true and Global._train.doors_open == false:
 			hide_holding_item_info()
 		else:
 			show_holding_item_info()
 	else:
 		hide_holding_item_info()
+	
 
 
-func show_holding_item_info():
+func show_holding_item_info(): #if "Android" in OS.get_name():
 	# tekstid
-	$CanvasLayer/holding_item_info/item_info.text = Global.item_name
+	item_info.text = Global.item_name
 	
 	if "box1" in Global.holding_item_name: 
 		if Global.box_item != null:
-			$CanvasLayer/holding_item_info/item_info.text = Global.box_item
+			item_info.text = Global.box_item
 		else:
-			$CanvasLayer/holding_item_info/item_info.text = Global.item_name
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_f_label.show() #[F] pane maha
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.hide() #[G] pane kasti
+			item_info.text = Global.item_name
+		
+		interact_f_label.show() #[F] pane maha
+		interact_g_label2.hide() #[G] pane kasti
 		if Global.in_BoxOpening_area == true:
-			$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.show() #[G] ava
+			interact_g_label.show() #[G] ava
 		else:
-			$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.hide() #[G] ava
+			interact_g_label.hide() #[G] ava
 	
 	elif Global.holding_item_name == "box2":
-		$CanvasLayer/holding_item_info/item_info.text = "tühi kast"
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_f_label.show() #[F] pane maha
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.hide() #[G] ava
+		item_info.text = "tühi kast"
+		interact_f_label.show() #[F] pane maha
+		interact_g_label.hide() #[G] ava
 		if Global.in_pickup_area == true and Global.in_item_area != "box1" and Global.in_item_area != "box2" and Global.in_BoxOpening_area == true:
-			$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.show() #[G] pane kasti
+			interact_g_label2.show() #[G] pane kasti
 		else:
-			$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.hide() #[G] pane kasti
+			interact_g_label2.hide() #[G] pane kasti
 	else:
 		if "kapi_kood1" in Global.item_name:
-			$CanvasLayer/holding_item_info/item_info.text = Global.holding_item_name
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_f_label.show() #[F] pane maha
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.hide() #[G] ava
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.hide() #[G] pane kasti
+			item_info.text = Global.holding_item_name
+		interact_f_label.show() #[F] pane maha
+		interact_g_label.hide() #[G] ava
+		interact_g_label2.hide() #[G] pane kasti
 	
 	$CanvasLayer/holding_item_info.show()
 	
 	# labelite värvi muutused üles korjamisel 
 	if Input.is_action_pressed("Interact_f"):
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_f_label.modulate = "00ff47"
+		interact_f_label.modulate = "00ff47"
 	else:
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_f_label.modulate = "ffffff"
+		interact_f_label.modulate = "ffffff"
 	
 	if Input.is_action_pressed("Open_g"):
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.modulate = "00ff47"
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.modulate = "00ff47"
+		interact_g_label.modulate = "00ff47"
+		interact_g_label2.modulate = "00ff47"
 	else:
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.modulate = "ffffff"
-		$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.modulate = "ffffff"
+		interact_g_label.modulate = "ffffff"
+		interact_g_label2.modulate = "ffffff"
 	
 	# jooned
 	if $skeleton.scale.x == 1:
@@ -193,9 +281,10 @@ func hide_holding_item_info():
 	$CanvasLayer/holding_item_info/info_line1.hide()
 	$CanvasLayer/holding_item_info/info_line2.hide()
 	
-	$CanvasLayer/holding_item_info/InteractionLabels/interact_f_label.hide() #[F] pane maha
-	$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label.hide() #[G] ava
-	$CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2.hide() #[G] pane kasti
+	if interact_f_label != null:
+		interact_f_label.hide() #[F] pane maha
+		interact_g_label.hide() #[G] ava
+		interact_g_label2.hide() #[G] pane kasti
 
 #func apply_acceleration(amount):
 #	velocity.x = move_toward(velocity.x, MAX_SPEED * amount, ACCELERATION)
@@ -220,15 +309,25 @@ func hold_item(item_name): ## eseme käes hoidmine
 		#if "task_item" in item_name: ############
 			#item_name = item_name.split(" ")[len(item_name.split(" "))-1]
 		Global.item_name = item_name
-		print("<PLAYER>: '",item_name,"' käes hoidmine")
+		print("◻ <PLAYER> Hold item: ", item_name)
 		Global.player_holding_item = true
 		Global.holding_item_name = item_name
 		$"skeleton/player-arm2".add_child(item_sprite)
 		#item_sprite.set_texture(load("res://world/" + item_name + ".png"))
-		if ResourceLoader.exists("res://world/" + item_name + ".png"): # TEXTURE
-			item_sprite.texture = load("res://world/" + item_name + ".png")
+		
+		# TEXTURE
+		var item_name_split = item_name.split(".")
+		var item_name_end = item_name_split[len(item_name_split)-1]
+		var file_type = item_name_end
+		if file_type == "exe":
+			file_type = item_name
+		if ResourceLoader.exists("res://world/" + file_type + ".png"):
+			item_sprite.texture = load("res://world/" + file_type + ".png")
 		else:
-			item_sprite.texture = load("res://world/item.png")
+			if item_name_end == "exe":
+				item_sprite.texture = load("res://world/exe.png")
+			else:
+				item_sprite.texture = load("res://world/item.png")
 			
 		
 		if "kood" in item_name:
@@ -236,7 +335,6 @@ func hold_item(item_name): ## eseme käes hoidmine
 		if "kapi_kood1" in item_name:
 			Global.holding_item_name = "kapi_kood " + item_name.split(" ")[1]
 		elif opening_box != true:
-			print("🤢🤢🤢🤢🤢🤢🤢🤢🤢")
 			Global.despawn_item(item_name)
 		opening_box = false
 				
@@ -256,15 +354,15 @@ func hold_item(item_name): ## eseme käes hoidmine
 	
 
 func release_item(item_name, box_item): ## eseme eemaldamine käest
-	print("<PLAYER>: '",item_name,"' eemaldamine käest")
+	print("◻ <PLAYER> Release item: ", item_name)
 	Global.player_holding_item = false
 	Global.holding_item_name = null
 	$"skeleton/player-arm2".remove_child(item_sprite)
 	if item_name != null:
 		Global.spawn_item(item_name, position, box_item)
 
-func refresh_item(item_name, box_item): ## eseme värskendamine käes
-	print("<PLAYER>:'",item_name,"' eseme värskendamine ---")
+func refresh_item(item_name, box_item): ## eseme värskendamine käes (jookseb player stseeni sisenemisel)
+	print("◻ <PLAYER> Refresh item:'", item_name)
 	if Global.player_holding_item == true:
 		#Global.holding_item_name = item_name
 		Global.player_holding_item = false
@@ -274,6 +372,8 @@ func refresh_item(item_name, box_item): ## eseme värskendamine käes
 			release_item(item_name, box_item)
 
 func open_box(box_item): # kasti avamine
+	print("◻ <PLAYER> Open box: ", Global.item_name, " → ", box_item)
+	Global.item_name = Global.box_item
 	Global.player_holding_item = false
 	opening_box = true
 	if box_item != null:
@@ -284,10 +384,10 @@ func open_box(box_item): # kasti avamine
 
 
 func store_box():
-	print("store1")
+	print("◻ <PLAYER> Store box: ", Global.in_item_area, " → box1")
 	if Global.in_item_area != "box1" and Global.in_item_area != "box2":
 		if Global.in_item_area == "redel":
-			Global.PopUpText("bruh", "player")
+			Global.PopUpText("bruh", "player", Vector2.ZERO)
 		else:
 			print("store2")
 			
@@ -384,12 +484,16 @@ func walking_LegsAnim(): #
 
 func _on_console_focus_entered():
 	console_focus = true
+	if "Android" in OS.get_name() and DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('') # android keyboard
+		$CanvasLayer/Console.position.y = 36
 
 
 func close_console():
 	$CanvasLayer/Console.release_focus()
 	$CanvasLayer/Console.hide()
 	console_focus = false
+	DisplayServer.virtual_keyboard_hide() # android keyboard
 
 
 
@@ -407,17 +511,18 @@ func _on_console_text_submitted(new_text):
 			print("/skin ghost")
 			$skeleton.modulate = "ffffff28"
 	
-	elif new_text.begins_with("/noclip "):
+	elif new_text.begins_with("/noclip"):
 		if new_text == "/noclip on":
 				print("/noclip on")
 				$CollisionShape2D.disabled = true
-		if new_text == "/noclip on1":
-				print("/noclip on1")
+		if new_text == "/noclip2 on":
+				print("/noclip2 on")
 				set_collision_mask(4)
-		if new_text == "/noclip off":
+		if new_text == "/noclip off" or new_text == "/noclip2 off":
 				print("/noclip off")
 				set_collision_mask(1)
 				$CollisionShape2D.disabled = false
+				
 	
 	elif "/getpos" in new_text:
 		print("Your position is: ", position)
@@ -432,13 +537,9 @@ func _on_console_text_submitted(new_text):
 		
 		if len(new_text.split(" ")) == 2:
 			var variable_str = new_text.split(" ")[1]
-			#print("##################", variable_str)			
-			#var temp = variable_str
-			if get(variable_str) != null:
-				print("VARIABLE(Local): ", get(variable_str))
-		
-			else:
-				print("VARIABLE(Global): ", Global.get(variable_str))
+
+			print("/getvar > (Global) ", variable_str, ": ", Global.get(variable_str))
+			Global.PopUpText(str("/getvar > (Global) ", variable_str, ": ", Global.get(variable_str)), "player", Vector2.ZERO)
 		
 			#var bob = get(new_text.split(" ")[1])
 			#var bob2 = "bob"
@@ -468,14 +569,35 @@ func _on_console_text_submitted(new_text):
 	
 	elif new_text.begins_with("/spawn"):
 		var new_text_split = new_text.split(" ")
-		Global.spawn_item(new_text_split[len(new_text_split)-1], position, null)
+		var new_text_end = new_text_split[len(new_text_split)-1]
+		if "|" in new_text_end:
+			new_text_end = new_text_end.replace("|", " ")
+		Global.spawn_item(new_text_end, position, null)
 	
 	elif new_text.begins_with("/points"):
 		var new_text_split = new_text.split(" ")
 		Global.player_task_level_points = int(new_text_split[len(new_text_split)-1])
+		points_particles()
 	
 	elif new_text.begins_with("/despawn"):
-		release_item(null, null)
+		if new_text == "/despawn":
+			release_item(null, null)
+		if new_text == "/despawn all":
+			for el in Global.item_bodies_list:
+				el.despawning(true)
+				print(Global.item_bodies_list)
+			Global.MOBO_item_name_list = []
+			Global.MOBO_item_position_list = []
+			Global.MOBO_box_item_list = []
+			Global.CPU_item_name_list = []
+			Global.CPU_item_position_list = []
+			Global.CPU_box_item_list = []
+			Global.SSD_item_name_list = []
+			Global.SSD_item_position_list = []
+			Global.SSD_box_item_list = []
+			Global.RAM_item_name_list = []
+			Global.RAM_item_position_list = []
+			Global.RAM_box_item_list = []
 	
 	elif new_text.begins_with("/duplicate"):
 		if Global.item_name != null:
@@ -483,10 +605,16 @@ func _on_console_text_submitted(new_text):
 	
 	elif new_text.begins_with("/store"):
 		store_box()
+	elif new_text.begins_with("/open"):
+		open_box(Global.box_item)
 	
 	elif new_text.begins_with("/show newtaskbtn"):	
 		Global._task_menu.toggle_newtask_btn()
 	
+	elif new_text.begins_with("/reload"):
+		if "full" not in new_text:
+			Global.scene_savepos = position
+		get_tree().reload_current_scene()
 	
 	#if new_text.begins_with("/speed "):
 	#	MAX_SPEED = int(new_text.ends_with(TYPE_INT))
@@ -505,18 +633,61 @@ var helparrow_added = false
 # ÜLESANNETE PANEEL
 func _on_task_btn_pressed():
 	if Global.player_in_menu == false:
-		$CanvasLayer/task_menu.visible = !$CanvasLayer/task_menu.visible
-		
+		task_menu.visible = !task_menu.visible
 		if Global.helparrow_state == "task":
-			Global.remove_HelpArrow($CanvasLayer)
+			Global.remove_HelpArrow(task_btn)
 		if Global.helparrow_state == "taskblock" and helparrow_added == false:
 			helparrow_added = true
-			Global.add_HelpArrow($CanvasLayer/task_menu, Vector2(215, 57.5))
+			Global.add_HelpArrow(task_menu, Vector2(-4, 40), 1)
 		if Global.helparrow_state == "done_1st_task" and Global.task_ssd_done != "":
 			helparrow_added = false
-			Global.remove_HelpArrow($CanvasLayer)
+			Global.remove_HelpArrow(task_btn)
 		if Global.helparrow_state == "done_1st_taskblock" and helparrow_added == false:
 			helparrow_added = true
-			Global.add_HelpArrow($CanvasLayer/task_menu, Vector2(215, 57.5))
+			Global.add_HelpArrow(task_menu, Vector2(-4, 40), 1)
 
 
+func points_particles():
+	$CanvasLayer/PointsParticles.emitting = true
+ 
+
+
+func lang_english():
+	pass
+
+
+
+
+
+
+
+# android movement ###############!!!!!!!!!!!!!!!!
+#func _on_move_right_pressed():
+	#VELOCITY = VELOCITY.move_toward(Vector2(1, 0) * MAX_SPEED, ACCELERATION * delta_value)
+#
+#
+#func _on_move_left_pressed():
+	#VELOCITY = VELOCITY.move_toward(Vector2(-1, 0) * MAX_SPEED, ACCELERATION * delta_value)
+#
+#
+#func _on_move_up_pressed():
+	#VELOCITY = VELOCITY.move_toward(Vector2(0, -1) * MAX_SPEED, ACCELERATION * delta_value)
+#
+#
+#func _on_move_down_pressed():
+	#VELOCITY = VELOCITY.move_toward(Vector2(0, 1) * MAX_SPEED, ACCELERATION * delta_value)
+
+
+
+#var android_place = false
+#var android_open = false
+#var android_store = false
+#
+#func _on_interact_place_pressed():
+	#android_place = true
+#
+#func _on_interact_open_pressed():
+	#android_open = true
+#
+#func _on_interact_store_pressed():
+	#android_store = true

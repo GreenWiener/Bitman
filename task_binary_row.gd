@@ -58,3 +58,35 @@ func get_row_answer():
 
 func get_row_1st_num():
 	return row_1st_num
+
+
+# android keyboard
+func _on_input_1_focus_entered():
+	if first_row != true and DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('')
+
+func _on_input_1_focus_exited():
+	DisplayServer.virtual_keyboard_hide()
+
+
+func _on_input_2_focus_entered():
+	if DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('')
+
+func _on_input_2_focus_exited():
+	DisplayServer.virtual_keyboard_hide()
+
+
+func _on_input_3_focus_entered():
+	if DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('')
+
+func _on_input_3_focus_exited():
+	DisplayServer.virtual_keyboard_hide()
+
+
+func _on_input_4_focus_entered():
+	DisplayServer.virtual_keyboard_show('')
+
+func _on_input_4_focus_exited():
+	DisplayServer.virtual_keyboard_hide()

@@ -26,7 +26,7 @@ func _on_remove_row_button_pressed():
 func check_answer():
 	var player_answer
 	var row_answers = []
-	var correct_answer = []
+	var correct_answer
 	
 	# mängija arvutatud kahendarvu saamine #
 	for i in Global.task_binary_rows: 
@@ -34,17 +34,18 @@ func check_answer():
 	row_answers.reverse()
 	player_answer = "".join(row_answers) # join liidab listi elemendid üheks stringiks
 	
-	
-	# õige vastuse arvutamine #
-	var jaagitav = int(Global.task_dec_num)
-	
-	#print("jAAgutav : ",jaagitav)
-	
-	while jaagitav > 0:
-		correct_answer.append(jaagitav % 2) # jäägi ehk ühe kahendarvu numbri arvutamine
-		jaagitav = jaagitav / 2
-	correct_answer.reverse()
-	correct_answer = "".join(correct_answer)
+	if Global.task_dec_num != null:
+		# õige vastuse arvutamine #
+		var jaagitav = int(Global.task_dec_num)
+		
+		#print("jAAgutav : ",jaagitav)
+		
+		correct_answer = []
+		while jaagitav > 0:
+			correct_answer.append(jaagitav % 2) # jäägi ehk ühe kahendarvu numbri arvutamine
+			jaagitav = jaagitav / 2
+		correct_answer.reverse()
+		correct_answer = "".join(correct_answer)
 	
 	# osaline lahenduse kontroll #
 	var row_1st_nums = []
@@ -85,10 +86,13 @@ func check_answer():
 			print("TULEMUS: lahendus on vale")
 			$kontroll.modulate = "ff0000"
 			
-		
 		else:
 			print("TULEMUS: VALE")
 			$kontroll.modulate = "ff0000"
+	
+	else:
+		print("TULEMUS: VALE")
+		$kontroll.modulate = "ff0000"
 	
 	
 	
@@ -104,17 +108,21 @@ func _on_vastus_text_changed(new_text):
 	entered_answer = new_text
 
 
-
-
-
-
-
-
-func _on_button_pressed():
+func _on_example_btn_pressed():
 	$Example.show()
 	
-
-
 func _on_close_example_btn_pressed():
 	$Example.hide()
 	
+
+func _on_vastus_focus_entered():
+	if DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('')
+
+func _on_vastus_focus_exited():
+	DisplayServer.virtual_keyboard_hide()
+
+
+#&& Input.is_action_just_released("Interact_e")
+func _on_back_button_pressed():
+	Global._controlpanel.close_panel = true

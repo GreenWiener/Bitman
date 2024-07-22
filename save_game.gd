@@ -1,25 +1,99 @@
 extends Node
 class_name SaveGame
 
-static func save(): # muutujate salvestamine
+static func save_game_data(): # muutujate salvestamine
 	var save_dict = {
+		
+		# player
 		"score" : Global.player_task_level_points,
 		"world" : Global.most_recent_scene,
-		"player_pos" : Global.player_position
+		"player_pos" : Global.player_position,
+		
+		"helparrow_state" : Global.helparrow_state,
+		"infopanel_arrows" : Global.infopanel_arrows,
+		"controlpanel_arrows" : Global.controlpanel_arrows,
+		
+		# holding item
+		"item_name" : Global.item_name,
+		"box_item" : Global.box_item,
+		"player_holding_item" : Global.player_holding_item,
+		
+		# items
+		
+		"MOBO_item_ids" : Global.MOBO_item_id_list,
+		"MOBO_item_names" : Global.MOBO_item_name_list,
+		"MOBO_item_poses" : Global.MOBO_item_position_list,
+		"MOBO_box_items" : Global.MOBO_box_item_list,
+
+		"CPU_item_ids" : Global.CPU_item_id_list,
+		"CPU_item_names" : Global.CPU_item_name_list,
+		"CPU_item_poses" : Global.CPU_item_position_list,
+		"CPU_box_items" : Global.CPU_box_item_list,
+
+		"SSD_item_ids" : Global.SSD_item_id_list,
+		"SSD_item_names" : Global.SSD_item_name_list,
+		"SSD_item_poses" : Global.SSD_item_position_list,
+		"SSD_box_items" : Global.SSD_box_item_list,
+
+		"RAM_item_ids" : Global.RAM_item_id_list,
+		"RAM_item_names" : Global.RAM_item_name_list,
+		"RAM_item_poses" : Global.RAM_item_position_list,
+		"RAM_box_items" : Global.RAM_box_item_list,
+		
+		"spawn_scene_items" : [Global.spawn_mobo_item, Global.spawn_ssd_item, Global.spawn_ram_item, Global.spawn_cpu_item], #pole eriti vaja tegelt
+		"ram_locker_states" : Global.locker_state_dict2,
+		
+		# tasks
+		"task_ongoing" : Global.task_ongoing,
+		"tasks_pooleli" : [Global.task_ssd_pooleli, Global.task_ram_pooleli, Global.task_cpu_pooleli],
+		"task_menu_info_dict": Global.task_menu_info_dict,
+		"task_bin_num" : Global.task_bin_num,
+		
+		"create_first_task" : Global.task_menu_first_task
 	}
 	return save_dict
 
-static func save_game(): # salvestatava info kirjutamine faili
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	var json_string = JSON.stringify(save())
-	save_file.store_line(json_string)
+static func save_settings_data():
+	var save_dict = {
+		
+		"music_volume" : Global.music_volume,
+		"language" : Global.language
+	}
+	return save_dict
 
-static func load_game(): # salvestatud info lugemine failist
-	if not FileAccess.file_exists("user://savegame.save"):
+
+
+
+static func save_game(): # mängija ja mängu info salvestamine
+	save_to_file(save_game_data(), "user://savegame.save")
+	save_settings()
+
+static func save_settings(): # mängu seadete salvestamine
+	save_to_file(save_settings_data(), "user://settings.save")
+
+static func load_game():
+	load_from_file("user://savegame.save")
+
+static func load_settings():
+	load_from_file("user://settings.save")
+
+
+
+
+static func save_to_file(data : Dictionary, file_path : String): # salvestatava info kirjutamine faili
+	var save_file = FileAccess.open(file_path, FileAccess.WRITE)
+	var json_string = JSON.stringify(data)
+	save_file.store_line(json_string)
+	print("🔄 <save_game> SAVING TO FILE: '", file_path, "', DATA: ", json_string)
+
+
+static func load_from_file(file_path : String): # salvestatud info lugemine failist
+	if not FileAccess.file_exists(file_path):
+		print("❌ <save_game> file '", file_path, "' doesnt exist ❌")
 		return
+	print("✳ <save_game> loading data from file '", file_path, "' ✳")
+	var load_file = FileAccess.open(file_path, FileAccess.READ)
 	
-	var load_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-	print(load_file.get_path())
 	
 	while load_file.get_position() < load_file.get_length():
 		var json_string = load_file.get_line()
@@ -27,8 +101,160 @@ static func load_game(): # salvestatud info lugemine failist
 		var _parse_result = json.parse(json_string)
 		var node_data = json.get_data()
 		
-		#print("LOAD GAME DATA: ", node_data)
-		# muutujatele failist loetud väärtusete omistamine
-		Global.player_task_level_points = node_data["score"]
-		Global.most_recent_scene = node_data["world"]
-		Global.player_inital_map_position = str_to_var("Vector2" + node_data["player_pos"])
+		print("🔄 <save_game> LOADED DATA: ", node_data)
+		
+		## muutujatele failist loetud väärtusete omistamine
+		if file_path == "user://savegame.save":
+			#player
+			Global.player_task_level_points = node_data["score"]
+			Global.most_recent_scene = node_data["world"]
+			Global.player_inital_map_position = str_to_var("Vector2" + node_data["player_pos"])
+			print("<save_game> music_volume: ", Global.music_volume)
+			Global.helparrow_state = node_data["helparrow_state"]
+			Global.infopanel_arrows = node_data["infopanel_arrows"]
+			Global.controlpanel_arrows = node_data["controlpanel_arrows"]
+			
+			# holding item
+			Global.item_name = node_data["item_name"]
+			Global.box_item = node_data["box_item"]
+			Global.player_holding_item = node_data["player_holding_item"]
+			
+			# items
+			Global.MOBO_item_id_list = node_data["MOBO_item_ids"]
+			Global.MOBO_item_name_list = node_data["MOBO_item_names"]
+			Global.MOBO_item_position_list = node_data["MOBO_item_poses"]
+			Global.MOBO_box_item_list = node_data["MOBO_box_items"]
+
+			Global.CPU_item_id_list = node_data["CPU_item_ids"]
+			Global.CPU_item_name_list = node_data["CPU_item_names"]
+			Global.CPU_item_position_list = node_data["CPU_item_poses"]
+			Global.CPU_box_item_list = node_data["CPU_box_items"]
+
+			Global.SSD_item_id_list = node_data["SSD_item_ids"]
+			Global.SSD_item_name_list = node_data["SSD_item_names"]
+			Global.SSD_item_position_list = node_data["SSD_item_poses"]
+			Global.SSD_box_item_list = node_data["SSD_box_items"]
+
+			Global.RAM_item_id_list = node_data["RAM_item_ids"]
+			Global.RAM_item_name_list = node_data["RAM_item_names"]
+			Global.RAM_item_position_list = node_data["RAM_item_poses"]
+			Global.RAM_box_item_list = node_data["RAM_box_items"]
+			
+			#"spawn_scene_items" : [Global.spawn_mobo_item, Global.spawn_ssd_item, Global.spawn_ram_item, Global.spawn_cpu_item]
+			Global.spawn_mobo_item = node_data["spawn_scene_items"][0]
+			Global.spawn_ssd_item = node_data["spawn_scene_items"][1]
+			Global.spawn_ram_item = node_data["spawn_scene_items"][2]
+			Global.spawn_cpu_item = node_data["spawn_scene_items"][3]
+			
+			# tasks
+			Global.task_ongoing = node_data["task_ongoing"]
+			Global.task_ssd_pooleli = node_data["tasks_pooleli"][0]
+			Global.task_ram_pooleli = node_data["tasks_pooleli"][1]
+			Global.task_cpu_pooleli = node_data["tasks_pooleli"][2]
+			Global.task_menu_info_dict = node_data["task_menu_info_dict"]
+			Global.task_bin_num = node_data["task_bin_num"]
+			
+			Global.task_menu_first_task = node_data["create_first_task"]
+			
+			Global.locker_state_dict2 = node_data["ram_locker_states"]
+			var temp_lstate_dict = {}
+			for el in Global.locker_state_dict2:
+				var tempkeycontent = Global.locker_state_dict2[el]
+				var vec2key = string_to_vector2(el)
+				temp_lstate_dict[vec2key] = tempkeycontent
+				print("ELLELELELE: ", temp_lstate_dict)
+			
+			Global.locker_state_dict2 = temp_lstate_dict
+			
+		
+			# järjendis olevate stringide vektoriteks teisendamine
+			var temp_array = []
+			var item_position_lists = [Global.MOBO_item_position_list, Global.CPU_item_position_list, Global.SSD_item_position_list, Global.RAM_item_position_list]
+			
+			var array_index = 0
+			for list in item_position_lists:
+				for el in list:
+					#print("--- ", el, " to ", string_to_vector2(el))
+					temp_array.append(string_to_vector2(el))
+				item_position_lists[array_index] = temp_array
+				temp_array = []
+				#print("list: ", item_position_lists[array_index])
+				array_index += 1
+			
+			Global.MOBO_item_position_list = item_position_lists[0]
+			Global.CPU_item_position_list = item_position_lists[1]
+			Global.SSD_item_position_list = item_position_lists[2]
+			Global.RAM_item_position_list = item_position_lists[3]
+		
+		if file_path == "user://settings.save":
+			Global.music_volume = node_data["music_volume"]
+			Global.language = node_data["language"]
+	
+		#print("MOBO_list: ", Global.MOBO_item_position_list)
+		#print("CPU_list: ", Global.CPU_item_position_list)
+		#print("SSD_list: ", Global.SSD_item_position_list)
+		#print("RAM_list: ", Global.RAM_item_position_list)
+
+static func string_to_vector2(string := "") -> Vector2:
+	if string:
+		var new_string: String = string
+		new_string = new_string.erase(0, 1)
+		new_string = new_string.erase(new_string.length() - 1, 1)
+		var array: Array = new_string.split(", ")
+
+		return Vector2(float(array[0]), float(array[1]))
+
+	return Vector2.ZERO
+
+
+static func delete_save():
+	DirAccess.remove_absolute("user://savegame.save")
+	
+	Global.player_task_level_points = 0
+	Global.most_recent_scene = null
+	Global.player_inital_map_position = Vector2(-509, 73)
+	Global.music_volume = 0.0
+	Global.helparrow_state = "task"
+	Global.infopanel_arrows = []
+	Global.controlpanel_arrows = []
+	
+	
+	# holding item
+	Global.item_name = null
+	Global.box_item = null
+	Global.player_holding_item = false
+	
+	
+	# items
+	Global.MOBO_item_name_list = []
+	Global.MOBO_item_position_list = []
+	Global.MOBO_box_item_list = []
+
+	Global.CPU_item_name_list = []
+	Global.CPU_item_position_list = []
+	Global.CPU_box_item_list = []
+
+	Global.SSD_item_name_list = []
+	Global.SSD_item_position_list = []
+	Global.SSD_box_item_list = []
+
+	Global.RAM_item_name_list = []
+	Global.RAM_item_position_list = []
+	Global.RAM_box_item_list = []
+	
+	Global.spawn_mobo_item = true
+	Global.spawn_ssd_item = true
+	Global.spawn_ram_item = true
+	Global.spawn_cpu_item = true
+			
+	Global.locker_state_dict2 = []
+	
+	# tasks
+	Global.task_ongoing = false
+	Global.task_ssd_pooleli = null
+	Global.task_ram_pooleli = null
+	Global.task_cpu_pooleli = null
+	Global.task_menu_info_dict = {}
+	Global.task_bin_num = null
+	
+	Global.task_menu_first_task = true

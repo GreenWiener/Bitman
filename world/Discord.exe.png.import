@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbc4wtrivnmit"
-path="res://.godot/imported/txt_file.png-f0727253d595e405bc1546cb6d60a141.ctex"
+uid="uid://ckxw8a6dni0l7"
+path="res://.godot/imported/Discord.exe.png-a4609aa5b8e70a0cbd1dae8bddf0760d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/txt_file.png"
-dest_files=["res://.godot/imported/txt_file.png-f0727253d595e405bc1546cb6d60a141.ctex"]
+source_file="res://world/Discord.exe.png"
+dest_files=["res://.godot/imported/Discord.exe.png-a4609aa5b8e70a0cbd1dae8bddf0760d.ctex"]
 
 [params]
 

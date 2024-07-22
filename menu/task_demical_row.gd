@@ -21,3 +21,20 @@ func get_binary_aste():
 func hide_pluss():
 	#$"Label+".hide()
 	$"Label+".text = " "
+
+
+# android keyboard
+func _on_binary_num_digit_focus_entered():
+	if DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('')
+
+func _on_binary_num_digit_focus_exited():
+	DisplayServer.virtual_keyboard_hide()
+
+
+func _on_binary_num_aste_focus_entered():
+	if DisplayServer.virtual_keyboard_get_height() == 0:
+		DisplayServer.virtual_keyboard_show('')
+
+func _on_binary_num_aste_focus_exited():
+	DisplayServer.virtual_keyboard_hide()

@@ -1,21 +1,126 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsuwa3ap8myxf"]
+[gd_scene load_steps=11 format=3 uid="uid://dsuwa3ap8myxf"]
 
 [ext_resource type="Script" path="res://menu/StartMenu.gd" id="1_bx77b"]
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_knqfh"]
 [ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="1_kqsvj"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_pgdfq"]
 [ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="2_22tx3"]
-[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="3_4txm0"]
-[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="4_blacn"]
-[ext_resource type="StyleBox" uid="uid://d3nqr02kffsik" path="res://menu/btn_hover.tres" id="5_3eljs"]
+[ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="8_y4h61"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0dvh"]
 shader = ExtResource("1_kqsvj")
-shader_parameter/vignette_intensity = 2.175
-shader_parameter/vignette_opacity = 0.167
+shader_parameter/vignette_intensity = 0.385
+shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 
-[sub_resource type="Theme" id="Theme_08k3x"]
-default_font_size = 15
+[sub_resource type="Animation" id="Animation_wd0x4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Buttons/play_options/Start:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(121, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Buttons/play_options/Start:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(37, 68)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Buttons/play_options/Continue:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Buttons/play_options/Continue:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(159, 68)]
+}
+
+[sub_resource type="Animation" id="Animation_hsw6n"]
+resource_name = "option_btns_IN"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Buttons/play_options/Continue:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, 30), Vector2(120, 30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Buttons/play_options/Continue:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(159, 68), Vector2(159, 68)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/Buttons/play_options/Start:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(59, 30), Vector2(121, 30)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Buttons/play_options/Start:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(68, 68), Vector2(37, 68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_huyg7"]
+_data = {
+"RESET": SubResource("Animation_wd0x4"),
+"option_btns_IN": SubResource("Animation_hsw6n")
+}
 
 [node name="start_menu" type="Control"]
 layout_mode = 3
@@ -24,6 +129,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_pgdfq")
 script = ExtResource("1_bx77b")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -52,66 +158,114 @@ expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayButton" type="Button" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.784314)
+[node name="Buttons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_pgdfq")
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Buttons"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = -8.0
-offset_right = 85.0
-offset_bottom = 22.0
+offset_left = 109.0
+offset_top = 48.0
+offset_right = 225.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme = SubResource("Theme_08k3x")
-theme_override_fonts/font = ExtResource("3_4txm0")
-theme_override_styles/normal = ExtResource("4_blacn")
-theme_override_styles/hover = ExtResource("5_3eljs")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
 text = "Mängi"
 
-[node name="DemoButton" type="Button" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.784314)
+[node name="play_options" type="Control" parent="CanvasLayer/Buttons"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Continue" type="Button" parent="CanvasLayer/Buttons/play_options"]
+layout_mode = 1
+offset_left = 159.0
+offset_top = 68.0
+offset_right = 279.0
+offset_bottom = 99.0
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "Jätka"
+clip_text = true
+
+[node name="Start" type="Button" parent="CanvasLayer/Buttons/play_options"]
+layout_mode = 1
+offset_left = 37.0
+offset_top = 68.0
+offset_right = 158.0
+offset_bottom = 99.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(122, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+text = "Alusta algusest"
+clip_text = true
+
+[node name="Settings" type="Button" parent="CanvasLayer/Buttons"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = 9.0
-offset_right = 85.0
-offset_bottom = 39.0
+offset_left = 109.0
+offset_top = 67.0
+offset_right = 225.0
+offset_bottom = 97.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme = SubResource("Theme_08k3x")
-theme_override_fonts/font = ExtResource("3_4txm0")
-theme_override_styles/normal = ExtResource("4_blacn")
-theme_override_styles/hover = ExtResource("5_3eljs")
-text = "Demo"
+focus_mode = 0
+text = "Seaded"
 
-[node name="InfoButton" type="Button" parent="CanvasLayer"]
-modulate = Color(1, 1, 1, 0.784314)
+[node name="InfoButton" type="Button" parent="CanvasLayer/Buttons"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -31.0
-offset_top = 26.0
-offset_right = 85.0
-offset_bottom = 56.0
+offset_left = 109.0
+offset_top = 86.0
+offset_right = 225.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme = SubResource("Theme_08k3x")
-theme_override_fonts/font = ExtResource("3_4txm0")
-theme_override_styles/normal = ExtResource("4_blacn")
-theme_override_styles/hover = ExtResource("5_3eljs")
-text = "Info"
+focus_mode = 0
+text = "Lisainfo"
 
-[connection signal="pressed" from="CanvasLayer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/DemoButton" to="." method="_on_demo_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/InfoButton" to="." method="_on_info_button_pressed"]
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(160, 90)
+scale = Vector2(0.213333, 0.0947368)
+color = Color(0.666667, 0.0705882, 0.337255, 1)
+energy = 15.0
+blend_mode = 2
+texture = ExtResource("8_y4h61")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_huyg7")
+}
+
+[connection signal="pressed" from="CanvasLayer/Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/play_options/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/play_options/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/InfoButton" to="." method="_on_info_button_pressed"]

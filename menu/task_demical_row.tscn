@@ -39,5 +39,9 @@ size_flags_stretch_ratio = 0.0
 theme_override_constants/minimum_character_width = 1
 theme_override_font_sizes/font_size = 30
 
+[connection signal="focus_entered" from="binary_num_digit" to="." method="_on_binary_num_digit_focus_entered"]
+[connection signal="focus_exited" from="binary_num_digit" to="." method="_on_binary_num_digit_focus_exited"]
 [connection signal="text_changed" from="binary_num_digit" to="." method="_on_binary_num_digit_text_changed"]
+[connection signal="focus_entered" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_focus_entered"]
+[connection signal="focus_exited" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_focus_exited"]
 [connection signal="text_changed" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_text_changed"]

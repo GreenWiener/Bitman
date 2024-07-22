@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://ccm2vdp5io3vp"]
+[gd_scene load_steps=45 format=3 uid="uid://ccm2vdp5io3vp"]
 
 [ext_resource type="Texture2D" uid="uid://70yi3w6ahvk" path="res://player/player.png" id="1"]
 [ext_resource type="Script" path="res://player/player.gd" id="2"]
@@ -16,12 +16,17 @@
 [ext_resource type="PackedScene" uid="uid://dcclhvn7j7jts" path="res://menu/text_dialog.tscn" id="11_gjpbn"]
 [ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="12_nw4v6"]
 [ext_resource type="Texture2D" uid="uid://xtmjc67x3nu6" path="res://menu/pause_icon.png" id="13_vc4xe"]
-[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="14_fy3o4"]
-[ext_resource type="StyleBox" uid="uid://d3nqr02kffsik" path="res://menu/btn_hover.tres" id="16_6jh02"]
 [ext_resource type="Texture2D" uid="uid://dre0bh0w5b3sk" path="res://menu/tasks_icon.png" id="17_24107"]
 [ext_resource type="Shader" path="res://player/vignette.gdshader" id="18_n6w21"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="20_m06y5"]
 [ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="21_ih24a"]
 [ext_resource type="Texture2D" uid="uid://cgm7vmm1312tm" path="res://20240505152703.png" id="21_lxtp5"]
+[ext_resource type="Texture2D" uid="uid://j607w685p2o" path="res://world/shelve2.png" id="22_8skuh"]
+[ext_resource type="Texture2D" uid="uid://bns56duofbpxv" path="res://menu/move_arrow_inactive_btn.png" id="22_lq21u"]
+[ext_resource type="StyleBox" uid="uid://docbojvtgjlf" path="res://menu/btn_normal1.tres" id="23_c7gfy"]
+[ext_resource type="Texture2D" uid="uid://dnxs3fnmho1bi" path="res://menu/move_arrow_btn.png" id="23_tcl50"]
+[ext_resource type="Texture2D" uid="uid://d13ysypbepb73" path="res://world/lines_w.png" id="25_ikh4f"]
+[ext_resource type="Texture2D" uid="uid://egwcpdwytai8" path="res://world/map_indicator.png" id="26_ei638"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
 radius = 0.754717
@@ -31,39 +36,80 @@ height = 6.20885
 shader = ExtResource("18_n6w21")
 shader_parameter/color = null
 shader_parameter/muliplier = 0.2
-shader_parameter/softness = 2.0
+shader_parameter/softness = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6sp1"]
 content_margin_left = 13.0
 content_margin_right = 13.0
 bg_color = Color(0.329412, 0.329412, 0.329412, 0.572549)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1nyv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_coeud"]
 bg_color = Color(0.164706, 0, 0.803922, 0.419608)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ri3rn"]
 font_size = 38
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2af5b"]
-content_margin_left = 4.0
-bg_color = Color(0.184314, 0.227451, 0.309804, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.156863, 0.196078, 0.266667, 0)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_na7uo"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
 
-[sub_resource type="LabelSettings" id="LabelSettings_dmmis"]
-line_spacing = -2.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqjdy"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1nyv"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+expand_margin_top = 15.0
+expand_margin_bottom = 15.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqkiw"]
+size = Vector2(265, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yii83"]
+radius = 98.28
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xjv2"]
+size = Vector2(140, 140)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gjiha"]
 font = ExtResource("9_1jm30")
-font_size = 24
-font_color = Color(0.152941, 0.764706, 0.858824, 1)
-outline_size = 2
-outline_color = Color(0.152941, 0.764706, 0.858824, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8gyu2"]
+font = ExtResource("9_1jm30")
+font_color = Color(0.980392, 0.247059, 0.517647, 1)
+outline_size = 1
+outline_color = Color(0.980392, 0.247059, 0.517647, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vgbwd"]
+particle_flag_disable_z = true
+spread = 33.462
+initial_velocity_min = -72.12
+initial_velocity_max = 196.73
+gravity = Vector3(0, 98, 0)
+scale_max = 3.0
+color = Color(0.101961, 0.764706, 1, 1)
+hue_variation_max = 0.09
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a608i"]
+texture = ExtResource("25_ikh4f")
+texture_region_size = Vector2i(15, 15)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+7:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_inrsb"]
+tile_size = Vector2i(15, 15)
+sources/0 = SubResource("TileSetAtlasSource_a608i")
+
+[sub_resource type="LabelSettings" id="LabelSettings_l0fcw"]
 
 [node name="player" type="CharacterBody2D"]
 position = Vector2(0.00984287, 0.0590589)
@@ -113,7 +159,8 @@ texture = ExtResource("6_hqpln")
 
 [node name="Player-sprite" type="Sprite2D" parent="."]
 visible = false
-scale = Vector2(0.24, 0.24)
+position = Vector2(0, -5.465)
+scale = Vector2(0.23, 0.23)
 texture = ExtResource("1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -128,6 +175,7 @@ scale = Vector2(1.06, 1.06)
 shape = SubResource("1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_scale = 0.5
 
 [node name="vignette" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_sucwv")
@@ -135,7 +183,6 @@ offset_right = 320.0
 offset_bottom = 180.0
 
 [node name="holding_item_info" type="Node2D" parent="CanvasLayer"]
-visible = false
 position = Vector2(167.02, 104.729)
 
 [node name="item_info" type="Label" parent="CanvasLayer/holding_item_info"]
@@ -147,7 +194,7 @@ scale = Vector2(0.3, 0.3)
 theme_override_fonts/font = ExtResource("9_1jm30")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_u6sp1")
-text = "kaka"
+text = "item"
 
 [node name="info_line1" type="Sprite2D" parent="CanvasLayer/holding_item_info"]
 position = Vector2(10.2506, -7.50613)
@@ -170,23 +217,67 @@ theme_override_constants/separation = 2
 [node name="interact_f_label" type="Label" parent="CanvasLayer/holding_item_info/InteractionLabels"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_n1nyv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_coeud")
 text = "[F] pane maha"
 label_settings = SubResource("LabelSettings_ri3rn")
 
 [node name="interact_g_label" type="Label" parent="CanvasLayer/holding_item_info/InteractionLabels"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_n1nyv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_na7uo")
 text = "[G] ava"
 label_settings = SubResource("LabelSettings_ri3rn")
 
 [node name="interact_g_label2" type="Label" parent="CanvasLayer/holding_item_info/InteractionLabels"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_n1nyv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jqjdy")
 text = "[G] pane kasti"
 label_settings = SubResource("LabelSettings_ri3rn")
+
+[node name="InteractionLabels_android" type="VBoxContainer" parent="CanvasLayer/holding_item_info"]
+offset_left = 26.0
+offset_top = 8.0
+offset_right = 288.0
+offset_bottom = 257.0
+scale = Vector2(0.165, 0.165)
+theme_override_constants/separation = 45
+
+[node name="interact_f_label" type="Label" parent="CanvasLayer/holding_item_info/InteractionLabels_android"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n1nyv")
+text = "   pane maha"
+label_settings = SubResource("LabelSettings_ri3rn")
+
+[node name="InteractPlace" type="TouchScreenButton" parent="CanvasLayer/holding_item_info/InteractionLabels_android/interact_f_label"]
+position = Vector2(130.877, 26.3965)
+shape = SubResource("RectangleShape2D_bqkiw")
+action = "Interact_f"
+
+[node name="interact_g_label" type="Label" parent="CanvasLayer/holding_item_info/InteractionLabels_android"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n1nyv")
+text = "   ava"
+label_settings = SubResource("LabelSettings_ri3rn")
+
+[node name="InteractOpen" type="TouchScreenButton" parent="CanvasLayer/holding_item_info/InteractionLabels_android/interact_g_label"]
+position = Vector2(130.553, 26.2226)
+shape = SubResource("RectangleShape2D_bqkiw")
+action = "Open_g"
+
+[node name="interact_g_label2" type="Label" parent="CanvasLayer/holding_item_info/InteractionLabels_android"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_n1nyv")
+text = "   pane kasti"
+label_settings = SubResource("LabelSettings_ri3rn")
+
+[node name="InteractStore" type="TouchScreenButton" parent="CanvasLayer/holding_item_info/InteractionLabels_android/interact_g_label2"]
+position = Vector2(131.529, 26.2639)
+shape = SubResource("RectangleShape2D_bqkiw")
+action = "Open_g"
 
 [node name="text_dialog" parent="CanvasLayer" instance=ExtResource("11_gjpbn")]
 visible = false
@@ -195,22 +286,20 @@ anchor_top = 1.0
 grow_vertical = 0
 size_flags_horizontal = 1
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="debug_menu" type="Label" parent="CanvasLayer"]
 visible = false
 offset_top = 18.0
 offset_right = 320.0
 offset_bottom = 180.0
 theme_override_font_sizes/font_size = 4
 
-[node name="task_menu" parent="CanvasLayer" instance=ExtResource("11_eacsw")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 0.0
-offset_bottom = 1.52588e-05
-grow_horizontal = 1
-grow_vertical = 1
+[node name="debug_menu2" type="Label" parent="CanvasLayer/debug_menu"]
+layout_mode = 0
+offset_top = 114.0
+offset_right = 320.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 4
+vertical_alignment = 2
 
 [node name="Console" type="LineEdit" parent="CanvasLayer"]
 visible = false
@@ -224,31 +313,6 @@ offset_right = 727.0
 offset_bottom = 19.0
 scale = Vector2(0.3, 0.3)
 
-[node name="pause_btn" type="Button" parent="CanvasLayer"]
-offset_left = 305.0
-offset_top = 3.0
-offset_right = 345.0
-offset_bottom = 42.0
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = ExtResource("12_nw4v6")
-theme_override_styles/hover = ExtResource("16_6jh02")
-icon = ExtResource("13_vc4xe")
-icon_alignment = 1
-expand_icon = true
-
-[node name="task_btn" type="Button" parent="CanvasLayer"]
-offset_left = 305.0
-offset_top = 19.0
-offset_right = 346.0
-offset_bottom = 64.0
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = ExtResource("12_nw4v6")
-theme_override_styles/hover = ExtResource("16_6jh02")
-toggle_mode = true
-icon = ExtResource("17_24107")
-icon_alignment = 1
-expand_icon = true
-
 [node name="task_button" type="Label" parent="CanvasLayer"]
 visible = false
 offset_left = 305.0
@@ -258,25 +322,115 @@ offset_bottom = 48.0
 scale = Vector2(0.5, 0.5)
 theme_override_styles/normal = ExtResource("12_nw4v6")
 
-[node name="Points" type="Label" parent="CanvasLayer"]
-offset_left = 3.0
-offset_top = 2.0
-offset_right = 122.0
-offset_bottom = 39.0
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = ExtResource("12_nw4v6")
-text = "Punktid: 2"
-label_settings = ExtResource("14_fy3o4")
+[node name="HelpArrow" parent="CanvasLayer" instance=ExtResource("21_ih24a")]
+visible = false
+position = Vector2(298.239, 26.2217)
 
-[node name="Points2" type="Label" parent="CanvasLayer"]
-offset_left = 3.0
-offset_top = 2.5
-offset_right = 127.0
-offset_bottom = 39.5
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = SubResource("StyleBoxFlat_2af5b")
-text = "               2"
-label_settings = SubResource("LabelSettings_dmmis")
+[node name="Shelve2" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(46.5838, 146.577)
+scale = Vector2(1.175, 1.175)
+texture = ExtResource("22_8skuh")
+
+[node name="Movement" type="Node2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(46.5838, 146.577)
+scale = Vector2(1.175, 1.175)
+
+[node name="MoveRight" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(10.4447, -16.9918)
+scale = Vector2(0.12766, 0.12766)
+texture_normal = ExtResource("22_lq21u")
+texture_pressed = ExtResource("23_tcl50")
+shape = SubResource("CircleShape2D_yii83")
+passby_press = true
+action = "ui_right"
+
+[node name="MoveLeft" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(-3.599, -16.9841)
+rotation = 3.14159
+scale = Vector2(0.12766, -0.12766)
+texture_normal = ExtResource("22_lq21u")
+texture_pressed = ExtResource("23_tcl50")
+shape = SubResource("CircleShape2D_yii83")
+passby_press = true
+action = "ui_left"
+
+[node name="MoveUp" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(-8.35372, -10.6105)
+rotation = -1.5708
+scale = Vector2(0.12766, 0.12766)
+texture_normal = ExtResource("22_lq21u")
+texture_pressed = ExtResource("23_tcl50")
+shape = SubResource("CircleShape2D_yii83")
+passby_press = true
+action = "ui_up"
+
+[node name="MoveDown" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(16.0325, 0.965912)
+rotation = 1.5708
+scale = Vector2(0.12766, 0.12766)
+texture_normal = ExtResource("22_lq21u")
+texture_pressed = ExtResource("23_tcl50")
+shape = SubResource("CircleShape2D_yii83")
+passby_press = true
+action = "ui_down"
+
+[node name="MoveUpRight" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(25.5311, -26.256)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_right"
+
+[node name="MoveUpRight2" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(25.5311, -26.256)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_up"
+
+[node name="MoveDownRight" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(25.3221, 16.7987)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_right"
+
+[node name="MoveDownRight2" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(25.3221, 16.7987)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_down"
+
+[node name="MoveDownLeft" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(-17.7068, 16.7987)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_left"
+
+[node name="MoveDownLeft2" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(-17.7068, 16.7987)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_down"
+
+[node name="MoveUpLeft" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(-17.6173, -26.1407)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_left"
+
+[node name="MoveUpLeft2" type="TouchScreenButton" parent="CanvasLayer/Movement"]
+position = Vector2(-17.6173, -26.1407)
+scale = Vector2(0.12766, 0.12766)
+shape = SubResource("RectangleShape2D_6xjv2")
+passby_press = true
+action = "ui_up"
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_un68t")]
 visible = false
@@ -288,9 +442,141 @@ grow_vertical = 1
 pivot_offset = Vector2(0, 0)
 size_flags_horizontal = 4
 
-[node name="HelpArrow" parent="CanvasLayer" instance=ExtResource("21_ih24a")]
+[node name="Buttons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("20_m06y5")
+
+[node name="SideButtons" type="VBoxContainer" parent="CanvasLayer/Buttons"]
+layout_mode = 0
+offset_left = 276.0
+offset_top = -2.0
+offset_right = 316.0
+offset_bottom = 108.0
+scale = Vector2(0.38, 0.38)
+pivot_offset = Vector2(40.0202, -0.00790405)
+size_flags_horizontal = 8
+theme_override_constants/separation = 17
+
+[node name="Control" type="Control" parent="CanvasLayer/Buttons/SideButtons"]
+layout_mode = 2
+
+[node name="task_menu" parent="CanvasLayer/Buttons/SideButtons/Control" instance=ExtResource("11_eacsw")]
 visible = false
-position = Vector2(298.239, 26.2217)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -55.0
+offset_top = 73.0
+offset_right = -55.0
+offset_bottom = 73.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(2.3, 2.3)
+pivot_offset = Vector2(95, 0)
+
+[node name="pause_btn" type="Button" parent="CanvasLayer/Buttons/SideButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+icon = ExtResource("13_vc4xe")
+icon_alignment = 1
+expand_icon = true
+
+[node name="task_btn" type="Button" parent="CanvasLayer/Buttons/SideButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+toggle_mode = true
+icon = ExtResource("17_24107")
+icon_alignment = 1
+expand_icon = true
+
+[node name="Points3" type="Control" parent="CanvasLayer/Buttons"]
+anchors_preset = 0
+scale = Vector2(1.3, 1.3)
+
+[node name="points_label1" type="Label" parent="CanvasLayer/Buttons/Points3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 93.0
+offset_bottom = 35.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/normal = ExtResource("23_c7gfy")
+text = "Punktid: 2"
+label_settings = SubResource("LabelSettings_gjiha")
+
+[node name="points_label2" type="Label" parent="CanvasLayer/Buttons/Points3"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 2.0
+offset_right = 93.0
+offset_bottom = 33.0
+scale = Vector2(0.3, 0.3)
+text = "                2"
+label_settings = SubResource("LabelSettings_8gyu2")
+vertical_alignment = 1
+
+[node name="PointsParticles" type="GPUParticles2D" parent="CanvasLayer"]
+z_index = -1
+position = Vector2(36.5098, 7.55906)
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_vgbwd")
+lifetime = 1.7
+one_shot = true
+explosiveness = 0.62
+
+[node name="map" type="Node2D" parent="CanvasLayer"]
+
+[node name="map_line" type="TileMap" parent="CanvasLayer/map"]
+position = Vector2(61.1159, 4.78696)
+scale = Vector2(0.3, 0.3)
+tile_set = SubResource("TileSet_inrsb")
+format = 2
+layer_0/tile_data = PackedInt32Array(6, 393216, 0, 7, 393216, 0, 8, 393216, 0, 9, 393216, 0, 10, 393216, 0, 11, 393216, 0, 12, 393216, 0, 13, 393216, 0, 14, 393216, 0, 15, 393216, 0, 16, 393216, 0, 17, 393216, 0, 18, 393216, 0, 4, 262144, 0, 19, 393216, 0, 20, 393216, 0, 21, 393216, 0, 22, 262144, 0, 23, 393216, 0, 24, 393216, 0, 25, 393216, 0, 26, 393216, 0, 27, 393216, 0, 28, 393216, 0, 29, 393216, 0, 30, 393216, 0, 31, 393216, 0, 32, 393216, 0, 33, 393216, 0, 34, 393216, 0, 35, 393216, 0, 36, 393216, 0, 37, 393216, 0, 38, 393216, 0, 39, 393216, 0, 40, 0, 0, 5, 393216, 0)
+
+[node name="ssd" type="Label" parent="CanvasLayer/map"]
+offset_left = 76.3944
+offset_top = 9.16712
+offset_right = 106.394
+offset_bottom = 32.1671
+scale = Vector2(0.35, 0.35)
+text = "SSD"
+label_settings = SubResource("LabelSettings_l0fcw")
+
+[node name="ram" type="Label" parent="CanvasLayer/map"]
+offset_left = 158.194
+offset_top = 9.16712
+offset_right = 194.194
+offset_bottom = 32.1671
+scale = Vector2(0.35, 0.35)
+text = "RAM"
+label_settings = SubResource("LabelSettings_l0fcw")
+
+[node name="cpu" type="Label" parent="CanvasLayer/map"]
+offset_left = 237.748
+offset_top = 9.16712
+offset_right = 273.748
+offset_bottom = 32.1671
+scale = Vector2(0.35, 0.35)
+text = "CPU"
+label_settings = SubResource("LabelSettings_l0fcw")
+
+[node name="MapIndicator" type="Sprite2D" parent="CanvasLayer/map"]
+position = Vector2(81.365, 7.036)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("26_ei638")
+
+[node name="HSlider" type="HSlider" parent="CanvasLayer/map"]
+visible = false
+offset_left = 80.0
+offset_top = 9.0
+offset_right = 1139.0
+offset_bottom = 25.0
+scale = Vector2(0.155, 0.155)
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -302,5 +588,5 @@ texture = ExtResource("21_lxtp5")
 
 [connection signal="focus_entered" from="CanvasLayer/Console" to="." method="_on_console_focus_entered"]
 [connection signal="text_submitted" from="CanvasLayer/Console" to="." method="_on_console_text_submitted"]
-[connection signal="pressed" from="CanvasLayer/pause_btn" to="." method="_on_pause_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/task_btn" to="." method="_on_task_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/SideButtons/pause_btn" to="." method="_on_pause_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/SideButtons/task_btn" to="." method="_on_task_btn_pressed"]

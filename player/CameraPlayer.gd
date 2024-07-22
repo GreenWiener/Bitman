@@ -22,28 +22,25 @@ func pan_default():
 	var tween = self.create_tween()
 	tween.tween_property(self, "position", Vector2(0,-4), 0.3)
 
-func zoom_in():
-	#var tween = self.create_tween()
-	if self.zoom >= Vector2(3,3) and self.zoom < Vector2(8,8):
-		var tween = self.create_tween()
-		print("1")
-		tween.tween_property(self, "zoom", self.zoom + Vector2(1,1), 0.3)
-	elif self.zoom < Vector2(3,3):
-		var tween = self.create_tween()
-		tween.tween_property(self, "zoom", self.zoom + Vector2(2,2), 0.3)
-		print("2")
 
+func zoom_in():
+	if self.zoom < Vector2(5,5):
+		var tween = self.create_tween()
+		tween.tween_property(self, "zoom", self.zoom + self.zoom/3 + Vector2(1,1), 0.3)
 
 func zoom_out():
+	if self.zoom > Vector2(2,2):
+		var tween = self.create_tween()
+		tween.tween_property(self, "zoom", self.zoom - self.zoom/1.3 + Vector2(1,1), 0.3)
+			
+	#if self.zoom < Vector2(2,2):
+		#self.zoom = Vector2(2,2)
+
+#func zooming(zoom_amount): ###<<<<<<< DEVELOPE THIS
 	#var tween = self.create_tween()
-	if self.zoom >= Vector2(3,3) and self.zoom < Vector2(8,8):
-		var tween = self.create_tween()
-		tween.tween_property(self, "zoom", self.zoom - Vector2(2,2), 0.3)
-		print("1")
-	elif self.zoom >= Vector2(8,8):
-		var tween = self.create_tween()
-		tween.tween_property(self, "zoom", self.zoom - Vector2(4,4), 0.3)
-		print("2")
+	#tween.tween_property(self, "zoom", self.zoom - zoom_amount, 0.3)
+	#print("zooming-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-")
+
 
 func _process(_delta):
 	Global.camera_zoom = self.zoom
@@ -71,7 +68,7 @@ func _process(_delta):
 
 func _input(event : InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.is_pressed() and Global.player_in_menu != true:
+		if event.is_pressed() and Global.player_in_menu != true and Global._task_menu.disable_zoom == false:
 			# sisse suumimine
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom_in()
@@ -79,13 +76,24 @@ func _input(event : InputEvent) -> void:
 				#self.zoom.y += 0.5
 				#self.zoom.x = min(self.zoom.x, 7)
 				#self.zoom.y = min(self.zoom.y, 7)
-				print("+zoom: ", self.zoom)
+				###print("+zoom: ", self.zoom)
 				
 			# välja suumimine
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom_out()
 				#self.zoom.x += -0.5
 				#self.zoom.y += -0.5
-				#self.zoom.x = max(self.zoom.x, 0.5)
-				#self.zoom.y = max(self.zoom.y, 0.5)
-				print("-zoom: ", self.zoom)
+				#self.zoom.x = max(self.zoom.x, 1.6)
+				#self.zoom.y = max(self.zoom.y, 1.6)
+				###print("-zoom: ", self.zoom)
+
+
+
+##### NOT WORK ^-^ O_o
+	var positions : Array = [Vector2(), Vector2()]
+
+	if event is InputEventScreenTouch:
+		positions[event.index] = event.position
+		if event.index == 1:
+			var zoom_amount = (positions[0] - positions[1]).length()
+			Global.PopUpText(zoom_amount, "player", Vector2.ZERO)

@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmntkw74hwsoi"]
+
+[ext_resource type="Script" path="res://menu/demo_video.gd" id="1_cgqd8"]
+[ext_resource type="VideoStream" path="res://menu/godot game demo.ogv" id="1_hw22n"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="2_7is2c"]
+[ext_resource type="StyleBox" uid="uid://docbojvtgjlf" path="res://menu/btn_normal1.tres" id="4_iyr8a"]
+[ext_resource type="StyleBox" uid="uid://cjc15y7u78ado" path="res://menu/btn_pressed.tres" id="5_kv8or"]
+[ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="5_t8enu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg0wt"]
+bg_color = Color(0.00784314, 0.0392157, 0.172549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_83wto"]
+default_font_size = 15
+
+[node name="Demo_video" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_cgqd8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = 9.0
+offset_right = 289.0
+offset_bottom = 168.0
+color = Color(0.141176, 0.141176, 0.458824, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 10.0
+offset_right = 290.0
+offset_bottom = 169.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mg0wt")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 23.0
+offset_right = 1916.0
+offset_bottom = 1071.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.13, 0.13)
+stream = ExtResource("1_hw22n")
+autoplay = true
+
+[node name="CloseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 256.97
+offset_top = -13.9026
+offset_right = 286.97
+offset_bottom = 16.0974
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_83wto")
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("2_7is2c")
+theme_override_styles/normal = ExtResource("4_iyr8a")
+theme_override_styles/hover = ExtResource("5_t8enu")
+theme_override_styles/pressed = ExtResource("5_kv8or")
+text = "×"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

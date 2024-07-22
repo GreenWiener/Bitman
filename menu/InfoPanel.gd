@@ -15,12 +15,13 @@ extends Area2D
 #@export var menu = ""
 
 @export var text = ""
+@export var panel_name = ""
 @export_file var sprite = ""
 
 
 
 var interact_instance = load("res://menu/text_dialog.tscn").instantiate()
-
+var interaction_label
 
 var player
 
@@ -28,6 +29,11 @@ var player_in_menu = false
 var in_interact_area = false
 
 func _ready():
+	if "Android" in OS.get_name():
+		interaction_label = $interaction_label_android
+	else:
+		interaction_label = $interaction_label
+	
 	if sprite == "":
 		$Sprite2D.texture = load("res://world/gray_sign.png")
 	elif sprite == "none":
@@ -36,13 +42,18 @@ func _ready():
 		$Sprite2D.texture = load(sprite)
 	
 	if self.scale.x == -1:
-		$interaction_label.scale.x = -0.12
-
+		interaction_label.scale.x = -0.12
+	
+	# helparrow
+	$HelpArrow.hide()
+	if panel_name not in Global.infopanel_arrows:
+		$HelpArrow.show()
+	
 func _physics_process(_delta): # E interaction
 	if Input.is_action_pressed("Interact_e"):
-		$interaction_label.modulate = "00ff47" # green
+		interaction_label.modulate = "00ff47" # green
 	else:
-		$interaction_label.modulate = "ffffff" # white
+		interaction_label.modulate = "ffffff" # white
 	
 	if player_in_menu == true and Input.is_action_just_released("Interact_e"):
 		print("close dialog.")
@@ -51,6 +62,8 @@ func _physics_process(_delta): # E interaction
 
 	elif player_in_menu == false and in_interact_area == true and Input.is_action_just_released("Interact_e"):
 		print("open dialog.")
+		Global.infopanel_arrows.append(panel_name)
+		$HelpArrow.hide()
 		player_in_menu = true
 		player.get_node("CanvasLayer").add_child(interact_instance)
 		interact_instance.get_child(1).text = text
@@ -62,7 +75,8 @@ func _on_body_entered(body):
 		player = body
 		in_interact_area = true
 		
-		$interaction_label.show()
+		$HelpArrow.position.y = -9
+		interaction_label.show()
 
 
 
@@ -71,5 +85,6 @@ func _on_body_exited(body):
 		in_interact_area = false	
 		body.get_node("CanvasLayer").remove_child(interact_instance)
 		
-		$interaction_label.hide()
+		$HelpArrow.position.y = -6
+		interaction_label.hide()
 

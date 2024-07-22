@@ -1,18 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://87m80d5eiivu"]
+[gd_scene load_steps=11 format=3 uid="uid://87m80d5eiivu"]
 
 [ext_resource type="Texture2D" uid="uid://dpjwmphm21qy4" path="res://world/cpu_controlpanel.png" id="1_gjdgy"]
 [ext_resource type="Script" path="res://world/controlpanel.gd" id="1_yh7yy"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="3_olu5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51agg"]
 size = Vector2(10, 3.57143)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1cqn"]
-size = Vector2(14.2857, 5.71429)
+size = Vector2(18, 6.57143)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvpyj"]
 bg_color = Color(0.164706, 0, 0.803922, 0.419608)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dirno"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a32fm"]
+bg_color = Color(0.164706, 0, 0.803922, 0.419608)
+expand_margin_left = 19.0
+expand_margin_top = 6.0
+expand_margin_right = 19.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tn8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0igv"]
+size = Vector2(141, 35)
 
 [node name="Controlpanel" type="Node2D"]
 script = ExtResource("1_yh7yy")
@@ -33,10 +46,10 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.55448e-07, 4.28571)
+position = Vector2(2.38419e-07, 4.71428)
 shape = SubResource("RectangleShape2D_i1cqn")
 
-[node name="pickup_label" type="Label" parent="."]
+[node name="interaction_label" type="Label" parent="."]
 visible = false
 z_index = 1
 offset_left = -54.0
@@ -51,6 +64,32 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_mvpyj")
 text = "[E] ava ekraan"
 label_settings = SubResource("LabelSettings_dirno")
 horizontal_alignment = 1
+
+[node name="interaction_label_android" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -50.946
+offset_top = -10.0
+offset_right = 51.054
+offset_bottom = 13.0
+scale = Vector2(0.12, 0.12)
+pivot_offset = Vector2(50.9667, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_a32fm")
+text = "ava ekraan"
+label_settings = SubResource("LabelSettings_0tn8l")
+horizontal_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="interaction_label_android"]
+position = Vector2(50.9332, 11.4583)
+shape = SubResource("RectangleShape2D_d0igv")
+action = "Interact_e"
+
+[node name="HelpArrow" parent="." instance=ExtResource("3_olu5q")]
+position = Vector2(-1.06581e-14, -7)
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
