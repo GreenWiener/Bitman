@@ -5,7 +5,7 @@ Tegin mägnu mängumootoris [Godot](https://godotengine.org/). Siia on üles lae
 Mängu erinevaid versioone saab näha ja alla laadida [siit](https://github.com/GreenWiener/Bitman/releases). Seal on versioonid alates väga algsetest ja mitte väga mängitavatest versioonidest kuni kõige uuema versioonini, mis on hetkel [v1.2](https://github.com/GreenWiener/Bitman/releases/tag/v1.2). Versiooni all on pealkiri "Assets" ning sellele vajutades ilmuvad nähtavale failid, mis sa alla saad laadida.
 
 - Kui sul on 64-bit Windows arvuti, siis see fail on sulle: [Bitman-v1.2-win64.exe](https://github.com/GreenWiener/Bitman/releases/download/v1.2/Bitman-v1.2-win64.exe).
-- Kui sul on 32-bit Windows arvuti, siis lae see alla: [Bitman-v1.2-win32.exe](https://github.com/GreenWiener/Bitman/releases/download/v1.2/Bitman-v1.2-win32.exe). !!!!!
+- Kui sul on 32-bit Windows arvuti, siis lae see alla: [Bitman-v1.2-win32.exe](https://github.com/GreenWiener/Bitman/releases/download/v1.2/Bitman-v1.2-win32.exe).
 
 Kui sa ei tea, mitme bitine Windows arvuti sul on, siis lae 64-bit versioon alla, sest kui sul just pole mingi Windows 7, siis sul tõenäoliselt on 64-bit Windows.
 
