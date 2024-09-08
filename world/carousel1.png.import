@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs6abo8p681ny"
-path="res://.godot/imported/drop_off_area.png-e1717dcac3c44464c9374ab753ade397.ctex"
+uid="uid://dh7ri7ws2aemb"
+path="res://.godot/imported/carousel1.png-889820926d69df40be41b8981a1f13a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/drop_off_area.png"
-dest_files=["res://.godot/imported/drop_off_area.png-e1717dcac3c44464c9374ab753ade397.ctex"]
+source_file="res://world/carousel1.png"
+dest_files=["res://.godot/imported/carousel1.png-889820926d69df40be41b8981a1f13a1.ctex"]
 
 [params]
 

@@ -3,7 +3,7 @@ extends TileMap
 
 func _process(delta):
 	for el in Global.item_bodies_list:
-		if el.item_pos_int3 != null:
+		if el.item_pos_int3 != null and Global._pause_menu.visible != true:
 			if self.get_cell_atlas_coords(0, el.item_pos_int3) == Vector2i(0,0):
 				#print("liigub paremale")
 				el.position.x += 0.05 * delta * 150

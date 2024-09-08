@@ -7,7 +7,11 @@ var ram_file
 
 
 func _on_button_task_pressed():
-	Global._ram_menu.select_file(ram_file)
+	AudioPlayer.play_fx("res://audio/tick2.wav")
+	if Global.world_name == "RAM":
+		Global._ram_menu.select_file(ram_file)
+	elif Global.world_name == "CPU":
+		Global._cpu_menu.select_info(ram_file)
 	
 
 

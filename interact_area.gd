@@ -26,6 +26,13 @@ func _ready():
 	
 	$CollisionShape2D.scale = collision_scale
 	
+	if Global.language == "english" or Global.language == "skibidi":
+		if type == "train_doors":
+			text = "open doors"
+			text_2 = "close doors"
+		if type == "kast":
+			text = "place a box"
+	
 	#text
 	if "Android" in OS.get_name() and type != "info":
 		the_labe_text1 = text
@@ -42,6 +49,8 @@ func _ready():
 	else:
 		interaction_label.position = text_pos
 	
+	
+	
 func _physics_process(_delta):
 	if Input.is_action_pressed("Interact_e"):
 		if type == "train_start" and Global._train.doors_open == true or type == "train_start" and Global.next_train_direction == true or type == "kast" and Global.player_holding_item == false:
@@ -55,8 +64,10 @@ func _physics_process(_delta):
 		
 		if type == "kast" and Global.player_holding_item == true:
 			print("'aseta kast'")
+			AudioPlayer.play_fx("res://audio/place_down.wav")
 			Global.spawn_item(Global.item_name, Vector2(100, 113), Global.box_item)
 			Global._player.release_item(null, null)
+			
 		
 		if type == "train_doors" and can_open_traindoors == true:
 			print("'ava rongi uksed'")
@@ -69,12 +80,27 @@ func _physics_process(_delta):
 					interaction_label.hide()
 					print("'start rong'")
 					AudioPlayer.play_music_train()
+					AudioPlayer.play_fx("res://audio/beep1.wav")
+					AudioPlayer.play_train_noise()
+					# subtask thing
+					if "CPU-task" in Global.task_ongoing and Global.subtask == 1:
+						Global._task_bar.next_subtask()
+					
 				else:
 					print("Ei saa praegu sõita!")
-					Global.PopUpText("Ei saa praegu sõita!", "player", Vector2.ZERO)
+					if Global.language == "english" or Global.language == "skibidi":
+						Global.PopUpText("Can't drive at the moment!", "player", Vector2.ZERO)
+					else:
+						Global.PopUpText("Ei saa praegu sõita!", "player", Vector2.ZERO)
+					AudioPlayer.play_fx("res://audio/beep_bad2.wav")
 			else:
 				print("Sulge rongi uksed enne sõitma hakkamist!")
-				Global.PopUpText("Sulge uksed!", "player", Vector2.ZERO)
+				if Global.language == "english" or Global.language == "skibidi":
+					Global.PopUpText("Close the doors!", "player", Vector2.ZERO)
+				else:
+					Global.PopUpText("Sulge uksed!", "player", Vector2.ZERO)
+				
+				AudioPlayer.play_fx("res://audio/beep_bad.wav")
 	
 	if type == "train_doors" and in_interact_area == true:
 		if Global._train.doors_open == true:
@@ -110,13 +136,18 @@ func _on_area_entered(area):
 			if (area.box_item == Global.deliver_cpu_item and Global.deliver_cpu_item != null) or area.box_item == "yes":
 				##Global.task_cpu_finished = true
 				print("Õige faili info!")
+				AudioPlayer.play_fx("res://audio/computer_success.wav")
 				Global.task_dec_num = randi_range(1, 63)
 				Global.spawn_item("kood - " + str(Global.task_dec_num), Vector2(position.x - 2.5, position.y + 6), "kood - " + str(Global.task_dec_num))
+				if "CPU-task" in Global.task_ongoing and (Global.subtask == -1 or Global.subtask == 3): # subtask thing
+					Global._task_bar.next_subtask(4)
 				$Sprite2D.frame = 2
 				await get_tree().create_timer(3.0).timeout
 				$Sprite2D.frame = 0
 			else:
 				print("Vale faili info!")
+				if "CPU-task" in Global.task_ongoing and Global.subtask == -1: # subtask thing
+					Global._task_bar.next_subtask(-1)
 				$Sprite2D.frame = 1
 				await get_tree().create_timer(3.0).timeout
 				$Sprite2D.frame = 0

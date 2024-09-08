@@ -7,7 +7,7 @@ func _ready():
 	load_tasks()
 	
 	if Global.task_menu_first_task == false:
-		new_task("locate-SSD-info", "new")
+		new_task("SSD-task", "new")
 		Global.task_menu_first_task = true
 
 	if Global.language == "english":
@@ -35,50 +35,62 @@ var unique_task_name
 func new_task(task, state):
 	# vali suvaline task
 	if task == "random":
-		task_name = Global.tasks[randi() % Global.tasks.size()] # valib suvalise ülesande listist Global.tasks = ["locate-SSD-info","deliver-SSD-info",,"deliver-RAM-info"]
+		task_name = Global.tasks[randi() % Global.tasks.size()] # valib suvalise ülesande listist Global.tasks = ["SSD-task","RAM-task",,"CPU-task"]
 	else:
 		task_name = task
 	
 	var task_block = preload("res://task_block.tscn").instantiate()
 	$PanelContainer/Task_Panel/ScrollContainer/VBoxContainer.add_child(task_block)
-	# kindlad taskid
-	if task_name == "locate-SSD-info": #--------# SSD #--------------------------------#
-		var rand_index = randi_range(0, len(Global.locker_bin_num_list)-1)
+	
+	var lang_task_str = ""
+	if Global.language == "english":
+		lang_task_str = "Solving this task will give you 10 points!"
+	elif Global.language == "skibidi":
+		lang_task_str = "Solving this task will give you 10 points"
+	else:
+		lang_task_str = "Lahendades selle ülesande saad 10 punkti!"
 
+	# kindlad taskid
+	if task_name == "SSD-task": #--------# SSD #--------------------------------#
+		var rand_index = randi_range(0, len(Global.locker_bin_num_list)-1)
+		print("rand_index--", rand_index)
+		print("Global.locker_bin_num_list[rand_index]--", Global.locker_bin_num_list[rand_index])
 		task_bin_num = Global.locker_bin_num_list[rand_index]
 		Global.locker_bin_num_list.remove_at(rand_index)
 		#set_task_text(set_task_type, set_the_text, set_task_info)
 		unique_task_name = str(Global.unique_task_id, " ", task_name)
-		task_block.set_task_text(unique_task_name, str("1. Mine SSD-majja ja lahenda teisendusülesanne kahendarvuga ", task_bin_num), task_bin_num)
+		
+		
+		task_block.set_task_text(unique_task_name, lang_task_str, task_bin_num)
 		# ülesande salvestamine sõnastikku, stseeni uuesti laadimisel esitamiseks
 		Global.task_menu_info_dict[unique_task_name] = ["","","",""]
 		Global.task_menu_info_dict[unique_task_name][0] = unique_task_name
-		Global.task_menu_info_dict[unique_task_name][1] = str("1. Mine SSD-majja ja lahenda teisendusülesanne kahendarvuga ", task_bin_num)
+		Global.task_menu_info_dict[unique_task_name][1] = lang_task_str
 		Global.task_menu_info_dict[unique_task_name][2] = task_bin_num
 		Global.unique_task_id += 1
 
-	elif task_name == "deliver-SSD-info": #--------# RAM #--------------------------------#
+	elif task_name == "RAM-task": #--------# RAM #--------------------------------#
 		unique_task_name = str(Global.unique_task_id, " ", task_name)
-		task_block.set_task_text(unique_task_name, str("Vii fail '", Global.box_item, "' RAM-majja"), Global.box_item)
+		task_block.set_task_text(unique_task_name, lang_task_str, Global.box_item)
 		Global.task_menu_info_dict[unique_task_name] = ["","","",""]
 		Global.task_menu_info_dict[unique_task_name][0] = unique_task_name
-		Global.task_menu_info_dict[unique_task_name][1] = str("Vii fail '", Global.box_item, "' RAM-majja")
+		Global.task_menu_info_dict[unique_task_name][1] = lang_task_str
 		Global.task_menu_info_dict[unique_task_name][2] = Global.box_item
 		Global.unique_task_id += 1
 
-	elif task_name == "deliver-RAM-info": #--------# CPU #--------------------------------#
+	elif task_name == "CPU-task": #--------# CPU #--------------------------------#
 		unique_task_name = str(Global.unique_task_id, " ", task_name)
-		task_block.set_task_text(unique_task_name, str("Transpordi fail '", Global.deliver_cpu_item, "' CPU-majja"), Global.deliver_cpu_item)
+		task_block.set_task_text(unique_task_name, lang_task_str, Global.deliver_cpu_item)
 		Global.task_menu_info_dict[unique_task_name] = ["","","",""]
 		Global.task_menu_info_dict[unique_task_name][0] = unique_task_name
-		Global.task_menu_info_dict[unique_task_name][1] = str("Transpordi fail '", Global.deliver_cpu_item, "' CPU-majja")
+		Global.task_menu_info_dict[unique_task_name][1] = lang_task_str
 		Global.task_menu_info_dict[unique_task_name][2] = Global.deliver_cpu_item
 		Global.unique_task_id += 1
 
 	if state == "pooleli":
 		task_block.start_task()
 	elif state == "finished":
-		task_block.set_task_finished()
+		task_block.set_task_completed()
 
 
 
@@ -97,7 +109,7 @@ func load_tasks():
 
 		# TEHTUD (aga mitte lõpetatud)
 		if Global.task_menu_info_dict[el][3] == "finished":
-			task_block.set_task_finished()
+			task_block.set_task_completed()
 			#task_block.modulate = "6eff66" # hele-roheline
 		
 
@@ -188,7 +200,7 @@ func toggle_newtask_btn():
 #
 	#if Global.selected_task == "SSD-to-RAM":
 		#task_node.text += "Leia SSD majast " + Global.task_SSD_location + " ja vii see RAM-i\n"
-	#if Global.selected_task == "deliver-SSD-info":
+	#if Global.selected_task == "RAM-task":
 		#task_node.text += "Paranda PSU port emaplaadil\n"
 #
 #func completeTask():

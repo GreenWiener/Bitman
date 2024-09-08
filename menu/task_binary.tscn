@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://kco8ko3qnr8d"]
+[gd_scene load_steps=50 format=3 uid="uid://kco8ko3qnr8d"]
 
 [ext_resource type="Script" path="res://menu/task_binary.gd" id="1_04x3f"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_ow2sd"]
 [ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_qw2h7"]
 [ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_uof5r"]
 [ext_resource type="PackedScene" uid="uid://dl8stlucmakk6" path="res://menu/task_binary_row.tscn" id="4_d6jk4"]
@@ -14,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cyvsvggoijabc" path="res://menu/task_binary_example.png" id="12_dm3ds"]
 [ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="12_qxl56"]
 [ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="13_w8awq"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="14_tswt8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjivc"]
 content_margin_left = 6.0
@@ -60,10 +62,46 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4t4e3"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.2, 0.2, 0.207843, 0.705882)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vc1xw"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.12549, 0.12549, 0.129412, 0.894118)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mapiw"]
 content_margin_left = 13.0
 content_margin_right = 13.0
 bg_color = Color(0.12549, 0.12549, 0.129412, 0.705882)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la3b7"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.2, 0.2, 0.207843, 0.705882)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_guln7"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.12549, 0.12549, 0.129412, 0.894118)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -75,8 +113,64 @@ font = ExtResource("5_s814f")
 font_size = 14
 font_color = Color(0.752941, 0.752941, 0.752941, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8o4o"]
+bg_color = Color(0.788235, 0.823529, 0.890196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0666667, 0.4, 0.109804, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="Theme" id="Theme_1iha2"]
+default_font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2qaq"]
+bg_color = Color(0.027451, 0.0745098, 0.137255, 0.313726)
+
+[sub_resource type="LabelSettings" id="LabelSettings_oemke"]
+line_spacing = -3.0
+font_size = 20
+font_color = Color(0.670588, 0.913725, 0.870588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m0etm"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8rlq"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.027451, 0.0745098, 0.137255, 0.313726)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlyaf"]
+font_size = 15
+font_color = Color(0.517647, 0.988235, 0.317647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hm31f"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0v1t4"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.027451, 0.0745098, 0.137255, 0.313726)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ufx85"]
+line_spacing = -7.0
+font_size = 15
+font_color = Color(0.94902, 0.27451, 0.286275, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11lyl"]
-bg_color = Color(0.0705882, 0.0980392, 0.141176, 0.905882)
+bg_color = Color(0.0705882, 0.0980392, 0.141176, 0.968627)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -94,6 +188,9 @@ default_font = ExtResource("5_s814f")
 default_font_size = 7
 
 [sub_resource type="FontFile" id="FontFile_1snns"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0
@@ -220,8 +317,146 @@ font_color = Color(0.901961, 0.858824, 0, 1)
 font_size = 7
 font_color = Color(0, 100, 0, 1)
 
-[sub_resource type="Theme" id="Theme_1iha2"]
-default_font_size = 15
+[sub_resource type="LabelSettings" id="LabelSettings_t0s37"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_puxt5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("correct_explain:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("correct_explain:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("wrong_explain:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("wrong_explain:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dp0a3"]
+resource_name = "correct"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("correct_explain:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 3.2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("correct_explain:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.9, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("wrong_explain:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4sh5u"]
+resource_name = "wrong"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wrong_explain:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 3.2, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wrong_explain:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.9, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("correct_explain:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sw83"]
+_data = {
+"RESET": SubResource("Animation_puxt5"),
+"correct": SubResource("Animation_dp0a3"),
+"wrong": SubResource("Animation_4sh5u")
+}
 
 [node name="task_binary" type="Control"]
 layout_mode = 3
@@ -230,6 +465,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ow2sd")
 script = ExtResource("1_04x3f")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -337,7 +573,7 @@ layout_mode = 0
 offset_left = 12.0
 offset_top = 22.0
 offset_right = 1015.0
-offset_bottom = 453.0
+offset_bottom = 368.0
 scale = Vector2(0.295, 0.295)
 
 [node name="Rows" type="VBoxContainer" parent="ScrollRows"]
@@ -370,6 +606,8 @@ theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
 theme_override_font_sizes/font_size = 36
 theme_override_styles/normal = SubResource("StyleBoxFlat_lm4t1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4t4e3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vc1xw")
 text = "+"
 
 [node name="remove_row_button" type="Button" parent="ScrollRows/Rows/add_row_btn/add_row_button"]
@@ -388,6 +626,8 @@ theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
 theme_override_fonts/font = ExtResource("5_8q8a3")
 theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = SubResource("StyleBoxFlat_mapiw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_la3b7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_guln7")
 text = "–"
 
 [node name="Arrowdown" type="Sprite2D" parent="ScrollRows/Rows/add_row_btn/add_row_button"]
@@ -400,22 +640,23 @@ texture = ExtResource("5_dfsbb")
 [node name="Label" type="Label" parent="ScrollRows/Rows/add_row_btn/add_row_button"]
 modulate = Color(1, 1, 1, 0.752941)
 layout_mode = 0
-offset_left = 364.811
-offset_top = 39.1362
-offset_right = 406.811
-offset_bottom = 109.136
+offset_left = 330.0
+offset_top = 23.0
+offset_right = 442.0
+offset_bottom = 124.0
 text = "vastus
 loe
 alt
 üles"
 label_settings = SubResource("LabelSettings_0hb5g")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="vastus" type="LineEdit" parent="."]
 layout_mode = 0
-offset_left = 205.0
+offset_left = 198.0
 offset_top = 155.0
-offset_right = 335.0
+offset_right = 343.0
 offset_bottom = 186.0
 scale = Vector2(0.475, 0.475)
 theme_override_styles/normal = ExtResource("7_wuxi8")
@@ -429,6 +670,7 @@ offset_top = 155.439
 offset_right = 388.21
 offset_bottom = 196.439
 scale = Vector2(0.345, 0.345)
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("9_0uehj")
 theme_override_styles/hover = ExtResource("1_qw2h7")
 theme_override_styles/pressed = ExtResource("1_qw2h7")
@@ -448,8 +690,97 @@ theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = ExtResource("9_x2gbg")
 theme_override_styles/hover = ExtResource("11_3yd8g")
-theme_override_styles/pressed = ExtResource("9_x2gbg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h8o4o")
 text = "?"
+
+[node name="HelpArrow2" parent="example_btn" instance=ExtResource("14_tswt8")]
+visible = false
+position = Vector2(34.2906, 14.4922)
+scale = Vector2(-1.754, 1.754)
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 136.97
+offset_top = -81.9026
+offset_right = 166.97
+offset_bottom = -51.9026
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_1iha2")
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("5_8q8a3")
+theme_override_styles/normal = ExtResource("12_qxl56")
+theme_override_styles/hover = ExtResource("13_w8awq")
+theme_override_styles/pressed = ExtResource("1_qw2h7")
+text = "×"
+
+[node name="HelpArrow" parent="BackButton" instance=ExtResource("14_tswt8")]
+visible = false
+position = Vector2(-5.17712, 13.9121)
+scale = Vector2(2, 2)
+
+[node name="Task_explain" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 124.0
+offset_right = 311.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i2qaq")
+
+[node name="Label" type="Label" parent="Task_explain"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 737.0
+offset_bottom = 55.0
+scale = Vector2(0.4, 0.4)
+text = "Teisenda antud kümnendarv kahendarvuks, täites lahenduses olevad mustad kastid õigete arvudega ülemise rea valemi järgi. Uusi ridasid saab juurde lisada \"+\" nupule vajutades."
+label_settings = SubResource("LabelSettings_oemke")
+autowrap_mode = 2
+
+[node name="correct_explain" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 157.0
+offset_right = 441.0
+offset_bottom = 175.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/panel = SubResource("StyleBoxFlat_m0etm")
+
+[node name="Label" type="Label" parent="correct_explain"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_y8rlq")
+text = "Õige lahendus! Ülesanne lahendatud!"
+label_settings = SubResource("LabelSettings_mlyaf")
+horizontal_alignment = 2
+
+[node name="wrong_explain" type="PanelContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 157.0
+offset_right = 440.0
+offset_bottom = 175.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/panel = SubResource("StyleBoxFlat_hm31f")
+
+[node name="Label" type="Label" parent="wrong_explain"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_0v1t4")
+text = "Vale lahendus! Proovi uuesti."
+label_settings = SubResource("LabelSettings_ufx85")
+horizontal_alignment = 2
 
 [node name="Example" type="Panel" parent="."]
 visible = false
@@ -467,6 +798,7 @@ offset_top = 0.55455
 offset_right = 217.559
 offset_bottom = 25.5546
 scale = Vector2(0.395, 0.395)
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_brn60")
 text = "×"
 
@@ -687,28 +1019,21 @@ position = Vector2(102.5, 67.75)
 scale = Vector2(0.129, 0.129)
 texture = ExtResource("12_dm3ds")
 
-[node name="BackButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 136.97
-offset_top = -81.9026
-offset_right = 166.97
-offset_bottom = -51.9026
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-focus_mode = 0
-theme = SubResource("Theme_1iha2")
-theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
-theme_override_fonts/font = ExtResource("5_8q8a3")
-theme_override_styles/normal = ExtResource("12_qxl56")
-theme_override_styles/hover = ExtResource("13_w8awq")
-theme_override_styles/pressed = ExtResource("1_qw2h7")
-text = "×"
+[node name="translation_label" type="Label" parent="Example"]
+visible = false
+layout_mode = 0
+offset_left = 110.966
+offset_top = 123.537
+offset_right = 254.966
+offset_bottom = 141.537
+scale = Vector2(0.617087, 0.617087)
+text = "Translation coming soon..."
+label_settings = SubResource("LabelSettings_t0s37")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8sw83")
+}
 
 [connection signal="pressed" from="ScrollRows/Rows/add_row_btn/add_row_button" to="." method="_on_add_row_btn_pressed"]
 [connection signal="pressed" from="ScrollRows/Rows/add_row_btn/add_row_button/remove_row_button" to="." method="_on_remove_row_button_pressed"]
@@ -717,5 +1042,5 @@ text = "×"
 [connection signal="text_changed" from="vastus" to="." method="_on_vastus_text_changed"]
 [connection signal="pressed" from="kontroll" to="." method="_on_kontroll_pressed"]
 [connection signal="pressed" from="example_btn" to="." method="_on_example_btn_pressed"]
-[connection signal="pressed" from="Example/close_example_btn" to="." method="_on_close_example_btn_pressed"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Example/close_example_btn" to="." method="_on_close_example_btn_pressed"]

@@ -1,0 +1,448 @@
+[gd_scene load_steps=13 format=3 uid="uid://t21fqkkb2ik3"]
+
+[ext_resource type="Script" path="res://menu/task_bar.gd" id="1_0df7s"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="1_h5d3s"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="2_ihu86"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruxej"]
+content_margin_left = 2.0
+content_margin_top = 1.0
+content_margin_right = 17.0
+bg_color = Color(0.176471, 0.203922, 0.615686, 0.556863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0627451, 0.113725, 0.823529, 0.792157)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_yd0r1"]
+font = ExtResource("1_h5d3s")
+font_size = 3
+font_color = Color(0.647059, 0.647059, 0.647059, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_trprc"]
+line_spacing = -2.0
+font_size = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_ec42o"]
+font = ExtResource("1_h5d3s")
+font_size = 3
+font_color = Color(0.647059, 0.647059, 0.647059, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mba0t"]
+line_spacing = -2.0
+font_size = 6
+font_color = Color(0, 1, 0.360784, 1)
+
+[sub_resource type="Animation" id="Animation_gqc47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("task_text_box/task_done_container/Control/subtask_done:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("task_text_box/task_done_container/Control/subtask_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("task_text_box/VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("task_text_box/task_done_container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("task_text_box/VBoxContainer/Control/subtask_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("task_text_box/task_done_container/task_heading:label_settings:font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.647059, 0.647059, 0.647059, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("task_text_box:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(65, 15)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("task_text_box:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-50, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("task_text_box:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xy3tc"]
+resource_name = "last_task_done"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("task_text_box/task_done_container/Control/subtask_done:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-52, 0), Vector2(0, 0), Vector2(0, 0), Vector2(62.7176, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("task_text_box/task_done_container/Control/subtask_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(62.6875, 0), Vector2(62.6875, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("task_text_box/VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("task_text_box/task_done_container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("task_text_box/VBoxContainer/Control/subtask_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-47.4403, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("task_text_box/task_done_container/task_heading:label_settings:font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.647059, 0.647059, 0.647059, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0.647059, 0.647059, 0.647059, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("task_text_box:size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(65, 15), Vector2(65, 15), Vector2(20, 15)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("task_text_box:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-50, 0), Vector2(-50, 0), Vector2(-5, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("task_text_box:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_usark"]
+resource_name = "task_done"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("task_text_box/task_done_container/Control/subtask_done:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-52, 0), Vector2(0, 0), Vector2(0, 0), Vector2(62.7176, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("task_text_box/task_done_container/Control/subtask_label:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(62.6875, 0), Vector2(62.6875, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("task_text_box/VBoxContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("task_text_box/task_done_container:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("task_text_box/VBoxContainer/Control/subtask_label:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-47.4403, 0), Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("task_text_box/task_done_container/task_heading:label_settings:font_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.647059, 0.647059, 0.647059, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(0.647059, 0.647059, 0.647059, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("task_text_box:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5kqsy"]
+_data = {
+"RESET": SubResource("Animation_gqc47"),
+"last_task_done": SubResource("Animation_xy3tc"),
+"task_done": SubResource("Animation_usark")
+}
+
+[node name="task_bar" type="Node2D"]
+script = ExtResource("1_0df7s")
+
+[node name="task_text_box" type="PanelContainer" parent="."]
+clip_contents = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 0
+theme = ExtResource("2_ihu86")
+theme_override_styles/panel = SubResource("StyleBoxFlat_ruxej")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="task_text_box"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="task_heading" type="Label" parent="task_text_box/VBoxContainer"]
+layout_mode = 2
+text = "IDK-maja ülesanne"
+label_settings = SubResource("LabelSettings_yd0r1")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="task_text_box/VBoxContainer"]
+layout_mode = 2
+
+[node name="subtask_label" type="Label" parent="task_text_box/VBoxContainer/Control"]
+layout_mode = 2
+offset_right = 46.0
+offset_bottom = 7.0
+text = "Sisene IDK-majja."
+label_settings = SubResource("LabelSettings_trprc")
+
+[node name="subtask_label_ph" type="Label" parent="task_text_box/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+text = "Sisene IDK-majja."
+label_settings = SubResource("LabelSettings_trprc")
+
+[node name="task_done_container" type="VBoxContainer" parent="task_text_box"]
+visible = false
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="task_heading" type="Label" parent="task_text_box/task_done_container"]
+layout_mode = 2
+text = "DONE-maja ülesanne"
+label_settings = SubResource("LabelSettings_ec42o")
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Control" type="Control" parent="task_text_box/task_done_container"]
+layout_mode = 2
+
+[node name="subtask_label" type="Label" parent="task_text_box/task_done_container/Control"]
+clip_contents = true
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 7.0
+text = "Sisene IDK-majja."
+label_settings = SubResource("LabelSettings_trprc")
+clip_text = true
+
+[node name="subtask_done" type="Label" parent="task_text_box/task_done_container/Control"]
+clip_contents = true
+layout_mode = 2
+offset_right = 50.0
+offset_bottom = 7.0
+text = "Ülesanne tehtud!"
+label_settings = SubResource("LabelSettings_mba0t")
+clip_text = true
+
+[node name="subtask_label_ph" type="Label" parent="task_text_box/task_done_container"]
+modulate = Color(1, 1, 1, 0)
+clip_contents = true
+layout_mode = 2
+text = "Sisene IDK-majja."
+label_settings = SubResource("LabelSettings_trprc")
+clip_text = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5kqsy")
+}

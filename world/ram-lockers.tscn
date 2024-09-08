@@ -7,11 +7,31 @@
 texture = ExtResource("1_bdhep")
 texture_region_size = Vector2i(75, 75)
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-37.5, -37.5, -37.5, 37.5, 37.5, 37.5, 37.5, -37.5, -37.5, -37.5)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
 1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-37.5, -37.5, -37.5, 37.5, 37.5, 37.5, 37.5, -37.5)
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
 2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-37.5, -37.5, -37.5, 37.5, -25.5, 26, 26, 26, 37.5, 37.5, 37.5, -37.5)
+2:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_1/angular_velocity = 0.0
+2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-30, 28, 27, 29, 25.5, 21.5, -30, 20.5)
 
 [sub_resource type="TileSet" id="TileSet_qq608"]
 tile_size = Vector2i(75, 75)
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 2
+physics_layer_1/collision_layer = 0
+physics_layer_1/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_pdjxn")
 
 [node name="ram-lockers" type="TileMap"]

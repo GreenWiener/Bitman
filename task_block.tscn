@@ -1,5 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://mjko4ouq87ou"]
+[gd_scene load_steps=26 format=3 uid="uid://mjko4ouq87ou"]
 
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_a5sdt"]
 [ext_resource type="Script" path="res://task_block.gd" id="3_2gnt7"]
 [ext_resource type="StyleBox" uid="uid://dongkua34tekb" path="res://menu/question_btn.tres" id="3_stw80"]
 [ext_resource type="StyleBox" uid="uid://djjwgrqg1xgj4" path="res://menu/question_btn_hover.tres" id="4_878kh"]
@@ -33,9 +34,10 @@ content_margin_bottom = 10.0
 draw_center = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_qt0sk"]
-font_size = 30
+font_size = 38
 
 [sub_resource type="LabelSettings" id="LabelSettings_2mhlr"]
+font = ExtResource("4_x8f1d")
 font_size = 40
 font_color = Color(1, 1, 1, 0.709804)
 
@@ -53,19 +55,18 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_ayc06"]
-font = ExtResource("4_x8f1d")
-font_size = 25
+font_size = 30
+font_color = Color(0.784314, 0.784314, 0.784314, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6krdq"]
-font = ExtResource("4_x8f1d")
-font_size = 25
+font_size = 28
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psg80"]
 content_margin_top = 15.0
 draw_center = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_o0fml"]
-font_size = 28
+font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u30dq"]
 draw_center = false
@@ -135,6 +136,7 @@ corner_radius_bottom_left = 5
 custom_minimum_size = Vector2(0, 75)
 offset_right = 484.0
 offset_bottom = 300.0
+theme = ExtResource("1_a5sdt")
 theme_override_styles/panel = SubResource("StyleBoxFlat_qpoyx")
 script = ExtResource("3_2gnt7")
 
@@ -242,8 +244,7 @@ alignment = 1
 [node name="start_btn" type="Button" parent="VBoxContainer/TaskInfo_container/InfoContainer/Buttons_container/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_x8f1d")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_rrlsl")
 text = "Alusta"
 
@@ -251,8 +252,7 @@ text = "Alusta"
 visible = false
 layout_mode = 2
 focus_mode = 0
-theme_override_fonts/font = ExtResource("4_x8f1d")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_rrlsl")
 text = "Lõpeta"
 

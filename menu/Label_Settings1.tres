@@ -1,8 +1,8 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cg7ecyiuomsvk"]
 
-[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="1_xo2lt"]
+[ext_resource type="FontFile" uid="uid://or3rf71jm2l3" path="res://menu/fonts/century_gothic.ttf" id="1_xds8r"]
 
 [resource]
 line_spacing = -2.0
-font = ExtResource("1_xo2lt")
-font_size = 24
+font = ExtResource("1_xds8r")
+font_size = 30

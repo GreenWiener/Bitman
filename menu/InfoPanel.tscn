@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://br4lrmgvvps1n"]
+[gd_scene load_steps=11 format=3 uid="uid://br4lrmgvvps1n"]
 
 [ext_resource type="Script" path="res://menu/InfoPanel.gd" id="1_225g2"]
 [ext_resource type="Texture2D" uid="uid://ccxkelb3gwark" path="res://world/gray_sign.png" id="2_8cfv3"]
 [ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="3_5ji8o"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="3_xfql1"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 size = Vector2(6, 8)
@@ -20,9 +21,10 @@ expand_margin_right = 19.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_sac30"]
+font_size = 20
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejkdg"]
-size = Vector2(141, 35)
+size = Vector2(141, 34.83)
 
 [node name="InfoPanel" type="Area2D"]
 collision_layer = 4
@@ -43,11 +45,12 @@ z_index = 1
 offset_left = -55.0
 offset_top = -16.0
 offset_right = 54.0
-offset_bottom = 7.0
+offset_bottom = 2.0
 scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(54.75, 9.625)
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = ExtResource("3_xfql1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_j6o4d")
 text = "[E] loe"
 label_settings = SubResource("LabelSettings_xfkak")
@@ -56,21 +59,22 @@ horizontal_alignment = 1
 [node name="interaction_label_android" type="Label" parent="."]
 visible = false
 z_index = 1
-offset_left = -50.976
+offset_left = -51.0
 offset_top = -9.0
-offset_right = 51.024
-offset_bottom = 14.0
+offset_right = 51.0
+offset_bottom = 9.0
 scale = Vector2(0.12, 0.12)
 pivot_offset = Vector2(50.9667, 0)
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme = ExtResource("3_xfql1")
 theme_override_styles/normal = SubResource("StyleBoxFlat_grw0u")
 text = "loe"
 label_settings = SubResource("LabelSettings_sac30")
 horizontal_alignment = 1
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="interaction_label_android"]
-position = Vector2(50.9332, 11.4583)
+position = Vector2(50.933, 11.708)
 shape = SubResource("RectangleShape2D_ejkdg")
 action = "Interact_e"
 

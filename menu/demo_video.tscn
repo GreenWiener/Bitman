@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmntkw74hwsoi"]
+[gd_scene load_steps=17 format=3 uid="uid://bmntkw74hwsoi"]
 
 [ext_resource type="Script" path="res://menu/demo_video.gd" id="1_cgqd8"]
 [ext_resource type="VideoStream" path="res://menu/godot game demo.ogv" id="1_hw22n"]
@@ -6,6 +6,10 @@
 [ext_resource type="StyleBox" uid="uid://docbojvtgjlf" path="res://menu/btn_normal1.tres" id="4_iyr8a"]
 [ext_resource type="StyleBox" uid="uid://cjc15y7u78ado" path="res://menu/btn_pressed.tres" id="5_kv8or"]
 [ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="5_t8enu"]
+[ext_resource type="Texture2D" uid="uid://b7e2dwulblugo" path="res://menu/play_btn.png" id="7_wt2l6"]
+[ext_resource type="StyleBox" uid="uid://cbgh0p77v4dk8" path="res://menu/vslider.tres" id="8_jq6fx"]
+[ext_resource type="StyleBox" uid="uid://c20mt70twxue7" path="res://menu/hslider.tres" id="9_u3sml"]
+[ext_resource type="Texture2D" uid="uid://bl2pk4yfanrxf" path="res://menu/volume_icon.png" id="10_rrhuo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg0wt"]
 bg_color = Color(0.00784314, 0.0392157, 0.172549, 1)
@@ -22,6 +26,30 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_83wto"]
 default_font_size = 15
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1o134"]
+size = Vector2(254, 155)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv2qw"]
+bg_color = Color(0.223529, 0.243137, 0.356863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12t4v"]
+bg_color = Color(0.286275, 0.309804, 0.447059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n7nuy"]
+bg_color = Color(0.372549, 0.4, 0.556863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Demo_video" type="Control"]
 layout_mode = 3
@@ -86,4 +114,58 @@ theme_override_styles/hover = ExtResource("5_t8enu")
 theme_override_styles/pressed = ExtResource("5_kv8or")
 text = "×"
 
+[node name="playback_controls" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Area2D" type="Area2D" parent="playback_controls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playback_controls/Area2D"]
+visible = false
+position = Vector2(161, 89.5)
+shape = SubResource("RectangleShape2D_1o134")
+
+[node name="play_btn" type="Button" parent="playback_controls"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 83.0
+offset_right = 196.0
+offset_bottom = 126.0
+scale = Vector2(0.45, 0.45)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_tv2qw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_12t4v")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n7nuy")
+toggle_mode = true
+icon = ExtResource("7_wt2l6")
+
+[node name="MusicVolumeSlider" type="VSlider" parent="playback_controls"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 115.0
+offset_right = 295.0
+offset_bottom = 209.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("8_jq6fx")
+min_value = -30.0
+max_value = 10.0
+
+[node name="MusicTimeSlider" type="HSlider" parent="playback_controls"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 155.0
+offset_right = 604.0
+offset_bottom = 171.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("9_u3sml")
+
+[node name="volume_icon" type="Sprite2D" parent="playback_controls"]
+modulate = Color(1, 1, 1, 0.85098)
+position = Vector2(282, 158)
+scale = Vector2(0.337209, 0.337209)
+texture = ExtResource("10_rrhuo")
+
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="playback_controls/play_btn" to="." method="_on_play_btn_pressed"]

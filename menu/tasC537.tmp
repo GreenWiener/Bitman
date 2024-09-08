@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://t21fqkkb2ik3"]
+
+[ext_resource type="Script" path="res://menu/task_bar.gd" id="1_0df7s"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="1_h5d3s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruxej"]
+content_margin_left = 2.0
+content_margin_top = 1.0
+content_margin_right = 17.0
+bg_color = Color(0.137255, 0.137255, 0.137255, 0.588235)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_yd0r1"]
+font = ExtResource("1_h5d3s")
+font_size = 3
+font_color = Color(0.647059, 0.647059, 0.647059, 1)
+shadow_offset = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_trprc"]
+font_size = 5
+
+[node name="task_bar" type="Node2D"]
+script = ExtResource("1_0df7s")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+clip_contents = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_right = 15.0
+offset_bottom = 14.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ruxej")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="task_heading" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "IDK-maja ülesanne"
+label_settings = SubResource("LabelSettings_yd0r1")
+horizontal_alignment = 1
+
+[node name="subtask_label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sisene IDK-majja."
+label_settings = SubResource("LabelSettings_trprc")

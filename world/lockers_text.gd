@@ -5,6 +5,8 @@ var color_file = "8080f0" # sinine
 
 var scrolling = false
 
+
+
 var delta_value = 0
 func _process(delta):
 	delta_value = delta

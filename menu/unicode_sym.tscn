@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cneq4hj6av3kr"]
+
+[ext_resource type="Script" path="res://menu/unicode_sym.gd" id="1_rse3p"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="3_atpdc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dph7b"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.113725, 0.333333, 0.74902, 1)
+
+[sub_resource type="FontFile" id="FontFile_fjled"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i38i"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.317647, 0.501961, 0.247059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sjfb"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c7x6w"]
+bg_color = Color(1, 1, 1, 0.337255)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mek81"]
+bg_color = Color(0.317647, 0.501961, 0.247059, 0.741176)
+
+[node name="symbol" type="PanelContainer"]
+offset_right = 106.0
+offset_bottom = 23.0
+script = ExtResource("1_rse3p")
+
+[node name="num_sym" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="num" type="Label" parent="num_sym"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_atpdc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dph7b")
+text = "num"
+
+[node name="sym" type="Label" parent="num_sym"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("FontFile_fjled")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2i38i")
+text = "sym"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4sjfb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c7x6w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mek81")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=28 format=3 uid="uid://bucyc12r3v0wv"]
+[gd_resource type="Theme" load_steps=29 format=3 uid="uid://bucyc12r3v0wv"]
 
 [ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="1_qwahe"]
 [ext_resource type="StyleBox" uid="uid://b75csbypggw06" path="res://menu/btn_disabled1.tres" id="1_thfug"]
+[ext_resource type="FontFile" uid="uid://eiov72qovi1e" path="res://menu/fonts/Jersey10-Regular.ttf" id="1_wpnec"]
 [ext_resource type="StyleBox" uid="uid://6cde2j5hl1x8" path="res://menu/btn_hover1.tres" id="2_box1q"]
 [ext_resource type="StyleBox" uid="uid://docbojvtgjlf" path="res://menu/btn_normal1.tres" id="3_duac3"]
 [ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="4_egfs8"]
@@ -134,8 +135,8 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
-Button/font_sizes/font_size = 16
-Button/fonts/font = ExtResource("1_qwahe")
+Button/font_sizes/font_size = 19
+Button/fonts/font = ExtResource("1_wpnec")
 Button/styles/disabled = ExtResource("1_thfug")
 Button/styles/focus = SubResource("StyleBoxFlat_u55fp")
 Button/styles/hover = ExtResource("2_box1q")
@@ -158,6 +159,7 @@ HScrollBar/styles/scroll = ExtResource("7_grbu5")
 HSlider/styles/grabber_area = ExtResource("5_65det")
 HSlider/styles/grabber_area_highlight = ExtResource("6_ywlpp")
 HSlider/styles/slider = ExtResource("7_grbu5")
+Label/fonts/font = ExtResource("1_wpnec")
 LineEdit/styles/focus = ExtResource("8_jwq65")
 LineEdit/styles/normal = ExtResource("9_tqvik")
 LineEdit/styles/read_only = ExtResource("10_7s5cy")
@@ -168,8 +170,11 @@ PopupMenu/styles/labeled_separator_left = SubResource("StyleBoxFlat_0ixhe")
 PopupMenu/styles/labeled_separator_right = SubResource("StyleBoxFlat_0ixhe")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_nm5bi")
 PopupMenu/styles/separator = SubResource("StyleBoxFlat_f3bht")
+ProgressBar/font_sizes/font_size = 21
+ProgressBar/fonts/font = ExtResource("1_wpnec")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_fcwxm")
 ProgressBar/styles/fill = ExtResource("4_egfs8")
+RichTextLabel/fonts/normal_font = ExtResource("1_wpnec")
 TabContainer/styles/panel = SubResource("StyleBoxFlat_yy6in")
 TabContainer/styles/tab_disabled = SubResource("StyleBoxFlat_jokmb")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_lojk7")

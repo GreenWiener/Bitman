@@ -1,0 +1,1235 @@
+[gd_scene load_steps=38 format=3 uid="uid://tne6f1jni4ee"]
+
+[ext_resource type="Script" path="res://menu/ram_menu.gd" id="1_f5rea"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_ikrx0"]
+[ext_resource type="PackedScene" uid="uid://chfusk0x06bqh" path="res://file_block.tscn" id="3_twn6c"]
+[ext_resource type="Texture2D" uid="uid://b7e2dwulblugo" path="res://menu/play_btn.png" id="4_rfgsl"]
+[ext_resource type="StyleBox" uid="uid://cbgh0p77v4dk8" path="res://menu/vslider.tres" id="5_sxyu3"]
+[ext_resource type="StyleBox" uid="uid://c20mt70twxue7" path="res://menu/hslider.tres" id="6_5qqoh"]
+[ext_resource type="Texture2D" uid="uid://bl2pk4yfanrxf" path="res://menu/volume_icon.png" id="7_hmvy0"]
+[ext_resource type="PackedScene" uid="uid://dgx8qswpw2ti1" path="res://menu/binary_info_digit.tscn" id="8_ec48l"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="9_gpytt"]
+[ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="10_67a4u"]
+[ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="11_feavs"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="12_lxf75"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="13_63pcf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ndtr"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ymh58"]
+line_spacing = 13.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uddo3"]
+bg_color = Color(0.133333, 0.164706, 0.227451, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_8y472"]
+font_size = 9
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmvuw"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.117647)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.2, 0.266667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nr3g"]
+font_size = 18
+font_color = Color(0.643137, 0.643137, 0.643137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jui2m"]
+font_color = Color(0.380392, 0.380392, 0.505882, 1)
+outline_size = 2
+outline_color = Color(0.243137, 0.266667, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x1kb"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.192157, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ju3b"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.180392, 0.180392, 0.25098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.192157, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01tjd"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.262745, 0.262745, 0.360784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.192157, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ae21e"]
+font_color = Color(1, 0.211765, 0.160784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4xrd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.105882, 0.133333, 0.188235, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsboj"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_c8qsd"]
+line_spacing = 1.775
+font_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n38xb"]
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyf7v"]
+bg_color = Color(0.223529, 0.243137, 0.356863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05oo1"]
+bg_color = Color(0.286275, 0.309804, 0.447059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yc64"]
+bg_color = Color(0.372549, 0.4, 0.556863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_whfma"]
+font_size = 30
+font_color = Color(1, 1, 1, 0.235294)
+
+[sub_resource type="Animation" id="Animation_x8eyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_ddf4m"]
+resource_name = "loading"
+length = 3.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.78, 2.5, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 55.0, 95.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38iyq"]
+_data = {
+"RESET": SubResource("Animation_x8eyw"),
+"loading": SubResource("Animation_ddf4m")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6gst"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.129412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id="Theme_hsk8g"]
+default_font_size = 15
+
+[node name="RAM_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5rea")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -7.0
+offset_right = 334.0
+offset_bottom = 192.0
+color = Color(0, 0, 0, 0.34902)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_0ndtr")
+label_settings = ExtResource("2_ikrx0")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 312.0
+offset_bottom = 26.0
+text = "RAM infopaneel"
+label_settings = SubResource("LabelSettings_ymh58")
+horizontal_alignment = 1
+
+[node name="Fail_Panel" type="Panel" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 34.0
+offset_right = 98.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="failid_label" type="Label" parent="Fail_Panel"]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Failid"
+horizontal_alignment = 1
+
+[node name="failid_label2" type="Label" parent="Fail_Panel"]
+layout_mode = 0
+offset_top = 9.0
+offset_right = 156.0
+offset_bottom = 29.0
+scale = Vector2(0.5, 0.5)
+text = "Kõik failid, mis on RAM-i toodud."
+label_settings = SubResource("LabelSettings_8y472")
+horizontal_alignment = 1
+
+[node name="new_task_btn" type="Button" parent="Fail_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 2.0
+offset_right = 114.0
+offset_bottom = 49.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Fail_Panel"]
+clip_contents = false
+layout_mode = 2
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 437.0
+offset_bottom = 628.0
+scale = Vector2(0.17, 0.17)
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Fail_Panel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="palceholder" type="Label" parent="Fail_Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "                                                       "
+
+[node name="empty_label" type="Label" parent="Fail_Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_jmvuw")
+text = "Siin pole veel midagi."
+label_settings = SubResource("LabelSettings_1nr3g")
+horizontal_alignment = 1
+
+[node name="file_block" parent="Fail_Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_twn6c")]
+visible = false
+layout_mode = 2
+
+[node name="Select_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 34.0
+offset_right = 242.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="selected_label" type="Label" parent="Select_Panel"]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "____________"
+horizontal_alignment = 1
+
+[node name="Info_Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 87.0
+offset_right = 300.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
+
+[node name="arrow" type="Label" parent="Info_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 22.0
+offset_right = 142.0
+offset_bottom = 45.0
+text = "←"
+label_settings = SubResource("LabelSettings_jui2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Info_Panel"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 7.0
+offset_right = 190.0
+offset_bottom = 61.0
+
+[node name="Label" type="Label" parent="Info_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 118.0
+offset_right = 268.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Info"
+horizontal_alignment = 1
+
+[node name="take_info_btn" type="Button" parent="Info_Panel"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 24.0
+offset_right = 257.0
+offset_bottom = 81.0
+scale = Vector2(0.3, 0.3)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5x1kb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3ju3b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_01tjd")
+text = "Võta info"
+
+[node name="textlabel" type="Label" parent="Info_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 137.0
+offset_top = 45.0
+offset_right = 337.0
+offset_bottom = 94.0
+scale = Vector2(0.26, 0.26)
+text = "Vali kõigepealt vajalikud bitid."
+label_settings = SubResource("LabelSettings_ae21e")
+autowrap_mode = 2
+
+[node name="content" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 83.0
+offset_right = 554.0
+offset_bottom = 310.0
+scale = Vector2(0.3, 0.3)
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4xrd")
+
+[node name="file_content" type="Label" parent="content"]
+visible = false
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_jsboj")
+label_settings = SubResource("LabelSettings_c8qsd")
+autowrap_mode = 2
+clip_text = true
+
+[node name="audioplay_controls" type="Control" parent="content"]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 105.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n38xb")
+
+[node name="play_btn" type="Button" parent="content/audioplay_controls"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 18.0
+offset_right = 90.0
+offset_bottom = 61.0
+scale = Vector2(0.45, 0.45)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hyf7v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_05oo1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5yc64")
+toggle_mode = true
+icon = ExtResource("4_rfgsl")
+
+[node name="MusicVolumeSlider" type="VSlider" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 4.0
+offset_right = 125.0
+offset_bottom = 118.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("5_sxyu3")
+min_value = -30.0
+max_value = 10.0
+
+[node name="MusicTimeSlider" type="HSlider" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 51.0
+offset_right = 244.0
+offset_bottom = 67.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("6_5qqoh")
+
+[node name="volume_icon" type="Sprite2D" parent="content/audioplay_controls"]
+modulate = Color(1, 1, 1, 0.85098)
+position = Vector2(112, 54)
+scale = Vector2(0.337209, 0.337209)
+texture = ExtResource("7_hmvy0")
+
+[node name="TimeLabel" type="Label" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 43.0
+offset_right = 318.0
+offset_bottom = 66.0
+scale = Vector2(0.3, 0.3)
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="content/audioplay_controls"]
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_top = 51.0
+offset_right = 149.0
+offset_bottom = 74.0
+scale = Vector2(0.3, 0.3)
+text = "123"
+
+[node name="GridContainer" type="GridContainer" parent="content"]
+layout_mode = 2
+theme_override_constants/h_separation = 22
+theme_override_constants/v_separation = 22
+columns = 20
+
+[node name="binary_info_digit" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit2" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit3" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit4" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit5" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit6" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit7" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit8" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit9" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit10" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit11" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit12" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit13" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit14" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit15" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit16" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit17" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit18" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit19" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit20" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit21" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit22" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit23" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit24" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit25" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit26" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit27" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit28" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit29" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit30" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit31" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit32" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit33" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit34" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit35" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit36" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit37" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit38" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit39" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit40" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit41" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit42" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit43" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit44" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit45" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit46" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit47" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit48" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit49" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit50" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit51" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit52" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit53" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit54" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit55" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit56" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit57" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit58" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit59" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit60" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit61" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit62" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit63" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit64" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit65" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit66" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit67" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit68" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit69" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit70" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit71" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit72" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit73" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit74" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit75" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit76" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit77" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit78" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit79" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit80" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit81" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit82" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit83" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit84" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit85" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit86" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit87" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit88" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit89" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit90" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit91" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit92" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit93" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit94" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit95" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit96" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit97" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit98" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit99" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit100" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit101" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit102" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit103" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit104" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit105" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit106" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit107" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit108" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit109" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit110" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit111" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit112" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit113" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit114" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit115" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit116" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit117" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit118" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit119" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit120" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit121" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit122" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit123" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit124" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit125" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit126" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit127" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit128" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit129" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit130" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit131" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit132" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit133" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit134" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit135" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit136" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit137" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit138" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit139" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit140" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit141" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit142" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit143" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit144" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit145" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit146" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit147" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit148" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit149" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit150" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit151" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit152" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit153" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit154" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit155" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit156" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit157" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit158" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit159" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit160" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit161" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit162" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit163" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit164" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit165" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit166" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit167" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit168" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit169" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit170" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit171" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit172" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit173" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit174" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit175" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit176" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit177" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit178" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit179" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit180" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit181" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit182" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit183" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit184" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit185" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit186" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit187" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit188" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit189" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit190" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit191" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit192" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit193" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit194" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit195" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit196" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit197" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit198" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit199" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="binary_info_digit200" parent="content/GridContainer" instance=ExtResource("8_ec48l")]
+layout_mode = 2
+
+[node name="dotdotdot" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_top = 137.0
+offset_right = 136.0
+offset_bottom = 179.0
+scale = Vector2(0.3, 0.3)
+text = "..."
+label_settings = SubResource("LabelSettings_whfma")
+
+[node name="File_icon" type="Sprite2D" parent="."]
+position = Vector2(175, 64)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_38iyq")
+}
+
+[node name="loading_screen" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j6gst")
+label_settings = ExtResource("2_ikrx0")
+
+[node name="ProgressBar" type="ProgressBar" parent="loading_screen"]
+layout_mode = 0
+offset_left = 173.954
+offset_top = 153.265
+offset_right = 430.954
+offset_bottom = 180.265
+value = 100.0
+
+[node name="Label" type="Label" parent="loading_screen"]
+layout_mode = 0
+offset_left = 251.929
+offset_top = 122.0
+offset_right = 328.929
+offset_bottom = 145.0
+text = "Failide laadimine"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = -82.0
+offset_right = 167.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_hsk8g")
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("9_gpytt")
+theme_override_styles/normal = ExtResource("10_67a4u")
+theme_override_styles/hover = ExtResource("11_feavs")
+theme_override_styles/pressed = ExtResource("12_lxf75")
+text = "×"
+
+[node name="HelpArrow" parent="BackButton" instance=ExtResource("13_63pcf")]
+position = Vector2(-8, 16)
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="Fail_Panel/new_task_btn" to="." method="_on_new_task_btn_pressed"]
+[connection signal="pressed" from="Info_Panel/take_info_btn" to="." method="_on_take_info_btn_pressed"]
+[connection signal="pressed" from="content/audioplay_controls/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="drag_ended" from="content/audioplay_controls/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_started" from="content/audioplay_controls/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_started"]
+[connection signal="drag_ended" from="content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_drag_ended"]
+[connection signal="drag_started" from="content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_drag_started"]
+[connection signal="value_changed" from="content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_value_changed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

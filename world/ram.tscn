@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://daoy7gyds2k8"]
+[gd_scene load_steps=23 format=3 uid="uid://daoy7gyds2k8"]
 
 [ext_resource type="Script" path="res://world/ram.gd" id="1_g5j4y"]
 [ext_resource type="Texture2D" uid="uid://f3fhr462dd83" path="res://world/circuit_tile_dark.png" id="2_dp3v0"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dnq2ggcm5qqaw" path="res://world/darkgray_floor.png" id="3_00nls"]
 [ext_resource type="Texture2D" uid="uid://cmu2f8sys76es" path="res://world/darklightgray_floor.png" id="3_ajwu0"]
 [ext_resource type="PackedScene" uid="uid://ccm2vdp5io3vp" path="res://player/player.tscn" id="3_fswf6"]
+[ext_resource type="Texture2D" uid="uid://dwdxso470eg53" path="res://world/redel.png" id="5_48q4w"]
 [ext_resource type="PackedScene" uid="uid://b7t3811iosaup" path="res://world/ram-lockers.tscn" id="6_mx5b5"]
-[ext_resource type="Texture2D" uid="uid://cs6abo8p681ny" path="res://world/drop_off_area.png" id="7_s6rye"]
+[ext_resource type="Texture2D" uid="uid://c4fnrvu6oejih" path="res://world/drop_off_area_light.png" id="7_md5tq"]
 [ext_resource type="Texture2D" uid="uid://cbgx7cdi6dvvp" path="res://world/darkgray_wall_tiles.png" id="8_mhyms"]
 [ext_resource type="PackedScene" uid="uid://87m80d5eiivu" path="res://world/controlpanel.tscn" id="8_qo7rs"]
 [ext_resource type="PackedScene" uid="uid://dp1o46gwbqr2c" path="res://world/item.tscn" id="12_k652e"]
@@ -39,11 +40,41 @@ size = Vector2(160, 160)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnvpe"]
 size = Vector2(194.03, 14.9254)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrkhi"]
-size = Vector2(60, 6.445)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m47pm"]
-bg_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+bg_color = Color(1, 0.615686, 0.0745098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_216ju"]
+bg_color = Color(1, 0.615686, 0.0745098, 0.839216)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jjbt"]
+bg_color = Color(1, 0.172549, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="ram" type="Node2D"]
 script = ExtResource("1_g5j4y")
@@ -76,6 +107,12 @@ texture = ExtResource("3_00nls")
 expand_mode = 1
 stretch_mode = 1
 
+[node name="Redel" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.12549)
+position = Vector2(225, 100.427)
+scale = Vector2(0.135, 0.135)
+texture = ExtResource("5_48q4w")
+
 [node name="gray_walls" type="TileMap" parent="."]
 scale = Vector2(0.125, 0.125)
 tile_set = SubResource("TileSet_ext61")
@@ -104,9 +141,10 @@ collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DropOffArea"]
-texture = ExtResource("7_s6rye")
+texture = ExtResource("7_md5tq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropOffArea"]
+visible = false
 position = Vector2(0.000183105, 0)
 shape = SubResource("RectangleShape2D_km4bc")
 
@@ -118,7 +156,7 @@ collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DropOffArea2"]
-texture = ExtResource("7_s6rye")
+texture = ExtResource("7_md5tq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropOffArea2"]
 position = Vector2(0.000183105, 0)
@@ -178,31 +216,17 @@ disabled = true
 [node name="InfoPanel" parent="ysort" instance=ExtResource("12_pmnro")]
 position = Vector2(35, 144)
 scale = Vector2(-1, 1)
-text = "Võta fail kastist välja ja aseta ühte eespool olevasse kappi."
+text = "Kõrvaloleva ruudulise ala sees on võimalik kaste avada."
+text_en = "Boxes can be opened in the adjacent area."
+panel_name = "ram_packagepanel1"
 sprite = "res://world/dropoff_sign.png"
 
 [node name="InfoPanel2" parent="ysort" instance=ExtResource("12_pmnro")]
 position = Vector2(286, 144)
-text = "Enne CPU-sse minemist paki info turvaliselt kasti."
+text = "Selle ruudulise ala sees on võimalik infofail pakkida kasti sisse. Selleks pane infofail ala sees maha, võta riiulilt kast ja pane infofail ala sees kasti sisse."
+text_en = "Info files can be stored inside boxes in the adjacent area. To store info inside a box, put down the info file inside the area, take a box from the shelf and put the info file inside the box while being inside the area."
+panel_name = "ram_packagepanel2"
 sprite = "res://world/dropoff_sign.png"
-
-[node name="locker_collisions" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="locker_collisions"]
-position = Vector2(120.16, 116.093)
-shape = SubResource("RectangleShape2D_xrkhi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="locker_collisions"]
-position = Vector2(202.635, 116.055)
-shape = SubResource("RectangleShape2D_xrkhi")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="locker_collisions"]
-position = Vector2(202.635, 138.575)
-shape = SubResource("RectangleShape2D_xrkhi")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="locker_collisions"]
-position = Vector2(120.16, 138.585)
-shape = SubResource("RectangleShape2D_xrkhi")
 
 [node name="Ladder_wall" type="StaticBody2D" parent="."]
 
@@ -214,18 +238,24 @@ polygon = PackedVector2Array(0, 108, 251.016, 108, 251, 109.5, 277, 109.5, 277.0
 visible = false
 polygon = PackedVector2Array(6, 40, 6, 50, 12, 53, 12, 45)
 
-[node name="Button" type="Button" parent="."]
-offset_left = 148.0
-offset_top = 4.0
-offset_right = 268.0
-offset_bottom = 39.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 145.0
+offset_top = 35.0
+offset_right = 265.0
+offset_bottom = 70.0
 scale = Vector2(0.2, 0.2)
+focus_mode = 0
 theme_override_fonts/font = ExtResource("14_hw4pw")
 theme_override_styles/normal = SubResource("StyleBoxFlat_m47pm")
-text = "salajane nupp"
+theme_override_styles/hover = SubResource("StyleBoxFlat_216ju")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4jjbt")
+text = "🥚"
 
 [connection signal="body_entered" from="DropOffArea" to="." method="_on_drop_off_area_body_entered"]
 [connection signal="body_exited" from="DropOffArea" to="." method="_on_drop_off_area_body_exited"]
 [connection signal="body_entered" from="DropOffArea2" to="." method="_on_drop_off_area_body_entered"]
 [connection signal="body_exited" from="DropOffArea2" to="." method="_on_drop_off_area_body_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

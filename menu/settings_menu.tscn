@@ -1,11 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5pf103uonwfq"]
+[gd_scene load_steps=20 format=3 uid="uid://c5pf103uonwfq"]
 
 [ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_hnuin"]
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_r55xm"]
 [ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="2_78iib"]
 [ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="3_ef1ch"]
 [ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="4_0t7t4"]
-[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="5_4upib"]
 [ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="6_aktdm"]
 [ext_resource type="StyleBox" uid="uid://docbojvtgjlf" path="res://menu/btn_normal1.tres" id="7_1uir6"]
 [ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="8_gnpgj"]
@@ -22,13 +21,10 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_dah3b"]
 line_spacing = -2.23
 
-[sub_resource type="LabelSettings" id="LabelSettings_bwwv5"]
-font = ExtResource("5_4upib")
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_foy4p"]
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yyhci"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbcew"]
 bg_color = Color(0.054902, 0.160784, 0.466667, 0.768627)
 border_width_left = 2
 border_width_top = 2
@@ -41,7 +37,7 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d5pkw"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8ov0"]
 bg_color = Color(0.054902, 0.160784, 0.466667, 1)
 border_width_left = 2
 border_width_top = 2
@@ -57,9 +53,9 @@ corner_radius_bottom_left = 5
 [sub_resource type="Theme" id="Theme_7w7q4"]
 Button/styles/disabled = ExtResource("12_15rda")
 Button/styles/focus = ExtResource("12_15rda")
-Button/styles/hover = SubResource("StyleBoxFlat_yyhci")
+Button/styles/hover = SubResource("StyleBoxFlat_rbcew")
 Button/styles/normal = ExtResource("12_15rda")
-Button/styles/pressed = SubResource("StyleBoxFlat_d5pkw")
+Button/styles/pressed = SubResource("StyleBoxFlat_n8ov0")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7loq"]
 content_margin_top = 5.0
@@ -179,33 +175,33 @@ autowrap_mode = 2
 
 [node name="H1" type="Label" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 75.0
-offset_bottom = 27.0
+offset_left = 2.0
+offset_top = 16.0
+offset_right = 90.0
+offset_bottom = 34.0
 scale = Vector2(0.525, 0.525)
 text = "Heliefektid"
-label_settings = SubResource("LabelSettings_bwwv5")
+horizontal_alignment = 2
 
 [node name="H2" type="Label" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 29.0
-offset_right = 75.0
+offset_left = 2.0
+offset_top = 34.0
+offset_right = 90.0
 offset_bottom = 52.0
 scale = Vector2(0.525, 0.525)
 text = "Muusika"
-label_settings = SubResource("LabelSettings_bwwv5")
+horizontal_alignment = 2
 
 [node name="H3" type="Label" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 8.0
+offset_left = 2.0
 offset_top = 53.0
-offset_right = 75.0
-offset_bottom = 76.0
+offset_right = 90.0
+offset_bottom = 71.0
 scale = Vector2(0.525, 0.525)
 text = "Keel"
-label_settings = SubResource("LabelSettings_bwwv5")
+horizontal_alignment = 2
 
 [node name="DemoButton" type="Button" parent="CanvasLayer/Control/Panel"]
 visible = false
@@ -221,32 +217,32 @@ theme_override_styles/hover = ExtResource("8_gnpgj")
 theme_override_styles/pressed = ExtResource("8_ty2pv")
 text = "Demo video"
 
-[node name="soud_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
+[node name="fx_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 9.00001
-offset_top = 20.0
-offset_right = 145.0
-offset_bottom = 36.0
+offset_left = 55.0
+offset_top = 17.0
+offset_right = 191.0
+offset_bottom = 33.0
 scale = Vector2(0.4, 0.4)
 min_value = -30.0
 max_value = 10.0
 
 [node name="music_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 9.00001
-offset_top = 44.0
-offset_right = 145.0
-offset_bottom = 60.0
+offset_left = 55.0
+offset_top = 35.0
+offset_right = 191.0
+offset_bottom = 51.0
 scale = Vector2(0.4, 0.4)
 min_value = -30.0
 max_value = 10.0
 
 [node name="language_btn" type="Button" parent="CanvasLayer/Control/Panel"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 67.0
-offset_right = 116.0
-offset_bottom = 100.0
+offset_left = 55.0
+offset_top = 52.0
+offset_right = 162.0
+offset_bottom = 85.0
 scale = Vector2(0.3, 0.3)
 focus_mode = 0
 toggle_mode = true
@@ -255,10 +251,10 @@ text = "eesti"
 [node name="LanguageMenu" type="PanelContainer" parent="CanvasLayer/Control/Panel"]
 visible = false
 layout_mode = 0
-offset_left = 41.0
-offset_top = 67.0
-offset_right = 148.0
-offset_bottom = 120.0
+offset_left = 87.0
+offset_top = 52.0
+offset_right = 194.0
+offset_bottom = 146.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/panel = SubResource("StyleBoxFlat_foy4p")
 
@@ -286,6 +282,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nr8sq")
 text = "skibidi"
 
 [connection signal="pressed" from="CanvasLayer/Control/BackButton" to="CanvasLayer/Control/BackButton" method="_on_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/Panel/fx_volume" to="." method="_on_fx_volume_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/Control/Panel/music_volume" to="." method="_on_music_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/language_btn" to="." method="_on_language_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/eesti" to="." method="_on_eesti_pressed"]

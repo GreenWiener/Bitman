@@ -1,0 +1,275 @@
+[gd_scene load_steps=14 format=3 uid="uid://bj26p51irpnqg"]
+
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_7fw0c"]
+[ext_resource type="Script" path="res://menu/feedback_menu.gd" id="2_i4ff7"]
+
+[sub_resource type="Theme" id="Theme_25koj"]
+default_font_size = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7g5d4"]
+content_margin_top = 5.0
+bg_color = Color(0.0392157, 0.0745098, 0.227451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.32549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fi5yy"]
+content_margin_top = 5.0
+bg_color = Color(0.027451, 0.176471, 0.580392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.113725, 0.172549, 0.52549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01f3w"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.145098, 0.94902, 0.133333, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.027451, 0.54902, 0.0705882, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmh7m"]
+bg_color = Color(0.00784314, 0.0392157, 0.172549, 0.945098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hvurx"]
+bg_color = Color(0.00784314, 0.0392157, 0.172549, 0.768627)
+border_color = Color(0.054902, 0.0941176, 0.329412, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_miony"]
+font_size = 23
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfagx"]
+content_margin_left = 4.0
+content_margin_bottom = 1.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_i254k"]
+font_size = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngf6m"]
+content_margin_left = 6.0
+content_margin_top = 12.0
+content_margin_right = 6.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.0980392, 0.243137, 0.960784)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.294118, 0.631373, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_43l6r"]
+content_margin_left = 6.0
+content_margin_top = 12.0
+content_margin_right = 6.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0.141176, 0.329412, 0.960784)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.294118, 0.631373, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="feedback_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_7fw0c")
+script = ExtResource("2_i4ff7")
+
+[node name="close_welcome_btn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 252.515
+offset_top = 23.4219
+offset_right = 282.516
+offset_bottom = 53.4219
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_25koj")
+theme_override_colors/font_color = Color(0, 0.905882, 0, 1)
+theme_override_colors/font_hover_color = Color(0.352941, 0.835294, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0.537255, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_7g5d4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fi5yy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_01f3w")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_01f3w")
+text = "✓"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 23.0
+offset_right = 405.0
+offset_bottom = 244.0
+scale = Vector2(0.61, 0.61)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nmh7m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="H1" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_hvurx")
+text = "Tagasiside"
+label_settings = SubResource("LabelSettings_miony")
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kfagx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(332.11, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="q1" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mis oli sulle mängus raske?"
+label_settings = SubResource("LabelSettings_i254k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="a1" type="TextEdit" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngf6m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_43l6r")
+context_menu_enabled = false
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="q2" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mis oli sulle mängus põnev, meeldis?"
+label_settings = SubResource("LabelSettings_i254k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="a2" type="TextEdit" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngf6m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_43l6r")
+context_menu_enabled = false
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="q3" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Kas midagi oleks vaja mängus parandada?"
+label_settings = SubResource("LabelSettings_i254k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="a3" type="TextEdit" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngf6m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_43l6r")
+context_menu_enabled = false
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="q5" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mida võiks tulevikus veel mängu lisada?"
+label_settings = SubResource("LabelSettings_i254k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="a5" type="TextEdit" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngf6m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_43l6r")
+context_menu_enabled = false
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[node name="q4" type="Label" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "Muid kommentaare, kui on."
+label_settings = SubResource("LabelSettings_i254k")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="a4" type="TextEdit" parent="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_ngf6m")
+theme_override_styles/focus = SubResource("StyleBoxFlat_43l6r")
+context_menu_enabled = false
+wrap_mode = 1
+scroll_fit_content_height = true
+
+[connection signal="pressed" from="close_welcome_btn" to="." method="_on_close_welcome_btn_pressed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/a1" to="." method="_on_a_1_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/a2" to="." method="_on_a_2_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/a3" to="." method="_on_a_3_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/a5" to="." method="_on_a_5_text_changed"]
+[connection signal="text_changed" from="PanelContainer/VBoxContainer/ScrollContainer/VBoxContainer/a4" to="." method="_on_a_4_text_changed"]

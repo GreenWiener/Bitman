@@ -69,9 +69,11 @@ func _process(_delta):
 func _input(event : InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.is_pressed() and Global.player_in_menu != true and Global._task_menu.disable_zoom == false:
+			
 			# sisse suumimine
 			if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 				zoom_in()
+				hide_keybind_help()
 				#self.zoom.x += 0.5
 				#self.zoom.y += 0.5
 				#self.zoom.x = min(self.zoom.x, 7)
@@ -81,19 +83,26 @@ func _input(event : InputEvent) -> void:
 			# välja suumimine
 			if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 				zoom_out()
+				hide_keybind_help()
 				#self.zoom.x += -0.5
 				#self.zoom.y += -0.5
 				#self.zoom.x = max(self.zoom.x, 1.6)
 				#self.zoom.y = max(self.zoom.y, 1.6)
 				###print("-zoom: ", self.zoom)
 
+func hide_keybind_help():
+	if Global._player.get_node("CanvasLayer/keybind_start_help/VBoxContainer/zooming").visible == true:
+		Global._player.get_node("CanvasLayer/keybind_start_help/VBoxContainer/zooming").visible = false
+		if Global._player.get_node("CanvasLayer/keybind_start_help/VBoxContainer/moving").visible == false:
+			Global._player.get_node("AnimationPlayer3").play("more_keybinds")
+
 
 
 ##### NOT WORK ^-^ O_o
-	var positions : Array = [Vector2(), Vector2()]
-
-	if event is InputEventScreenTouch:
-		positions[event.index] = event.position
-		if event.index == 1:
-			var zoom_amount = (positions[0] - positions[1]).length()
-			Global.PopUpText(zoom_amount, "player", Vector2.ZERO)
+	#var positions : Array = [Vector2(), Vector2()]
+#
+	#if event is InputEventScreenTouch:
+		#positions[event.index] = event.position
+		#if event.index == 1:
+			#var zoom_amount = (positions[0] - positions[1]).length()
+			#Global.PopUpText(zoom_amount, "player", Vector2.ZERO)

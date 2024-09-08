@@ -7,6 +7,7 @@ func _ready():
 	Global.world_name = "SSD"
 	Global.most_recent_scene = self.get_tree().current_scene.scene_file_path
 	
+	
 	# items put in with code #####################
 	if Global.spawn_ssd_item == true: 
 		Global.spawn_ssd_item = false

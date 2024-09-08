@@ -18,6 +18,9 @@ func _ready() -> void:
 	Global.most_recent_scene = self.get_tree().current_scene.scene_file_path
 	#remove_children(get_node("ysort/items"))
 	
+	
+	$ysort/Statue/AnimationPlayer.play("statue_num")
+	
 	# items put in with code #####################
 	if Global.spawn_mobo_item == true: 
 		Global.spawn_mobo_item = false
@@ -149,3 +152,7 @@ func spawn_mobo_items():
 	#$Node2D/player.get_node("skeleton/player-arm2").remove_child(item_sprite)
 	#Global.spawn_item = true
 ###	world.spawn_item()
+
+
+
+

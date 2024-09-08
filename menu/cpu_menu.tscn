@@ -1,55 +1,323 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjcyt1op5xvkb"]
+[gd_scene load_steps=47 format=3 uid="uid://dwhh3io3aw7p7"]
 
-[ext_resource type="Script" path="res://menu/cpu_menu.gd" id="1_h7ocj"]
-[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="2_t0r5m"]
-[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="3_m85md"]
-[ext_resource type="PackedScene" uid="uid://mjko4ouq87ou" path="res://task_block.tscn" id="5_xnxkb"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_0sp4l"]
+[ext_resource type="PackedScene" uid="uid://kco8ko3qnr8d" path="res://menu/task_binary.tscn" id="1_2upca"]
+[ext_resource type="Script" path="res://menu/cpu_menu.gd" id="1_3k5uf"]
+[ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_hoq4j"]
+[ext_resource type="PackedScene" uid="uid://chfusk0x06bqh" path="res://file_block.tscn" id="3_fathg"]
+[ext_resource type="Texture2D" uid="uid://b7e2dwulblugo" path="res://menu/play_btn.png" id="4_yb4a4"]
+[ext_resource type="StyleBox" uid="uid://cbgh0p77v4dk8" path="res://menu/vslider.tres" id="5_l2l5j"]
+[ext_resource type="StyleBox" uid="uid://c20mt70twxue7" path="res://menu/hslider.tres" id="6_avgjk"]
+[ext_resource type="Texture2D" uid="uid://bl2pk4yfanrxf" path="res://menu/volume_icon.png" id="7_47tjg"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="8_8lsec"]
+[ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="9_4dkbl"]
+[ext_resource type="Texture2D" uid="uid://pk8ndgyjkayu" path="res://world/file_icon.png" id="9_4wwrh"]
+[ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="10_ts7k3"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="11_61cta"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="12_h1m1c"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ymh58"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6gnf"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6grk"]
 line_spacing = 13.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uddo3"]
-bg_color = Color(0, 0, 0, 0.270588)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4phk"]
+bg_color = Color(0.133333, 0.164706, 0.227451, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6tdj"]
-bg_color = Color(0.121569, 0.152941, 0.203922, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.8, 0.8, 0.8, 0.74902)
+[sub_resource type="LabelSettings" id="LabelSettings_srtdd"]
+font_size = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8u6v"]
+[sub_resource type="LabelSettings" id="LabelSettings_513el"]
+line_spacing = -2.76
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ep5ok"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
 bg_color = Color(0, 0, 0, 0.117647)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.2, 0.266667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxexn"]
+font_size = 18
+font_color = Color(0.643137, 0.643137, 0.643137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0wbix"]
+font_color = Color(0.380392, 0.380392, 0.505882, 1)
+outline_size = 2
+outline_color = Color(0.243137, 0.266667, 0.34902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f5nuv"]
+font_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itm5o"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.192157, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ho6a"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.180392, 0.180392, 0.25098, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.192157, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxmj3"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.262745, 0.262745, 0.360784, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.192157, 0.192157, 0.270588, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc36e"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23cvj"]
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.313726, 0.360784, 0.588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgdhk"]
+bg_color = Color(0.6, 0.6, 0.6, 0.14902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27sic"]
+bg_color = Color(0.121285, 0.151386, 0.211606, 1)
+draw_center = false
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.129412, 0.152941, 0.239216, 1)
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
+border_color = Color(0.105882, 0.133333, 0.188235, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwhum"]
-draw_center = false
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ff8m4"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 1.0
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aw001"]
-draw_center = false
+[sub_resource type="LabelSettings" id="LabelSettings_ll4b3"]
+line_spacing = 1.775
+font_size = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c44ho"]
-draw_center = false
+[sub_resource type="LabelSettings" id="LabelSettings_glvy7"]
+font_size = 30
+font_color = Color(1, 1, 1, 0.235294)
 
-[node name="CPU_Menu" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avbod"]
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vinn2"]
+bg_color = Color(0.223529, 0.243137, 0.356863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg5fk"]
+bg_color = Color(0.286275, 0.309804, 0.447059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eu6hv"]
+bg_color = Color(0.372549, 0.4, 0.556863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_uxy6u"]
+font_size = 30
+font_color = Color(1, 1, 1, 0.235294)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjhbp"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.129412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0olkg"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.129412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_tupmr"]
+line_spacing = -2.0
+font = ExtResource("8_8lsec")
+font_size = 14
+
+[sub_resource type="Theme" id="Theme_ocdpe"]
+default_font_size = 15
+
+[sub_resource type="Animation" id="Animation_osd65"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_h6d3u"]
+resource_name = "loading"
+length = 2.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.32, 0.7, 1.02, 1.39, 1.63, 2.03, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 8.0, 30.0, 40.0, 83.0, 97.0, 99.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bilf4"]
+_data = {
+"RESET": SubResource("Animation_osd65"),
+"loading": SubResource("Animation_h6d3u")
+}
+
+[node name="cpu_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_h7ocj")
+theme = ExtResource("1_0sp4l")
+script = ExtResource("1_3k5uf")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="task_binary" parent="." instance=ExtResource("1_2upca")]
+visible = false
+layout_mode = 1
+
+[node name="files_menu" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="files_menu"]
 layout_mode = 0
 offset_left = -13.0
 offset_top = -7.0
@@ -57,7 +325,437 @@ offset_right = 334.0
 offset_bottom = 192.0
 color = Color(0, 0, 0, 0.34902)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="files_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 616.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_v6gnf")
+label_settings = ExtResource("2_hoq4j")
+
+[node name="Label2" type="Label" parent="files_menu"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 9.0
+offset_right = 312.0
+offset_bottom = 26.0
+text = "CPU infopaneel"
+label_settings = SubResource("LabelSettings_g6grk")
+horizontal_alignment = 1
+
+[node name="FailInfo_Panel" type="Panel" parent="files_menu"]
+clip_contents = true
+layout_mode = 0
+offset_left = 225.0
+offset_top = 34.0
+offset_right = 303.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4phk")
+
+[node name="failid_label" type="Label" parent="files_menu/FailInfo_Panel"]
+layout_mode = 0
+offset_right = 156.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "Info"
+label_settings = SubResource("LabelSettings_srtdd")
+horizontal_alignment = 1
+
+[node name="failid_label2" type="Label" parent="files_menu/FailInfo_Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 136.0
+offset_bottom = 38.0
+scale = Vector2(0.5, 0.5)
+text = "Kõik info, mis on CPU-sse sisse skännitud"
+label_settings = SubResource("LabelSettings_513el")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="new_task_btn" type="Button" parent="files_menu/FailInfo_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 67.0
+offset_top = 2.0
+offset_right = 114.0
+offset_bottom = 49.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 28
+text = "+"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="files_menu/FailInfo_Panel"]
+clip_contents = false
+layout_mode = 2
+offset_left = 2.0
+offset_top = 11.0
+offset_right = 437.0
+offset_bottom = 628.0
+scale = Vector2(0.17, 0.17)
+mouse_force_pass_scroll_events = false
+horizontal_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="files_menu/FailInfo_Panel/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="palceholder" type="Label" parent="files_menu/FailInfo_Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "                                                       
+                                                                        "
+
+[node name="empty_label" type="Label" parent="files_menu/FailInfo_Panel/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ep5ok")
+text = "Siin pole veel midagi."
+label_settings = SubResource("LabelSettings_dxexn")
+horizontal_alignment = 1
+
+[node name="file_block" parent="files_menu/FailInfo_Panel/ScrollContainer/VBoxContainer" instance=ExtResource("3_fathg")]
+visible = false
+layout_mode = 2
+
+[node name="Select_Panel" type="Panel" parent="files_menu"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 34.0
+offset_right = 218.0
+offset_bottom = 152.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4phk")
+
+[node name="selected_label" type="Label" parent="files_menu/Select_Panel"]
+visible = false
+layout_mode = 0
+offset_right = 124.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+text = "____________"
+horizontal_alignment = 1
+
+[node name="Scan_Panel" type="Panel" parent="files_menu"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 34.0
+offset_right = 90.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e4phk")
+
+[node name="arrow" type="Label" parent="files_menu/Scan_Panel"]
+visible = false
+layout_mode = 0
+offset_left = 128.0
+offset_top = 22.0
+offset_right = 142.0
+offset_bottom = 45.0
+text = "←"
+label_settings = SubResource("LabelSettings_0wbix")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="files_menu/Scan_Panel"]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 7.0
+offset_right = 190.0
+offset_bottom = 61.0
+
+[node name="Label" type="Label" parent="files_menu/Scan_Panel"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 23.0
+offset_right = 137.0
+offset_bottom = 97.0
+scale = Vector2(0.5, 0.5)
+text = "Skänni RAM-majast toodud infot märkiv kümnendarvuline kood, mille said infokasti CPU-majas skännides, et näha infot CPU infopaneelil."
+label_settings = SubResource("LabelSettings_f5nuv")
+horizontal_alignment = 1
+autowrap_mode = 2
+clip_text = true
+
+[node name="take_info_btn" type="Button" parent="files_menu/Scan_Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 7.0
+offset_right = 209.0
+offset_bottom = 47.0
+scale = Vector2(0.3, 0.3)
+focus_mode = 0
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_itm5o")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ho6a")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lxmj3")
+text = "Skänni uus kood"
+
+[node name="file_attributes" type="PanelContainer" parent="files_menu"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 44.0
+offset_right = 547.0
+offset_bottom = 254.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_uc36e")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="files_menu/file_attributes"]
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="attributes" type="HBoxContainer" parent="files_menu/file_attributes/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -1
+
+[node name="name" type="VBoxContainer" parent="files_menu/file_attributes/ScrollContainer/attributes"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Nimi: "
+
+[node name="author" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+visible = false
+layout_mode = 2
+text = "Autor: "
+
+[node name="filetype" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Failitüüp: "
+
+[node name="HSeparator" type="HSeparator" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_23cvj")
+
+[node name="location" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Asukoht: "
+
+[node name="size" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Suurus: "
+
+[node name="HSeparator2" type="HSeparator" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_23cvj")
+
+[node name="created" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Loodud: "
+
+[node name="accessed" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 19
+text = "Avatud: "
+
+[node name="value" type="VBoxContainer" parent="files_menu/file_attributes/ScrollContainer/attributes"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="name" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="author" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+visible = false
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="filetype" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="HSeparator" type="HSeparator" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_23cvj")
+
+[node name="location" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="size" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="HSeparator2" type="HSeparator" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_23cvj")
+
+[node name="created" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="accessed" type="RichTextLabel" parent="files_menu/file_attributes/ScrollContainer/attributes/value"]
+layout_mode = 2
+focus_mode = 2
+theme_override_font_sizes/normal_font_size = 19
+theme_override_styles/focus = SubResource("StyleBoxFlat_dgdhk")
+text = " "
+fit_content = true
+autowrap_mode = 0
+selection_enabled = true
+
+[node name="content" type="PanelContainer" parent="files_menu"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 88.0
+offset_right = 218.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_27sic")
+
+[node name="file_content" type="Label" parent="files_menu/content"]
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_ff8m4")
+label_settings = SubResource("LabelSettings_ll4b3")
+autowrap_mode = 2
+clip_text = true
+
+[node name="dotdotdot" type="Label" parent="files_menu/content/file_content"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 50.0
+offset_right = 28.0
+offset_bottom = 92.0
+scale = Vector2(0.3, 0.3)
+text = "..."
+label_settings = SubResource("LabelSettings_glvy7")
+
+[node name="audioplay_controls" type="Control" parent="files_menu/content"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="files_menu/content/audioplay_controls"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 115.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_avbod")
+
+[node name="play_btn" type="Button" parent="files_menu/content/audioplay_controls"]
+layout_mode = 2
+offset_left = 45.0
+offset_top = 18.0
+offset_right = 91.0
+offset_bottom = 61.0
+scale = Vector2(0.45, 0.45)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_vinn2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kg5fk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eu6hv")
+toggle_mode = true
+icon = ExtResource("4_yb4a4")
+
+[node name="MusicVolumeSlider" type="VSlider" parent="files_menu/content/audioplay_controls"]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 12.0
+offset_right = 122.0
+offset_bottom = 106.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("5_l2l5j")
+min_value = -30.0
+max_value = 10.0
+
+[node name="MusicTimeSlider" type="HSlider" parent="files_menu/content/audioplay_controls"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 51.0
+offset_right = 236.0
+offset_bottom = 67.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("6_avgjk")
+
+[node name="volume_icon" type="Sprite2D" parent="files_menu/content/audioplay_controls"]
+modulate = Color(1, 1, 1, 0.85098)
+position = Vector2(109, 54)
+scale = Vector2(0.337209, 0.337209)
+texture = ExtResource("7_47tjg")
+
+[node name="TimeLabel" type="Label" parent="files_menu/content/audioplay_controls"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 43.0
+offset_right = 310.0
+offset_bottom = 66.0
+scale = Vector2(0.3, 0.3)
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="files_menu/content/audioplay_controls"]
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_top = 51.0
+offset_right = 149.0
+offset_bottom = 74.0
+scale = Vector2(0.3, 0.3)
+text = "123"
+
+[node name="dotdotdot" type="Label" parent="files_menu"]
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_top = 139.0
+offset_right = 136.0
+offset_bottom = 173.0
+scale = Vector2(0.3, 0.3)
+text = "..."
+label_settings = SubResource("LabelSettings_uxy6u")
+
+[node name="File_icon" type="Sprite2D" parent="files_menu"]
+position = Vector2(115, 60.3077)
+scale = Vector2(0.846154, 0.846154)
+texture = ExtResource("9_4wwrh")
+
+[node name="scan_error" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,257 +767,121 @@ offset_bottom = 160.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-theme_override_styles/normal = ExtResource("2_t0r5m")
-label_settings = ExtResource("3_m85md")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tjhbp")
+label_settings = ExtResource("2_hoq4j")
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 9.0
-offset_right = 312.0
-offset_bottom = 26.0
-text = "CPU infopaneel"
-label_settings = SubResource("LabelSettings_ymh58")
+[node name="error_msg" type="Label" parent="scan_error"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 175.0
+offset_top = 127.0
+offset_right = -178.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_0olkg")
+text = "Sul pole käes koodi,
+mida saaks skännida!"
+label_settings = SubResource("LabelSettings_tupmr")
 horizontal_alignment = 1
 
-[node name="Task_Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 34.0
-offset_right = 98.0
-offset_bottom = 152.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
-
-[node name="Label" type="Label" parent="Task_Panel"]
-layout_mode = 0
-offset_right = 156.0
-offset_bottom = 23.0
-scale = Vector2(0.5, 0.5)
-text = "Ülesanded"
-horizontal_alignment = 1
-
-[node name="new_task_btn" type="Button" parent="Task_Panel"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 2.0
-offset_right = 114.0
-offset_bottom = 49.0
-scale = Vector2(0.2, 0.2)
-theme_override_font_sizes/font_size = 28
-text = "+"
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Task_Panel"]
-layout_mode = 2
-offset_left = 2.0
-offset_top = 11.0
-offset_right = 437.0
-offset_bottom = 628.0
-scale = Vector2(0.17, 0.17)
-mouse_force_pass_scroll_events = false
-horizontal_scroll_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Task_Panel/ScrollContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="palceholder" type="Label" parent="Task_Panel/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "                                                       "
-
-[node name="task_block" parent="Task_Panel/ScrollContainer/VBoxContainer" instance=ExtResource("5_xnxkb")]
-visible = false
-layout_mode = 2
-
-[node name="Cycle_Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 103.0
-offset_top = 34.0
-offset_right = 228.0
-offset_bottom = 152.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Cycle_Panel"]
-visible = false
-layout_mode = 0
-offset_top = 13.0
-offset_right = 67.0
-offset_bottom = 118.0
-
-[node name="Label" type="Label" parent="Cycle_Panel"]
-layout_mode = 0
-offset_right = 250.0
-offset_bottom = 23.0
-scale = Vector2(0.5, 0.5)
-text = "Tsükkel"
-horizontal_alignment = 1
-
-[node name="Selection_Panel" type="Panel" parent="Cycle_Panel"]
-layout_mode = 0
-offset_left = 41.0
-offset_top = 18.0
-offset_right = 88.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_m6tdj")
-
-[node name="ColorRect" type="ColorRect" parent="Cycle_Panel/Selection_Panel"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -38.0
-offset_right = 47.0
-offset_bottom = 22.0
-color = Color(0.0627451, 0.0862745, 0.121569, 0.384314)
-
-[node name="Label" type="Label" parent="Cycle_Panel/Selection_Panel"]
-layout_mode = 0
-offset_left = -35.5
+[node name="ok_btn" type="Button" parent="scan_error"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
 offset_top = 8.0
-offset_right = 114.5
-offset_bottom = 31.0
-scale = Vector2(0.23, 0.23)
-text = "käimasolev etapp >"
+offset_right = 28.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = SubResource("Theme_ocdpe")
+theme_override_fonts/font = ExtResource("8_8lsec")
+theme_override_styles/normal = ExtResource("9_4dkbl")
+theme_override_styles/hover = ExtResource("10_ts7k3")
+theme_override_styles/pressed = ExtResource("11_61cta")
+text = "ok"
 
-[node name="Block_hankimine" type="RichTextLabel" parent="Cycle_Panel"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 19.0
-offset_right = 192.0
-offset_bottom = 86.0
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
-
-[node name="Button_fetching" type="Button" parent="Cycle_Panel/Block_hankimine"]
-modulate = Color(1, 1, 1, 0.470588)
-show_behind_parent = true
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 67.0
-theme_override_styles/focus = SubResource("StyleBoxFlat_bwhum")
-keep_pressed_outside = true
-
-[node name="Label" type="Label" parent="Cycle_Panel/Block_hankimine"]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 67.0
-text = "Hankimine"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="more_info" type="Label" parent="Cycle_Panel/Block_hankimine"]
+[node name="loading_screen" type="Label" parent="."]
 visible = false
-layout_mode = 0
-offset_top = 20.0
-offset_right = 250.0
-offset_bottom = 98.0
-scale = Vector2(0.6, 0.6)
-text = "Vajaliku informatsiooni transport SSD > RAM > CPU"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Block_dekodeerimine" type="RichTextLabel" parent="Cycle_Panel"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 53.0
-offset_right = 192.0
-offset_bottom = 120.0
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
-
-[node name="Button_decoding" type="Button" parent="Cycle_Panel/Block_dekodeerimine"]
-modulate = Color(1, 1, 1, 0.470588)
-show_behind_parent = true
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 67.0
-theme_override_styles/focus = SubResource("StyleBoxFlat_aw001")
-keep_pressed_outside = true
-
-[node name="Label" type="Label" parent="Cycle_Panel/Block_dekodeerimine"]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 67.0
-text = "Dekodeerimine"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="more_info" type="Label" parent="Cycle_Panel/Block_dekodeerimine"]
-visible = false
-layout_mode = 0
-offset_top = 20.0
-offset_right = 250.0
-offset_bottom = 98.0
-scale = Vector2(0.6, 0.6)
-text = "RAM-st hangitud informatsiooni dekodeerimine"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Block_sooritamine" type="RichTextLabel" parent="Cycle_Panel"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = 87.0
-offset_right = 192.0
-offset_bottom = 154.0
-scale = Vector2(0.3, 0.3)
-theme_override_styles/normal = SubResource("StyleBoxFlat_j8u6v")
-
-[node name="Button_executing" type="Button" parent="Cycle_Panel/Block_sooritamine"]
-modulate = Color(1, 1, 1, 0.470588)
-show_behind_parent = true
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 67.0
-theme_override_styles/focus = SubResource("StyleBoxFlat_c44ho")
-keep_pressed_outside = true
-
-[node name="Label" type="Label" parent="Cycle_Panel/Block_sooritamine"]
-layout_mode = 0
-offset_right = 150.0
-offset_bottom = 67.0
-text = "Sooritamine"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="more_info" type="Label" parent="Cycle_Panel/Block_sooritamine"]
-visible = false
-layout_mode = 0
-offset_top = 20.0
-offset_right = 250.0
-offset_bottom = 100.0
-scale = Vector2(0.6, 0.6)
-text = "Dekodeeritud informatsiooni kasutamine ettenähtud eesmärgiks"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Info_Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 233.0
-offset_top = 34.0
-offset_right = 300.0
-offset_bottom = 152.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
-metadata/_edit_group_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Info_Panel"]
-layout_mode = 0
-offset_top = 13.0
-offset_right = 67.0
-offset_bottom = 118.0
-
-[node name="Label" type="Label" parent="Info_Panel"]
-layout_mode = 0
-offset_right = 134.0
-offset_bottom = 23.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.5, 0.5)
-text = "Info"
+theme_override_styles/normal = SubResource("StyleBoxFlat_tjhbp")
+label_settings = ExtResource("2_hoq4j")
+
+[node name="ProgressBar" type="ProgressBar" parent="loading_screen"]
+layout_mode = 0
+offset_left = 173.954
+offset_top = 153.265
+offset_right = 430.954
+offset_bottom = 180.265
+value = 100.0
+
+[node name="Label" type="Label" parent="loading_screen"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 122.0
+offset_right = 430.0
+offset_bottom = 145.0
+text = "Laadimine"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="Task_Panel/new_task_btn" to="." method="_on_new_task_btn_pressed"]
-[connection signal="button_down" from="Cycle_Panel/Block_hankimine/Button_fetching" to="." method="_on_button_fetching_button_down"]
-[connection signal="button_up" from="Cycle_Panel/Block_hankimine/Button_fetching" to="." method="_on_button_fetching_button_up"]
-[connection signal="button_down" from="Cycle_Panel/Block_dekodeerimine/Button_decoding" to="." method="_on_button_decoding_button_down"]
-[connection signal="button_up" from="Cycle_Panel/Block_dekodeerimine/Button_decoding" to="." method="_on_button_decoding_button_up"]
-[connection signal="button_down" from="Cycle_Panel/Block_sooritamine/Button_executing" to="." method="_on_button_executing_button_down"]
-[connection signal="button_up" from="Cycle_Panel/Block_sooritamine/Button_executing" to="." method="_on_button_executing_button_up"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bilf4")
+}
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 137.0
+offset_top = -82.0
+offset_right = 167.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_ocdpe")
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("8_8lsec")
+theme_override_styles/normal = ExtResource("9_4dkbl")
+theme_override_styles/hover = ExtResource("10_ts7k3")
+theme_override_styles/pressed = ExtResource("11_61cta")
+text = "×"
+
+[node name="HelpArrow" parent="BackButton" instance=ExtResource("12_h1m1c")]
+visible = false
+position = Vector2(-8, 16)
+scale = Vector2(2, 2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="files_menu/Scan_Panel/take_info_btn" to="." method="_on_take_info_btn_pressed"]
+[connection signal="pressed" from="files_menu/content/audioplay_controls/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="drag_ended" from="files_menu/content/audioplay_controls/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_started" from="files_menu/content/audioplay_controls/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_started"]
+[connection signal="drag_ended" from="files_menu/content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_drag_ended"]
+[connection signal="drag_started" from="files_menu/content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_drag_started"]
+[connection signal="pressed" from="scan_error/ok_btn" to="." method="_on_ok_btn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

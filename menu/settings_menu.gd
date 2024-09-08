@@ -5,8 +5,13 @@ extends Control
 func _on_music_slider_value_changed(value):
 	AudioPlayer.set_music_volume(value)
 
+func _on_fx_volume_value_changed(value):
+	AudioPlayer.set_fx_volume(value)
+	AudioPlayer.play_fx("res://audio/btn_click_short.wav")
+
 
 @onready var musicslider: Slider = get_node("CanvasLayer/Control/Panel/music_volume")
+@onready var fxslider: Slider = get_node("CanvasLayer/Control/Panel/fx_volume")
 @onready var LanguageMenu = $CanvasLayer/Control/Panel/LanguageMenu
 @onready var language_btn = $CanvasLayer/Control/Panel/language_btn
 @onready var english_btn = $CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/english
@@ -28,6 +33,14 @@ func _ready() -> void:
 		if musicslider != null:
 			musicslider.value = int(Global.music_volume)
 			#print("set ", int(Global.music_volume), "  (originally ", Global.music_volume, ")")
+	
+	if Global.fx_volume == -100:
+		if fxslider != null:
+			fxslider.value = -30
+			#print("set -30")
+	else:
+		if fxslider != null:
+			fxslider.value = int(Global.fx_volume)
 	
 	if Global.language == "english":
 		lang_english()
@@ -64,23 +77,33 @@ func _make_custom_tooltip(for_text):
 
 
 func _on_language_btn_pressed():
+	AudioPlayer.play_fx("res://audio/btn_click_2.wav")
 	LanguageMenu.visible = !LanguageMenu.visible
 
 
 func _on_eesti_pressed():
+	AudioPlayer.play_fx("res://audio/menu_click1.wav")
 	LanguageMenu.visible = false
 	language_btn.button_pressed = false
 	Global.language = "eesti"
 	get_tree().reload_current_scene()
 
 func _on_english_pressed():
+	AudioPlayer.play_fx("res://audio/menu_click1.wav")
 	LanguageMenu.visible = false
 	language_btn.button_pressed = false
 	Global.language = "english"
 	get_tree().reload_current_scene()
 
 func _on_skibidi_pressed():
+	AudioPlayer.play_fx("res://audio/menu_click1.wav")
 	LanguageMenu.visible = false
 	language_btn.button_pressed = false
 	Global.language = "skibidi"
 	get_tree().reload_current_scene()
+
+
+
+
+
+

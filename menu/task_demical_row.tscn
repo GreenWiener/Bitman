@@ -1,47 +1,94 @@
-[gd_scene load_steps=5 format=3 uid="uid://5so4qxhngygt"]
+[gd_scene load_steps=8 format=3 uid="uid://5so4qxhngygt"]
 
 [ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="1_1fm2g"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_fbuaf"]
 [ext_resource type="Script" path="res://menu/task_demical_row.gd" id="1_l2hko"]
-[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="2_kgwxa"]
+[ext_resource type="StyleBox" uid="uid://cdat8br0be6he" path="res://menu/task_input_box.tres" id="3_8j54e"]
+[ext_resource type="StyleBox" uid="uid://bylj4xtlx4ro4" path="res://menu/task_input_box_focus.tres" id="4_jr66n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gr2t0"]
 line_spacing = -2.0
-font = ExtResource("2_kgwxa")
-font_size = 24
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_je4sh"]
+content_margin_left = 25.0
+bg_color = Color(0.203922, 0.203922, 0.203922, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 2
 
 [node name="row" type="HBoxContainer"]
-offset_right = 175.0
-offset_bottom = 31.0
+offset_right = 87.0
+offset_bottom = 34.0
+theme = ExtResource("1_fbuaf")
 script = ExtResource("1_l2hko")
 
 [node name="Label+" type="Label" parent="."]
 layout_mode = 2
-text = "+"
+text = " + "
 label_settings = SubResource("LabelSettings_gr2t0")
 
 [node name="binary_num_digit" type="LineEdit" parent="."]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
+theme_override_constants/minimum_character_width = 1
+theme_override_styles/normal = ExtResource("3_8j54e")
+theme_override_styles/focus = ExtResource("4_jr66n")
+max_length = 1
+context_menu_enabled = false
+
+[node name="binary_num_digit" type="LineEdit" parent="binary_num_digit"]
+visible = false
+custom_minimum_size = Vector2(79.405, 0)
+layout_mode = 2
+offset_right = 67.0625
+offset_bottom = 31.0
+size_flags_stretch_ratio = 0.0
+max_length = 1
+
+[node name="binary_num_aste" type="LineEdit" parent="binary_num_digit"]
+visible = false
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 118.0
+scale = Vector2(0.295, 0.295)
+size_flags_stretch_ratio = 0.0
+theme_override_constants/minimum_character_width = 1
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_je4sh")
+text = "2w"
+max_length = 2
 
 [node name="Labelx2" type="Label" parent="."]
 layout_mode = 2
-text = " • 2      "
+text = "•2  "
 label_settings = ExtResource("1_1fm2g")
 
 [node name="binary_num_aste" type="LineEdit" parent="Labelx2"]
 layout_mode = 2
-offset_left = 44.0
+offset_left = 36.0
 offset_top = -1.0
-offset_right = 164.0
+offset_right = 79.0
 offset_bottom = 49.0
 scale = Vector2(0.295, 0.295)
 size_flags_stretch_ratio = 0.0
 theme_override_constants/minimum_character_width = 1
 theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("3_8j54e")
+theme_override_styles/focus = ExtResource("4_jr66n")
+max_length = 2
+context_menu_enabled = false
 
 [connection signal="focus_entered" from="binary_num_digit" to="." method="_on_binary_num_digit_focus_entered"]
 [connection signal="focus_exited" from="binary_num_digit" to="." method="_on_binary_num_digit_focus_exited"]
 [connection signal="text_changed" from="binary_num_digit" to="." method="_on_binary_num_digit_text_changed"]
+[connection signal="focus_entered" from="binary_num_digit/binary_num_digit" to="." method="_on_binary_num_digit_focus_entered"]
+[connection signal="focus_exited" from="binary_num_digit/binary_num_digit" to="." method="_on_binary_num_digit_focus_exited"]
+[connection signal="text_changed" from="binary_num_digit/binary_num_digit" to="." method="_on_binary_num_digit_text_changed"]
+[connection signal="focus_entered" from="binary_num_digit/binary_num_aste" to="." method="_on_binary_num_aste_focus_entered"]
+[connection signal="focus_exited" from="binary_num_digit/binary_num_aste" to="." method="_on_binary_num_aste_focus_exited"]
+[connection signal="text_changed" from="binary_num_digit/binary_num_aste" to="." method="_on_binary_num_aste_text_changed"]
 [connection signal="focus_entered" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_focus_entered"]
 [connection signal="focus_exited" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_focus_exited"]
 [connection signal="text_changed" from="Labelx2/binary_num_aste" to="." method="_on_binary_num_aste_text_changed"]

@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgx8qswpw2ti1"]
+
+[ext_resource type="Script" path="res://menu/binary_info_digit.gd" id="1_hhmle"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y0ghw"]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbdlm"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.45098)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8yajd"]
+bg_color = Color(0.341176, 0.341176, 0.341176, 0.45098)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb4jn"]
+bg_color = Color(0.141176, 0.196078, 1, 0.611765)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s87x4"]
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 6.0
+offset_bottom = 6.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_y0ghw")
+script = ExtResource("1_hhmle")
+
+[node name="select_color" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0, 0, 1, 0.6)
+
+[node name="binary_info_digit" type="Area2D" parent="."]
+
+[node name="Button" type="Button" parent="binary_info_digit"]
+offset_right = 20.0
+offset_bottom = 20.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_fbdlm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8yajd")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rb4jn")
+toggle_mode = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="binary_info_digit"]
+visible = false
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_s87x4")
+disabled = true
+
+[node name="Label" type="Label" parent="binary_info_digit"]
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 21.0
+text = "x"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="binary_info_digit" to="." method="_on_binary_info_digit_mouse_entered"]
+[connection signal="mouse_exited" from="binary_info_digit" to="." method="_on_binary_info_digit_mouse_exited"]
+[connection signal="toggled" from="binary_info_digit/Button" to="." method="_on_button_toggled"]

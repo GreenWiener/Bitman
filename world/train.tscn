@@ -6,15 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://4rg7i2q1h4t8" path="res://world/train1.png" id="2_subwh"]
 [ext_resource type="Texture2D" uid="uid://dquhtje4qxhls" path="res://world/train_door2.png" id="3_0pci6"]
 [ext_resource type="PackedScene" uid="uid://bnr6t3scqbl5j" path="res://interact_area.tscn" id="5_f1clu"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="7_o4sm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qwrdk"]
 size = Vector2(40, 9.99998)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t6wuw"]
 size = Vector2(37.225, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tycv7"]
-size = Vector2(77.778, 9.1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lxyqg"]
 size = Vector2(115, 20)
@@ -60,9 +58,10 @@ shape = SubResource("RectangleShape2D_t6wuw")
 [node name="TrainDoorsCollision" type="CharacterBody2D" parent="body"]
 scale = Vector2(0.2, 0.2)
 
-[node name="train_doors_collision" type="CollisionShape2D" parent="body/TrainDoorsCollision"]
-position = Vector2(5.55561, 44.4446)
-shape = SubResource("RectangleShape2D_tycv7")
+[node name="train_doors_collision" type="CollisionPolygon2D" parent="body/TrainDoorsCollision"]
+position = Vector2(5.556, -0.085)
+scale = Vector2(5, 5)
+polygon = PackedVector2Array(-40.398, 10, 39.303, 10, 39.335, 8, -40.425, 8)
 disabled = true
 
 [node name="train_sprite" type="Sprite2D" parent="body"]
@@ -99,5 +98,10 @@ scale = Vector2(2.22222, 2.22222)
 text = "start"
 type = "train_start"
 collision_scale = Vector2(0.5, 0.5)
+
+[node name="HelpArrow" parent="." instance=ExtResource("7_o4sm3")]
+position = Vector2(0.5, -9)
+rotation = 1.5708
+scale = Vector2(0.26, 0.26)
 
 [connection signal="area_entered" from="body/stop_collision" to="." method="_on_stop_collision_area_entered"]

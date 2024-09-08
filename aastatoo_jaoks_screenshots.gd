@@ -24,13 +24,18 @@ var muutuja8 = "tekst abc"
 
 
 func _ready():
-	#var funktsiooni_tulemus = taisarvude_liitmine(3, 7) # funktsiooni väljakutsumine
-	#print("täisarvude liitmise vastus: ", funktsiooni_tulemus)
+	var funktsiooni_tulemus = taisarvude_liitmine(3, 7) # funktsiooni väljakutsumine
+	
+	print("täisarvude liitmise vastus: ", taisarvude_liitmine(3, 7))
 	
 	### IF LAUSE
-
-	var arv : int = -3
+	
+	# muutujate loomine
+	var arv : int
 	var vastus
+	
+	# muutujale väärtuse omistamine  
+	arv = -3
 	
 	if arv < 0: # if-lause päis
 		vastus = arv * -1   
@@ -45,7 +50,7 @@ func _ready():
 	var jaak # jääk (täpitähed pole koodis head)
 	var kahendarv = [] # järjend kahendarvu numbrite kogumiseks
 	
-	while teisendatav_arv > 0:
+	while teisendatav_arv > 0: # while-lause päis
 		jaak = teisendatav_arv % 2 # arvust jäägi võtmine
 		teisendatav_arv = teisendatav_arv / 2 # arvu jagamine 2-ga
 		kahendarv.append(jaak) # jäägi lisamine järjendisse
@@ -62,9 +67,9 @@ func _ready():
 	for el in nimede_list:
 		print("Tere, ", el, "!")
 
-#func taisarvude_liitmine(argument1 : int, argument2 : int): # funktsiooni loomine
-#	var summa = argument1 + argument2
-#	return summa # funktsiooni tulemuse tagastamine
+func taisarvude_liitmine(argument1 : int, argument2 : int): # funktsiooni loomine
+	var summa = argument1 + argument2
+	return summa # funktsiooni tulemuse tagastamine
 
 #func _ready():
 	var player

@@ -1,11 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://cdla1j162jydf"]
 
+[ext_resource type="Script" path="res://menu/info_menu.gd" id="1_pgnxj"]
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_xafw2"]
 [ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="2_8p6b4"]
 [ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="3_0qw88"]
-[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="4_adgk8"]
 [ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="4_clolb"]
 [ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="5_qjntk"]
+[ext_resource type="FontFile" uid="uid://eiov72qovi1e" path="res://menu/fonts/Jersey10-Regular.ttf" id="7_crvx8"]
 [ext_resource type="Script" path="res://menu/InfoBackButton.gd" id="7_j54kq"]
 [ext_resource type="PackedScene" uid="uid://bmntkw74hwsoi" path="res://menu/demo_video.tscn" id="10_1dcd8"]
 
@@ -18,9 +19,6 @@ shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_6ar17"]
 line_spacing = -2.23
 
-[sub_resource type="LabelSettings" id="LabelSettings_5wk2n"]
-font = ExtResource("4_adgk8")
-
 [node name="Info_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -28,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pgnxj")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 modulate = Color(0, 0.815686, 0.992157, 1)
@@ -99,61 +98,65 @@ offset_bottom = 165.0
 [node name="text" type="Label" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
 offset_left = 4.0
-offset_top = 16.0
+offset_top = 28.0
 offset_right = 576.0
-offset_bottom = 325.0
+offset_bottom = 337.0
 scale = Vector2(0.32, 0.32)
-text = "ComputerGame on õpetlik mäng, mille eesmärgiks on mängijale tutvustada arvutikomponente ja nende funktsioone. Selle käigus õpib mängija selgeks kahendkoodi teisendades arve kahendsüsteemist kümnendsüsteemi ja vastupidi.
+text = "Bitman on õpetlik mäng, mille eesmärgiks on mängijale tutvustada arvutikomponente ja nende rolli arvuti töötamisel. Selle käigus õpib mängija muuhulgas selgeks kahendkoodi, teisendades arve kahendsüsteemist kümnendsüsteemi ja vastupidi.
 
 Vaata demo videot, et saada parem ülevaade mängust.
 
-Mängu varasemaid/tulevaseid versioone saab alla laadida 
+Mängu varasemaid/tulevasi versioone saab alla laadida 
 Seal on üleval ka mängu lähtekood.
 
 Mäng on loodud mängumootoriga Godot.
 
 
 
-Selle mängu autor Magnus Pikksaar lõi selle mägnu Tartu Waldorfgümnaasiumi 11. klassi aastatööks. Autor alustas mängu programmeerimisega 2023. aasta oktroobris. Üldine osa mängust sai valmis 2024. aasta suveks. See on autori esimene täielikult lõpetatud mäng mängumootoris Godot."
+
+
+
+Mängu autor Magnus Pikksaar lõi selle mägnu Tartu Waldorfgümnaasiumi 11. klassi aastatööks. Autor alustas mängu programmeerimisega 2023. aasta oktroobris. Mängu põhiosa sai valmis 2024. aasta suveks, kuid autor jätkab mängu täiendamist, seni kuni ta viitsib."
 label_settings = SubResource("LabelSettings_6ar17")
 autowrap_mode = 2
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 60.0
-offset_right = 226.0
-offset_bottom = 83.0
+offset_left = 104.0
+offset_top = 57.0
+offset_right = 181.0
+offset_bottom = 80.0
 scale = Vector2(0.32, 0.32)
+theme_override_fonts/font = ExtResource("7_crvx8")
 text = "GitHub'ist"
 uri = "https://github.com/GreenWiener/ComputerGame/releases/"
 
 [node name="H1" type="Label" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 4.0
-offset_right = 75.0
-offset_bottom = 27.0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 85.0
+offset_bottom = 38.0
 scale = Vector2(0.525, 0.525)
-text = "Mängust"
-label_settings = SubResource("LabelSettings_5wk2n")
+theme_override_font_sizes/font_size = 23
+text = "MÄNGUST"
 
 [node name="H2" type="Label" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 93.0
-offset_right = 75.0
-offset_bottom = 116.0
+offset_left = 13.0
+offset_top = 91.0
+offset_right = 80.0
+offset_bottom = 117.0
 scale = Vector2(0.525, 0.525)
-text = "Autorist"
-label_settings = SubResource("LabelSettings_5wk2n")
+theme_override_font_sizes/font_size = 23
+text = "AUTORIST"
 
 [node name="DemoButton" type="Button" parent="CanvasLayer/Control/Label"]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 46.0
-offset_right = 247.0
-offset_bottom = 79.0
+offset_left = 104.0
+offset_top = 45.0
+offset_right = 209.0
+offset_bottom = 78.0
 scale = Vector2(0.27, 0.27)
 focus_mode = 0
 text = "Demo video"

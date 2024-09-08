@@ -67,4 +67,12 @@ func _on_drop_off_area_body_exited(body):
 
 
 func _on_button_pressed():
-	Global.PopUpText("SA LEIDSID SALAJASE NUPU!!!", "player", Vector2.ZERO)
+	Global.PopUpText("AUGH", "player", Vector2.ZERO)
+	#Global.spawn_item("egg.exe", $CanvasLayer/Button.position + Vector2(15,0), "egg.exe", "egg.exe")
+	Global.spawn_item("egg.exe", get_global_mouse_position(), "egg.exe", "egg.exe")
+
+func _process(delta):
+	for el in Global.item_bodies_list:
+		if el.easter_egg == true and el.position.y < 110:
+			el.position += Vector2(0, 0.3)
+			print(el.position)

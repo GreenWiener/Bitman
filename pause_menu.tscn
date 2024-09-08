@@ -1,11 +1,74 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsy746refa5xe"]
+[gd_scene load_steps=21 format=3 uid="uid://bsy746refa5xe"]
 
 [ext_resource type="Script" path="res://pause_menu.gd" id="1_ggkmy"]
 [ext_resource type="Texture2D" uid="uid://c4vyol5a5vre0" path="res://world/white.png" id="2_6cts3"]
 [ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="3_5nr4n"]
+[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="4_npvqx"]
+[ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="5_vns05"]
+[ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="6_fnqux"]
+[ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="7_jdr7l"]
+[ext_resource type="StyleBox" uid="uid://dm8k4m66clp17" path="res://menu/achievement_block_bg1.tres" id="8_ajf2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p1oot"]
 size = Vector2(36.905, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ffc0"]
+bg_color = Color(0.0784314, 0.121569, 0.262745, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nv5wj"]
+content_margin_bottom = 1.0
+bg_color = Color(0, 0.27451, 0.666667, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_po378"]
+font = ExtResource("4_npvqx")
+font_size = 9
+
+[sub_resource type="Theme" id="Theme_ddk4n"]
+default_font_size = 15
+
+[sub_resource type="LabelSettings" id="LabelSettings_lelog"]
+font = ExtResource("4_npvqx")
+font_size = 9
+font_color = Color(0.686275, 0.686275, 0.686275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmnn2"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0, 0.27451, 0.666667, 1)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_v5ea0"]
+line_spacing = -2.0
+font = ExtResource("4_npvqx")
+font_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unbm7"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsead"]
+font = ExtResource("4_npvqx")
+font_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2ocu"]
+content_margin_top = 1.0
+draw_center = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_8cxoe"]
+font_size = 5
+font_color = Color(0.839216, 0.839216, 0.839216, 1)
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -43,68 +106,321 @@ layer = 2
 [node name="Buttons" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 theme = ExtResource("3_5nr4n")
 
-[node name="Continue" type="Button" parent="CanvasLayer/Buttons"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 120.0
-offset_top = 56.0
-offset_right = 281.0
-offset_bottom = 89.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+[node name="middle" type="VBoxContainer" parent="CanvasLayer/Buttons"]
+layout_mode = 0
+offset_left = 119.137
+offset_top = 50.911
+offset_right = 261.137
+offset_bottom = 204.911
+scale = Vector2(0.6, 0.6)
+theme_override_constants/separation = 10
+
+[node name="Continue" type="Button" parent="CanvasLayer/Buttons/middle"]
+layout_mode = 2
 focus_mode = 0
 text = "Jätka"
 
-[node name="Startmenu" type="Button" parent="CanvasLayer/Buttons"]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 81.0
-offset_right = 281.0
-offset_bottom = 114.0
-scale = Vector2(0.5, 0.5)
+[node name="Settings" type="Button" parent="CanvasLayer/Buttons/middle"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+text = "Seaded"
+
+[node name="Achievements" type="Button" parent="CanvasLayer/Buttons/middle"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+text = "Saavutused"
+
+[node name="Startmenu" type="Button" parent="CanvasLayer/Buttons/middle"]
+layout_mode = 2
 focus_mode = 0
 text = "Algusmenüü"
 
-[node name="Exit" type="Button" parent="CanvasLayer/Buttons"]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 106.0
-offset_right = 281.0
-offset_bottom = 139.0
-scale = Vector2(0.5, 0.5)
+[node name="Exit" type="Button" parent="CanvasLayer/Buttons/middle"]
+layout_mode = 2
 focus_mode = 0
 text = "Salvesta ja sulge"
 
 [node name="MusicSlider" type="HSlider" parent="CanvasLayer/Buttons"]
-layout_mode = 0
-offset_left = 134.805
-offset_top = 159.931
-offset_right = 270.805
-offset_bottom = 175.931
-scale = Vector2(0.4, 0.4)
+layout_mode = 2
+offset_left = 134.968
+offset_top = 163.419
+offset_right = 276.968
+offset_bottom = 179.419
+scale = Vector2(0.45, 0.45)
+min_value = -30.0
+max_value = 10.0
+
+[node name="FxSlider" type="HSlider" parent="CanvasLayer/Buttons"]
+layout_mode = 2
+offset_left = 134.968
+offset_top = 148.424
+offset_right = 276.968
+offset_bottom = 164.424
+scale = Vector2(0.45, 0.45)
 min_value = -30.0
 max_value = 10.0
 
 [node name="Label" type="Label" parent="CanvasLayer/Buttons"]
-layout_mode = 0
-offset_left = 151.16
-offset_top = 151.761
-offset_right = 218.16
-offset_bottom = 174.761
-scale = Vector2(0.3, 0.3)
+layout_mode = 2
+offset_left = 82.0
+offset_top = 163.0
+offset_right = 190.0
+offset_bottom = 181.0
+scale = Vector2(0.45, 0.45)
 text = "muusika"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Buttons"]
+layout_mode = 2
+offset_left = 82.0
+offset_top = 148.0
+offset_right = 189.0
+offset_bottom = 166.0
+scale = Vector2(0.45, 0.45)
+text = "heliefektid"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Achievements_tab" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+offset_left = 31.0
+offset_top = 20.0
+offset_right = 288.0
+offset_bottom = 163.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2ffc0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Achievements_tab"]
+layout_mode = 2
+
+[node name="Panel_topbar" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nv5wj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/Panel_topbar"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/Panel_topbar/HBoxContainer"]
+layout_mode = 2
+text = "Saavutused"
+label_settings = SubResource("LabelSettings_po378")
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Achievements_tab/VBoxContainer/Panel_topbar/HBoxContainer/Label"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 130.104
+offset_top = -6.6604
+offset_right = 160.104
+offset_bottom = 23.3396
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+theme = SubResource("Theme_ddk4n")
+theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
+theme_override_fonts/font = ExtResource("4_npvqx")
+theme_override_styles/normal = ExtResource("5_vns05")
+theme_override_styles/hover = ExtResource("6_fnqux")
+theme_override_styles/pressed = ExtResource("7_jdr7l")
+text = "×"
+
+[node name="count" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/Panel_topbar/HBoxContainer"]
+layout_mode = 2
+text = "(0/0)"
+label_settings = SubResource("LabelSettings_lelog")
+horizontal_alignment = 1
+
+[node name="Panel_midbar" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hmnn2")
+
+[node name="Label" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/Panel_midbar"]
+layout_mode = 2
+text = "Erinevaid tegevusi tehes teenid endale saavutusi. Mõndasid on lihtsam saada, mõnede saamiseks pead aga mängu piire katsetama ja kastist välja mõtlema.
+
+Mängus on võimalik kokku saada %count% saavutust. Kui saad kõik, oled mega äge! Edu!"
+label_settings = SubResource("LabelSettings_v5ea0")
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_unbm7")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_force_pass_scroll_events = false
+theme = ExtResource("3_5nr4n")
+horizontal_scroll_mode = 0
+
+[node name="list_of_achievements" type="VBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Achievement1" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement1"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement1/HBoxContainer"]
+layout_mode = 2
+text = "Terve ring"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement1/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Lahenda kõik kolm ülesannet järjest"
+label_settings = SubResource("LabelSettings_8cxoe")
+
+[node name="Achievement2" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement2"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement2/HBoxContainer"]
+layout_mode = 2
+text = "Grinder"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement2/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Teeni 120 punkti"
+label_settings = SubResource("LabelSettings_8cxoe")
+
+[node name="Achievement3" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement3"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement3/HBoxContainer"]
+layout_mode = 2
+text = "Leg day"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement3/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Kõnni CPU-maja ülesandes rongiga sõitmise asemel"
+label_settings = SubResource("LabelSettings_8cxoe")
+
+[node name="Achievement4" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement4"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement4/HBoxContainer"]
+layout_mode = 2
+text = "P"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement4/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Vajuta klaviatuuril P klahvi"
+label_settings = SubResource("LabelSettings_8cxoe")
+
+[node name="Achievement5" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement5"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement5/HBoxContainer"]
+layout_mode = 2
+text = "egg.exe"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement5/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Leia egg.exe redelit kasutades"
+label_settings = SubResource("LabelSettings_8cxoe")
+
+[node name="Achievement6" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement6"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement6/HBoxContainer"]
+layout_mode = 2
+text = "Lõhkuja"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement6/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Lõhu RAM-maja kapp kasutades faili egg.exe"
+label_settings = SubResource("LabelSettings_8cxoe")
+
+[node name="Achievement7" type="PanelContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("8_ajf2a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement7"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="name" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement7/HBoxContainer"]
+layout_mode = 2
+text = "Suur kast"
+label_settings = SubResource("LabelSettings_fsead")
+
+[node name="info" type="Label" parent="CanvasLayer/Achievements_tab/VBoxContainer/PanelContainer/ScrollContainer/list_of_achievements/Achievement7/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_c2ocu")
+text = "Proovi redelit kasti panna"
+label_settings = SubResource("LabelSettings_8cxoe")
 
 [connection signal="released" from="TouchScreenButton" to="." method="_on_touch_screen_button_released"]
-[connection signal="button_down" from="CanvasLayer/Buttons/Continue" to="." method="_on_continue_button_down"]
-[connection signal="button_up" from="CanvasLayer/Buttons/Continue" to="." method="_on_continue_button_up"]
-[connection signal="pressed" from="CanvasLayer/Buttons/Continue" to="." method="_on_continue_pressed"]
-[connection signal="pressed" from="CanvasLayer/Buttons/Startmenu" to="." method="_on_startmenu_pressed"]
-[connection signal="button_down" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_button_down"]
-[connection signal="button_up" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_button_up"]
-[connection signal="pressed" from="CanvasLayer/Buttons/Exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="CanvasLayer/Buttons/MusicSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="button_down" from="CanvasLayer/Buttons/middle/Continue" to="." method="_on_continue_button_down"]
+[connection signal="button_up" from="CanvasLayer/Buttons/middle/Continue" to="." method="_on_continue_button_up"]
+[connection signal="pressed" from="CanvasLayer/Buttons/middle/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/middle/Achievements" to="." method="_on_achievements_pressed"]
+[connection signal="pressed" from="CanvasLayer/Buttons/middle/Startmenu" to="." method="_on_startmenu_pressed"]
+[connection signal="button_down" from="CanvasLayer/Buttons/middle/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_up" from="CanvasLayer/Buttons/middle/Exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="CanvasLayer/Buttons/middle/Exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Buttons/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Buttons/FxSlider" to="." method="_on_fx_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Achievements_tab/VBoxContainer/Panel_topbar/HBoxContainer/Label/BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,45 @@
+### EXE FAILID ###
+
+chrome.exe | chrome | EXE | C:\Program Files\Google\Chrome\Application | 2,61 MB | 28.08.2024
+vlc.exe | vlc | EXE | C:\Program Files (x86)\VideoLAN\VLC | 939 KB | 20.08.2024
+bob.exe | bob | EXE | C:\Program Files\bob | 570 GB | 13.08.2024
+Zoom.exe | Zoom | EXE | C:\Users\%username%\AppData\Roaming\Zoom\bin | 405 KB | 23.08.2024
+obs64.exe | obs64 | EXE | C:\Program Files\obs-studio\bin\64bit | 4,77 MB | 24.08.2024
+Growtopia.exe | Growtopia | EXE | C:\Users\%username%\AppData\Local\Growtopia | 39,8 MB | 10.08.2024
+GTA5.exe | GTA5 | EXE | C:\SteamLibrary\steamapps\common\Grand Theft Auto V | 47,3 MB | 17.08.2024
+Godot.exe | Godot | EXE | C:\Users\%username%\Downloads | 103 MB | 18.08.2024
+Discord.exe | Discord | EXE | C:\Users\%username%\AppData\Local\Discord\app-1.0.9159 | 169 MB | 19.08.2024
+opera.exe | opera | EXE | C:\Users\magnu\AppData\Local\Programs\Opera GX | 1,44 MB | 30.08.2024
+Messenger.exe | Messenger | EXE | C:\Users\magnu\AppData\Local\Programs\Messenger | 321 MB | 01.08.2024
+blender.exe | blender | EXE | C:\Program Files\Blender Foundation\Blender 3.0 | 188 MB | 08.08.2024
+
+
+### MP4 FAILID ###
+
+20200703_091443.mp4 | 20200703_091443 | MP4 | C:\Users\%username%\Videos | 396 MB | 27.08.2024
+Video0001.mp4 | Video0001 | MP4 | C:\Users\%username%\Videos | 65 MB | 13.01.2021
+Shrek.mp4 | Video0001 | MP4 | C:\Users\%username%\Videos\films | 895 GB | 01.09.2024
+
+
+### PNG FAILID ###
+
+selfi_25.png | selfi_25 | PNG | C:\Users\%username%\Pictures | 4,57 MB | 06.07.2024
+
+
+### MP3 FAILID ###
+
+eu_a_u.mp3 | eu_a_u | MP3 | C:\Users\%username%\Music\FL projektid | 7,98 MB | 11.08.2024 | Magnus Pikksaar 
+110-101.mp3 | 110-101 | MP3 | C:\Users\%username%\Music\FL projektid | 4,05 MB | 13.08.2024 | Magnus Pikksaar 
+orchestard.mp3 | orchestard | MP3 | C:\Users\%username%\Music\FL projektid | 14,6 MB | 12.08.2024 | Magnus Pikksaar 
+Project_game_train.mp3 | Project_game_train | MP3 | C:\Users\%username%\Music\FL projektid | 3,72 MB | 14.08.2024 | Magnus Pikksaar 
+Untitled.mp3 | Untitled | MP3 | C:\Users\%username%\Music\FL projektid | 8,19 MB | 15.08.2024 | Magnus Pikksaar 
+imemuna.mp3 | imemuna | MP3 | C:\Users\%username%\Music\FL projektid | 13,5 MB | 10.08.2024 | Magnus Pikksaar 
+porgind.mp3 | porgind | MP3 | C:\Users\%username%\Music\FL projektid | 19,7 MB | 09.08.2024 | Magnus Pikksaar 
+sünnipäevalaul.mp3 | sünnipäevalaul | MP3 | C:\Users\%username%\Music\FL projektid | 7,83 MB | 15.08.2024 | Magnus Pikksaar 
+
+
+### TXT FAILID ###
+
+Harry_Potter_book1.txt | Harry_Potter_book1 | TXT | "C:\Users\%username%\Documents | 2,31 MB | 12.08.2024
+minu_ip_aadress.txt | minu_ip_aadress | TXT | "C:\Users\%username%\Documents\salajane_kaust | 14 bytes | 27.08.2024
+

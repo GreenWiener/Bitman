@@ -1,6 +1,6 @@
 extends Node
 
-var player_inital_map_position = Vector2(-509, 73)
+var player_inital_map_position = Vector2(-772, 80)
 var player_facing_direction = 1
 var player_spawn_location
 var most_recent_scene
@@ -15,6 +15,10 @@ var camera_zoom = Vector2(0,0)
 
 var language = "eesti"
 
+var earned_achievments = []
+
+var feedback_dict = {}
+
 var in_pickup_area
 var in_BoxOpening_area
 #var spawn_item
@@ -24,11 +28,14 @@ var in_BoxOpening_area
 #@onready var _player = $ysort/player
 var _player = null
 var player_skeleton
+var click_tp = false
 var _world = null
 var _lockers = null
 var _lockers2 = null
 var _train = null
 var _pause_menu
+var _info_panel = []
+var _task_bar
 var train_pos = Vector2(-87, 41.725)
 var next_train_direction = false
 var train_direction = true
@@ -79,16 +86,20 @@ var RAM_box_item_list = []
 
 
 var _task_menu
-var tasks = ["locate-SSD-info","deliver-SSD-info","deliver-RAM-info"]
+var tasks = ["SSD-task","RAM-task","CPU-task"]
 var bin_tasks_completed = []
 var bin_task_completed_last
 var selected_task
 var task_SSD_location
+var _task_binary
+var _task_decimal
 
 var task_binary_rows = []
 var task_binary_num = 0
 var all_randbin_nums = []
-var task_ongoing = false
+var task_ongoing = ""
+var task_ongoing_block
+var subtask = 0
 
 var lockers_loaded = false
 var lockers_loaded2 = false
@@ -135,51 +146,64 @@ var delivered_cpu_items = []
 
 var _ram_menu
 var _controlpanel
+var _cpu_menu
 
 var task_dec_num = null
 
 var player_vignette
 var music_volume = 0.0
+var fx_volume = 0.0
 
 var HelpArrow
 var helparrow_state = "task" #   del  = "task"
-var helparrow_states = ["task", "taskblock", "ssd_menu", "done_1st_task", "done_1st_taskblock", "next"]
+var helparrow_states = ["task", "taskblock", "ssd_menu", "done_1st_task", "done_1st_taskblock", "ram_menu", "cpu_menu", "next"]
 var helparrow_state_loendur = 0
-var infopanel_arrows = []
-var controlpanel_arrows = []
+var showed_helparrow = []
 
 func add_HelpArrow(add_to_body : Object, arrow_pos : Vector2, arrow_size : int):
-	HelpArrow = load("res://menu/help_arrow.tscn").instantiate()
-	add_to_body.add_child(HelpArrow)
-	HelpArrow.position = arrow_pos
-	HelpArrow.scale = Vector2(arrow_size, arrow_size)
-	print("<*> Add 'HelpArrow' ; helparrow_state: ", helparrow_state)
+	pass
+	#HelpArrow = load("res://menu/help_arrow.tscn").instantiate()
+	#add_to_body.add_child(HelpArrow)
+	#HelpArrow.position = arrow_pos
+	#HelpArrow.scale = Vector2(arrow_size, arrow_size)
+	#print("<*> Add 'HelpArrow' ; helparrow_state: ", helparrow_state)
 	
 
-func remove_HelpArrow(remove_from_body):
-	if len(helparrow_states) > helparrow_state_loendur+1:
-		helparrow_state_loendur += 1
-	helparrow_state = helparrow_states[helparrow_state_loendur]
-	#print("<*> remove_from_body: ", remove_from_body, ", HelpArrow: ", HelpArrow)	
-	if HelpArrow != null and remove_from_body != null:
-		remove_from_body.remove_child(HelpArrow)
-	else:
-		print("*❗ NULL INSTANCE: HelpArrow: ", HelpArrow, ", remove_from_body: ", remove_from_body)
-	print("<*> Remove 'HelpArrow' ; helparrow_state (next): ", helparrow_state)	
+func remove_HelpArrow(remove_from_body): # ma vihkan seda funktiooni, see toob palju erroreid ja ma ei kasuta seda, ! pea meeles et pean selle mujal ümber töötama!
+	pass
+	#if len(helparrow_states) > helparrow_state_loendur+1:
+		#helparrow_state_loendur += 1
+	#helparrow_state = helparrow_states[helparrow_state_loendur]
+	##print("<*> remove_from_body: ", remove_from_body, ", HelpArrow: ", HelpArrow)	
+	#if HelpArrow != null and remove_from_body != null:
+		#remove_from_body.remove_child(HelpArrow)
+	#else:
+		#print("*❗ NULL INSTANCE: HelpArrow: ", HelpArrow, ", remove_from_body: ", remove_from_body)
+	#print("<*> Remove 'HelpArrow' ; helparrow_state (next): ", helparrow_state)	
 
 
 func _ready():
-	# kappide laadimine
+	SaveGame.load_settings()
 	var ssd_lockers_gd = load("res://world/ssd-lockers.tscn").instantiate()
 	ssd_lockers_gd.create_locker_texts()
-	SaveGame.load_settings()
+	
+	var sone = "asi"
+	print(sone.reverse())
 	
 	
 func start_game():
 	# salvestatud info laadimine
 	#var load_saved_game = load("res://save_game.gd")
 	#load_saved_game.load_game()
+	SaveGame.load_settings()
 	SaveGame.load_game()
+
+
+#func new_ssd_lockers(): # ssd kappide loomine
+#	print("creating new_ssd_lockers...")
+#	var ssd_lockers_gd = load("res://world/ssd-lockers.tscn").instantiate()
+#	ssd_lockers_gd.create_locker_texts()
+	
 	
 	## music
 	#var music_node = AudioStreamPlayer2D.new()
@@ -247,6 +271,11 @@ func _process(_delta):
 		if Input.is_action_just_released("Open_g") and in_BoxOpening_area == true and player_holding_item == true and in_pickup_area == true and holding_item_name == "box2" and player_in_menu == false:
 			_player.store_box()
 		
+		if Input.is_action_just_released("Throw_v") and holding_item_name == "egg.exe":
+			_player.throw_item()
+			print("es")
+		
+		
 
 
 var last_tile_value
@@ -268,7 +297,7 @@ func PopUpCursor(cursor_text : String):
 	await popup_cursor_text.get_node("AnimationPlayer").animation_finished
 
 
-func spawn_item(the_item_name, the_item_pos, the_box_item): ## eseme loomine
+func spawn_item(the_item_name, the_item_pos, the_box_item, special_id = ""): ## eseme loomine
 	print("➕ <",world_name,"> Spawning item: ",the_item_name,", ",the_item_pos, ", ", the_box_item)
 	if _world != null:
 		var item_instance = load("res://world/item.tscn").instantiate()
@@ -278,7 +307,14 @@ func spawn_item(the_item_name, the_item_pos, the_box_item): ## eseme loomine
 		item_instance.set_item_name(the_item_name)
 		item_instance.set_item_position(the_item_pos)
 		item_instance.set_box_item(the_box_item)
+		
 		_world.get_node("ysort/items").add_child(item_instance)
+		
+		if special_id == "egg.exe":
+			item_instance.easter_egg = true
+		elif special_id == "throw_egg":
+			item_instance.throw_easteregg()
+			
 		#####item_instance.get_node("Icon").texture = load("res://world/" + the_item_name + ".png")
 		#if "kapi_kood1" in the_item_name:
 			#item_instance.set_item_name("kapi_kood")
@@ -292,6 +328,10 @@ func spawn_item(the_item_name, the_item_pos, the_box_item): ## eseme loomine
 			item_instance.get_node("Icon").texture = load("res://world/" + the_item_name.split(" ")[0] + ".png")
 		if "info" in the_item_name:
 			item_instance.get_node("Icon").texture = load("res://world/umbrik.png")
+		
+		if the_box_item == "redel" and the_item_name == "box1":
+			item_instance.get_node("Icon").texture = load("res://world/redel_box.png")
+			
 		
 		##if the_item_name == "redel":
 		##	var ladder_collision = CollisionPolygon2D.new()
@@ -318,7 +358,7 @@ func despawn_item(the_item_name): ## eseme eemaldamine
 		print("<*> ÜLESANDE LÕPETAMINE")
 		item_name = the_item_name.split(" ")[0]
 		_controlpanel.reload_gui()
-		task_ssd_finished = true
+		Global.task_ongoing_block.complete_ssd_task()
 
 
 

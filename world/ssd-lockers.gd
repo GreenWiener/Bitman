@@ -26,7 +26,6 @@ func _ready():
 	
 	# teksti lisamine
 	var loendur = 0
-	var locker_num_dict = {}
 	for el in Global.locker_dict_keys:
 		var locker_num_label =  Label.new()
 		locker_num_label.name = str(loendur+1)
@@ -88,9 +87,9 @@ func spawn_item_in_locker(): # asjade lisamine kappi
 			var files_txt = FileAccess.open("res://world/files.txt",FileAccess.READ)
 			while files_txt.get_position() < files_txt.get_length():
 				var files_txt_lines = files_txt.get_line()
-				if files_txt_lines != "":
+				if files_txt_lines != "" and "#" not in files_txt_lines:
 					files_list.append(files_txt_lines)
-			#print("files_list: ", files_list)
+			print("files_list: ", files_list)
 			
 			var rand_box_item = files_list[randi_range(0,len(files_list)-1)]
 			files_list.erase(rand_box_item)
@@ -147,6 +146,7 @@ func _process(_delta):
 		var mouse_pos_int = (Vector2(int(mouse_pos_resize[0]), int(mouse_pos_resize[1])))
 		
 		# ava kapi uks
+		#print(mouse_pos_int, " == ", Vector2(Global.locker_info_dict[Global.bin_task_completed_last][1]))
 		if self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(0,0) and Global.bin_task_completed_last in Global.locker_info_dict and mouse_pos_int == Vector2(Global.locker_info_dict[Global.bin_task_completed_last][1]) and Global.holding_item_name == "kapi_kood " + str(Global.bin_task_completed_last):
 			set_cell(0, mouse_pos_resize, 1, Vector2i(1,0))
 			if mouse_pos_int not in Global.locker_state_dict:
@@ -159,7 +159,8 @@ func _process(_delta):
 				el.update_item_visibility()
 			
 			# pane item kappi
-			if Global.task_ssd_finished == false:
+			if "SSD-task" in Global.task_ongoing:
+				AudioPlayer.play_fx("res://audio/locker_unlock.wav")
 				Global.locker_state_dict[mouse_pos_int][1] = "full"
 				spawn_item_in_locker()
 				Global._player.release_item(null, null) # eemalda ukse kood käest
@@ -180,7 +181,11 @@ func _process(_delta):
 					el.update_item_visibility()
 			else:
 				if mouse_pos_int.y != 19:
-					Global.PopUpText("Ei ulatu võtta!", "mouse", Vector2.ZERO)
+					if Global.language == "english" or Global.language == "skibidi":
+						Global.PopUpText("Too far away!", "mouse", Vector2.ZERO)
+					else:
+						Global.PopUpText("Ei ulatu võtta!", "mouse", Vector2.ZERO)
+					AudioPlayer.play_fx("res://audio/beep_bad.wav")
 
 		# lukus kapi uks
 		elif self.get_cell_atlas_coords(0, mouse_pos_resize) == Vector2i(0,0):
@@ -189,9 +194,14 @@ func _process(_delta):
 				#var kapi_popup_text = load("res://menu/popup_text.tscn").instantiate()
 				#self.add_child(kapi_popup_text)
 				#kapi_popup_text.popup()
-				Global.PopUpText("Vale kapi kood!", "mouse", mouse_pos_int)
+				Global.PopUpText("Vale kapp!", "mouse", mouse_pos_int)
+				AudioPlayer.play_fx("res://audio/locker_locked.wav")
 			else:
-				Global.PopUpText("Kapp on lukus!", "mouse", mouse_pos_int)
+				if Global.language == "english" or Global.language == "skibidi":
+					Global.PopUpText("Locked!", "mouse", mouse_pos_int)
+				else:
+					Global.PopUpText("Kapp on lukus!", "mouse", mouse_pos_int)
+				AudioPlayer.play_fx("res://audio/locker_locked.wav")
 		
 				#var kapi_state_label = Label.new()
 				#self.add_child(kapi_state_label)

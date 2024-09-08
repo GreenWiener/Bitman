@@ -1,42 +1,83 @@
-chrome.exe
-vlc.exe
-bob.exe
-Zoom.exe
-obs64.exe
-Growtopia.exe
-GTA5.exe
-Godot.exe
-Discord.exe
-opera.exe
-Messenger.exe
-blender.exe
+### EXE FAILID ###
+
+#chrome.exe
+99 104 114 111 109 101 46 101 120 101.file
+#vlc.exe
+118 108 99 46 101 120 101.file
+#bob.exe
+98 111 98 46 101 120 101.file
+#Zoom.exe
+90 111 111 109 46 101 120 101.file
+#obs64.exe
+111 98 115 54 52 46 101 120 101.file
+#Growtopia.exe
+71 114 111 119 116 111 112 105 97 46 101 120 101.file
+#GTA5.exe
+71 84 65 53 46 101 120 101.file
+#Godot.exe
+71 111 100 111 116 46 101 120 101.file
+#Discord.exe
+68 105 115 99 111 114 100 46 101 120 101.file
+#opera.exe
+111 112 101 114 97 46 101 120 101.file
+#Messenger.exe
+77 101 115 115 101 110 103 101 114 46 101 120 101.file
+#blender.exe
+98 108 101 110 100 101 114 46 101 120 101.file
 
 
-20200703_091443.mp4
-20210530_123032.mp4
-20221117_154012.mp4
-20230406_172758.mp4
-20240611_224609.mp4
-Video0001.mp4
-Video0002.mp4
-Video0003.mp4
-Video0004.mp4
-Video0005.mp4
-Shrek.mp4
+### MP4 FAILID ###
 
-selfi_25.png
-
-
-Drake.mp3
-lalala_song.mp3
-halb_laul.mp3
-recording001.mp3
-recording002.mp3
-recording003.mp3
-recording004.mp3
-recording005.mp3
+## 20210530_123032.mp4
+## 20221117_154012.mp4
+## 20230406_172758.mp4
+## 20240611_224609.mp4
+## Video0002.mp4
+## Video0003.mp4
+## Video0004.mp4
+## Video0005.mp4
+#20200703_091443.mp4
+50 48 50 48 48 55 48 51 95 48 57 49 52 52 51 46 109 112 52.file
+#Video0001.mp4
+86 105 100 101 111 48 48 48 49 46 109 112 52.file
+#Shrek.mp4
+83 104 114 101 107 46 109 112 52.file
 
 
-Harry_Potter_book1.txt
-minu_ip_aaress.txt
+### PNG FAILID ###
+
+#selfi_25.png
+115 101 108 102 105 95 50 53 46 112 110 103.file
+
+
+### MP3 FAILID ###
+
+## Drake.mp3
+## lalala_song.mp3
+## halb_laul.mp3
+## recording001.mp3
+#eu_a_u.mp3
+101 117 95 97 95 117 46 109 112 51.file
+#110-101.mp3
+49 49 48 45 49 48 49 46 109 112 51.file
+#orchestard.mp3
+111 114 99 104 101 115 116 97 114 100 46 109 112 51.file
+#Project_game_train.mp3
+80 114 111 106 101 99 116 95 103 97 109 101 95 116 114 97 105 110 46 109 112 51.file
+#Untitled.mp3
+85 110 116 105 116 108 101 100 46 109 112 51.file
+#imemuna.mp3
+105 109 101 109 117 110 97 46 109 112 51.file
+#porgind.mp3
+112 111 114 103 105 110 100 46 109 112 51.file
+#sünnipäevalaul.mp3
+115 252 110 110 105 112 228 101 118 97 108 97 117 108 46 109 112 51.file
+
+
+### TXT FAILID ###
+
+#Harry_Potter_book1.txt
+72 97 114 114 121 95 80 111 116 116 101 114 95 98 111 111 107 49 46 116 120 116.file
+#minu_ip_aadress.txt
+109 105 110 117 95 105 112 95 97 97 100 114 101 115 115 46 116 120 116.file
 

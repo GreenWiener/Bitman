@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://chfusk0x06bqh"]
+[gd_scene load_steps=8 format=3 uid="uid://chfusk0x06bqh"]
 
-[ext_resource type="FontFile" uid="uid://or3rf71jm2l3" path="res://menu/fonts/century_gothic.ttf" id="1_gxsb6"]
 [ext_resource type="StyleBox" uid="uid://0ae26v77p7d2" path="res://menu/cpu_taskmenu_task.tres" id="2_pqib8"]
 [ext_resource type="Script" path="res://file_block.gd" id="3_2losr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7v4da"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tluo6"]
+bg_color = Color(0, 0, 0, 0.54902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rpvx"]
+bg_color = Color(0, 0, 0, 0.682353)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rig5d"]
+bg_color = Color(0.129412, 0.129412, 0.129412, 0.54902)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h7p00"]
 bg_color = Color(0.054902, 0.054902, 0.054902, 1)
@@ -15,8 +23,7 @@ offset_right = 430.0
 offset_bottom = 86.0
 theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
 theme_override_colors/selection_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("1_gxsb6")
-theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/normal_font_size = 33
 theme_override_styles/focus = SubResource("StyleBoxFlat_7v4da")
 theme_override_styles/normal = ExtResource("2_pqib8")
 text = "!file text!"
@@ -28,6 +35,9 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 782.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_tluo6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5rpvx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rig5d")
 theme_override_styles/focus = SubResource("StyleBoxFlat_h7p00")
 
 [connection signal="pressed" from="Button_file" to="." method="_on_button_task_pressed"]

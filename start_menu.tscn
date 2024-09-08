@@ -1,17 +1,36 @@
-[gd_scene load_steps=11 format=3 uid="uid://dsuwa3ap8myxf"]
+[gd_scene load_steps=21 format=3 uid="uid://dsuwa3ap8myxf"]
 
 [ext_resource type="Script" path="res://menu/StartMenu.gd" id="1_bx77b"]
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_knqfh"]
 [ext_resource type="Shader" path="res://start_menu_bg.gdshader" id="1_kqsvj"]
 [ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_pgdfq"]
 [ext_resource type="Texture2D" uid="uid://berio4hnneltx" path="res://menu/start-bg.png" id="2_22tx3"]
+[ext_resource type="Shader" path="res://world/pulsing.gdshader" id="4_hybyh"]
+[ext_resource type="Texture2D" uid="uid://blie3xqmflf52" path="res://world/circuit_tile_lines.png" id="5_afdsa"]
+[ext_resource type="Texture2D" uid="uid://bje8m4ywm1q6t" path="res://menu/bitman_logo_text.png" id="7_j6m3p"]
+[ext_resource type="FontFile" uid="uid://eiov72qovi1e" path="res://menu/fonts/Jersey10-Regular.ttf" id="8_vbqag"]
 [ext_resource type="Texture2D" uid="uid://b7r0gi4mbqdd3" path="res://world/MoBo.png" id="8_y4h61"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cubu4"]
+shader = ExtResource("4_hybyh")
+shader_parameter/shine_color = Color(1, 1, 1, 0.129412)
+shader_parameter/alpha_limit = 0.0
+shader_parameter/cycle_speed = 1.0
+shader_parameter/full_pulse_cycle = true
+shader_parameter/mode = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0dvh"]
 shader = ExtResource("1_kqsvj")
 shader_parameter/vignette_intensity = 0.385
 shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6pxf1"]
+bg_color = Color(0, 0, 0, 0.462745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Animation" id="Animation_wd0x4"]
 length = 0.001
@@ -62,6 +81,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(159, 68)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Buttons/play_options/Continue/Panel:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(116, 32)]
 }
 
 [sub_resource type="Animation" id="Animation_hsw6n"]
@@ -115,11 +146,92 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(68, 68), Vector2(37, 68)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Buttons/play_options/Continue/Panel:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(56, 32), Vector2(120, 32)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_huyg7"]
 _data = {
 "RESET": SubResource("Animation_wd0x4"),
 "option_btns_IN": SubResource("Animation_hsw6n")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_1k6sw"]
+font = ExtResource("8_vbqag")
+font_size = 27
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.360784)
+shadow_offset = Vector2(2.11, 2.325)
+
+[sub_resource type="Animation" id="Animation_3sm28"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, 148)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BitmanLogoText2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(159, 36)]
+}
+
+[sub_resource type="Animation" id="Animation_pywmy"]
+resource_name = "startmenu_glitches"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Label:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(38, 148), Vector2(39, 148)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BitmanLogoText2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(159, 36), Vector2(160.15, 36), Vector2(158.745, 38.535), Vector2(160.145, 33.815), Vector2(159.32, 35.7), Vector2(157.585, 35.045), Vector2(160.12, 35.045), Vector2(156.235, 35.625), Vector2(160.01, 35.625), Vector2(159.755, 36.52), Vector2(158.635, 35.64), Vector2(164.855, 37.76), Vector2(160.97, 36.855), Vector2(152.13, 35.72), Vector2(159.285, 36.515), Vector2(159.44, 35.585), Vector2(158.355, 40.015), Vector2(158.61, 35.585), Vector2(159.15, 35.75), Vector2(161.185, 37.26), Vector2(159.33, 34.91)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uha8o"]
+_data = {
+"RESET": SubResource("Animation_3sm28"),
+"startmenu_glitches": SubResource("Animation_pywmy")
 }
 
 [node name="start_menu" type="Control"]
@@ -142,6 +254,20 @@ offset_right = 416.0
 offset_bottom = 234.0
 scale = Vector2(0.435, 0.435)
 texture = ExtResource("1_knqfh")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="TextureRectOveraly" type="TextureRect" parent="."]
+modulate = Color(0, 0.886275, 1, 1)
+material = SubResource("ShaderMaterial_cubu4")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 416.0
+offset_bottom = 234.0
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("5_afdsa")
 expand_mode = 1
 stretch_mode = 1
 
@@ -184,6 +310,16 @@ size_flags_vertical = 4
 focus_mode = 0
 text = "Mängi"
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Buttons/PlayButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pxf1")
+
 [node name="play_options" type="Control" parent="CanvasLayer/Buttons"]
 layout_mode = 3
 anchors_preset = 0
@@ -195,7 +331,7 @@ layout_mode = 1
 offset_left = 159.0
 offset_top = 68.0
 offset_right = 279.0
-offset_bottom = 99.0
+offset_bottom = 100.0
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -203,12 +339,22 @@ focus_mode = 0
 text = "Jätka"
 clip_text = true
 
+[node name="Panel" type="Panel" parent="CanvasLayer/Buttons/play_options/Continue"]
+z_index = -1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pxf1")
+
 [node name="Start" type="Button" parent="CanvasLayer/Buttons/play_options"]
 layout_mode = 1
 offset_left = 37.0
 offset_top = 68.0
 offset_right = 158.0
-offset_bottom = 99.0
+offset_bottom = 100.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(122, 0)
 size_flags_horizontal = 4
@@ -216,6 +362,16 @@ size_flags_vertical = 4
 focus_mode = 0
 text = "Alusta algusest"
 clip_text = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Buttons/play_options/Start"]
+z_index = -1
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pxf1")
 
 [node name="Settings" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 1
@@ -225,14 +381,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 109.0
-offset_top = 67.0
+offset_top = 69.0
 offset_right = 225.0
-offset_bottom = 97.0
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 focus_mode = 0
 text = "Seaded"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Buttons/Settings"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pxf1")
 
 [node name="InfoButton" type="Button" parent="CanvasLayer/Buttons"]
 layout_mode = 1
@@ -242,14 +408,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 109.0
-offset_top = 86.0
+offset_top = 91.0
 offset_right = 225.0
-offset_bottom = 116.0
+offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 focus_mode = 0
 text = "Lisainfo"
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Buttons/InfoButton"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 120.0
+offset_bottom = 36.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6pxf1")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(160, 90)
@@ -262,6 +438,34 @@ texture = ExtResource("8_y4h61")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_huyg7")
+}
+
+[node name="BitmanLogoText2" type="Sprite2D" parent="."]
+modulate = Color(0.109804, 0.109804, 0.109804, 1)
+position = Vector2(159, 36)
+scale = Vector2(0.220874, 0.220874)
+texture = ExtResource("7_j6m3p")
+
+[node name="BitmanLogoText" type="Sprite2D" parent="."]
+position = Vector2(157, 34)
+scale = Vector2(0.220874, 0.220874)
+texture = ExtResource("7_j6m3p")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 148.0
+offset_right = 918.0
+offset_bottom = 211.0
+scale = Vector2(0.275, 0.275)
+text = "\"Maailmas on ainult 10 sorti inimesi: need, kes tunnevad kahendarve, ja need, kes ei tunne.\"
+Ian Stewart"
+label_settings = SubResource("LabelSettings_1k6sw")
+horizontal_alignment = 2
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uha8o")
 }
 
 [connection signal="pressed" from="CanvasLayer/Buttons/PlayButton" to="." method="_on_play_button_pressed"]

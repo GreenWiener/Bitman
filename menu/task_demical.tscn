@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://c15ars2mbpuct"]
+[gd_scene load_steps=51 format=3 uid="uid://c15ars2mbpuct"]
 
 [ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="1_0tyqx"]
 [ext_resource type="Script" path="res://menu/task_demical.gd" id="1_2ug1q"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="1_5w432"]
 [ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="2_8vjdf"]
-[ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="3_vrmj0"]
 [ext_resource type="StyleBox" uid="uid://dqln2um3xwrk3" path="res://menu/kontroll_btn.tres" id="5_odksw"]
 [ext_resource type="StyleBox" uid="uid://dongkua34tekb" path="res://menu/question_btn.tres" id="5_rvyty"]
 [ext_resource type="FontFile" uid="uid://or3rf71jm2l3" path="res://menu/fonts/century_gothic.ttf" id="5_w5lpt"]
@@ -11,6 +11,7 @@
 [ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="8_rtjy0"]
 [ext_resource type="Texture2D" uid="uid://c7lm1j5sa3nf" path="res://menu/task_decimal_example.png" id="9_e46p3"]
 [ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="10_5oebm"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="12_7840l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aa5et"]
 content_margin_left = 6.0
@@ -46,13 +47,26 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_2oyrt"]
 line_spacing = -2.0
-font = ExtResource("3_vrmj0")
-font_size = 24
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0q6l"]
 content_margin_left = 13.0
 content_margin_right = 13.0
 bg_color = Color(0.12549, 0.12549, 0.129412, 0.705882)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_63lmf"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.2, 0.2, 0.207843, 0.705882)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rlyvb"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.12549, 0.12549, 0.129412, 0.894118)
 corner_radius_top_left = 5
 corner_radius_bottom_left = 5
 
@@ -63,10 +77,23 @@ bg_color = Color(0.12549, 0.12549, 0.129412, 0.705882)
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0ae7"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.2, 0.2, 0.207843, 0.705882)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ldxl"]
+content_margin_left = 13.0
+content_margin_right = 13.0
+bg_color = Color(0.12549, 0.12549, 0.129412, 0.894118)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
 [sub_resource type="LabelSettings" id="LabelSettings_xlv3i"]
 line_spacing = -2.0
-font = ExtResource("3_vrmj0")
-font_size = 24
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57s5w"]
 bg_color = Color(0.176471, 0.215686, 0.294118, 1)
@@ -75,8 +102,54 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0hp7u"]
+bg_color = Color(0.027451, 0.0745098, 0.137255, 0.313726)
+
+[sub_resource type="LabelSettings" id="LabelSettings_l86nh"]
+line_spacing = -3.0
+font_size = 20
+font_color = Color(0.670588, 0.913725, 0.870588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1wmc3"]
+bg_color = Color(0.788235, 0.823529, 0.890196, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0666667, 0.4, 0.109804, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dce5"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.027451, 0.0745098, 0.137255, 0.313726)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8syi"]
+font_size = 20
+font_color = Color(0.517647, 0.988235, 0.317647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nvcx"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.027451, 0.0745098, 0.137255, 0.313726)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_t7f8s"]
+font_size = 20
+font_color = Color(0.94902, 0.27451, 0.286275, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iic8"]
-bg_color = Color(0.0705882, 0.0980392, 0.141176, 0.905882)
+bg_color = Color(0.0705882, 0.0980392, 0.141176, 0.968627)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -227,6 +300,208 @@ font_color = Color(0, 100, 0, 1)
 font_size = 7
 font_color = Color(1, 1, 0.329412, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_j5ttb"]
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_puxt5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("example_btn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("correct_explain:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("correct_explain:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("wrong_explain:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("wrong_explain:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dp0a3"]
+resource_name = "correct"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("correct_explain:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("correct_explain:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 3.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kdi0s"]
+resource_name = "loading"
+length = 2.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen/ProgressBar:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.52, 0.74, 1.3, 1.43, 1.63, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 20.0, 27.0, 80.0, 85.0, 99.0, 100.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("example_btn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_4sh5u"]
+resource_name = "wrong"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wrong_explain:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wrong_explain:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 3.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sw83"]
+_data = {
+"RESET": SubResource("Animation_puxt5"),
+"correct": SubResource("Animation_dp0a3"),
+"loading": SubResource("Animation_kdi0s"),
+"wrong": SubResource("Animation_4sh5u")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_5f1rb"]
+line_spacing = -2.0
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_2gjiq"]
+font_size = 20
+
 [sub_resource type="Theme" id="Theme_xqm0s"]
 default_font_size = 15
 
@@ -253,6 +528,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_5w432")
 script = ExtResource("1_2ug1q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -288,6 +564,7 @@ offset_right = 313.0
 offset_bottom = 174.0
 
 [node name="Label2" type="Label" parent="Control2"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -309,26 +586,17 @@ offset_right = 312.0
 offset_bottom = 152.0
 color = Color(0.12549, 0.12549, 0.129412, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="num_placeholder" type="Label" parent="."]
 layout_mode = 2
 offset_left = 19.0
 offset_top = 13.0
-offset_right = 953.0
-offset_bottom = 489.0
+offset_right = 173.0
+offset_bottom = 44.0
 scale = Vector2(0.3, 0.3)
-
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 48
-columns = 5
-
-[node name="num_placeholder" type="Label" parent="ScrollContainer/GridContainer"]
-layout_mode = 2
 text = "                      "
 label_settings = ExtResource("2_8vjdf")
 
-[node name="Label=" type="Label" parent="ScrollContainer/GridContainer/num_placeholder"]
+[node name="Label=" type="Label" parent="num_placeholder"]
 layout_mode = 2
 offset_left = 140.0
 offset_top = -1.0
@@ -337,7 +605,7 @@ offset_bottom = 30.0
 text = "="
 label_settings = SubResource("LabelSettings_2oyrt")
 
-[node name="binary_num" type="LineEdit" parent="ScrollContainer/GridContainer/num_placeholder"]
+[node name="binary_num" type="LineEdit" parent="num_placeholder"]
 layout_mode = 2
 offset_left = 4.0
 offset_right = 131.0
@@ -345,6 +613,20 @@ offset_bottom = 31.0
 size_flags_stretch_ratio = 0.0
 editable = false
 context_menu_enabled = false
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+offset_left = 67.0
+offset_top = 13.0
+offset_right = 841.0
+offset_bottom = 489.0
+scale = Vector2(0.3, 0.3)
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 48
+columns = 6
 
 [node name="Add_row" type="Label" parent="ScrollContainer/GridContainer"]
 layout_mode = 2
@@ -364,8 +646,10 @@ theme_override_colors/font_color = Color(1, 1, 0.682353, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0, 1, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_f0q6l")
+theme_override_styles/hover = SubResource("StyleBoxFlat_63lmf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rlyvb")
 text = "+"
 
 [node name="remove_row_btn" type="Button" parent="ScrollContainer/GridContainer/Add_row"]
@@ -381,8 +665,10 @@ theme_override_colors/font_color = Color(1, 1, 0.682353, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 0.682353, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_s6xj4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o0ae7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ldxl")
 text = "–"
 
 [node name="Control" type="Control" parent="."]
@@ -411,7 +697,8 @@ offset_right = 127.0
 offset_bottom = 161.0
 size_flags_stretch_ratio = 0.0
 theme_override_styles/read_only = SubResource("StyleBoxFlat_57s5w")
-placeholder_text = "  vastus"
+placeholder_text = "vastus"
+alignment = 1
 editable = false
 context_menu_enabled = false
 
@@ -421,11 +708,31 @@ offset_left = 140.709
 offset_top = 124.039
 offset_right = 293.708
 offset_bottom = 165.039
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("5_odksw")
 theme_override_styles/hover = ExtResource("1_0tyqx")
 theme_override_styles/pressed = ExtResource("1_0tyqx")
 theme_override_styles/focus = ExtResource("1_0tyqx")
 text = "KONTROLLI"
+
+[node name="Task_explain" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 124.0
+offset_right = 311.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0hp7u")
+
+[node name="Label" type="Label" parent="Task_explain"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 737.0
+offset_bottom = 55.0
+scale = Vector2(0.4, 0.4)
+text = "Teisenda antud kahendarv kümnendarvuks, täites lahenduses olevad tühjad kastid õigete arvudega. Vastuse arvutab arvuti automaatselt. Kaste saab juurde lisada \"+\" nupule vajutades."
+label_settings = SubResource("LabelSettings_l86nh")
+autowrap_mode = 2
 
 [node name="example_btn" type="Button" parent="."]
 layout_mode = 0
@@ -438,10 +745,44 @@ focus_mode = 0
 theme_override_colors/font_color = Color(0.0470588, 0.737255, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("5_rvyty")
 theme_override_styles/hover = ExtResource("6_7wbr0")
-theme_override_styles/pressed = ExtResource("5_rvyty")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1wmc3")
 text = "?"
+
+[node name="HelpArrow" parent="example_btn" instance=ExtResource("12_7840l")]
+visible = false
+position = Vector2(-4.99953, 15.3393)
+scale = Vector2(1.75439, 1.75439)
+
+[node name="correct_explain" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+offset_left = 103.0
+offset_top = 158.0
+offset_right = 411.0
+offset_bottom = 181.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/normal = SubResource("StyleBoxFlat_0dce5")
+text = "Õige lahendus! Masin andis sulle kätte koodi!"
+label_settings = SubResource("LabelSettings_x8syi")
+vertical_alignment = 1
+
+[node name="wrong_explain" type="Label" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 103.0
+offset_top = 158.0
+offset_right = 312.0
+offset_bottom = 181.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/normal = SubResource("StyleBoxFlat_2nvcx")
+text = "Vale lahendus! Proovi uuesti."
+label_settings = SubResource("LabelSettings_t7f8s")
+vertical_alignment = 1
 
 [node name="Example" type="Panel" parent="."]
 visible = false
@@ -459,6 +800,7 @@ offset_top = 0.55455
 offset_right = 217.559
 offset_bottom = 25.5546
 scale = Vector2(0.395, 0.395)
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_xdj2x")
 text = "×"
 
@@ -623,6 +965,89 @@ position = Vector2(102.308, 60.5009)
 scale = Vector2(0.129203, 0.129203)
 texture = ExtResource("9_e46p3")
 
+[node name="translation_label" type="Label" parent="Example"]
+visible = false
+layout_mode = 0
+offset_left = 109.376
+offset_top = 108.44
+offset_right = 253.376
+offset_bottom = 126.44
+scale = Vector2(0.617087, 0.617087)
+text = "Translation coming soon..."
+label_settings = SubResource("LabelSettings_j5ttb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8sw83")
+}
+
+[node name="notask_label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_aa5et")
+label_settings = ExtResource("2_8vjdf")
+
+[node name="Label2" type="Label" parent="notask_label"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 174.998
+offset_top = 127.244
+offset_right = -178.002
+offset_bottom = -141.756
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_aa5et")
+text = "Sa pole ühtegi ülesannet alustanud,
+seega siin pole midagi teha!
+:/"
+label_settings = SubResource("LabelSettings_5f1rb")
+horizontal_alignment = 1
+
+[node name="loading_screen" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_aa5et")
+label_settings = ExtResource("2_8vjdf")
+
+[node name="ProgressBar" type="ProgressBar" parent="loading_screen"]
+layout_mode = 0
+offset_left = 173.954
+offset_top = 153.265
+offset_right = 430.954
+offset_bottom = 180.265
+
+[node name="Label" type="Label" parent="loading_screen"]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 122.0
+offset_right = 430.0
+offset_bottom = 145.0
+text = "laadimine"
+label_settings = SubResource("LabelSettings_2gjiq")
+horizontal_alignment = 1
+
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -640,16 +1065,22 @@ scale = Vector2(0.5, 0.5)
 focus_mode = 0
 theme = SubResource("Theme_xqm0s")
 theme_override_colors/font_color = Color(1, 0.301961, 0.235294, 1)
-theme_override_fonts/font = ExtResource("3_vrmj0")
+theme_override_font_sizes/font_size = 21
 theme_override_styles/normal = ExtResource("8_rtjy0")
 theme_override_styles/hover = ExtResource("10_5oebm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_vmvqm")
 text = "×"
 
-[connection signal="text_changed" from="ScrollContainer/GridContainer/num_placeholder/binary_num" to="." method="_on_binary_num_text_changed"]
+[node name="HelpArrow" parent="BackButton" instance=ExtResource("12_7840l")]
+visible = false
+position = Vector2(-6.39459, 14.5529)
+scale = Vector2(2, 2)
+
+[connection signal="text_changed" from="num_placeholder/binary_num" to="." method="_on_binary_num_text_changed"]
 [connection signal="pressed" from="ScrollContainer/GridContainer/Add_row/add_row_btn" to="." method="_on_add_row_btn_pressed"]
 [connection signal="pressed" from="ScrollContainer/GridContainer/Add_row/remove_row_btn" to="." method="_on_remove_row_btn_pressed"]
 [connection signal="pressed" from="Control/kontroll" to="." method="_on_kontroll_pressed"]
 [connection signal="pressed" from="example_btn" to="." method="_on_example_btn_pressed"]
 [connection signal="pressed" from="Example/close_example_btn" to="." method="_on_close_example_btn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

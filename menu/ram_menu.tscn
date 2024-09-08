@@ -1,12 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyjx6j8a10maq"]
+[gd_scene load_steps=48 format=3 uid="uid://dyjx6j8a10maq"]
 
 [ext_resource type="Script" path="res://menu/ram_menu.gd" id="1_fm8fe"]
 [ext_resource type="StyleBox" uid="uid://dl3jhr4qsj1hk" path="res://menu/fonts/menu_style.tres" id="2_8qwkf"]
 [ext_resource type="LabelSettings" uid="uid://cg7ecyiuomsvk" path="res://menu/Label_Settings1.tres" id="3_w6lip"]
+[ext_resource type="Texture2D" uid="uid://b7e2dwulblugo" path="res://menu/play_btn.png" id="4_4hpj7"]
 [ext_resource type="PackedScene" uid="uid://chfusk0x06bqh" path="res://file_block.tscn" id="4_7io3y"]
+[ext_resource type="Theme" uid="uid://bucyc12r3v0wv" path="res://menu/DefaultTheme.tres" id="4_iwuwi"]
 [ext_resource type="FontFile" uid="uid://mijglbcw51mn" path="res://menu/fonts/century_gothic_bold.ttf" id="5_8qw4e"]
+[ext_resource type="Texture2D" uid="uid://bl2pk4yfanrxf" path="res://menu/volume_icon.png" id="5_lcov7"]
+[ext_resource type="Texture2D" uid="uid://di85u3d5xk6u8" path="res://menu/delete_btn.png" id="5_wx1u8"]
+[ext_resource type="StyleBox" uid="uid://cbgh0p77v4dk8" path="res://menu/vslider.tres" id="5_xytbu"]
 [ext_resource type="StyleBox" uid="uid://8nrv7qy50du1" path="res://menu/btn_dark.tres" id="6_f3gru"]
 [ext_resource type="StyleBox" uid="uid://dpli5bjhyo7mg" path="res://menu/btn_pressed1.tres" id="6_v05tl"]
+[ext_resource type="StyleBox" uid="uid://c20mt70twxue7" path="res://menu/hslider.tres" id="6_w8kgr"]
+[ext_resource type="PackedScene" uid="uid://cneq4hj6av3kr" path="res://menu/unicode_sym.tscn" id="7_3ixg8"]
+[ext_resource type="PackedScene" uid="uid://1xcitvtvm77v" path="res://menu/help_arrow.tscn" id="8_r65eu"]
+[ext_resource type="Texture2D" uid="uid://pk8ndgyjkayu" path="res://world/file_icon.png" id="8_wn85u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ndtr"]
 content_margin_left = 6.0
@@ -28,34 +37,254 @@ corner_radius_bottom_left = 5
 line_spacing = 13.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uddo3"]
-bg_color = Color(0, 0, 0, 0.270588)
+bg_color = Color(0.133333, 0.164706, 0.227451, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_ib1i7"]
+font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_8y472"]
-font_size = 9
+font_size = 11
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmvuw"]
 content_margin_top = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0, 0, 0, 0.117647)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.2, 0.266667, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nr3g"]
 font_size = 18
 font_color = Color(0.643137, 0.643137, 0.643137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x1u"]
+bg_color = Color(0.164706, 0.172549, 0.337255, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_aklyb"]
+line_spacing = -2.0
+font_size = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_1usnq"]
+line_spacing = -5.99
+font_size = 19
+
+[sub_resource type="LabelSettings" id="LabelSettings_jui2m"]
+font_color = Color(0.380392, 0.380392, 0.505882, 1)
+outline_size = 2
+outline_color = Color(0.243137, 0.266667, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5x1kb"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.133333, 0.133333, 0.439216, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.294118, 0.631373, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ju3b"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.972549, 0, 0.501961, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.611765, 0.968627, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01tjd"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.219608, 0.247059, 0.466667, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.262745, 0.262745, 0.360784, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_ae21e"]
+font_color = Color(1, 0.211765, 0.160784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4xrd"]
+content_margin_left = 7.0
+content_margin_top = 7.0
+content_margin_right = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(0.164706, 0.172549, 0.337255, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.105882, 0.133333, 0.188235, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_j1qrj"]
+font = ExtResource("5_8qw4e")
+font_color = Color(0.835294, 0.835294, 0.835294, 1)
+
+[sub_resource type="Theme" id="Theme_ya23w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsboj"]
 content_margin_left = 1.0
 content_margin_top = 1.0
 content_margin_right = 1.0
 content_margin_bottom = 1.0
-bg_color = Color(0, 0, 0, 0.176471)
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8qsd"]
 line_spacing = 1.775
-font_size = 2
+font_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n38xb"]
+bg_color = Color(0.133333, 0.133333, 0.192157, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyf7v"]
+bg_color = Color(0.223529, 0.243137, 0.356863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05oo1"]
+bg_color = Color(0.286275, 0.309804, 0.447059, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5yc64"]
+bg_color = Color(0.372549, 0.4, 0.556863, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_whfma"]
 font_size = 30
 font_color = Color(1, 1, 1, 0.235294)
+
+[sub_resource type="Animation" id="Animation_x8eyw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_ddf4m"]
+resource_name = "loading"
+length = 3.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("loading_screen:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("loading_screen/ProgressBar:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.78, 2.5, 3.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 55.0, 95.0, 100.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_38iyq"]
+_data = {
+"RESET": SubResource("Animation_x8eyw"),
+"loading": SubResource("Animation_ddf4m")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j6gst"]
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+bg_color = Color(0.184314, 0.227451, 0.309804, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.129412, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_6w84w"]
+font_size = 20
 
 [sub_resource type="Theme" id="Theme_hsk8g"]
 default_font_size = 15
@@ -67,6 +296,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("4_iwuwi")
 script = ExtResource("1_fm8fe")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -97,17 +327,19 @@ layout_mode = 0
 offset_left = 8.0
 offset_top = 9.0
 offset_right = 312.0
-offset_bottom = 26.0
+offset_bottom = 31.0
 text = "RAM infopaneel"
 label_settings = SubResource("LabelSettings_ymh58")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Fail_Panel" type="Panel" parent="."]
+clip_contents = true
 layout_mode = 0
 offset_left = 20.0
 offset_top = 34.0
 offset_right = 98.0
-offset_bottom = 152.0
+offset_bottom = 162.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
 
 [node name="failid_label" type="Label" parent="Fail_Panel"]
@@ -116,13 +348,14 @@ offset_right = 156.0
 offset_bottom = 23.0
 scale = Vector2(0.5, 0.5)
 text = "Failid"
+label_settings = SubResource("LabelSettings_ib1i7")
 horizontal_alignment = 1
 
 [node name="failid_label2" type="Label" parent="Fail_Panel"]
 layout_mode = 0
-offset_top = 9.0
+offset_top = 11.0
 offset_right = 156.0
-offset_bottom = 29.0
+offset_bottom = 31.0
 scale = Vector2(0.5, 0.5)
 text = "Kõik failid, mis on RAM-i toodud."
 label_settings = SubResource("LabelSettings_8y472")
@@ -140,11 +373,12 @@ theme_override_font_sizes/font_size = 28
 text = "+"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Fail_Panel"]
+clip_contents = false
 layout_mode = 2
 offset_left = 2.0
-offset_top = 11.0
+offset_top = 12.0
 offset_right = 437.0
-offset_bottom = 628.0
+offset_bottom = 682.0
 scale = Vector2(0.17, 0.17)
 mouse_force_pass_scroll_events = false
 horizontal_scroll_mode = 3
@@ -156,7 +390,7 @@ theme_override_constants/separation = 16
 [node name="palceholder" type="Label" parent="Fail_Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "                                                       "
+text = "                                                                        "
 
 [node name="empty_label" type="Label" parent="Fail_Panel/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -167,80 +401,808 @@ label_settings = SubResource("LabelSettings_1nr3g")
 horizontal_alignment = 1
 
 [node name="file_block" parent="Fail_Panel/ScrollContainer/VBoxContainer" instance=ExtResource("4_7io3y")]
-visible = false
 layout_mode = 2
 
 [node name="Select_Panel" type="Panel" parent="."]
+clip_contents = true
 layout_mode = 0
-offset_left = 103.0
+offset_left = 106.0
 offset_top = 34.0
-offset_right = 228.0
-offset_bottom = 152.0
+offset_right = 265.0
+offset_bottom = 162.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
 
-[node name="selected_label" type="Label" parent="Select_Panel"]
+[node name="Panel" type="PanelContainer" parent="Select_Panel"]
 layout_mode = 0
-offset_right = 250.0
-offset_bottom = 23.0
-scale = Vector2(0.5, 0.5)
-text = "____________"
-horizontal_alignment = 1
+offset_right = 159.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_e1x1u")
+
+[node name="Control" type="Control" parent="Select_Panel/Panel"]
+layout_mode = 2
+
+[node name="selected_label" type="Label" parent="Select_Panel/Panel/Control"]
+modulate = Color(1, 1, 1, 0.372549)
+layout_mode = 2
+offset_left = 18.0
+offset_top = 1.0
+offset_right = 159.0
+offset_bottom = 20.0
+text = "Vali fail"
+label_settings = SubResource("LabelSettings_aklyb")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="Select_Panel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 21.0
+offset_right = 511.0
+offset_bottom = 80.0
+scale = Vector2(0.3, 0.3)
+text = "Faili nimi on esitatud Unicode'i koodide abil (kümnendsüsteemi arvudena), mis vastavad tähemärkidele. Sisesta faili nimi tähemärkides, järgides Unicode'i koodide tabelit."
+label_settings = SubResource("LabelSettings_1usnq")
+autowrap_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Select_Panel"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 40.285
+offset_right = 313.0
+offset_bottom = 73.285
+scale = Vector2(0.3, 0.3)
+theme = ExtResource("4_iwuwi")
+context_menu_enabled = false
+
+[node name="delete_sym_btn" type="Button" parent="Select_Panel/LineEdit"]
+modulate = Color(0.133333, 0.364706, 0.807843, 1)
+layout_mode = 0
+offset_left = 276.667
+offset_top = 4.907
+offset_right = 360.667
+offset_bottom = 86.907
+scale = Vector2(0.3, 0.3)
+focus_mode = 0
+icon = ExtResource("5_wx1u8")
+flat = true
 
 [node name="Info_Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_left = 233.0
-offset_top = 34.0
-offset_right = 300.0
-offset_bottom = 152.0
+offset_left = 222.0
+offset_top = 82.0
+offset_right = 255.0
+offset_bottom = 87.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uddo3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Info_Panel"]
+[node name="arrow" type="Label" parent="Info_Panel"]
+visible = false
 layout_mode = 0
-offset_top = 13.0
-offset_right = 67.0
-offset_bottom = 118.0
-
-[node name="Label" type="Label" parent="Info_Panel"]
-layout_mode = 0
-offset_right = 134.0
-offset_bottom = 23.0
-scale = Vector2(0.5, 0.5)
-text = "Info"
-horizontal_alignment = 1
+offset_left = 128.0
+offset_top = 22.0
+offset_right = 142.0
+offset_bottom = 45.0
+text = "←"
+label_settings = SubResource("LabelSettings_jui2m")
 
 [node name="take_info_btn" type="Button" parent="Info_Panel"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 104.0
-offset_right = 129.0
-offset_bottom = 144.0
+offset_left = -11.0
+offset_top = -8.0
+offset_right = 142.0
+offset_bottom = 25.0
 scale = Vector2(0.3, 0.3)
-text = "Võta info"
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5x1kb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3ju3b")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_01tjd")
+text = "Võta faili info"
 
-[node name="file_content" type="Label" parent="."]
+[node name="textlabel" type="Label" parent="Info_Panel"]
+visible = false
 layout_mode = 0
-offset_left = 106.0
-offset_top = 91.0
-offset_right = 225.0
-offset_bottom = 150.0
+offset_left = 137.0
+offset_top = 45.0
+offset_right = 337.0
+offset_bottom = 94.0
+scale = Vector2(0.26, 0.26)
+text = "Vali kõigepealt vajalikud bitid."
+label_settings = SubResource("LabelSettings_ae21e")
+autowrap_mode = 2
+
+[node name="content" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 87.0
+offset_right = 880.0
+offset_bottom = 451.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_t4xrd")
+
+[node name="unicode_tabel" type="VBoxContainer" parent="content"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="content/unicode_tabel"]
+layout_mode = 2
+text = "Unicode'i koodide tabel"
+label_settings = SubResource("LabelSettings_j1qrj")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="content/unicode_tabel"]
+layout_mode = 2
+theme = SubResource("Theme_ya23w")
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 7
+columns = 10
+
+[node name="symbol33" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 33
+symbol = "!"
+
+[node name="symbol34" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 34
+symbol = "\""
+
+[node name="symbol35" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 35
+symbol = "#"
+
+[node name="symbol36" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 36
+symbol = "$"
+
+[node name="symbol37" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 37
+symbol = "%"
+
+[node name="symbol38" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 38
+symbol = "&"
+
+[node name="symbol39" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 39
+symbol = "'"
+
+[node name="symbol40" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 40
+symbol = "("
+
+[node name="symbol41" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 41
+symbol = ")"
+
+[node name="symbol42" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 42
+symbol = "*"
+
+[node name="symbol43" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 43
+symbol = "+"
+
+[node name="symbol44" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 44
+symbol = ","
+
+[node name="symbol45" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 45
+symbol = "-"
+
+[node name="symbol46" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 46
+symbol = "."
+
+[node name="symbol47" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 47
+symbol = "/"
+
+[node name="symbol48" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 48
+symbol = "0"
+
+[node name="symbol49" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 49
+symbol = "1"
+
+[node name="symbol50" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 50
+symbol = "2"
+
+[node name="symbol51" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 51
+symbol = "3"
+
+[node name="symbol52" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 52
+symbol = "4"
+
+[node name="symbol53" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 53
+symbol = "5"
+
+[node name="symbol54" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 54
+symbol = "6"
+
+[node name="symbol55" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 55
+symbol = "7"
+
+[node name="symbol56" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 56
+symbol = "8"
+
+[node name="symbol57" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 57
+symbol = "9"
+
+[node name="symbol58" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 58
+symbol = ":"
+
+[node name="symbol59" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 59
+symbol = ";"
+
+[node name="symbol60" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 60
+symbol = "<"
+
+[node name="symbol61" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 61
+symbol = "="
+
+[node name="symbol62" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 62
+symbol = ">"
+
+[node name="symbol63" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 63
+symbol = "?"
+
+[node name="symbol64" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 64
+symbol = "@"
+
+[node name="symbol65" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 65
+symbol = "A"
+
+[node name="symbol66" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 66
+symbol = "B"
+
+[node name="symbol67" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 67
+symbol = "C"
+
+[node name="symbol68" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 68
+symbol = "D"
+
+[node name="symbol69" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 69
+symbol = "E"
+
+[node name="symbol70" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 70
+symbol = "F"
+
+[node name="symbol71" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 71
+symbol = "G"
+
+[node name="symbol72" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 72
+symbol = "H"
+
+[node name="symbol73" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 73
+symbol = "I"
+
+[node name="symbol74" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 74
+symbol = "J"
+
+[node name="symbol75" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 75
+symbol = "K"
+
+[node name="symbol76" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 76
+symbol = "L"
+
+[node name="symbol77" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 77
+symbol = "M"
+
+[node name="symbol78" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 78
+symbol = "N"
+
+[node name="symbol79" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 79
+symbol = "O"
+
+[node name="symbol80" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 80
+symbol = "P"
+
+[node name="symbol81" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 81
+symbol = "Q"
+
+[node name="symbol82" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 82
+symbol = "R"
+
+[node name="symbol83" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 83
+symbol = "S"
+
+[node name="symbol84" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 84
+symbol = "T"
+
+[node name="symbol85" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 85
+symbol = "U"
+
+[node name="symbol86" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 86
+symbol = "V"
+
+[node name="symbol87" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 87
+symbol = "W"
+
+[node name="symbol88" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 88
+symbol = "X"
+
+[node name="symbol89" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 89
+symbol = "Y"
+
+[node name="symbol90" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 90
+symbol = "Z"
+
+[node name="symbol91" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 91
+symbol = "["
+
+[node name="symbol92" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 92
+symbol = "\\"
+
+[node name="symbol93" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 93
+symbol = "]"
+
+[node name="symbol94" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 94
+symbol = "^"
+
+[node name="symbol95" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 95
+symbol = "_"
+
+[node name="symbol96" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 96
+symbol = "`"
+
+[node name="symbol97" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 97
+symbol = "a"
+
+[node name="symbol98" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 98
+symbol = "b"
+
+[node name="symbol99" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 99
+symbol = "c"
+
+[node name="symbol100" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 100
+symbol = "d"
+
+[node name="symbol101" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 101
+symbol = "e"
+
+[node name="symbol102" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 102
+symbol = "f"
+
+[node name="symbol103" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 103
+symbol = "g"
+
+[node name="symbol104" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 104
+symbol = "h"
+
+[node name="symbol105" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 105
+symbol = "i"
+
+[node name="symbol106" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 106
+symbol = "j"
+
+[node name="symbol107" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 107
+symbol = "k"
+
+[node name="symbol108" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 108
+symbol = "l"
+
+[node name="symbol109" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 109
+symbol = "m"
+
+[node name="symbol110" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 110
+symbol = "n"
+
+[node name="symbol111" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 111
+symbol = "o"
+
+[node name="symbol112" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 112
+symbol = "p"
+
+[node name="symbol113" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 113
+symbol = "q"
+
+[node name="symbol114" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 114
+symbol = "r"
+
+[node name="symbol115" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 115
+symbol = "s"
+
+[node name="symbol116" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 116
+symbol = "t"
+
+[node name="symbol117" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 117
+symbol = "u"
+
+[node name="symbol118" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 118
+symbol = "v"
+
+[node name="symbol119" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 119
+symbol = "w"
+
+[node name="symbol120" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 120
+symbol = "x"
+
+[node name="symbol121" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 121
+symbol = "y"
+
+[node name="symbol122" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 122
+symbol = "z"
+
+[node name="symbol123" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 123
+symbol = "{"
+
+[node name="symbol124" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 124
+symbol = "|"
+
+[node name="symbol125" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 125
+symbol = "}"
+
+[node name="symbol126" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 126
+symbol = "~"
+
+[node name="symbol213" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 213
+symbol = "Õ"
+
+[node name="symbol196" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 196
+symbol = "Ä"
+
+[node name="symbol214" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 214
+symbol = "Ö"
+
+[node name="symbol220" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 220
+symbol = "Ü"
+
+[node name="symbol245" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 245
+symbol = "õ"
+
+[node name="symbol228" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 228
+symbol = "ä"
+
+[node name="symbol246" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 246
+symbol = "ö"
+
+[node name="symbol252" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 252
+symbol = "ü"
+
+[node name="symbol352" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 352
+symbol = "Š"
+
+[node name="symbol353" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 353
+symbol = "š"
+
+[node name="symbol381" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 381
+symbol = "Ž"
+
+[node name="symbol382" parent="content/unicode_tabel/GridContainer" instance=ExtResource("7_3ixg8")]
+layout_mode = 2
+number = 382
+symbol = "ž"
+
+[node name="file_content" type="Label" parent="content"]
+visible = false
+custom_minimum_size = Vector2(10, 60)
+layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_jsboj")
 label_settings = SubResource("LabelSettings_c8qsd")
-autowrap_mode = 1
+autowrap_mode = 2
 clip_text = true
+
+[node name="audioplay_controls" type="Control" parent="content"]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 105.0
+offset_bottom = 59.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n38xb")
+
+[node name="play_btn" type="Button" parent="content/audioplay_controls"]
+layout_mode = 2
+offset_left = 44.0
+offset_top = 18.0
+offset_right = 90.0
+offset_bottom = 61.0
+scale = Vector2(0.45, 0.45)
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hyf7v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_05oo1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5yc64")
+toggle_mode = true
+icon = ExtResource("4_4hpj7")
+
+[node name="MusicVolumeSlider" type="VSlider" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 4.0
+offset_right = 125.0
+offset_bottom = 118.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("5_xytbu")
+min_value = -30.0
+max_value = 10.0
+
+[node name="MusicTimeSlider" type="HSlider" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 51.0
+offset_right = 244.0
+offset_bottom = 67.0
+scale = Vector2(0.4, 0.4)
+theme_override_styles/slider = ExtResource("6_w8kgr")
+
+[node name="volume_icon" type="Sprite2D" parent="content/audioplay_controls"]
+modulate = Color(1, 1, 1, 0.85098)
+position = Vector2(112, 54)
+scale = Vector2(0.337209, 0.337209)
+texture = ExtResource("5_lcov7")
+
+[node name="TimeLabel" type="Label" parent="content/audioplay_controls"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 43.0
+offset_right = 318.0
+offset_bottom = 66.0
+scale = Vector2(0.3, 0.3)
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="content/audioplay_controls"]
+visible = false
+layout_mode = 0
+offset_left = 109.0
+offset_top = 51.0
+offset_right = 149.0
+offset_bottom = 74.0
+scale = Vector2(0.3, 0.3)
+text = "123"
 
 [node name="dotdotdot" type="Label" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 108.0
-offset_top = 139.0
-offset_right = 135.0
-offset_bottom = 181.0
+offset_left = 109.0
+offset_top = 137.0
+offset_right = 136.0
+offset_bottom = 179.0
 scale = Vector2(0.3, 0.3)
 text = "..."
 label_settings = SubResource("LabelSettings_whfma")
 
 [node name="File_icon" type="Sprite2D" parent="."]
-position = Vector2(165, 68)
+position = Vector2(115, 44)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_wn85u")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+panning_strength = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_38iyq")
+}
+
+[node name="loading_screen" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 296.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_j6gst")
+label_settings = ExtResource("3_w6lip")
+
+[node name="ProgressBar" type="ProgressBar" parent="loading_screen"]
+layout_mode = 0
+offset_left = 173.954
+offset_top = 153.265
+offset_right = 430.954
+offset_bottom = 180.265
+value = 100.0
+
+[node name="Label" type="Label" parent="loading_screen"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 126.0
+offset_right = 430.0
+offset_bottom = 149.0
+text = "Failide laadimine"
+label_settings = SubResource("LabelSettings_6w84w")
+horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
@@ -265,6 +1227,20 @@ theme_override_styles/hover = ExtResource("6_v05tl")
 theme_override_styles/pressed = ExtResource("2_8qwkf")
 text = "×"
 
+[node name="HelpArrow" parent="BackButton" instance=ExtResource("8_r65eu")]
+position = Vector2(-8, 16)
+scale = Vector2(2, 2)
+
 [connection signal="pressed" from="Fail_Panel/new_task_btn" to="." method="_on_new_task_btn_pressed"]
+[connection signal="button_down" from="Select_Panel/LineEdit/delete_sym_btn" to="." method="_on_delete_sym_btn_button_down"]
+[connection signal="button_up" from="Select_Panel/LineEdit/delete_sym_btn" to="." method="_on_delete_sym_btn_button_up"]
+[connection signal="pressed" from="Select_Panel/LineEdit/delete_sym_btn" to="." method="_on_delete_sym_btn_pressed"]
 [connection signal="pressed" from="Info_Panel/take_info_btn" to="." method="_on_take_info_btn_pressed"]
+[connection signal="pressed" from="content/audioplay_controls/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="drag_ended" from="content/audioplay_controls/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_ended"]
+[connection signal="drag_started" from="content/audioplay_controls/MusicVolumeSlider" to="." method="_on_music_volume_slider_drag_started"]
+[connection signal="drag_ended" from="content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_drag_ended"]
+[connection signal="drag_started" from="content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_drag_started"]
+[connection signal="value_changed" from="content/audioplay_controls/MusicTimeSlider" to="." method="_on_music_time_slider_value_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
