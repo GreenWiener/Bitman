@@ -223,8 +223,8 @@ sprite = "res://world/dropoff_sign.png"
 
 [node name="InfoPanel2" parent="ysort" instance=ExtResource("12_pmnro")]
 position = Vector2(286, 144)
-text = "Selle ruudulise ala sees on võimalik infofail pakkida kasti sisse. Selleks pane infofail ala sees maha, võta riiulilt kast ja pane infofail ala sees kasti sisse."
-text_en = "Info files can be stored inside boxes in the adjacent area. To store info inside a box, put down the info file inside the area, take a box from the shelf and put the info file inside the box while being inside the area."
+text = "Selle ruudulise ala sees on võimalik infofail pakkida kasti sisse. Selleks: 1) pane infofail ala sees maha, 2) võta riiulilt kast ja 3) kasti ikka käes hoides pane infofail ala sees kasti sisse."
+text_en = "Info files can be stored inside boxes in the adjacent area. To store info inside a box, put down the info file inside the area, take a box from the shelf and put the info file inside the box while holding the box."
 panel_name = "ram_packagepanel2"
 sprite = "res://world/dropoff_sign.png"
 

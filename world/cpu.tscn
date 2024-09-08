@@ -187,7 +187,7 @@ y_sort_enabled = true
 
 [node name="InfoPanel" parent="ysort" instance=ExtResource("10_mcpgs")]
 position = Vector2(107.976, 120.749)
-text = "Pane ülesandes nõutud info kasti sees sellele lindile!"
+text = "Pane ülesandes nõutud info kastiga sellele lindile!"
 text_en = "Put the box with the info on the baggage carousel!"
 panel_name = "cpu_packagepanel"
 sprite = "res://world/dropoff_sign.png"

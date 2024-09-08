@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://ccm2vdp5io3vp"]
+[gd_scene load_steps=78 format=3 uid="uid://ccm2vdp5io3vp"]
 
 [ext_resource type="Texture2D" uid="uid://70yi3w6ahvk" path="res://player/player.png" id="1"]
 [ext_resource type="Script" path="res://player/player.gd" id="2"]
@@ -89,6 +89,16 @@ font_color = Color(0.588235, 0.588235, 0.588235, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_7nu57"]
 line_spacing = -2.0
 font_size = 17
+
+[sub_resource type="LabelSettings" id="LabelSettings_ifyq0"]
+line_spacing = -2.0
+font_size = 17
+font_color = Color(1, 1, 0.443137, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mupj6"]
+line_spacing = -2.0
+font_size = 14
+font_color = Color(1, 1, 0.443137, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_gjiha"]
 font_size = 20
@@ -723,7 +733,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_odq0e"]
 resource_name = "more_keybinds"
-length = 2.0
+length = 4.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -731,7 +741,7 @@ tracks/0/path = NodePath("CanvasLayer/keybind_start_help/Label:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 4.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -743,7 +753,7 @@ tracks/1/path = NodePath("CanvasLayer/keybind_start_help/Label:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.7, 2),
+"times": PackedFloat32Array(0, 0.3, 4.2, 4.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(105, 164), Vector2(248, 164), Vector2(253, 164), Vector2(297, 164)]
@@ -755,10 +765,10 @@ tracks/2/path = NodePath("CanvasLayer/keybind_start_help/Label:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.7, 2),
+"times": PackedFloat32Array(0, 0.3, 4.2, 4.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1301, 55), Vector2(344, 55), Vector2(312, 55), Vector2(21, 55)]
+"values": [Vector2(1310, 55), Vector2(357, 55), Vector2(324, 55), Vector2(21, 55)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8bk7g"]
@@ -1265,14 +1275,25 @@ label_settings = SubResource("LabelSettings_7nu57")
 
 [node name="esemedk" type="Label" parent="CanvasLayer/keyboard_inputs"]
 layout_mode = 0
-offset_left = 7.0
+offset_left = 10.0
 offset_top = 38.0
-offset_right = 184.0
+offset_right = 168.0
 offset_bottom = 74.0
 scale = Vector2(0.25, 0.25)
-text = "F  -  võta kätte / pane maha
-G  -  ava kast / pane kasti"
+text = "-  võta kätte / pane maha
+-  ava kast / pane kasti"
 label_settings = SubResource("LabelSettings_7nu57")
+
+[node name="esemedk2" type="Label" parent="CanvasLayer/keyboard_inputs"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 38.0
+offset_right = 24.0
+offset_bottom = 74.0
+scale = Vector2(0.25, 0.25)
+text = "F
+G"
+label_settings = SubResource("LabelSettings_ifyq0")
 
 [node name="uldisedk" type="Label" parent="CanvasLayer/keyboard_inputs"]
 layout_mode = 0
@@ -1281,11 +1302,32 @@ offset_top = 55.0
 offset_right = 250.0
 offset_bottom = 142.0
 scale = Vector2(0.25, 0.25)
-text = "E  -  ava / sulge / muud tegevused
+text = "    -  ava / sulge / muud tegevused
 ESC  -  sulge aken / mäng pausile
 Vasak hiireklahv  -  ava / sulge kapiuks
 Hiire kerimisratas  -  kaamera suumimine"
 label_settings = SubResource("LabelSettings_7nu57")
+
+[node name="uldisedk3" type="Label" parent="CanvasLayer/keyboard_inputs"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 54.9756
+offset_right = 24.0
+offset_bottom = 73.9756
+scale = Vector2(0.25, 0.25)
+text = "E"
+label_settings = SubResource("LabelSettings_ifyq0")
+
+[node name="some_info" type="Label" parent="CanvasLayer/keyboard_inputs"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 76.0
+offset_right = 209.0
+offset_bottom = 127.0
+scale = Vector2(0.25, 0.25)
+text = "* Kollase värviga märgitud klahve saab kasutada ainult siis, kui näed mängutegelase juures vastavat infokirja."
+label_settings = SubResource("LabelSettings_mupj6")
+autowrap_mode = 2
 
 [node name="Buttons" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1533,7 +1575,7 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="CanvasLayer/Welcome_Text/PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Tere tulemast Bitmani kodumaale Bitlandi – arvti sisemusse, kus ringi rännates ja mitmesuguseid ülesandeid lahendades saad muuhulgas teada, mis on bitt ja miks see arvuti töö mõistmiseks oluline on. Bitlandis seigeldes õpid tundma ka erinevaid osasid (Bitlandi maju), millest arvuti sisemus koosneb ning milleks need osad vajalikud on.
+text = "Tere tulemast Bitmani kodumaale Bitlandi – arvuti sisemusse, kus ringi rännates ja mitmesuguseid ülesandeid lahendades saad muuhulgas teada, mis on bitt ja miks see arvuti töö mõistmiseks oluline on. Bitlandis seigeldes õpid tundma ka erinevaid osasid (Bitlandi maju), millest arvuti sisemus koosneb ning milleks need osad vajalikud on.
 
 Põnevat seiklemist!"
 label_settings = SubResource("LabelSettings_xhm3y")

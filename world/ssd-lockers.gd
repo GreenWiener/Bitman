@@ -103,7 +103,7 @@ func spawn_item_in_locker(): # asjade lisamine kappi
 	#print("LOCKER_INFO_DICT: ", Global.locker_info_dict)
 	#print("LOCKER_NUM_DICT_TEMP: ", Global.locker_num_dict_temp)
 
-
+	
 
 
 func random_binary_num():

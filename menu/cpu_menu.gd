@@ -186,6 +186,7 @@ func _on_take_info_btn_pressed():
 	
 	$AnimationPlayer.play("loading")
 	if "kood - " in Global.holding_item_name and Global.holding_item_name != null:
+		$task_binary.boot_up()
 		$task_binary.show()
 		$files_menu.hide()
 	else:

@@ -2,7 +2,8 @@ extends Control
 
 
 func boot_up():
-	pass
+	if "cpu_menu_help" not in Global.showed_helparrow:
+		$example_btn/HelpArrow2.visible = true
 
 
 func _ready():
@@ -108,6 +109,10 @@ func check_answer():
 			self.hide()
 			$"../files_menu".show()
 			$"..".successful_scan()
+			
+			if "cpu_menu_help" not in Global.showed_helparrow:
+				$example_btn/HelpArrow2.visible = false
+				Global.showed_helparrow.append("cpu_menu_help")
 		
 		elif row_1st_num_check != len(row_1st_nums):
 			print("TULEMUS: lahendus on vale")
@@ -170,6 +175,8 @@ func _on_example_btn_pressed():
 	AudioPlayer.play_fx("res://audio/tick.wav")
 	$Example.visible = !$Example.visible
 	$example_btn/HelpArrow2.visible = false
+	if "cpu_menu_help" not in Global.showed_helparrow:
+		Global.showed_helparrow.append("cpu_menu_help")
 	
 func _on_close_example_btn_pressed():
 	AudioPlayer.play_fx("res://audio/tick2.wav")

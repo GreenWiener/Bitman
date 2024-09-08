@@ -9,11 +9,11 @@ func boot_up():
 	AudioPlayer.play_fx("res://audio/computer_open.wav")
 	$content/unicode_tabel.visible = false
 
-	$Select_Panel/Panel/Control/selected_label.modulate = "ffffff5f"
+	$Select_Panel/Panel/Control/selected_label.modulate = "ff0000"
 	if Global.language == "english" or Global.language == "skibidi":
-		$Select_Panel/Panel/Control/selected_label.text = "Select a file"
+		$Select_Panel/Panel/Control/selected_label.text = "No file selected!"
 	else:
-		$Select_Panel/Panel/Control/selected_label.text = "Vali fail"
+		$Select_Panel/Panel/Control/selected_label.text = "Fail on valimata!"
 	
 	$Info_Panel/take_info_btn.disabled = true
 	$Select_Panel/LineEdit.editable = false
@@ -57,7 +57,7 @@ func select_file(the_file):
 	$content/audioplay_controls/play_btn.button_pressed = false
 	$AudioStreamPlayer2D.stop()
 	
-	if "Vali fail" not in the_file or "Select a file" not in the_file:
+	if "Fail on valimata!" not in the_file or "No file selected!" not in the_file:
 		$content/unicode_tabel.visible = true
 		$Select_Panel/Panel/Control/selected_label.modulate = "ffffff"
 		
@@ -90,7 +90,7 @@ func select_file(the_file):
 
 
 func _on_take_info_btn_pressed():
-	if selected_file != "Vali fail" and selected_file != "Select a file":
+	if selected_file != "Fail on valimata!" and selected_file != "No file selected!":
 		if $Info_Panel/take_info_btn.modulate == Color("00ff47"):
 			$Info_Panel/take_info_btn.disabled = true
 		#if Global.holding_item_name != null:
@@ -158,7 +158,7 @@ func _on_take_info_btn_pressed():
 func reload_files():
 	$content/unicode_tabel.visible = false
 	$AudioStreamPlayer2D.stop()
-	#select_file("Vali fail")
+	#select_file("Fail on valimata!")
 	
 	$Select_Panel/LineEdit.text = ""
 	$File_icon.texture = load("res://world/file_icon.png")

@@ -520,21 +520,21 @@ polygon = PackedVector2Array(-50.69, 9, 44, 9, 44, 7, 35.31, 7, 35.31, 6, 49.31,
 
 [node name="InfoPanel_ram" parent="ysort" instance=ExtResource("8_g0il1")]
 position = Vector2(-149, 51)
-text = "See on maja nimega RAM (inglise keeles \"random acces memory\") - muutmälu. Muutmälu on arvuti lühiajaline mälu, kus andmeid talletatakse ainult sel ajal, kui arvuti on sisse lülitatud. Muutmälusse tulevad andmed püsimälust ja muutmälus olevaid andmeid kasutab protsessor. Kui protsessor on andmed ära töödelnud tuleb need töödeldud kujul talletamiseks tagasi püsimällu salvestada, sest kui arvuti välja lülitada, lähevad muutmälus olevad andmed kaotsi."
+text = "See on maja nimega RAM (inglise keeles \"random acces memory\") - muutmälu. Muutmälu on arvuti lühiajaline mälu, kus andmeid talletatakse ainult sel ajal, kui arvuti on sisse lülitatud. Muutmälusse tulevad andmed püsimälust ja muutmälus olevaid andmeid kasutab protsessor. Kui protsessor on andmed ära töödelnud, tuleb need töödeldud kujul talletamiseks tagasi püsimällu salvestada, sest kui arvuti välja lülitada, lähevad muutmälus olevad andmed kaotsi."
 text_en = "This is a house called RAM (random access memory). RAM is a computer's short-term memory that only holds data when the computer is turned on. The data in the RAM comes from the SSD and the data in the RAM is used by the processor (CPU). When the computer is turned off, the data in the RAM will be lost, unless the user saves it to the solid state memory (SSD)."
 panel_name = "ram_infopanel1"
 sprite = "res://world/blue_sign.png"
 
 [node name="InfoPanel_ram2" parent="ysort" instance=ExtResource("8_g0il1")]
 position = Vector2(-373, 52)
-text = "See on maja nimega RAM (inglise keeles \"random acces memory\") - muutmälu. Muutmälu on arvuti lühiajaline mälu, kus andmeid talletatakse ainult sel ajal, kui arvuti on sisse lülitatud. Muutmälusse tulevad andmed püsimälust ja muutmälus olevaid andmeid kasutab protsessor. Kui protsessor on andmed ära töödelnud tuleb need töödeldud kujul talletamiseks tagasi püsimällu salvestada, sest kui arvuti välja lülitada, lähevad muutmälus olevad andmed kaotsi."
+text = "See on maja nimega RAM (inglise keeles \"random acces memory\") - muutmälu. Muutmälu on arvuti lühiajaline mälu, kus andmeid talletatakse ainult sel ajal, kui arvuti on sisse lülitatud. Muutmälusse tulevad andmed püsimälust ja muutmälus olevaid andmeid kasutab protsessor. Kui protsessor on andmed ära töödelnud, tuleb need töödeldud kujul talletamiseks tagasi püsimällu salvestada, sest kui arvuti välja lülitada, lähevad muutmälus olevad andmed kaotsi."
 text_en = "This is a house called RAM (random access memory). RAM is a computer's short-term memory that only holds data when the computer is turned on. The data in the RAM comes from the SSD and the data in the RAM is used by the processor (CPU). When the computer is turned off, the data in the RAM will be lost, unless the user saves it to the solid state memory (SSD)."
 panel_name = "ram_infopanel2"
 sprite = "res://world/blue_sign.png"
 
 [node name="InfoPanel_ssd" parent="ysort" instance=ExtResource("8_g0il1")]
 position = Vector2(-547, 57)
-text = "See on maja nimega SSD (inglise keeles \"solid state drive\") - pooljuhtketas. Pooljuhtketas ehk SSD-ketas on arvuti püsimälu, kus andmed säilivad ka siis, kui arvuti välja lülitatakse. See hoiustab kõiki arvutis olevaid andmeid (nt dokumendid, pildid jm), programme (nt mängud, brauserid jm) ning arvuti operatsioonisüsteemi (nt Windows, Linux). Arvutis võib olla püsimäluks ka kõvaketas (ing hard disk drive ehk HDD), mis täidab SSD-ga samu ülesandeid."
+text = "See on maja nimega SSD (inglise keeles \"solid state drive\") - pooljuhtketas. Pooljuhtketas ehk SSD-ketas on arvuti püsimälu, kus andmed säilivad ka siis, kui arvuti välja lülitatakse. See hoiustab kõiki arvutis olevaid andmeid (nt dokumendid, pildid jm), programme (nt mängud, brauserid jm) ning arvuti operatsioonisüsteemi (nt Windows, Linux). Arvutis võib olla püsimäluks ka kõvaketas (ing \"hard disk drive\" ehk HDD), mis täidab SSD-ga samu ülesandeid."
 text_en = "This is a house called SSD (solid state disk). A solid state disk or SSD disk is a data storage device and stores all the data on the computer and the computer's operating system (e.g. Windows, Linux). This is the non-volatile memory of the computer, where the data is preserved even when the computer is turned off."
 panel_name = "ssd_infopanel"
 sprite = "res://world/blue_sign.png"

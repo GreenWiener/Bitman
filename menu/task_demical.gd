@@ -176,6 +176,7 @@ func _on_example_btn_pressed():
 	AudioPlayer.play_fx("res://audio/tick.wav")
 	$Example.visible = !$Example.visible
 	#hide_helparrow()
+	
 	$example_btn/HelpArrow.hide()
 	if "ssd_menu_help" not in Global.showed_helparrow:
 		Global.showed_helparrow.append("ssd_menu_help")

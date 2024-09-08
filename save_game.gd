@@ -60,7 +60,8 @@ static func save_game_data(): # muutujate salvestamine
 		"locker_num_list" : Global.locker_num_list,
 		"locker_dict_keys" : Global.locker_dict_keys,
 		"bin_task_completed_last" : Global.bin_task_completed_last,
-		"locker_info_dict" : Global.locker_info_dict
+		"locker_info_dict" : Global.locker_info_dict,
+		"feedback_dict" : Global.feedback_dict
 	}
 	return save_dict
 
@@ -176,6 +177,7 @@ static func load_from_file(file_path : String): # salvestatud info lugemine fail
 			
 			Global.locker_num_list = node_data["locker_num_list"]
 			
+			Global.feedback_dict = node_data["feedback_dict"]
 			
 			# --
 			Global.locker_state_dict2 = node_data["ram_locker_states"]
@@ -298,8 +300,11 @@ static func delete_save():
 	
 	Global.locker_num_list = []
 	Global.locker_dict_keys = null
-	Global.new_ssd_lockers()
+	#Global.new_ssd_lockers()
 	
 	if Global._world != null:
 		Global._world.get_tree().reload_current_scene()
+	
+	
+	Global.feedback_dict = {}
 	
