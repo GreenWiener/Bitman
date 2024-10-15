@@ -4,11 +4,11 @@ Tegin mängu mängumootoris [Godot](https://godotengine.org/). Siia on üles lae
 # Kuidas mängida?
 Mängimiseks pead sa mängu endale alla laadima. All pool on erinevaid versioone mängust, pead endale sobiva alla laadima.
 
-Kui sul on Windows arvuti, siis see fail on sulle: [Bitman-v1.2-win64.exe](https://github.com/GreenWiener/Bitman/releases/download/v1.2/Bitman-v1.2-win64.exe).
+Kui sul on Windows arvuti, siis see fail on sulle: [Bitman-v1.3-win64.exe](https://github.com/GreenWiener/Bitman/releases/download/v1.3/Bitman-v1.3-win64.exe).
 
-Kui sul on Mac arvuti, siis sa ei saa mängida, sest su operatsioonisüsteemile ei meeldi mu mäng ja mulle ei meeldi su operatsioonisüsteem.
+Kui sul on MAC arvuti, siis see on sulle: [Bitman-v1.3-mac.zip](https://github.com/GreenWiener/Bitman/releases/download/v1.3/Bitman-v1.3-mac.zip). Pead selle kõigepealt lahti pakkima ja kui siis mängu faili jooksutad, pead GateKeeperil lubama faili jooksudada, sest MAC üritab su arvutit kaitsta.
 
-Kui sul on Android telefon, siis lae Google Drive'ist alla [Bitman-v1.2.apk](https://drive.google.com/file/d/1M4nfriROCNje_kSP-nl8I0XCC040Zq7c/view?usp=sharing). Jah, seda mängu saab telos mängida, aga ma ei soovita (töötab, aga pole väga mugav).
+Kui sul on Android telefon, siis lae see fail alla: [Bitman-v1.3-android.apk](https://github.com/GreenWiener/Bitman/releases/download/v1.3/Bitman-v1.3-android.apk). Jah, seda mängu saab telos mängida, aga ma ei soovita (töötab, aga pole väga mugav).
 
 Kui sul on Iphone, siis võid [siit](https://www.samsung.com/ee/mobile/) abi leida.
 
