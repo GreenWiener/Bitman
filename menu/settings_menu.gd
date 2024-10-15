@@ -10,16 +10,16 @@ func _on_fx_volume_value_changed(value):
 	AudioPlayer.play_fx("res://audio/btn_click_short.wav")
 
 
-@onready var musicslider: Slider = get_node("CanvasLayer/Control/Panel/music_volume")
-@onready var fxslider: Slider = get_node("CanvasLayer/Control/Panel/fx_volume")
-@onready var LanguageMenu = $CanvasLayer/Control/Panel/LanguageMenu
-@onready var language_btn = $CanvasLayer/Control/Panel/language_btn
-@onready var english_btn = $CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/english
-@onready var eesti_btn = $CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/eesti
+@onready var musicslider: Slider = get_node("CanvasLayer/Control/Panel2/Panel/music_volume")
+@onready var fxslider: Slider = get_node("CanvasLayer/Control/Panel2/Panel/fx_volume")
+@onready var LanguageMenu = $CanvasLayer/Control/Panel2/Panel/LanguageMenu
+@onready var language_btn = $CanvasLayer/Control/Panel2/Panel/language_btn
+@onready var english_btn = $CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer/english
+@onready var eesti_btn = $CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer/eesti
 
-@onready var label_h1 = $CanvasLayer/Control/Panel/H1
-@onready var label_h2 = $CanvasLayer/Control/Panel/H2
-@onready var label_h3 = $CanvasLayer/Control/Panel/H3
+@onready var label_h1 = $CanvasLayer/Control/Panel2/Panel/H1
+@onready var label_h2 = $CanvasLayer/Control/Panel2/Panel/H2
+@onready var label_h3 = $CanvasLayer/Control/Panel2/Panel/H3
 
 
 func _ready() -> void:

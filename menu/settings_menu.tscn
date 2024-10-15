@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5pf103uonwfq"]
+[gd_scene load_steps=21 format=3 uid="uid://c5pf103uonwfq"]
 
 [ext_resource type="Script" path="res://menu/settings_menu.gd" id="1_hnuin"]
 [ext_resource type="Texture2D" uid="uid://13l70e0t2eem" path="res://world/circuit_tile_gray.png" id="1_r55xm"]
@@ -17,6 +17,9 @@ shader = ExtResource("2_78iib")
 shader_parameter/vignette_intensity = 0.385
 shader_parameter/vignette_opacity = 1.0
 shader_parameter/vignette_rgb = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2pxd"]
+draw_center = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_dah3b"]
 line_spacing = -2.23
@@ -156,14 +159,22 @@ focus_mode = 0
 text = "<"
 script = ExtResource("9_sy0vx")
 
-[node name="Panel" type="Panel" parent="CanvasLayer/Control"]
+[node name="Panel2" type="Panel" parent="CanvasLayer/Control"]
 layout_mode = 0
 offset_left = 70.0
 offset_top = 16.0
 offset_right = 261.0
 offset_bottom = 165.0
 
-[node name="text" type="Label" parent="CanvasLayer/Control/Panel"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Control/Panel2"]
+layout_mode = 0
+offset_left = 19.0
+offset_right = 134.0
+offset_bottom = 69.0
+scale = Vector2(1.17, 1.17)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2pxd")
+
+[node name="text" type="Label" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 16.0
@@ -173,7 +184,7 @@ scale = Vector2(0.32, 0.32)
 label_settings = SubResource("LabelSettings_dah3b")
 autowrap_mode = 2
 
-[node name="H1" type="Label" parent="CanvasLayer/Control/Panel"]
+[node name="H1" type="Label" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 16.0
@@ -183,7 +194,7 @@ scale = Vector2(0.525, 0.525)
 text = "Heliefektid"
 horizontal_alignment = 2
 
-[node name="H2" type="Label" parent="CanvasLayer/Control/Panel"]
+[node name="H2" type="Label" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 34.0
@@ -193,7 +204,7 @@ scale = Vector2(0.525, 0.525)
 text = "Muusika"
 horizontal_alignment = 2
 
-[node name="H3" type="Label" parent="CanvasLayer/Control/Panel"]
+[node name="H3" type="Label" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 53.0
@@ -203,7 +214,7 @@ scale = Vector2(0.525, 0.525)
 text = "Keel"
 horizontal_alignment = 2
 
-[node name="DemoButton" type="Button" parent="CanvasLayer/Control/Panel"]
+[node name="DemoButton" type="Button" parent="CanvasLayer/Control/Panel2/Panel"]
 visible = false
 layout_mode = 0
 offset_left = 142.0
@@ -217,7 +228,7 @@ theme_override_styles/hover = ExtResource("8_gnpgj")
 theme_override_styles/pressed = ExtResource("8_ty2pv")
 text = "Demo video"
 
-[node name="fx_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
+[node name="fx_volume" type="HSlider" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 17.0
@@ -227,7 +238,7 @@ scale = Vector2(0.4, 0.4)
 min_value = -30.0
 max_value = 10.0
 
-[node name="music_volume" type="HSlider" parent="CanvasLayer/Control/Panel"]
+[node name="music_volume" type="HSlider" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 35.0
@@ -237,7 +248,7 @@ scale = Vector2(0.4, 0.4)
 min_value = -30.0
 max_value = 10.0
 
-[node name="language_btn" type="Button" parent="CanvasLayer/Control/Panel"]
+[node name="language_btn" type="Button" parent="CanvasLayer/Control/Panel2/Panel"]
 layout_mode = 0
 offset_left = 55.0
 offset_top = 52.0
@@ -248,7 +259,7 @@ focus_mode = 0
 toggle_mode = true
 text = "eesti"
 
-[node name="LanguageMenu" type="PanelContainer" parent="CanvasLayer/Control/Panel"]
+[node name="LanguageMenu" type="PanelContainer" parent="CanvasLayer/Control/Panel2/Panel"]
 visible = false
 layout_mode = 0
 offset_left = 87.0
@@ -258,33 +269,33 @@ offset_bottom = 146.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/panel = SubResource("StyleBoxFlat_foy4p")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel/LanguageMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/Panel2/Panel/LanguageMenu"]
 layout_mode = 2
 theme = SubResource("Theme_7w7q4")
 theme_override_constants/separation = -1
 
-[node name="eesti" type="Button" parent="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer"]
+[node name="eesti" type="Button" parent="CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_x7loq")
 text = "eesti"
 
-[node name="english" type="Button" parent="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer"]
+[node name="english" type="Button" parent="CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_nr8sq")
 text = "inglise"
 
-[node name="skibidi" type="Button" parent="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer"]
+[node name="skibidi" type="Button" parent="CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_nr8sq")
 text = "skibidi"
 
 [connection signal="pressed" from="CanvasLayer/Control/BackButton" to="CanvasLayer/Control/BackButton" method="_on_pressed"]
-[connection signal="value_changed" from="CanvasLayer/Control/Panel/fx_volume" to="." method="_on_fx_volume_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/Control/Panel/music_volume" to="." method="_on_music_slider_value_changed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/language_btn" to="." method="_on_language_btn_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/eesti" to="." method="_on_eesti_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/english" to="." method="_on_english_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Panel/LanguageMenu/VBoxContainer/skibidi" to="." method="_on_skibidi_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Control/Panel2/Panel/fx_volume" to="." method="_on_fx_volume_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Control/Panel2/Panel/music_volume" to="." method="_on_music_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel2/Panel/language_btn" to="." method="_on_language_btn_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer/eesti" to="." method="_on_eesti_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer/english" to="." method="_on_english_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Panel2/Panel/LanguageMenu/VBoxContainer/skibidi" to="." method="_on_skibidi_pressed"]

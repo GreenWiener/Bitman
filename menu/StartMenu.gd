@@ -20,6 +20,12 @@ func _ready():
 		lang_english()
 	elif Global.language == "skibidi":
 		lang_skibidi()
+	
+	if "Android" in OS.get_name():
+		$BitmanLogoText.scale = Vector2(0.346, 0.346)
+		$BitmanLogoText2.scale = Vector2(0.346, 0.346)
+		$CanvasLayer/Buttons.scale = Vector2(1.3, 1.3)
+	
 
 
 func lang_english():
@@ -43,6 +49,7 @@ func lang_skibidi():
 func _on_play_button_pressed():
 	AudioPlayer.play_fx("res://audio/btn_click_2.wav")
 	if not FileAccess.file_exists("user://savegame.save"):
+		SaveGame.delete_save()
 		start_the_game()
 	else:
 		play_btn.hide()
@@ -64,6 +71,7 @@ func _on_settings_pressed():
 
 
 func start_the_game():
+	print("start_the_game")
 	Global.start_game()
 	if Global.most_recent_scene != null:
 		StageManager.changeScene(Global.most_recent_scene)
@@ -72,11 +80,13 @@ func start_the_game():
 
 
 func _on_continue_pressed():
+	print("_on_continue_pressed")
 	AudioPlayer.play_fx("res://audio/btn_click_2.wav")
 	start_the_game()
 
 
 func _on_start_pressed():
+	print("_on_start_pressed")
 	AudioPlayer.play_fx("res://audio/btn_click_2.wav")
 	SaveGame.delete_save()
 	Global.start_game()

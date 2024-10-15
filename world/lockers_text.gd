@@ -1,6 +1,6 @@
 extends Control
 
-var color_error = "f08080" # punanec
+var color_error = "f08080" # punane
 var color_file = "8080f0" # sinine
 
 var scrolling = false

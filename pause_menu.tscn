@@ -83,7 +83,7 @@ script = ExtResource("1_ggkmy")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(160.776, 87.8474)
 scale = Vector2(0.246121, 0.266844)
-color = Color(0.129412, 0.364706, 1, 0.466667)
+color = Color(0.129412, 0.364706, 1, 1)
 blend_mode = 2
 texture = ExtResource("2_6cts3")
 texture_scale = 0.72
@@ -93,7 +93,7 @@ z_index = 1
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 180.0
-color = Color(0.0313726, 0.0431373, 0.101961, 0.541176)
+color = Color(0.0313726, 0.0431373, 0.101961, 0.662745)
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 visible = false
@@ -110,11 +110,12 @@ theme = ExtResource("3_5nr4n")
 
 [node name="middle" type="VBoxContainer" parent="CanvasLayer/Buttons"]
 layout_mode = 0
-offset_left = 119.137
-offset_top = 50.911
-offset_right = 261.137
-offset_bottom = 204.911
+offset_left = 90.192
+offset_top = 26.206
+offset_right = 232.192
+offset_bottom = 180.206
 scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(72.116, 59.691)
 theme_override_constants/separation = 10
 
 [node name="Continue" type="Button" parent="CanvasLayer/Buttons/middle"]
@@ -144,43 +145,50 @@ layout_mode = 2
 focus_mode = 0
 text = "Salvesta ja sulge"
 
-[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Buttons"]
+[node name="bottom" type="Control" parent="CanvasLayer/Buttons"]
+anchors_preset = 0
+offset_left = 160.0
+offset_top = 159.25
+offset_right = 160.0
+offset_bottom = 159.25
+
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Buttons/bottom"]
 layout_mode = 2
-offset_left = 134.968
-offset_top = 163.419
-offset_right = 276.968
-offset_bottom = 179.419
+offset_left = -25.032
+offset_top = 4.16901
+offset_right = 116.968
+offset_bottom = 20.169
 scale = Vector2(0.45, 0.45)
 min_value = -30.0
 max_value = 10.0
 
-[node name="FxSlider" type="HSlider" parent="CanvasLayer/Buttons"]
+[node name="FxSlider" type="HSlider" parent="CanvasLayer/Buttons/bottom"]
 layout_mode = 2
-offset_left = 134.968
-offset_top = 148.424
-offset_right = 276.968
-offset_bottom = 164.424
+offset_left = -25.032
+offset_top = -10.826
+offset_right = 116.968
+offset_bottom = 5.174
 scale = Vector2(0.45, 0.45)
 min_value = -30.0
 max_value = 10.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Buttons"]
+[node name="Label" type="Label" parent="CanvasLayer/Buttons/bottom"]
 layout_mode = 2
-offset_left = 82.0
-offset_top = 163.0
-offset_right = 190.0
-offset_bottom = 181.0
+offset_left = -78.0
+offset_top = 3.75
+offset_right = 30.0
+offset_bottom = 21.75
 scale = Vector2(0.45, 0.45)
 text = "muusika"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/Buttons"]
+[node name="Label2" type="Label" parent="CanvasLayer/Buttons/bottom"]
 layout_mode = 2
-offset_left = 82.0
-offset_top = 148.0
-offset_right = 189.0
-offset_bottom = 166.0
+offset_left = -78.0
+offset_top = -11.25
+offset_right = 29.0
+offset_bottom = 6.75
 scale = Vector2(0.45, 0.45)
 text = "heliefektid"
 horizontal_alignment = 2
@@ -421,6 +429,6 @@ label_settings = SubResource("LabelSettings_8cxoe")
 [connection signal="button_down" from="CanvasLayer/Buttons/middle/Exit" to="." method="_on_exit_button_down"]
 [connection signal="button_up" from="CanvasLayer/Buttons/middle/Exit" to="." method="_on_exit_button_up"]
 [connection signal="pressed" from="CanvasLayer/Buttons/middle/Exit" to="." method="_on_exit_pressed"]
-[connection signal="value_changed" from="CanvasLayer/Buttons/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/Buttons/FxSlider" to="." method="_on_fx_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Buttons/bottom/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Buttons/bottom/FxSlider" to="." method="_on_fx_slider_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Achievements_tab/VBoxContainer/Panel_topbar/HBoxContainer/Label/BackButton" to="." method="_on_back_button_pressed"]

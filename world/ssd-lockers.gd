@@ -83,16 +83,11 @@ func spawn_item_in_locker(): # asjade lisamine kappi
 			#print("3kapis ", Global.locker_info_dict[el][1]*7.5, " on fail")
 			#var rand_box_items = ["chrome.exe","vlc.exe","video.mp4","picture.png","music.mp3","text.txt"]
 			
-			var files_list = []
-			var files_txt = FileAccess.open("res://world/files.txt",FileAccess.READ)
-			while files_txt.get_position() < files_txt.get_length():
-				var files_txt_lines = files_txt.get_line()
-				if files_txt_lines != "" and "#" not in files_txt_lines:
-					files_list.append(files_txt_lines)
-			print("files_list: ", files_list)
 			
-			var rand_box_item = files_list[randi_range(0,len(files_list)-1)]
-			files_list.erase(rand_box_item)
+			print("files_list: ", Global.files_list)
+			
+			var rand_box_item = Global.files_list[randi_range(0,len(Global.files_list)-1)]
+			Global.files_list.erase(rand_box_item)
 
 			#Global.locker_state_dict[Vector2(Global.locker_info_dict[el][1])] = ["closed","full"]
 			Global.spawn_item("box1 task_item", Vector2((Global.locker_info_dict[el][1].x * 7.5) + 3.5,(Global.locker_info_dict[el][1].y * 7.5) + 4.7), rand_box_item) # 3.5 ????????

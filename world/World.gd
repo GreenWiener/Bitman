@@ -94,7 +94,15 @@ func spawn_mobo_items():
 
 #------------------------...delete...
 
-#func _process(delta):
+func _process(delta):
+	if Global.rongirajatroll == true:
+		$world_collision/StaticBody2D/CollisionShape2D.disabled = false
+		$train_help_panel3.is_enabled = true
+		$train_help_panel4.is_enabled = true
+	else:
+		$world_collision/StaticBody2D/CollisionShape2D.disabled = true
+		
+	
 	#if Global.save_items == true:
 		#print($ysort.get_node("items")
 		#Global.save_items = false

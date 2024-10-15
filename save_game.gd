@@ -242,6 +242,13 @@ static func string_to_vector2(string := "") -> Vector2:
 static func delete_save():
 	DirAccess.remove_absolute("user://savegame.save")
 	
+	Global.files_list = [] # ssd-locker unique items
+	var files_txt = FileAccess.open("res://world/files.txt",FileAccess.READ)
+	while files_txt.get_position() < files_txt.get_length():
+		var files_txt_lines = files_txt.get_line()
+		if files_txt_lines != "" and "#" not in files_txt_lines:
+			Global.files_list.append(files_txt_lines)
+	
 	Global.player_task_level_points = 0
 	Global.most_recent_scene = null
 	Global.player_inital_map_position = Vector2(-772, 80)

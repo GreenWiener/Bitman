@@ -31,12 +31,12 @@ func _physics_process(delta):
 	
 	if Global.train_driving == true and Global.player_in_menu != true:
 		
-		if Global.train_direction == true:
-			position.x += speed_num * delta
-			$body.scale.x = 0.45
-		elif Global.train_direction == false:
-			position.x += -(speed_num) * delta
-			$body.scale.x = -0.45
+		if Global.train_direction == true: # kui rong peab hakkama paremale sõitma
+			position.x += speed_num * delta # x-koordinaadi suurendamine
+			$body.scale.x = 0.45 # rongi spraidi pööramine paremale
+		elif Global.train_direction == false: # kui rong peab hakkama vasakule sõitma
+			position.x += -(speed_num) * delta # x-koordinaadi vähendamine
+			$body.scale.x = -0.45 # rongi spraidi pööramine vasakule
 	
 
 func _on_stop_collision_area_entered(area):

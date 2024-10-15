@@ -1709,6 +1709,8 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="focus_entered" from="CanvasLayer/Console" to="." method="_on_console_focus_entered"]
 [connection signal="text_submitted" from="CanvasLayer/Console" to="." method="_on_console_text_submitted"]
 [connection signal="pressed" from="CanvasLayer/Buttons/keyb_btn" to="." method="_on_keyb_btn_pressed"]

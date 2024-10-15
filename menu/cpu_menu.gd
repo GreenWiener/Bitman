@@ -61,7 +61,7 @@ func select_info(the_file):
 	$files_menu/content/audioplay_controls/play_btn.button_pressed = false
 	$AudioStreamPlayer2D.stop()
 	
-	if FileAccess.file_exists("res://world/" + the_file + ".png"):
+	if ResourceLoader.exists("res://world/" + the_file + ".png"):
 		$files_menu/File_icon.texture = load("res://world/" + the_file + ".png")
 	else:
 		if ".exe" in the_file:
@@ -70,7 +70,7 @@ func select_info(the_file):
 			$files_menu/File_icon.texture = load("res://world/mp4.png")
 		elif ".mp3" in the_file:
 			$files_menu/File_icon.texture = load("res://world/mp3.png")
-			if FileAccess.file_exists("res://audio/" + the_file + ".wav"):
+			if ResourceLoader.exists("res://audio/" + the_file + ".wav"):
 				selected_music = load("res://audio/" + the_file + ".wav")
 				$AudioStreamPlayer2D.stream = selected_music
 				$files_menu/content/audioplay_controls.visible = true

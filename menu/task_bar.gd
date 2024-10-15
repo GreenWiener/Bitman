@@ -59,6 +59,16 @@ func _process(delta):
 		RAM_subtasks_sk = ["Skibidi the '" + deliver_ram_item_file + "' file to RAM house.", "Find an area, where you can unbox the \n'" + deliver_ram_item_file + "' file.", "Place the '" + deliver_ram_item_file + "' file\ninside one of the lockers in RAM house.", "Get the '" + deliver_ram_item_file + "' file info\nby using the computer in RAM house.", "Find an area where you can store\n'" + deliver_ram_item_file + " info' inside a box."]
 		CPU_subtasks_sk = ["Skibidi '" + deliver_cpu_item_file + " info' to CPU house.", "Get on the train and skedaddle!", "Enter CPU house.", "Place the '" + deliver_cpu_item_file + " info' on the skibidi carousel.", "Do the thing, you know."]
 		
+		#if Global.task_ongoing != "": # kui mingi ülesanne on alustatud
+		#SSD_subtasks = ["Sisene SSD-majja.", "Teisenda kahendarv " + str(Global.task_bin_num) + " kümnendarvuks,\nkasutades SSD-majas olevat arvutit.",
+			#"Võta SSD-maja nr " + str(Global.bin_task_completed_last) + " kapist fail,\nkasutades enda käes olevat kapi koodi."]
+		#RAM_subtasks = ["Mine failiga '" + deliver_ram_item_file + "' RAM-majja.", "Leia koht, kus on võimalik fail\n'" + deliver_ram_item_file + 
+			#"' kastist välja võtta.", "Aseta fail '" + deliver_ram_item_file + "' ühte RAM-maja kappi.", "Võta faili '" + deliver_ram_item_file + 
+			#"' info,\nkasutades RAM-majas asuvat arvutit.", "Leia koht, kus saad '" + deliver_ram_item_file + " info'\nkasti sisse pakkida."]
+		#CPU_subtasks = ["Transpordi '" + deliver_cpu_item_file + " info' CPU-majja.", "Mine rongi peale ja käivita see!", "Sisene CPU-majja.", 
+			#"Aseta '" + deliver_cpu_item_file + " info' (kasti sees) liikuvale lindile.", "Võta skännerist väljastatud kümnendarvuline kood ja
+			#\nteisenda see kahendarvuks, kasutades CPU-majas asuvat arvutit."]
+		
 		
 		if Global.language == "english":
 			SSD_subtasks = SSD_subtasks_en

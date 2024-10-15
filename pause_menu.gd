@@ -5,12 +5,14 @@ var in_pausemenu = false
 func _ready():
 	Global._pause_menu = self
 	$CanvasLayer.hide()
-	$CanvasLayer/Buttons/MusicSlider.value = Global.music_volume
-	$CanvasLayer/Buttons/FxSlider.value = Global.fx_volume
+	$CanvasLayer/Buttons/bottom/MusicSlider.value = Global.music_volume
+	$CanvasLayer/Buttons/bottom/FxSlider.value = Global.fx_volume
 	
 	
 	if "Android" in OS.get_name():
 		$TouchScreenButton.visible = true
+		$CanvasLayer/Buttons/middle.scale = Vector2(0.9, 0.9)
+		$CanvasLayer/Buttons/bottom.scale = Vector2(1.5, 1.5)
 	
 	if Global.language == "english":
 		lang_english()
@@ -22,22 +24,22 @@ func lang_english():
 	$CanvasLayer/Buttons/middle/Achievements.text = "Achievements"
 	$CanvasLayer/Buttons/middle/Startmenu.text = "Start menu"
 	$CanvasLayer/Buttons/middle/Exit.text = "Save and quit"
-	$CanvasLayer/Buttons/Label.text = "music"
-	$CanvasLayer/Buttons/Label2.text = "sound effects"
+	$CanvasLayer/Buttons/bottom/Label.text = "music"
+	$CanvasLayer/Buttons/bottom/Label2.text = "sound effects"
 
 func lang_skibidi():
 	$CanvasLayer/Buttons/middle/Continue.text = "DONT STOP"
 	$CanvasLayer/Buttons/middle/Achievements.text = "meanings of life"
 	$CanvasLayer/Buttons/middle/Startmenu.text = "jump to the 💩 in 🚽"
 	$CanvasLayer/Buttons/middle/Exit.text = "Skedaddle"
-	$CanvasLayer/Buttons/Label.text = "music"
-	$CanvasLayer/Buttons/Label2.text = "💩 effects"
+	$CanvasLayer/Buttons/bottom/Label.text = "music"
+	$CanvasLayer/Buttons/bottom/Label2.text = "💩 effects"
 
 func _process(_delta):
 	if Input.is_action_just_released("Close") and Global.player_in_menu == false and Global._player.welcome_text_close == false: # klahvi ESC vahjutamisel  #Input.is_action_just_released("Pause")
-		show_pause_menu()
-	elif Input.is_action_just_released("Close") and in_pausemenu == true: # klahvi ESC vahjutamisel
-		hide_pause_menu()
+		show_pause_menu() # näita pausimenüüd funktsioon
+	elif Input.is_action_just_released("Close") and in_pausemenu == true: # klahvi ESC uuesti vahjutamisel, kui pausimenüü on lahti juba
+		hide_pause_menu() # peida pausimenüüd funktsioon
 
 func _on_continue_pressed(): # "Jätka" nupu vajutamisel
 	AudioPlayer.play_fx("res://audio/btn_click_2.wav")
@@ -122,6 +124,5 @@ func _on_back_button_pressed():
 	AudioPlayer.play_fx("res://audio/btn_click_2.wav")
 	$CanvasLayer/Buttons.visible = true
 	$CanvasLayer/Achievements_tab.visible = false
-
 
 

@@ -101,7 +101,9 @@ func close_panel():
 		
 		if panel_name == "start_statue" and "task1" not in Global.showed_helparrow:
 			Global._player.get_node("CanvasLayer/Buttons/SideButtons/task_btn/HelpArrow").visible = true
-
+	
+	if Global.rongirajatroll == false and (panel_name == "rongirada3" or panel_name == "rongirada4"):
+		is_enabled = false
 
 
 func _on_body_entered(body):
@@ -114,6 +116,11 @@ func _on_body_entered(body):
 		else:
 			if is_enabled == true:
 				open_panel(text)
+	
+	if panel_name == "rongirada2":
+		Global.rongirajatroll = true
+	if panel_name == "rongirada1" or panel_name == "rongirada4":
+		Global.rongirajatroll = false
 
 
 func _on_body_exited(body):

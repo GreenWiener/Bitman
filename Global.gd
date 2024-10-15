@@ -40,6 +40,7 @@ var train_pos = Vector2(-87, 41.725)
 var next_train_direction = false
 var train_direction = true
 var train_driving = false
+var rongirajatroll = false
 var world_name
 var item_name
 var box_item
@@ -123,7 +124,7 @@ var items_in_lockers = {}
 var items_in_lockers_wlabels = []
 var locker_labels_dict = {}
 var locker_dict_keys
-
+var files_list = []
 #var ssd_lockers_instance = preload("res://world/ssd-lockers.tscn").instantiate()
 
 var player_task_level_points = 0
@@ -184,11 +185,7 @@ func remove_HelpArrow(remove_from_body): # ma vihkan seda funktiooni, see toob p
 
 func _ready():
 	SaveGame.load_settings()
-	var ssd_lockers_gd = load("res://world/ssd-lockers.tscn").instantiate()
-	ssd_lockers_gd.create_locker_texts()
 	
-	var sone = "asi"
-	print(sone.reverse())
 	
 	
 func start_game():
@@ -197,7 +194,9 @@ func start_game():
 	#load_saved_game.load_game()
 	SaveGame.load_settings()
 	SaveGame.load_game()
-
+	
+	var ssd_lockers_gd = load("res://world/ssd-lockers.tscn").instantiate()
+	ssd_lockers_gd.create_locker_texts()
 
 #func new_ssd_lockers(): # ssd kappide loomine
 #	print("creating new_ssd_lockers...")

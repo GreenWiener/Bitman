@@ -924,21 +924,35 @@ position = Vector2(49, 80)
 scale = Vector2(24.8479, 8.10722)
 text = "Jalgsi on pikk tee minna... Rongiga oleks mõistlikum sõita!"
 text_en = "It's a long way to go on foot... It would be wiser to take the train!"
+panel_name = "rongirada1"
 sprite = "none"
 interaction_key = false
 
 [node name="train_help_panel2" parent="." instance=ExtResource("8_g0il1")]
-position = Vector2(1505, 80)
+position = Vector2(1209, 80)
 scale = Vector2(24.8479, 8.10722)
-text = "Mis sa siis teed, kui just enne CPU majja jõudmist on ees nähtamatu sein, millest sa ei saa läbi kõndida......?"
+text = "Muljetavaldav!"
+text_en = "Impressive!"
+panel_name = "rongirada2"
+sprite = "none"
+interaction_key = false
+
+[node name="train_help_panel3" parent="." instance=ExtResource("8_g0il1")]
+position = Vector2(1697.56, 79.745)
+scale = Vector2(0.238, 8.302)
+text = "..."
+text_en = "..."
+panel_name = "rongirada3"
 sprite = "none"
 interaction_key = false
 is_enabled = false
 
-[node name="train_help_panel3" parent="." instance=ExtResource("8_g0il1")]
+[node name="train_help_panel4" parent="." instance=ExtResource("8_g0il1")]
 position = Vector2(1720, 102)
 scale = Vector2(6.84802, 2.84537)
-text = "Ok tubli"
+text = "tubli"
+text_en = "good job"
+panel_name = "rongirada4"
 sprite = "none"
 interaction_key = false
 is_enabled = false

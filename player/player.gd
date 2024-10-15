@@ -32,8 +32,10 @@ var welcome_text_close = false
 @onready var task_bar = $CanvasLayer/Buttons/task_bar
 @onready var keyb_btn = $CanvasLayer/Buttons/keyb_btn
 
-
 @onready var item_info = $CanvasLayer/holding_item_info/item_info
+
+var walk_sfx = load("res://audio/walk.wav")
+var walk2_sfx = load("res://audio/walk_reverb1.wav")
 
 func _ready() -> void: ## funktsioon, mis käivitub, stseen on ära laadinud
 	Global._player = self # Global skriptis muutuja _player määramine mängijaks
@@ -64,21 +66,24 @@ func _ready() -> void: ## funktsioon, mis käivitub, stseen on ära laadinud
 		Global.player_in_menu = true
 		ui_visibility(false)
 		welcome_text_close = true
+	else:
+		if "Android" in OS.get_name():
+			$CanvasLayer/Movement.visible = true
+		
 	
 	
 	if Global.scene_savepos != null:
 		self.position = Global.scene_savepos
 		Global.scene_savepos = null
 	
-	var i_label_type
+	var i_label_type 
 	if "Android" in OS.get_name():
-		$CanvasLayer/SideButtons.scale = Vector2(0.45, 0.45)
+		$CanvasLayer/Buttons/SideButtons.scale = Vector2(0.47, 0.47)
 		i_label_type = "InteractionLabels_android"
 		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_f_label").visible = false
 		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_g_label").visible = false
 		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_g_label2").visible = false
 		get_node("CanvasLayer/holding_item_info/InteractionLabels/interact_v_label").visible = false
-		$CanvasLayer/Movement.visible = true
 		keyb_btn.visible = false
 		
 	else:
@@ -96,13 +101,13 @@ func _ready() -> void: ## funktsioon, mis käivitub, stseen on ära laadinud
 	
 	
 	
-var VELOCITY = Vector2.ZERO
+var VELOCITY = Vector2.ZERO # mängutegelase kiiruse vektor
 
 #@export var float_number: float = 5
 
-@export var MAX_SPEED = 30
-const ACCELERATION = 300
-const FRICTION = 300
+@export var MAX_SPEED = 30 # mängutegelase maksimaalne kiirus
+const ACCELERATION = 300 # mängutegelase kiirenduse suurus
+const FRICTION = 300 # mängutegelase hõõrdumise suurus
 
 var delta_value
 
@@ -157,7 +162,7 @@ func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu ae
 	
 	#print(get(bob2))
 	# liikumis klahvid ja loogika
-	var input_vector = Vector2.ZERO
+	var input_vector = Vector2.ZERO # klahvisisendi vektor
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
@@ -190,9 +195,10 @@ func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu ae
 		#$CanvasLayer/keybind_start_help/VBoxContainer/moving.visible = true
 		#$CanvasLayer/keybind_start_help/VBoxContainer/zooming.visible = true
 
-	if Global.player_in_menu == false and console_focus == false and inside_a_locker == false: # liikumine lubatud ainult siis, kui mängija pole menüüs või kui konsooli kast pole fookuses
+	if Global.player_in_menu == false and console_focus == false and inside_a_locker == false: # liikumine lubatud ainult siis, kui mängija pole menüüs ja kui konsooli kast pole fookuses ja kui ta pole kapi sees
 		set_velocity(VELOCITY)
 		move_and_slide()
+		#move_and_collide(VELOCITY)
 	
 	
 	if Input.is_action_just_released("F3"):
@@ -210,25 +216,30 @@ func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu ae
 	#else:
 	#	print("nO: ", input_vector.x)
 	
-	elif input_vector.x == 0 and input_vector.y == 0 and Global.player_in_menu == false: # kui ei liigu
+	elif input_vector.x == 0 and input_vector.y == 0 and Global.player_in_menu == false:
 		#idle_Anim()
-		$AnimationPlayer.play("RESET")
+		$AnimationPlayer.play("RESET") # lähtesta animatsioonis muudetud sõlmede väärtused
 		VELOCITY = VELOCITY.move_toward(Vector2.ZERO, FRICTION * delta)
 		
-		$AudioStreamPlayer2D.stop()
+		if $AudioStreamPlayer2D.playing:
+			$AudioStreamPlayer2D.stop()
+			#print("stop playngin")
 	
 	else: # liikumine
-		VELOCITY = VELOCITY.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+		VELOCITY = VELOCITY.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta) 
+		
+		if $AnimationPlayer.animation_finished: # kui animatsioon on lõpuni mänginud
+			$AnimationPlayer.play("walk")
 		
 		if $CanvasLayer/keybind_start_help/VBoxContainer/moving.visible == true:
 			$CanvasLayer/keybind_start_help/VBoxContainer/moving.visible = false
 			if $CanvasLayer/keybind_start_help/VBoxContainer/zooming.visible == false:
 				$AnimationPlayer3.play("more_keybinds")
 		
-		if $AudioStreamPlayer2D.stream != load("res://audio/walk.wav") and Global.world_name == "MOBO":
-			$AudioStreamPlayer2D.stream = load("res://audio/walk.wav")
-		if $AudioStreamPlayer2D.stream != load("res://audio/walk_reverb1.wav") and (Global.world_name == "SSD" or Global.world_name == "RAM" or Global.world_name == "CPU"):
-			$AudioStreamPlayer2D.stream = load("res://audio/walk_reverb1.wav")
+		if $AudioStreamPlayer2D.stream != walk_sfx and Global.world_name == "MOBO":
+			$AudioStreamPlayer2D.stream = walk_sfx
+		if $AudioStreamPlayer2D.stream != walk2_sfx and (Global.world_name == "SSD" or Global.world_name == "RAM" or Global.world_name == "CPU"):
+			$AudioStreamPlayer2D.stream = walk2_sfx
 		
 		
 		if $AudioStreamPlayer2D.playing == false and Global.player_in_menu == false and console_focus == false and inside_a_locker == false and Global.train_driving == false:
@@ -236,33 +247,24 @@ func _physics_process(delta): ## mängija omadused ja füüsika, jookseb kogu ae
 		
 		if Global.player_in_menu == false and console_focus == false:
 			
-			# kehaosade liikusmi animatsioonid
-			if input_vector.x > 0:  # moving right X
-				$skeleton.scale.x = 1
+			
+			if input_vector.x > 0:  # paremale liikumise puhul
+				$skeleton.scale.x = 1 # mängutegelase keha on pööratud paremale
 				$"skeleton/player-body/Label".scale.x = 0.57 # heart beat label
 				$"skeleton/player-body/Label".position.x = -2.7 #
 
 				if $"skeleton/player-arm2".get_child_count() >= 2:
 					$"skeleton/player-arm2".get_child(1).scale.x = 1
-				if velocity.x > 30: # stop anim if 'walking into wall'(velocity 30 then)
-					#walking_HandsAnim()
-					#walking_LegsAnim()
-					if $AnimationPlayer.animation_finished:
-						$AnimationPlayer.play("walk")
+				####if velocity.x > 30: # stop anim if 'walking into wall'(velocity 30 then)
+	
 			
-			elif input_vector.x < 0:  # moving left X
-				$skeleton.scale.x = -1
+			elif input_vector.x < 0:  #  vasakule liikumise puhul
+				$skeleton.scale.x = -1 # mängutegelase keha on pööratud vasakule
 				$"skeleton/player-body/Label".scale.x = -0.57 # heart beat label
 				$"skeleton/player-body/Label".position.x = 1.7 #
 				if $"skeleton/player-arm2".get_child_count() >= 2:
 					$"skeleton/player-arm2".get_child(1).scale.x = -1
-				if velocity.x < -30:
-					if $AnimationPlayer.animation_finished:
-						$AnimationPlayer.play("walk")
-			
-			if input_vector.y > 30 or input_vector.y < 30:  # moving right Y
-				if $AnimationPlayer.animation_finished:
-						$AnimationPlayer.play("walk")
+					
 
 	# map indocator
 	if Global.world_name == "MOBO":
@@ -820,6 +822,50 @@ func _on_console_text_submitted(new_text):
 		$CanvasLayer/feedback_menu.visible = true
 		Global.player_in_menu = true
 	
+	elif new_text.begins_with("/filetest"):
+		if "wav" in new_text:
+			#if FileAccess.file_exists("res://audio/computer_success.wav"):
+			if ResourceLoader.exists("res://audio/computer_success.wav"):
+				$AudioStreamPlayer2D2.stream = load("res://audio/computer_success.wav")
+				$AudioStreamPlayer2D2.play()
+				Global.PopUpText("YES!", "player", Vector2.ZERO)
+			else:
+				$AudioStreamPlayer2D2.stream = load("res://audio/beep_bad.wav")
+				$AudioStreamPlayer2D2.play()
+				Global.PopUpText("NO!", "player", Vector2.ZERO)
+		
+		elif "txt" in new_text:
+			if FileAccess.file_exists("res://world/files.txt"):
+				$AudioStreamPlayer2D2.stream = load("res://audio/computer_success.wav")
+				$AudioStreamPlayer2D2.play()
+				Global.PopUpText("YES!", "player", Vector2.ZERO)
+			else:
+				$AudioStreamPlayer2D2.stream = load("res://audio/beep_bad.wav")
+				$AudioStreamPlayer2D2.play()
+				Global.PopUpText("NO!", "player", Vector2.ZERO)
+		
+		elif "png" in new_text:
+			if ResourceLoader.exists("res://world/png.png"):
+				$AudioStreamPlayer2D2.stream = load("res://audio/computer_success.wav")
+				$AudioStreamPlayer2D2.play()
+				Global.PopUpText("YES!", "player", Vector2.ZERO)
+			else:
+				$AudioStreamPlayer2D2.stream = load("res://audio/beep_bad.wav")
+				$AudioStreamPlayer2D2.play()
+				Global.PopUpText("NO!", "player", Vector2.ZERO)
+	
+	elif new_text.begins_with("/whatos"):
+		Global.PopUpText(str(OS.get_name()), "player", Vector2.ZERO)
+		if "Android" in OS.get_name():
+			$AudioStreamPlayer2D2.stream = load("res://audio/computer_success.wav")
+			$AudioStreamPlayer2D2.play()
+	
+	elif new_text.begins_with("/show"):
+		if "android" in new_text:
+			$CanvasLayer/Movement.visible = true
+			keyb_btn.visible = false
+	
+	
 	#if new_text.begins_with("/speed "):
 	#	MAX_SPEED = int(new_text.ends_with(TYPE_INT))
 	else:
@@ -982,10 +1028,14 @@ func _on_close_welcome_btn_pressed():
 	Global.player_in_menu = false
 	welcome_text_close = false
 	ui_visibility(true)
-
-	$CanvasLayer/keybind_start_help.visible = true
-	$CanvasLayer/keybind_start_help/VBoxContainer/moving.visible = true
-	$CanvasLayer/keybind_start_help/VBoxContainer/zooming.visible = true
+	
+	if "Android" in OS.get_name():
+		$CanvasLayer/Movement.visible = true
+	else:
+		$CanvasLayer/keybind_start_help.visible = true
+		$CanvasLayer/keybind_start_help/VBoxContainer/moving.visible = true
+		$CanvasLayer/keybind_start_help/VBoxContainer/zooming.visible = true
+	
 	
 func ui_visibility(state):
 	$CanvasLayer/Buttons.visible = state

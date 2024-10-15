@@ -522,6 +522,7 @@ text = "Nimi: "
 [node name="author" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
 visible = false
 layout_mode = 2
+theme_override_font_sizes/font_size = 19
 text = "Autor: "
 
 [node name="filetype" type="Label" parent="files_menu/file_attributes/ScrollContainer/attributes/name"]
