@@ -1,5 +1,5 @@
 # Info
-Tegin mängu mängumootoris [Godot](https://godotengine.org/). Siia on üles laetud mu mängu _source code_ ning kõik mängus kasutatud pildid/spraidid ja helifailid. See tähendab, et kogu Godot' projektikaust ja kõik failid, millest ma exportisin mängitava exe-faili, on siin.
+Tegin mängu mängumootoris [Godot](https://godotengine.org/). Siia on üles laetud mu mängu lähtekood ning kõik mängus kasutatud pildid/spraidid ja helifailid. See tähendab, et kogu Godot' projektikaust ja kõik failid, millest ma eksportisin mängitava exe-faili, on siin.
 
 # Kuidas mängida?
 Mängimiseks pead sa mängu endale alla laadima. All pool on erinevaid versioone mängust, pead endale sobiva alla laadima.
@@ -12,6 +12,7 @@ Kui sul on **Android** telefon, siis lae see fail alla: [Bitman-v1.3-android.apk
 
 Kui sul on **Iphone**, siis võid [siit](https://www.samsung.com/ee/mobile/) abi leida.
 
+Kui sa millegipärast ei taha mängu alla laadida, siis võid proovida ka veebiversiooni [siin](https://greenwiener.itch.io/bitman)
 ##
 Mängu vanemaid versioone saad näha ja alla laadida [siit](https://github.com/GreenWiener/Bitman/releases)
 
