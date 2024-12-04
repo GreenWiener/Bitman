@@ -2,7 +2,7 @@
 Tegin mängu mängumootoris [Godot](https://godotengine.org/). Siia on üles laetud mu mängu lähtekood ning kõik mängus kasutatud pildid/spraidid ja helifailid. See tähendab, et kogu Godot' projektikaust ja kõik failid, millest ma eksportisin mängitava exe-faili, on siin.
 
 # Kuidas mängida?
-Mängimiseks pead sa mängu endale alla laadima või saad ka veebiversiooni proovida [siin](https://greenwiener.itch.io/bitman). All pool on erinevaid versioone mängust, pead endale sobiva alla laadima.
+Mängimiseks pead sa mängu endale **alla laadima** või saad ka **arvutis** mängitavat veebiversiooni proovida [siin](https://greenwiener.itch.io/bitman). All pool on erinevaid versioone mängust, pead endale sobiva alla laadima.
 
 Kui sul on **Windows** arvuti, siis see fail on sulle: [Bitman-v1.3-win64.exe](https://github.com/GreenWiener/Bitman/releases/download/v1.3/Bitman-v1.3-win64.exe).
 
